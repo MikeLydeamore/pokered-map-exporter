@@ -13,15 +13,23 @@ CinnabarIsland_ScriptPointers:
 	dw CinnabarIslandScript1
 
 CinnabarIslandScript0:
-	ld b, SECRET_KEY
-	call IsItemInBag
-	ret nz
 	ld a, [wYCoord]
 	cp 4
 	ret nz
+	ld b, SECRET_KEY
+	call IsItemInBag
+	jr nz, .MansionCheck
 	ld a, [wXCoord]
 	cp 18
+	jr z, .locked
+.MansionCheck
+    ld b, MANSION_KEY
+    call IsItemInBag
+    ret nz
+	ld a, [wXCoord]
+	cp 6
 	ret nz
+.locked
 	ld a, PLAYER_DIR_UP
 	ld [wPlayerMovingDirection], a
 	ld a, $8

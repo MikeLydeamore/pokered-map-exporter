@@ -21,6 +21,7 @@ Route11GateUpstairsText2:
 	jr c, .got_item
 	ld a, 30
 	ldh [hOaksAideRequirement], a
+.Archipelago_Event_LD_A_Rt11_Oaks_Aide
 	ld a, ITEMFINDER
 	ldh [hOaksAideRewardItem], a
 	ld [wd11e], a

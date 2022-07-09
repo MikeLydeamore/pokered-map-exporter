@@ -51,14 +51,18 @@ EndNPCMovementScript::
 	farjp _EndNPCMovementScript
 
 DebugPressedOrHeldB::
-IF DEF(_DEBUG)
-	ld a, [wd732]
-	bit 1, a
+;IF DEF(_DEBUG)
+;.Archipelago_Option_Blind_Trainers
+;    ld a, 0
+;    ret nz
+.Archipelago_Option_Trainer_Encounters_LD_A
+    ld a, 0
+    and a
 	ret z
 	ldh a, [hJoyHeld]
 	bit BIT_B_BUTTON, a
 	ret nz
 	ldh a, [hJoyPressed]
 	bit BIT_B_BUTTON, a
-ENDC
+;ENDC
 	ret

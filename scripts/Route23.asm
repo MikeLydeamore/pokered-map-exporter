@@ -72,7 +72,7 @@ YCoordsData_51255:
 
 Route23Script_5125d:
 	ld hl, BadgeTextPointers
-	ld a, [wWhichBadge]
+	ld a, [wUnusedD119]
 	ld c, a
 	ld b, 0
 	add hl, bc
@@ -99,25 +99,25 @@ BadgeTextPointers:
 	dw EarthBadgeText
 
 EarthBadgeText:
-	db "EARTHBADGE@"
+	db "8@"
 
 VolcanoBadgeText:
-	db "VOLCANOBADGE@"
+	db "7@"
 
 MarshBadgeText:
-	db "MARSHBADGE@"
+	db "6@"
 
 SoulBadgeText:
-	db "SOULBADGE@"
+	db "5@"
 
 RainbowBadgeText:
-	db "RAINBOWBADGE@"
+	db "4@"
 
 ThunderBadgeText:
-	db "THUNDERBADGE@"
+	db "3@"
 
 CascadeBadgeText:
-	db "CASCADEBADGE@"
+	db "2@"
 
 Route23Script_512d8:
 	ld a, $1
@@ -191,17 +191,32 @@ Route23Text7:
 	jp TextScriptEnd
 
 Route23Script_51346:
-	ld [wWhichBadge], a
+    ld [wWhichBadge], a
+    ld b, a
+.Archipelago_Option_Badge_Goal_LD_A
+    ld a, 0
+	cp b
+	jr c, .capBadge
+	ld a, b
+.capBadge
+	ld [wUnusedD119], a
 	call Route23Script_5125d
-	ld a, [wWhichBadge]
-	inc a
-	ld c, a
-	ld b, FLAG_TEST
+	;inc a
+	;ld c, a
+	;ld b, FLAG_TEST
 	ld hl, wObtainedBadges
-	predef FlagActionPredef
-	ld a, c
-	and a
-	jr nz, .asm_5136e
+	;predef FlagActionPredef
+	;ld a, c
+	;and a
+	;cp [hl]
+	ld b, 1
+	call CountSetBits
+	ld a, [wNumSetBits]
+	ld b, a
+	ld a, [wUnusedD119]
+	inc a
+	cp b
+	jr c, .asm_5136e
 	ld hl, VictoryRoadGuardText1
 	call PrintText
 	call Route23Script_512d8

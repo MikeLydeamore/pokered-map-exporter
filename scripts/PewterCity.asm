@@ -21,12 +21,13 @@ PewterCityScript0:
 	ret
 
 PewterCityScript_1925e:
+    ret
 	CheckEvent EVENT_BEAT_BROCK
 	ret nz
-IF DEF(_DEBUG)
-	call DebugPressedOrHeldB
-	ret nz
-ENDC
+;IF DEF(_DEBUG)
+;	call DebugPressedOrHeldB
+;	ret nz
+;ENDC
 	ld hl, CoordsData_19277
 	call ArePlayerCoordsInArray
 	ret nc

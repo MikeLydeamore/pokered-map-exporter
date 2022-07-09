@@ -83,6 +83,16 @@ ItemPrices::
 	bcd3 0     ; MAX_ETHER
 	bcd3 0     ; ELIXER
 	bcd3 0     ; MAX_ELIXER
+	bcd3 0     ; tea
+	bcd3 0     ; master sword
+	bcd3 0     ; flute
+	bcd3 0     ; titans mitt
+	bcd3 0     ; lamp
+	bcd3 0
+	bcd3 0
+	bcd3 0
+	bcd3 0
+	bcd3 0
 	assert_table_length NUM_ITEMS
 	bcd3 0     ; FLOOR_B2F
 	bcd3 0     ; FLOOR_B1F

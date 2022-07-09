@@ -413,12 +413,16 @@ RockTunnelPokecenterHiddenObjects:
 	db -1 ; end
 
 ViridianForestHiddenObjects:
+.Archipelago_Hidden_Item_Viridian_Forest_1
 	hidden_object  1, 18, POTION, HiddenItems
+.Archipelago_Hidden_Item_Viridian_Forest_2
 	hidden_object 16, 42, ANTIDOTE, HiddenItems
 	db -1 ; end
 
 MtMoon3HiddenObjects:
+.Archipelago_Hidden_Item_MtMoonB2F_1
 	hidden_object 18, 12, MOON_STONE, HiddenItems
+.Archipelago_Hidden_Item_MtMoonB2F_2
 	hidden_object 33,  9, ETHER, HiddenItems
 	db -1 ; end
 
@@ -428,38 +432,48 @@ IndigoPlateauHiddenObjects:
 	db -1 ; end
 
 Route25HiddenObjects:
+.Archipelago_Hidden_Item_Route_25_1
 	hidden_object 38,  3, ETHER, HiddenItems
+.Archipelago_Hidden_Item_Route_25_2
 	hidden_object 10,  1, ELIXER, HiddenItems
 	db -1 ; end
 
 Route9HiddenObjects:
+.Archipelago_Hidden_Item_Route_9
 	hidden_object 14,  7, ETHER, HiddenItems
 	db -1 ; end
 
 SSAnne6HiddenObjects:
 	hidden_object 13,  5, SPRITE_FACING_DOWN, PrintTrashText
 	hidden_object 13,  7, SPRITE_FACING_DOWN, PrintTrashText
+.Archipelago_Hidden_Item_SS_Anne_Kitchen
 	hidden_object 13,  9, GREAT_BALL, HiddenItems
 	db -1 ; end
 
 SSAnne10HiddenObjects:
+.Archipelago_Hidden_Item_SS_Anne_B1F
 	hidden_object  3,  1, HYPER_POTION, HiddenItems
 	db -1 ; end
 
 Route10HiddenObjects:
+.Archipelago_Hidden_Item_Route_10_1
 	hidden_object  9, 17, SUPER_POTION, HiddenItems
+.Archipelago_Hidden_Item_Route_10_2
 	hidden_object 16, 53, MAX_ETHER, HiddenItems
 	db -1 ; end
 
 RocketHideout1HiddenObjects:
+.Archipelago_Hidden_Item_Rocket_Hideout_B1F
 	hidden_object 21, 15, PP_UP, HiddenItems
 	db -1 ; end
 
 RocketHideout3HiddenObjects:
+.Archipelago_Hidden_Item_Rocket_Hideout_B3F
 	hidden_object 27, 17, NUGGET, HiddenItems
 	db -1 ; end
 
 RocketHideout4HiddenObjects:
+.Archipelago_Hidden_Item_Rocket_Hideout_B4F
 	hidden_object 25,  1, SUPER_POTION, HiddenItems
 	db -1 ; end
 
@@ -469,56 +483,71 @@ SaffronPokecenterHiddenObjects:
 	db -1 ; end
 
 PokemonTower5HiddenObjects:
+.Archipelago_Hidden_Item_Pokemon_Tower_5F
 	hidden_object  4, 12, ELIXER, HiddenItems
 	db -1 ; end
 
 Route13HiddenObjects:
+.Archipelago_Hidden_Item_Route_13_1
 	hidden_object  1, 14, PP_UP, HiddenItems
+.Archipelago_Hidden_Item_Route_13_2
 	hidden_object 16, 13, CALCIUM, HiddenItems
 	db -1 ; end
 
 SafariZoneEntranceHiddenObjects:
-	hidden_object 10,  1, NUGGET, HiddenItems ; inaccessible
+.Archipelago_Hidden_Item_Safari_Zone_Gate
+	hidden_object  3,  3, NUGGET, HiddenItems ; inaccessible
 	db -1 ; end
 
 SafariZoneWestHiddenObjects:
+.Archipelago_Hidden_Item_Safari_Zone_West
 	hidden_object  6,  5, REVIVE, HiddenItems
 	db -1 ; end
 
 SilphCo5FHiddenObjects:
+.Archipelago_Hidden_Item_Silph_Co_5F
 	hidden_object 12,  3, ELIXER, HiddenItems
 	db -1 ; end
 
 SilphCo9FHiddenObjects:
+.Archipelago_Hidden_Item_Silph_Co_9F
 	hidden_object  2, 15, MAX_POTION, HiddenItems
 	db -1 ; end
 
 CopycatsHouse2FHiddenObjects:
+.Archipelago_Hidden_Item_Copycats_House
 	hidden_object  1,  1, NUGGET, HiddenItems
 	db -1 ; end
 
 CeruleanCave1HiddenObjects:
+.Archipelago_Hidden_Item_Cerulean_Cave_1F
 	hidden_object 14, 11, RARE_CANDY, HiddenItems
 	db -1 ; end
 
 CeruleanCave3HiddenObjects:
+.Archipelago_Hidden_Item_Cerulean_Cave_B1F
 	hidden_object 27,  3, ULTRA_BALL, HiddenItems
 	db -1 ; end
 
 PowerPlantHiddenObjects:
+.Archipelago_Hidden_Item_Power_Plant_1
 	hidden_object 17, 16, MAX_ELIXER, HiddenItems
+.Archipelago_Hidden_Item_Power_Plant_2
 	hidden_object 12,  1, PP_UP, HiddenItems
 	db -1 ; end
 
 SeafoamIslands3HiddenObjects:
+.Archipelago_Hidden_Item_Seafoam_Islands_B2F
 	hidden_object 15, 15, NUGGET, HiddenItems
 	db -1 ; end
 
 SeafoamIslands5HiddenObjects:
+.Archipelago_Hidden_Item_Seafoam_Islands_B4F
 	hidden_object 25, 17, ULTRA_BALL, HiddenItems
 	db -1 ; end
 
 Mansion1HiddenObjects:
+.Archipelago_Hidden_Item_Pokemon_Mansion_1F
 	hidden_object  8, 16, MOON_STONE, HiddenItems
 	hidden_object  2,  5, SPRITE_FACING_UP, Mansion1Script_Switches
 	db -1 ; end
@@ -528,28 +557,36 @@ Mansion2HiddenObjects:
 	db -1 ; end
 
 Mansion3HiddenObjects:
+.Archipelago_Hidden_Item_Pokemon_Mansion_3F
 	hidden_object  1,  9, MAX_REVIVE, HiddenItems
 	hidden_object 10,  5, SPRITE_FACING_UP, Mansion3Script_Switches
 	db -1 ; end
 
 Mansion4HiddenObjects:
+.Archipelago_Hidden_Item_Pokemon_Mansion_B1F
 	hidden_object  1,  9, RARE_CANDY, HiddenItems
 	hidden_object 20,  3, SPRITE_FACING_UP, Mansion4Script_Switches
 	hidden_object 18, 25, SPRITE_FACING_UP, Mansion4Script_Switches
 	db -1 ; end
 
 Route23HiddenObjects:
+.Archipelago_Hidden_Item_Route_23_1
 	hidden_object  9, 44, FULL_RESTORE, HiddenItems
+.Archipelago_Hidden_Item_Route_23_2
 	hidden_object 19, 70, ULTRA_BALL, HiddenItems
+.Archipelago_Hidden_Item_Route_23_3
 	hidden_object  8, 90, MAX_ETHER, HiddenItems
 	db -1 ; end
 
 VictoryRoad2HiddenObjects:
+.Archipelago_Hidden_Item_Victory_Road_2F_1
 	hidden_object  5,  2, ULTRA_BALL, HiddenItems
+.Archipelago_Hidden_Item_Victory_Road_2F_2
 	hidden_object 26,  7, FULL_RESTORE, HiddenItems
 	db -1 ; end
 
 Unused6FHiddenObjects:
+.Archipelago_Hidden_Item_Unused_6F
 	hidden_object 14, 11, MAX_ELIXER, HiddenItems
 	db -1 ; end
 
@@ -558,6 +595,7 @@ BillsHouseHiddenObjects:
 	db -1 ; end
 
 ViridianCityHiddenObjects:
+.Archipelago_Hidden_Item_Viridian_City
 	hidden_object 14,  4, POTION, HiddenItems
 	db -1 ; end
 
@@ -618,10 +656,12 @@ BikeShopHiddenObjects:
 	db -1 ; end
 
 Route11HiddenObjects:
+.Archipelago_Hidden_Item_Route_11
 	hidden_object 48,  5, ESCAPE_ROPE, HiddenItems
 	db -1 ; end
 
 Route12HiddenObjects:
+.Archipelago_Hidden_Item_Route_12
 	hidden_object  2, 63, HYPER_POTION, HiddenItems
 	db -1 ; end
 
@@ -630,39 +670,53 @@ SilphCo11FHiddenObjects:
 	db -1 ; end
 
 Route17HiddenObjects:
+.Archipelago_Hidden_Item_Route_17_1
 	hidden_object 15,  14, RARE_CANDY, HiddenItems
+.Archipelago_Hidden_Item_Route_17_2
 	hidden_object  8,  45, FULL_RESTORE, HiddenItems
+.Archipelago_Hidden_Item_Route_17_3
 	hidden_object 17,  72, PP_UP, HiddenItems
+.Archipelago_Hidden_Item_Route_17_4
 	hidden_object  4,  91, MAX_REVIVE, HiddenItems
+.Archipelago_Hidden_Item_Route_17_5
 	hidden_object  8, 121, MAX_ELIXER, HiddenItems
 	db -1 ; end
 
 UndergroundPathNsHiddenObjects:
+.Archipelago_Hidden_Item_Underground_Path_NS_1
 	hidden_object  3,  4, FULL_RESTORE, HiddenItems
+.Archipelago_Hidden_Item_Underground_Path_NS_2
 	hidden_object  4, 34, X_SPECIAL, HiddenItems
 	db -1 ; end
 
 UndergroundPathWeHiddenObjects:
+.Archipelago_Hidden_Item_Underground_Path_WE_1
 	hidden_object 12,  2, NUGGET, HiddenItems
+.Archipelago_Hidden_Item_Underground_Path_WE_2
 	hidden_object 21,  5, ELIXER, HiddenItems
 	db -1 ; end
 
 CeladonCityHiddenObjects:
+.Archipelago_Hidden_Item_Celadon_City
 	hidden_object 48, 15, PP_UP, HiddenItems
 	db -1 ; end
 
 SeafoamIslands4HiddenObjects:
+.Archipelago_Hidden_Item_Seafoam_Islands_B3F
 	hidden_object  9, 16, MAX_ELIXER, HiddenItems
 	db -1 ; end
 
 VermilionCityHiddenObjects:
+.Archipelago_Hidden_Item_Vermilion_City
 	hidden_object 14, 11, MAX_ETHER, HiddenItems
 	db -1 ; end
 
 CeruleanCityHiddenObjects:
+.Archipelago_Hidden_Item_Cerulean_City
 	hidden_object 15,  8, RARE_CANDY, HiddenItems
 	db -1 ; end
 
 Route4HiddenObjects:
+.Archipelago_Hidden_Item_Route_4
 	hidden_object 40,  3, GREAT_BALL, HiddenItems
 	db -1 ; end

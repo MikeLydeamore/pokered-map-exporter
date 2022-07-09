@@ -49,6 +49,7 @@ FuchsiaGymReceiveTM06:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_KOGA
+.Archipelago_Event_Fuschia_Gym
 	lb bc, TM_TOXIC, 1
 	call GiveItem
 	jr nc, .BagFull
@@ -62,13 +63,18 @@ FuchsiaGymReceiveTM06:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .gymVictory
+	ld hl, wArchipelagoOptions
+    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
+    jr nz, .skipBadge
 	ld hl, wObtainedBadges
+.Archipelago_Badge_Fuchsia_Gym
 	set BIT_SOULBADGE, [hl]
+.skipBadge
 	ld hl, wBeatGymFlags
 	set BIT_SOULBADGE, [hl]
 
 	; deactivate gym trainers
-	SetEventRange EVENT_BEAT_FUCHSIA_GYM_TRAINER_0, EVENT_BEAT_FUCHSIA_GYM_TRAINER_5
+	; SetEventRange EVENT_BEAT_FUCHSIA_GYM_TRAINER_0, EVENT_BEAT_FUCHSIA_GYM_TRAINER_5
 
 	jp FuchsiaGymResetScripts
 

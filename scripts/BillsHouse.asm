@@ -163,6 +163,7 @@ BillsHouseText2:
 	jr nz, .asm_1e8a9
 	ld hl, BillThankYouText
 	call PrintText
+.Archipelago_Event_Bill
 	lb bc, S_S_TICKET, 1
 	call GiveItem
 	jr nc, .BagFull

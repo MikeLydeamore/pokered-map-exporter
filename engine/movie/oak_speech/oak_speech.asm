@@ -43,17 +43,35 @@ OakSpeech:
 	call SetDefaultNames
 	predef InitPlayerData2
 	ld hl, wNumBoxItems
+.Archipelago_PC_Item_LD_A
 	ld a, POTION
 	ld [wcf91], a
+.Archipelago_PC_Item_Quantity_LD_A
 	ld a, 1
 	ld [wItemQuantity], a
 	call AddItemToInventory  ; give one potion
+
+.Archipelago_Options_LD_A
+    ld a, $00
+    ld [wArchipelagoOptions], a
+
+;.Archipelago_Option_Badge_Goal_LD_A
+ ;   ld a, 8
+ ;   ld [wArchipelagoMaxBadges], a
+
+.Archipelago_Fly_Location_LD_A
+	ld a, $00
+	ld c, a
+	ld b, FLAG_SET
+	ld hl, wTownVisitedFlag   ; mark town as visited (for flying)
+	predef FlagActionPredef
+
 	ld a, [wDefaultMap]
 	ld [wDestinationMap], a
 	call SpecialWarpIn
 	xor a
 	ldh [hTileAnimations], a
-	ld a, [wd732]
+	ld a, $FF ; [wd732]
 	bit 1, a ; possibly a debug mode bit
 	jp nz, .skipChoosingNames
 	ld de, ProfOakPic
@@ -98,7 +116,7 @@ OakSpeech:
 	lb bc, BANK(RedPicFront), $00
 	call IntroDisplayPicCenteredOrUpperRight
 	call GBFadeInFromWhite
-	ld a, [wd72d]
+	ld a, $FF ;[wd72d]
 	and a
 	jr nz, .next
 	ld hl, OakSpeechText3

@@ -3,7 +3,7 @@ VermilionDock_Script:
 	CheckEventHL EVENT_STARTED_WALKING_OUT_OF_DOCK
 	jr nz, .asm_1db8d
 	CheckEventReuseHL EVENT_GOT_HM01
-	ret z
+	ret
 	ld a, [wDestinationWarpID]
 	cp $1
 	ret nz

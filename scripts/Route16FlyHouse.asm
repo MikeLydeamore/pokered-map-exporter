@@ -12,6 +12,7 @@ Route16HouseText1:
 	jr nz, .got_item
 	ld hl, Route16HouseText3
 	call PrintText
+.Archipelago_Event_Rt16_House_Woman
 	lb bc, HM_FLY, 1
 	call GiveItem
 	jr nc, .bag_full

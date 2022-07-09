@@ -50,8 +50,8 @@ VermilionCityScript0:
 	ld a, $3
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	CheckEvent EVENT_SS_ANNE_LEFT
-	jr nz, .shipHasDeparted
+	;CheckEvent EVENT_SS_ANNE_LEFT
+	;jr nz, .shipHasDeparted
 	ld b, S_S_TICKET
 	predef GetQuantityOfItemInBag
 	ld a, b
@@ -134,15 +134,15 @@ VermilionCityText1:
 
 VermilionCityText2:
 	text_asm
-	CheckEvent EVENT_SS_ANNE_LEFT
-	jr nz, .shipHasDeparted
+	;CheckEvent EVENT_SS_ANNE_LEFT
+	;jr nz, .shipHasDeparted
 	ld hl, VermilionCityTextDidYouSee
 	call PrintText
-	jr .end
-.shipHasDeparted
-	ld hl, VermilionCityTextSSAnneDeparted
-	call PrintText
-.end
+	;jr .end
+;.shipHasDeparted
+;	ld hl, VermilionCityTextSSAnneDeparted
+;	call PrintText
+;.end
 	jp TextScriptEnd
 
 VermilionCityTextDidYouSee:
@@ -155,8 +155,8 @@ VermilionCityTextSSAnneDeparted:
 
 VermilionCityText3:
 	text_asm
-	CheckEvent EVENT_SS_ANNE_LEFT
-	jr nz, .shipHasDeparted
+;	CheckEvent EVENT_SS_ANNE_LEFT
+;	jr nz, .shipHasDeparted
 	ld a, [wSpritePlayerStateData1FacingDirection]
 	cp SPRITE_FACING_RIGHT
 	jr z, .greetPlayer
@@ -183,10 +183,10 @@ VermilionCityText3:
 	call PrintText
 	ld a, $4
 	ld [wVermilionCityCurScript], a
-	jr .end
-.shipHasDeparted
-	ld hl, SSAnneNotHereText
-	call PrintText
+;	jr .end
+;.shipHasDeparted
+;	ld hl, SSAnneNotHereText
+;	call PrintText
 .end
 	jp TextScriptEnd
 

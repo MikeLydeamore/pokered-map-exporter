@@ -29,7 +29,6 @@ HallOfFamePC:
 	ld c, 128
 	call DelayFrames
 	xor a
-	ld [wUnusedCD3D], a ; not read
 	ld [wNumCreditsMonsDisplayed], a
 	jp Credits
 
@@ -167,7 +166,7 @@ FillMiddleOfScreenWithWhite:
 	ld a, " "
 	jp FillMemory
 
-Credits:
+Credits::
 	ld de, CreditsOrder
 	push de
 .nextCreditsScreen

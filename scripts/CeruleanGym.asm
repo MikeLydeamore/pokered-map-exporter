@@ -47,6 +47,7 @@ CeruleanGymReceiveTM11:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_MISTY
+.Archipelago_Event_Cerulean_Gym
 	lb bc, TM_BUBBLEBEAM, 1
 	call GiveItem
 	jr nc, .BagFull
@@ -60,13 +61,18 @@ CeruleanGymReceiveTM11:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .gymVictory
+	ld hl, wArchipelagoOptions
+    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
+    jr nz, .skipBadge
 	ld hl, wObtainedBadges
+.Archipelago_Badge_Cerulean_Gym
 	set BIT_CASCADEBADGE, [hl]
+.skipBadge
 	ld hl, wBeatGymFlags
 	set BIT_CASCADEBADGE, [hl]
 
 	; deactivate gym trainers
-	SetEvents EVENT_BEAT_CERULEAN_GYM_TRAINER_0, EVENT_BEAT_CERULEAN_GYM_TRAINER_1
+	;SetEvents EVENT_BEAT_CERULEAN_GYM_TRAINER_0, EVENT_BEAT_CERULEAN_GYM_TRAINER_1
 
 	jp CeruleanGymResetScripts
 

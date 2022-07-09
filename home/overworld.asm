@@ -12,6 +12,7 @@ EnterMap::
 	ld hl, wd72c
 	bit 0, [hl] ; has the player already made 3 steps since the last battle?
 	jr z, .skipGivingThreeStepsOfNoRandomBattles
+.Archipelago_Option_LD_A_Encounter_Minimum_Steps
 	ld a, 3 ; minimum number of steps between battles
 	ld [wNumberOfNoRandomBattleStepsLeft], a
 .skipGivingThreeStepsOfNoRandomBattles
@@ -137,11 +138,58 @@ OverworldLoopLessDelay::
 	ld [wCheckFor180DegreeTurn], a
 	ld a, [wPlayerMovingDirection] ; the direction that was pressed last time
 	and a
-	jp z, OverworldLoop
+	jr z, .continue
 ; if a direction was pressed last time
 	ld [wPlayerLastStopDirection], a ; save the last direction
 	xor a
 	ld [wPlayerMovingDirection], a ; zero the direction
+	jp OverworldLoop
+.continue
+	ld a, [wArchipelagoItemReceived]
+	cp $00
+	jr z, .archipelagoItemNotReceived
+    push bc
+	ld b, a
+	ld a, 1
+	ld c, a
+	call GiveItem
+	jr nc, .bagFull
+	ld a, $00
+	ld [wArchipelagoItemReceived], a
+	ld a, [wArchipelagoItemsReceivedCount]
+	ld c, a
+	ld a, [wArchipelagoItemsReceivedCount+1]
+	ld b, a
+	inc bc
+	ld a, c
+	ld [wArchipelagoItemsReceivedCount], a
+	ld a, b
+	ld [wArchipelagoItemsReceivedCount+1], a
+	;push hl
+	;hlcoord 0, 12
+	;ld b, $04
+	;ld c, $12
+	;call TextBoxBorder
+	;ld hl, ReceivedArchipelagoItemText
+	;call justprinttext
+	;ld a, MESSAGE_BOX
+	;call DisplayTextBoxID
+	;ld hl, ReceivedArchipelagoItemText
+	;call PrintText
+	;jp PrintText
+	;pop hl
+	;jp AfterDisplayingTextID
+	;call EnableAutoTextBoxDrawing
+	;tx_pre UnusedBenchGuyText1
+	ld a, SFX_GET_ITEM_1
+	call PlaySound
+	;ld a, TEXT_RECEIVED_ITEM
+	;ldh [hSpriteIndexOrTextID], a
+	;call EnableAutoTextBoxDrawing
+	;call DisplayTextID
+.bagFull
+	pop bc
+.archipelagoItemNotReceived
 	jp OverworldLoop
 
 .checkIfDownButtonIsPressed
@@ -490,8 +538,8 @@ WarpFound2::
 ; this is for handling "outside" maps that can't have the 0xFF destination map
 	ld a, [wCurMap]
 	ld [wLastMap], a
-	ld a, [wCurMapWidth]
-	ld [wUnusedD366], a ; not read
+	;ld a, [wCurMapWidth]
+	;ld [wUnusedD366], a ; not read
 	ldh a, [hWarpDestinationMap]
 	ld [wCurMap], a
 	cp ROCK_TUNNEL_1F
@@ -2010,8 +2058,8 @@ LoadPlayerSpriteGraphicsCommon::
 ; function to load data from the map header
 LoadMapHeader::
 	farcall MarkTownVisitedAndLoadMissableObjects
-	ld a, [wCurMapTileset]
-	ld [wUnusedD119], a
+	;ld a, [wCurMapTileset]
+	;ld [wUnusedD119], a
 	ld a, [wCurMap]
 	call SwitchToMapRomBank
 	ld a, [wCurMapTileset]
@@ -2309,7 +2357,7 @@ LoadMapData::
 	ldh [hSCY], a
 	ldh [hSCX], a
 	ld [wWalkCounter], a
-	ld [wUnusedD119], a
+	;ld [wUnusedD119], a
 	ld [wWalkBikeSurfStateCopy], a
 	ld [wSpriteSetID], a
 	call LoadTextBoxTilePatterns

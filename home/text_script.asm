@@ -20,12 +20,13 @@ DisplayTextID::
 	ld d, $00
 	ldh a, [hSpriteIndexOrTextID] ; text ID
 	ld [wSpriteIndex], a
-
+testdict:
 	dict TEXT_START_MENU,       DisplayStartMenu
 	dict TEXT_SAFARI_GAME_OVER, DisplaySafariGameOverText
 	dict TEXT_MON_FAINTED,      DisplayPokemonFaintedText
 	dict TEXT_BLACKED_OUT,      DisplayPlayerBlackedOutText
 	dict TEXT_REPEL_WORE_OFF,   DisplayRepelWoreOffText
+	dict TEXT_RECEIVED_ITEM,    DisplayArchipelagoItem
 
 	ld a, [wNumSprites]
 	ld e, a
@@ -82,7 +83,7 @@ ENDM
 	dict2 TX_SCRIPT_VENDING_MACHINE,         farcall VendingMachineMenu
 	dict  TX_SCRIPT_PRIZE_VENDOR,            TextScript_GameCornerPrizeMenu
 	dict2 TX_SCRIPT_CABLE_CLUB_RECEPTIONIST, callfar CableClubNPC
-
+justprinttext:
 	call PrintText_NoCreatingTextBox ; display the text
 	ld a, [wDoNotWaitForButtonPressAfterDisplayingText]
 	and a
@@ -212,4 +213,8 @@ DisplayRepelWoreOffText::
 
 RepelWoreOffText::
 	text_far _RepelWoreOffText
+	text_end
+
+DisplayArchipelagoItem:
+    text_far _DisplayArchipelagoItem
 	text_end

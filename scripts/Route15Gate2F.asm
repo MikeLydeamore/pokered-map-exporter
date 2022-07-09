@@ -11,6 +11,7 @@ Route15GateUpstairsText1:
 	jr nz, .got_item
 	ld a, 50
 	ldh [hOaksAideRequirement], a
+.Archipelago_Event_LD_A_Rt_15_Oaks_Aide
 	ld a, EXP_ALL
 	ldh [hOaksAideRewardItem], a
 	ld [wd11e], a

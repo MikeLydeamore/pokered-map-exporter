@@ -19,6 +19,7 @@ BikeShopText1:
 	jr z, .asm_41190
 	ld hl, BikeShopText_1d81f
 	call PrintText
+.Archipelago_Event_Bicycle_Shop
 	lb bc, BICYCLE, 1
 	call GiveItem
 	jr nc, .BagFull
@@ -79,7 +80,8 @@ BikeShopText1:
 	jp TextScriptEnd
 
 BikeShopMenuText:
-	db   "BICYCLE"
+.Archipelago_Text_Bicycle
+	db   "BICYCLE     "
 	next "CANCEL@"
 
 BikeShopMenuPrice:

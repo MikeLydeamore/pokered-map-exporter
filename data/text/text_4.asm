@@ -22,6 +22,13 @@ _RepelWoreOffText::
 	line "wore off."
 	done
 
+_DisplayArchipelagoItem::
+	text "<PLAYER> received"
+	line "@"
+	text_ram wStringBuffer
+	text "!@"
+	done
+
 _PokemartBuyingGreetingText::
 	text "Take your time."
 	done
@@ -157,18 +164,18 @@ _HMCantDeleteText::
 	prompt
 
 _PokemonCenterWelcomeText::
-	text "Welcome to our"
-	line "#MON CENTER!"
+	text "I'm on it!"
+	done
 
-	para "We heal your"
-	line "#MON back to"
-	cont "perfect health!"
-	prompt
+	;para "We heal your"
+	;line "#MON back to"
+	;cont "perfect health!"
+	;prompt
 
 _ShallWeHealYourPokemonText::
-	text "Shall we heal your"
-	line "#MON?"
-	done
+	;text "Shall we heal your"
+	;line "#MON?"
+	;done
 
 _NeedYourPokemonText::
 	text "OK. We'll need"
@@ -176,15 +183,15 @@ _NeedYourPokemonText::
 	done
 
 _PokemonFightingFitText::
-	text "Thank you!"
-	line "Your #MON are"
-	cont "fighting fit!"
-	prompt
+	;text "Thank you!"
+	;line "Your #MON are"
+	;cont "fighting fit!"
+	;prompt
 
 _PokemonCenterFarewellText::
-	text "We hope to see"
-	line "you again!"
-	done
+	;text "We hope to see"
+	;line "you again!"
+	;done
 
 _CableClubNPCAreaReservedFor2FriendsLinkedByCableText::
 	text "This area is"

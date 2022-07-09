@@ -29,6 +29,13 @@ OaksLab_ScriptPointers:
 	dw OaksLabScript16
 	dw OaksLabScript17
 	dw OaksLabScript18
+	dw OaksLabScript19
+
+OaksLabScript19:
+	;ld a, PALLET_TOWN
+	;ld [wLastBlackoutMap], a
+	farcall SaveSAVtoSRAM
+    farjp Credits
 
 OaksLabScript0:
 	CheckEvent EVENT_OAK_APPEARED_IN_PALLET
@@ -598,12 +605,12 @@ OaksLabScript16:
 	call DisplayTextID
 	SetEvent EVENT_GOT_POKEDEX
 	SetEvent EVENT_OAK_GOT_PARCEL
-	ld a, HS_LYING_OLD_MAN
-	ld [wMissableObjectIndex], a
-	predef HideObject
-	ld a, HS_OLD_MAN
-	ld [wMissableObjectIndex], a
-	predef ShowObject
+	;ld a, HS_ROUTE_4_LYING_OLD_MAN
+	;ld [wMissableObjectIndex], a
+	;predef HideObject
+	;ld a, HS_OLD_MAN
+	;ld [wMissableObjectIndex], a
+	;predef ShowObject
 	ld a, [wSavedNPCMovementDirections2Index]
 	ld b, 0
 	ld c, a
@@ -960,20 +967,63 @@ OaksLabLastMonText:
 	text_far _OaksLabLastMonText
 	text_end
 
+OakFailureText:
+OakVictoryText:
+	text "CONGLATURATION!"
+	para "You have completed"
+	line "a great game."
+
+	para "And prooved the"
+	line "justice of our"
+	cont "culture."
+
+	para "Now go and rest"
+	line "our heroes!"
+	text_asm
+	ld a, $19
+	ld [wOaksLabCurScript], a
+    jp TextScriptEnd
+
 OaksLabText32:
 OaksLabText5:
 	text_asm
 	CheckEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
 	jr nz, .asm_1d266
-	ld hl, wPokedexOwned
-	ld b, wPokedexOwnedEnd - wPokedexOwned
-	call CountSetBits
-	ld a, [wNumSetBits]
-	cp 2
-	jr c, .asm_1d279
 	CheckEvent EVENT_GOT_POKEDEX
 	jr z, .asm_1d279
+	CheckEvent EVENT_GOT_POKEBALLS_FROM_OAK
+	jr z, .asm_1d279
 .asm_1d266
+	CheckEvent EVENT_BEATEN_GAME
+    jr z, .noFight
+	CheckEvent EVENT_BEAT_MEWTWO
+    jr z, .noFight
+    ld hl, OaksLabPleaseVisitText
+	call PrintText
+    ld hl, OakVictoryText
+	ld de, OakFailureText
+	call SaveEndBattleTextPointers
+	ld a, OPP_PROF_OAK
+	ld [wCurOpponent], a
+
+	; select which team to use during the encounter
+	ld a, [wRivalStarter]
+	cp STARTER2
+	jr nz, .NotSquirtle
+	ld a, 2
+	jr .done
+.NotSquirtle
+	cp STARTER3
+	jr nz, .Charmander
+	ld a, 3
+	jr .done
+.Charmander
+	ld a, 1
+.done
+	ld [wTrainerNo], a
+
+	jp TextScriptEnd
+.noFight
 	ld hl, OaksLabText_1d31d
 	call PrintText
 	ld a, $1
@@ -981,9 +1031,6 @@ OaksLabText5:
 	predef DisplayDexRating
 	jp .asm_1d2ed
 .asm_1d279
-	ld b, POKE_BALL
-	call IsItemInBag
-	jr nz, .asm_1d2e7
 	CheckEvent EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE
 	jr nz, .asm_1d2d0
 	CheckEvent EVENT_GOT_POKEDEX
@@ -1019,12 +1066,18 @@ OaksLabText5:
 	call PrintText
 	jr .asm_1d2ed
 .asm_1d2d0
-	CheckAndSetEvent EVENT_GOT_POKEBALLS_FROM_OAK
+	CheckEvent EVENT_GOT_POKEBALLS_FROM_OAK
 	jr nz, .asm_1d2e7
-	lb bc, POKE_BALL, 5
+.Archipelago_Event_Oaks_Gift
+	lb bc, POKE_BALL, 1
 	call GiveItem
+	jr nc, .bag_full
 	ld hl, OaksLabGivePokeballsText
 	call PrintText
+	SetEvent EVENT_GOT_POKEBALLS_FROM_OAK
+	jr .asm_1d2ed
+.bag_full
+	ld hl, Route1Text_1caf3
 	jr .asm_1d2ed
 .asm_1d2e7
 	ld hl, OaksLabPleaseVisitText
@@ -1047,7 +1100,7 @@ OaksLabText_1d2fa:
 OaksLabDeliverParcelText:
 	text_far _OaksLabDeliverParcelText1
 	sound_get_key_item
-	text_far _OaksLabDeliverParcelText2
+	;text_far _OaksLabDeliverParcelText2
 	text_end
 
 OaksLabAroundWorldText:
@@ -1057,7 +1110,7 @@ OaksLabAroundWorldText:
 OaksLabGivePokeballsText:
 	text_far _OaksLabGivePokeballsText1
 	sound_get_key_item
-	text_far _OaksLabGivePokeballsText2
+	;text_far _OaksLabGivePokeballsText2
 	text_end
 
 OaksLabPleaseVisitText:

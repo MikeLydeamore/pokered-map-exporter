@@ -49,11 +49,12 @@ ViridianMartScript1:
 	and a
 	ret nz
 	call Delay3
+.Archipelago_Event_Pokemart_Quest
+	lb bc, OAKS_PARCEL, 1
+	call GiveItem
 	ld a, $5
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	lb bc, OAKS_PARCEL, 1
-	call GiveItem
 	SetEvent EVENT_GOT_OAKS_PARCEL
 	ld a, $2
 	ld [wViridianMartCurScript], a
@@ -62,7 +63,7 @@ ViridianMartScript2:
 	ret
 
 ViridianMart_TextPointers:
-	dw ViridianMartText1
+	dw ViridianCashierText
 	dw ViridianMartText2
 	dw ViridianMartText3
 	dw ViridianMartText4
@@ -72,6 +73,8 @@ ViridianMart_TextPointers2:
 	dw ViridianCashierText
 	dw ViridianMartText2
 	dw ViridianMartText3
+	dw ViridianMartText4
+	dw ViridianMartText5
 
 ViridianMartText1:
 	text_far _ViridianMartText1

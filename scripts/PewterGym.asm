@@ -47,6 +47,7 @@ PewterGymScriptReceiveTM34:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_BROCK
+.Archipelago_Event_Pewter_Gym
 	lb bc, TM_BIDE, 1
 	call GiveItem
 	jr nc, .BagFull
@@ -60,8 +61,13 @@ PewterGymScriptReceiveTM34:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .gymVictory
+    ld hl, wArchipelagoOptions
+    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
+    jr nz, .skipBadge
 	ld hl, wObtainedBadges
+.Archipelago_Badge_Pewter_Gym
 	set BIT_BOULDERBADGE, [hl]
+.skipBadge
 	ld hl, wBeatGymFlags
 	set BIT_BOULDERBADGE, [hl]
 
@@ -75,7 +81,7 @@ PewterGymScriptReceiveTM34:
 	ResetEvents EVENT_1ST_ROUTE22_RIVAL_BATTLE, EVENT_ROUTE22_RIVAL_WANTS_BATTLE
 
 	; deactivate gym trainers
-	SetEvent EVENT_BEAT_PEWTER_GYM_TRAINER_0
+	;SetEvent EVENT_BEAT_PEWTER_GYM_TRAINER_0
 
 	jp PewterGymResetScripts
 
@@ -144,7 +150,7 @@ BeforeReceivedTM34Text:
 ReceivedTM34Text:
 	text_far _ReceivedTM34Text
 	sound_get_item_1
-	text_far _TM34ExplanationText
+	;text_far _TM34ExplanationText
 	text_end
 
 TM34NoRoomText:
@@ -153,8 +159,8 @@ TM34NoRoomText:
 
 ReceivedBoulderBadgeText:
 	text_far _ReceivedBoulderBadgeText
-	sound_level_up ; probably supposed to play SFX_GET_ITEM_1 but the wrong music bank is loaded
-	text_far _BrockBoulerBadgeInfoText ; Text to tell that the flash technique can be used
+	;sound_level_up ; probably supposed to play SFX_GET_ITEM_1 but the wrong music bank is loaded
+	;text_far _BrockBoulerBadgeInfoText ; Text to tell that the flash technique can be used
 	text_end
 
 PewterGymTrainerText1:

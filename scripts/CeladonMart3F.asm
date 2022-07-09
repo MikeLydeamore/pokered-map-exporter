@@ -26,6 +26,7 @@ CeladonMart3Text1:
 	jr nz, .got_item
 	ld hl, TM18PreReceiveText
 	call PrintText
+.Archipelago_Event_Counter
 	lb bc, TM_COUNTER, 1
 	call GiveItem
 	jr nc, .bag_full

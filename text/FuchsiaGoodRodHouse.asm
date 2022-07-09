@@ -18,7 +18,7 @@ _FuchsiaHouse3Text_561c2::
 	line "fish, young one!"
 
 	para "<PLAYER> received"
-	line "a @"
+	line "@"
 	text_ram wStringBuffer
 	text "!@"
 	text_end

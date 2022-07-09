@@ -191,6 +191,7 @@ Museum1FText3:
 	jr nz, .got_item
 	ld hl, Museum1FText_5c28e
 	call PrintText
+.Archipelago_Event_Museum
 	lb bc, OLD_AMBER, 1
 	call GiveItem
 	jr nc, .bag_full

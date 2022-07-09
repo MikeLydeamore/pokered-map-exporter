@@ -3,27 +3,7 @@ _SafariZoneEntranceText1::
 	line "SAFARI ZONE!"
 	done
 
-SafariZoneEntranceText_9e6e4::
-	text "For just ¥500,"
-	line "you can catch all"
-	cont "the #MON you"
-	cont "want in the park!"
 
-	para "Would you like to"
-	line "join the hunt?@"
-	text_end
-
-SafariZoneEntranceText_9e747::
-	text "That'll be ¥500"
-	line "please!"
-
-	para "We only use a"
-	line "special # BALL"
-	cont "here."
-
-	para "<PLAYER> received"
-	line "30 SAFARI BALLs!@"
-	text_end
 
 _SafariZoneEntranceText_75360::
 	text_start

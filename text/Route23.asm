@@ -1,31 +1,27 @@
 _VictoryRoadGuardText1::
 	text "You can pass here"
 	line "only if you have"
-	cont "the @"
+	cont "@"
 	text_ram wcd6d
-	text "!"
+	text " badges!"
 
-	para "You don't have the"
+	para "You don't have"
 	line "@"
 	text_ram wcd6d
-	text " yet!"
-
-	para "You have to have"
-	line "it to get to"
-	cont "#MON LEAGUE!@"
+	text " badges yet!@"
 	text_end
 
 _VictoryRoadGuardText2::
 	text "You can pass here"
 	line "only if you have"
-	cont "the @"
+	cont "@"
 	text_ram wcd6d
-	text "!"
+	text " badges!"
 
-	para "Oh! That is the"
+	para "Oh! You do have"
 	line "@"
 	text_ram wcd6d
-	text "!@"
+	text " badges!@"
 	text_end
 
 _VictoryRoadGuardText_513a3::

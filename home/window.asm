@@ -213,7 +213,13 @@ EraseMenuCursor::
 	ld h, a
 	ld [hl], " "
 	ret
-
+EraseMenuCursor2::
+	ld a, [wMenuCursorLocation]
+	ld l, a
+	ld a, [wMenuCursorLocation + 1]
+	ld h, a
+	ld [hl], "|"
+	ret
 ; This toggles a blinking down arrow at hl on and off after a delay has passed.
 ; This is often called even when no blinking is occurring.
 ; The reason is that most functions that call this initialize hDownArrowBlinkCount1 to 0.

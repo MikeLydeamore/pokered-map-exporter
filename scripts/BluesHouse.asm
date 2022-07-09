@@ -35,6 +35,7 @@ BluesHouseDaisySittingText:
 .give_town_map
 	ld hl, DaisyOfferMapText
 	call PrintText
+.Archipelago_Event_Rivals_Sister
 	lb bc, TOWN_MAP, 1
 	call GiveItem
 	jr nc, .bag_full

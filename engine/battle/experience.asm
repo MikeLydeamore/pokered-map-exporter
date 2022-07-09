@@ -1,3 +1,11 @@
+CarryEXP:
+    push af
+    ld a, [hMultiplicand + 1]
+    rl a
+    ld [hMultiplicand + 1], a
+    pop af
+    ret
+
 GainExperience:
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
@@ -58,10 +66,23 @@ GainExperience:
 	ldh [hMultiplicand], a
 	ldh [hMultiplicand + 1], a
 	ld a, [wEnemyMonBaseExp]
+;.Archipelago_EXP_Modifier
+	;sla a
+	;call c, CarryEXP
+	;sla a
+	;call c, CarryEXP
 	ldh [hMultiplicand + 2], a
 	ld a, [wEnemyMonLevel]
 	ldh [hMultiplier], a
 	call Multiply
+.Archipelago_LD_A_Option_EXP_Modifier
+	ld a, 16
+	ldh [hMultiplier], a
+	call Multiply
+	ld a, 16
+	ldh [hDivisor], a
+	ld b, 4
+	call Divide
 	ld a, 7
 	ldh [hDivisor], a
 	ld b, 4
@@ -160,6 +181,16 @@ GainExperience:
 	ld a, [hl] ; current level
 	cp d
 	jp z, .nextMon ; if level didn't change, go to next mon
+	push af
+	ld a, d
+	ld [wGainedLevel], a
+	pop af
+	ld [wIncLevel], a
+.loopLevelUp
+    ld a, [wIncLevel]
+	inc a
+	ld [wIncLevel], a
+	ld d, a
 	ld a, [wCurEnemyLVL]
 	push af
 	push hl
@@ -262,7 +293,13 @@ GainExperience:
 	pop hl
 	pop af
 	ld [wCurEnemyLVL], a
-
+	ld a, [wIncLevel]
+    ld d, a
+	ld a, [wGainedLevel]
+	cp d
+	jr z, .nextMon
+	ld a, d
+	jp .loopLevelUp
 .nextMon
 	ld a, [wPartyCount]
 	ld b, a

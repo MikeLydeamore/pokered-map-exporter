@@ -19,7 +19,9 @@ _BeforeReceivedTM34Text::
 
 _ReceivedTM34Text::
 	text "<PLAYER> received"
-	line "TM34!@"
+	line "@"
+	text_ram wStringBuffer
+	text "!@"
 	text_end
 
 _TM34ExplanationText::
@@ -53,15 +55,8 @@ _TM34NoRoomText::
 
 _ReceivedBoulderBadgeText::
 	text "I took"
-	line "you for granted."
-
-	para "As proof of your"
-	line "victory, here's"
-	cont "the BOULDERBADGE!"
-
-	para "<PLAYER> received"
-	line "the BOULDERBADGE!@"
-	text_end
+	line "you for granted!"
+	prompt
 
 _BrockBoulerBadgeInfoText::
 	text_start

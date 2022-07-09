@@ -109,6 +109,7 @@ Route24Text1:
 	jr nz, .got_item
 	ld hl, Route24Text_51510
 	call PrintText
+.Archipelago_Event_Nugget_Bridge
 	lb bc, NUGGET, 1
 	call GiveItem
 	jr nc, .bag_full

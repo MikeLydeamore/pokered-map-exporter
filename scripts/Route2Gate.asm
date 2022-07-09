@@ -11,6 +11,7 @@ Route2GateText1:
 	jr nz, .got_item
 	ld a, 10
 	ldh [hOaksAideRequirement], a
+.Archipelago_Event_LD_A_Route_2_Oaks_Aide
 	ld a, HM_FLASH
 	ldh [hOaksAideRewardItem], a
 	ld [wd11e], a

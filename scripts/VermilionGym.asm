@@ -66,6 +66,7 @@ VermilionGymReceiveTM24:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_LT_SURGE
+.Archipelago_Event_Vermillion_Gym
 	lb bc, TM_THUNDERBOLT, 1
 	call GiveItem
 	jr nc, .BagFull
@@ -79,13 +80,18 @@ VermilionGymReceiveTM24:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .gymVictory
+	ld hl, wArchipelagoOptions
+    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
+    jr nz, .skipBadge
 	ld hl, wObtainedBadges
+.Archipelago_Badge_Vermilion_Gym
 	set BIT_THUNDERBADGE, [hl]
+.skipBadge
 	ld hl, wBeatGymFlags
 	set BIT_THUNDERBADGE, [hl]
 
 	; deactivate gym trainers
-	SetEventRange EVENT_BEAT_VERMILION_GYM_TRAINER_0, EVENT_BEAT_VERMILION_GYM_TRAINER_2
+	; SetEventRange EVENT_BEAT_VERMILION_GYM_TRAINER_0, EVENT_BEAT_VERMILION_GYM_TRAINER_2
 
 	jp VermilionGymResetScripts
 

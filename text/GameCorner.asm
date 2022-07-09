@@ -179,10 +179,9 @@ _CeladonGameCornerText_48ed8::
 _CeladonGameCornerText_48f09::
 	text "Hey!"
 
-	para "A switch behind"
+	para "A keyhole behind"
 	line "the poster!?"
-	cont "Let's push it!@"
-	text_end
+	done
 
 _CeladonGameCornerText_48f19::
 	text "Oops! Forgot the"

@@ -11,7 +11,14 @@ Route8Gate_ScriptPointers:
 Route8GateScript_1e1d7:
 	ld hl, wd730
 	set 7, [hl]
-	ld a, $10
+	ld [wSaffronGateDir], a
+	cp PLAYER_DIR_LEFT
+    jr nz, .goLeft
+    ld a, D_RIGHT
+    jr .goRight
+.goLeft
+	ld a, D_LEFT
+.goRight
 	ld [wSimulatedJoypadStatesEnd], a
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
@@ -27,7 +34,9 @@ Route8GateScript0:
 	ld hl, CoordsData_1e22c
 	call ArePlayerCoordsInArray
 	ret nc
-	ld a, PLAYER_DIR_LEFT
+	ld a, [wPlayerMovingDirection]
+	ld [wSaffronGateDir], a
+	ld a, PLAYER_DIR_UP
 	ld [wPlayerMovingDirection], a
 	xor a
 	ldh [hJoyHeld], a

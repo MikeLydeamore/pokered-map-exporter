@@ -1,4 +1,5 @@
 TitleMons:
+.Archipelago_Title_Mons
 ; mons on the title screen are randomly chosen from here
 IF DEF(_RED)
 	db STARTER1

@@ -12,6 +12,7 @@ Route1Text1:
 	jr nz, .got_item
 	ld hl, Route1ViridianMartSampleText
 	call PrintText
+.Archipelago_Event_Free_Sample
 	lb bc, POTION, 1
 	call GiveItem
 	jr nc, .bag_full

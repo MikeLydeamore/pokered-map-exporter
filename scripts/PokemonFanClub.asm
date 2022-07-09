@@ -3,8 +3,7 @@ PokemonFanClub_Script:
 
 FanClubBikeInBag:
 ; check if any bike paraphernalia in bag
-	CheckEvent EVENT_GOT_BIKE_VOUCHER
-	ret nz
+
 	ld b, BICYCLE
 	call IsItemInBag
 	ret nz
@@ -100,7 +99,8 @@ FanClubText4:
 FanClubText5:
 ; chair
 	text_asm
-	call FanClubBikeInBag
+	;call FanClubBikeInBag
+	CheckEvent EVENT_GOT_BIKE_VOUCHER
 	jr nz, .nothingleft
 
 	ld hl, .meetchairtext
@@ -113,6 +113,7 @@ FanClubText5:
 	; tell the story
 	ld hl, .storytext
 	call PrintText
+.Archipelago_Event_Pokemon_Fan_Club
 	lb bc, BIKE_VOUCHER, 1
 	call GiveItem
 	jr nc, .bag_full

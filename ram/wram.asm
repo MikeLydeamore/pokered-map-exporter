@@ -73,8 +73,10 @@ wAudioSavedROMBank:: db
 wFrequencyModifier:: db
 wTempoModifier:: db
 
-	ds 13
+	ds 11
 
+wSaffronGateDir:: db
+wArchipelagoItemReceived:: db
 
 SECTION "Sprite State Data", WRAM0
 
@@ -2292,8 +2294,13 @@ wDayCareMonOT::   ds NAME_LENGTH
 
 wDayCareMon:: box_struct wDayCareMon
 
+;wArchipelagoMaxBadges:: db
+wArchipelagoItemsReceivedCount:: ds 2
+wArchipelagoOptions:: db
+
 wMainDataEnd::
 
+wArchipelagoFieldMoveItemUsed:: db
 
 SECTION "Current Box Data", WRAM0
 
@@ -2323,6 +2330,8 @@ wBoxMonNicksEnd::
 
 wBoxDataEnd::
 
+wIncLevel:: db
+wGainedLevel:: db
 
 SECTION "Stack", WRAM0
 

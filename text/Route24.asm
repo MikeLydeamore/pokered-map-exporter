@@ -13,7 +13,7 @@ _Route24Text_51515::
 
 _Route24Text_5151a::
 	text "<PLAYER> received"
-	line "a @"
+	line "@"
 	text_ram wStringBuffer
 	text "!@"
 	text_end

@@ -17,7 +17,7 @@ _Route12HouseText_564c5::
 	line "fish, young one!"
 
 	para "<PLAYER> received"
-	line "a @"
+	line "@"
 	text_ram wStringBuffer
 	text "!@"
 	text_end

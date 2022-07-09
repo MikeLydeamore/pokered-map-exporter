@@ -1,12 +1,11 @@
 _ViridianCityText1::
-	text "Those # BALLs"
+	text "Those BALLs"
 	line "at your waist!"
-	cont "You have #MON!"
 
-	para "It's great that"
-	line "you can carry and"
-	cont "use #MON any"
-	cont "time, anywhere!"
+    ;     ------------------
+	para "...that didn't"
+	line "come out right."
+    line "Nevermind..."
 	done
 
 _ViridianCityText_19122::
@@ -15,6 +14,15 @@ _ViridianCityText_19122::
 
 	para "I wonder who the"
 	line "LEADER is?"
+
+	para "I think it's"
+	line "probably GIOVANNI,"
+	line "the leader of"
+	line "the criminal"
+	line "organization"
+	line "Team Rocket."
+	para "That's just a"
+	line "hunch, though."
 	done
 
 _ViridianCityText_19127::
@@ -23,10 +31,11 @@ _ViridianCityText_19127::
 	done
 
 _ViridianCityText_1914d::
-	text "You want to know"
-	line "about the 2 kinds"
-	cont "of caterpillar"
-	cont "#MON?"
+	text "Has anyone really"
+	line "been far even as"
+	cont "decided to use"
+	cont "even go want to do"
+	cont "look more like?"
 	done
 
 _ViridianCityText_19152::
@@ -34,63 +43,45 @@ _ViridianCityText_19152::
 	done
 
 _ViridianCityText_19157::
-	text "CATERPIE has no"
-	line "poison, but"
-	cont "WEEDLE does."
-
-	para "Watch out for its"
-	line "POISON STING!"
+	text "LOL at the"
+	line "screenshot."
 	done
 
 _ViridianCityText_19175::
-	text "Oh Grandpa! Don't"
-	line "be so mean!"
-	cont "He hasn't had his"
-	cont "coffee yet."
+	text "One plus one"
+	line "equals one on a"
+	cont "bun!"
 	done
 
 _ViridianCityText_1917a::
-	text "When I go shop in"
-	line "PEWTER CITY, I"
-	cont "have to take the"
-	cont "winding trail in"
-	cont "VIRIDIAN FOREST."
+	text "How can my feet"
+	line "smell if they"
+	cont "don't have a nose?"
 	done
 
 _ViridianCityText_19191::
-	text "You can't go"
-	line "through here!"
-
-	para "This is private"
-	line "property!"
+	text "Your free trial"
+	line "has ended. Please"
+	cont "purchase the full"
+	cont "version to"
+	cont "continue."
 	done
 
 _ViridianCityText_191ca::
-	text "Yawn!"
-	line "I must have dozed"
-	cont "off in the sun."
-
-	para "I had this dream"
-	line "about a DROWZEE"
-	cont "eating my dream."
-	cont "What's this?"
-	cont "Where did this TM"
-	cont "come from?"
-
-	para "This is spooky!"
-	line "Here, you can"
-	cont "have this TM."
+	text "You woke me from"
+	line "my nap!"
 	prompt
 
 _ReceivedTM42Text::
 	text "<PLAYER> received"
-	line "TM42!@"
+	line "@"
+	text_ram wStringBuffer
+	text "!@"
 	text_end
 
 _TM42Explanation::
-	text "TM42 contains"
-	line "DREAM EATER..."
-	cont "...Snore..."
+	text "Take this, and get"
+	line "out!"
 	done
 
 _TM42NoRoomText::
@@ -99,15 +90,11 @@ _TM42NoRoomText::
 	done
 
 _ViridianCityText_1920a::
-	text "Ahh, I've had my"
-	line "coffee now and I"
-	cont "feel great!"
-
-	para "Sure you can go"
-	line "through!"
-
-	para "Are you in a"
-	line "hurry?"
+	text "Thank you for"
+	line "purchasing the"
+	cont "#MON catching"
+	cont "tutorial DLC."
+	para "Ready?"
 	done
 
 _ViridianCityText_1920f::
@@ -128,14 +115,11 @@ _ViridianCityText_1920f::
 	done
 
 _ViridianCityText_19214::
-	text "Time is money..."
-	line "Go along then."
+	text "No refunds"
 	done
 
 _ViridianCityText_19219::
-	text "First, you need"
-	line "to weaken the"
-	cont "target #MON."
+	text "No refunds"
 	done
 
 _ViridianCityText8::

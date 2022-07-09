@@ -8,14 +8,56 @@ Route4_Script:
 	ret
 
 Route4_ScriptPointers:
+    dw rt4oldman
+    dw Route4WalkDown
 	dw CheckFightingMapTrainers
 	dw DisplayEnemyTrainerTextAndStartBattle
 	dw EndTrainerBattle
+
+rt4oldman:
+	CheckEvent EVENT_GOT_POKEDEX
+	ret nz
+	ld a, [wMissableObjectFlags + 3]
+	bit 4, a
+	ret nz
+	ld a, [wYCoord]
+	cp 6
+	ret nz
+	ld a, [wXCoord]
+	cp 18
+	ret nz
+	ld a, $4
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	xor a
+	ldh [hJoyHeld], a
+	call StartSimulatingJoypadStates
+	ld a, $1
+	ld [wSimulatedJoypadStatesIndex], a
+	ld a, D_DOWN
+	ld [wSimulatedJoypadStatesEnd], a
+	xor a
+	ld [wSpritePlayerStateData1FacingDirection], a
+	ld [wJoyIgnore], a
+	ret
+	ld a, $3
+	ld [wViridianCityCurScript], a
+	ret
+
+Route4WalkDown:
+	ld a, [wSimulatedJoypadStatesIndex]
+	and a
+	ret nz
+	call Delay3
+	ld a, 0
+	ld [wViridianCityCurScript], a
+	ret
 
 Route4_TextPointers:
 	dw Route4Text1
 	dw Route4Text2
 	dw PickUpItemText
+	dw Route4OldMan
 	dw PokeCenterSignText
 	dw Route4Text5
 	dw Route4Text6
@@ -55,3 +97,9 @@ Route4Text5:
 Route4Text6:
 	text_far _Route4Text6
 	text_end
+
+Route4OldMan:
+    text "No one enters Mt"
+    line "Moon before I've"
+    cont "had my coffee!"
+    done

@@ -14,6 +14,7 @@ Lab3Text1:
 	jr nz, .got_item
 	ld hl, TM35PreReceiveText
 	call PrintText
+.Archipelago_Event_Lab_Scientist
 	lb bc, TM_METRONOME, 1
 	call GiveItem
 	jr nc, .bag_full

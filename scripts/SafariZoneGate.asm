@@ -143,42 +143,60 @@ SafariZoneGate_TextPointers:
 	text_end
 
 .SafariZoneEntranceText4
-	text_far SafariZoneEntranceText_9e6e4
 	text_asm
-	ld a, MONEY_BOX
-	ld [wTextBoxID], a
-	call DisplayTextBoxID
-	call YesNoChoice
+	ld b, SAFARI_PASS
+	call IsItemInBag
+	jp nz, .hasCard
+	;ld hl, SafariZoneEntranceText_9e6e4
+	;call PrintText
+	ld hl, SafariZoneEntranceText_1
+	call PrintText
+	xor a
+	ld [wCurrentMenuItem], a
+	ld [wLastMenuItem], a
+	ld a, A_BUTTON | B_BUTTON
+	ld [wMenuWatchedKeys], a
+	ld a, $1
+	ld [wMaxMenuItem], a
+	ld a, $2
+	ld [wTopMenuItemY], a
+	ld a, $1
+	ld [wTopMenuItemX], a
+	ld hl, wd730
+	set 6, [hl]
+	hlcoord 0, 0
+	ld b, 4
+	ld c, 15
+	call TextBoxBorder
+	call UpdateSprites
+	hlcoord 2, 2
+	ld de, SafariPassText
+	call PlaceString
+	hlcoord 8, 3
+	ld de, SafariPassMenuPrice
+	call PlaceString
+	;ld hl, SafariZoneEntranceText_2
+	;call PrintText
+	call HandleMenuInput
+	bit BIT_B_BUTTON, a
+	jr nz, .cancel
+	ld hl, wd730
+	res 6, [hl]
 	ld a, [wCurrentMenuItem]
 	and a
-	jp nz, .PleaseComeAgain
-	xor a
-	ldh [hMoney], a
-	ld a, $05
-	ldh [hMoney + 1], a
-	ld a, $00
-	ldh [hMoney + 2], a
-	call HasEnoughMoney
-	jr nc, .success
-	ld hl, .NotEnoughMoneyText
+	jr nz, .cancel
+	ld hl, SafariPassCantAffordText
 	call PrintText
+.cancel
+	ld hl, .PleaseComeAgainText
+	call PrintText
+.Done
+	;jp TextScriptEnd
+
 	jr .CantPayWalkDown
 
-.success
-	xor a
-	ld [wPriceTemp], a
-	ld a, $05
-	ld [wPriceTemp + 1], a
-	ld a, $00
-	ld [wPriceTemp + 2], a
-	ld hl, wPriceTemp + 2
-	ld de, wPlayerMoney + 2
-	ld c, 3
-	predef SubBCDPredef
-	ld a, MONEY_BOX
-	ld [wTextBoxID], a
-	call DisplayTextBoxID
-	ld hl, .MakePaymentText
+.hasCard
+    ld hl, SafariZoneEntranceText_9e747
 	call PrintText
 	ld a, 30
 	ld [wNumSafariBalls], a
@@ -291,3 +309,57 @@ SafariZoneGate_TextPointers:
 .RegularText
 	text_far _SafariZoneEntranceText_753f0
 	text_end
+
+SafariZoneEntranceText_1::
+	;text "For just ¥500,"
+	;line "you can catch all"
+	;cont "the #MON you"
+	;cont "want in the park!"
+
+	;para "Would you like to"
+	;line "join the hunt?@"
+	;text "Unfortunately we"
+	;line "are not currently"
+	;cont "accepting new"
+	;cont "members at this"
+    ;cont "time.@"
+    ;text "Welcome to the"
+    ;line "Safari Zone!"
+	;prompt
+
+SafariZoneEntranceText_2::
+    text "Would you like to"
+    line "purchase a season"
+    cont "pass?"
+    done
+
+SafariPassText:
+	db   "SAFARI PASS"
+	next "CANCEL@"
+
+SafariZoneEntranceText_9e747::
+	;text "That'll be ¥500"
+	;line "please!"
+
+	;para "We only use a"
+	;line "special # BALL"
+	;cont "here."
+	text "Ah, a season pass!"
+	line "Right this way!"
+
+	para "<PLAYER> received"
+	line "30 SAFARI BALLs!@"
+	text_end
+
+SafariPassMenuPrice:
+	db "¥1000000@"
+
+SafariPassComeAgainText::
+	text "Come back again"
+	line "some time!"
+	done
+
+SafariPassCantAffordText::
+	text "Sorry! You can't"
+	line "afford it!"
+	prompt

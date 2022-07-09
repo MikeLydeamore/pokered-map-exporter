@@ -13,7 +13,7 @@
 	const POKE_BALL     ; $04
 	const TOWN_MAP      ; $05
 	const BICYCLE       ; $06
-	const SURFBOARD     ; $07 buggy?
+	const FLIPPERS     ; $07 buggy?
 	const SAFARI_BALL   ; $08
 	const POKEDEX       ; $09
 	const MOON_STONE    ; $0A
@@ -52,7 +52,7 @@ DEF SAFARI_ROCK EQU $16 ; overload
 	const DOME_FOSSIL   ; $29
 	const HELIX_FOSSIL  ; $2A
 	const SECRET_KEY    ; $2B
-	const UNUSED_ITEM   ; $2C "?????"
+	const AP_ITEM       ; $2C
 	const BIKE_VOUCHER  ; $2D
 	const X_ACCURACY    ; $2E
 	const LEAF_STONE    ; $2F
@@ -92,6 +92,16 @@ DEF SAFARI_ROCK EQU $16 ; overload
 	const MAX_ETHER     ; $51
 	const ELIXER        ; $52
 	const MAX_ELIXER    ; $53
+	const TEA           ; $54
+	const MASTER_SWORD  ; $55
+	const FLUTE         ; $56
+	const TITANS_MITT   ; $57
+ 	const LAMP          ; $58
+ 	const PLANT_KEY     ; $59
+ 	const MANSION_KEY   ; $5A
+ 	const HIDEOUT_KEY   ; $5B
+ 	const UNKNOWN_PASS  ; $5C
+ 	const SAFARI_PASS   ; $5D
 DEF NUM_ITEMS EQU const_value - 1
 
 ; elevator floors use item IDs

@@ -60,13 +60,13 @@ ItemUsePtrTable:
 	dw UnusableItem      ; DOME_FOSSIL
 	dw UnusableItem      ; HELIX_FOSSIL
 	dw UnusableItem      ; SECRET_KEY
-	dw UnusableItem
+	dw UnusableItem      ; AP_ITEM
 	dw UnusableItem      ; BIKE_VOUCHER
 	dw ItemUseXAccuracy  ; X_ACCURACY
 	dw ItemUseEvoStone   ; LEAF_STONE
 	dw ItemUseCardKey    ; CARD_KEY
 	dw UnusableItem      ; NUGGET
-	dw UnusableItem      ; ??? PP_UP
+	dw ItemUsePC         ; Laptop
 	dw ItemUsePokedoll   ; POKE_DOLL
 	dw ItemUseMedicine   ; FULL_HEAL
 	dw ItemUseMedicine   ; REVIVE
@@ -100,6 +100,16 @@ ItemUsePtrTable:
 	dw ItemUsePPRestore  ; MAX_ETHER
 	dw ItemUsePPRestore  ; ELIXER
 	dw ItemUsePPRestore  ; MAX_ELIXER
+	dw UnusableItem      ; TEA
+	dw ItemUseCut        ; MASTER SWORD
+	dw ItemUseFly        ; FLUTE
+	dw ItemUseStrength   ; TITANS_MITT
+	dw ItemUseFlash      ; LAMP
+	dw UnusableItem      ;
+	dw UnusableItem      ;
+	dw UnusableItem      ;
+	dw UnusableItem      ;
+	dw UnusableItem      ;
 
 ItemUseBall:
 
@@ -665,8 +675,41 @@ ItemUseBicycle:
 .printText
 	jp PrintText
 
+ItemUseCut:
+    ld a, [wObtainedBadges]
+	bit BIT_CASCADEBADGE, a
+	jp z, newBadgeRequired2
+	ld a, $01
+	ld [wArchipelagoFieldMoveItemUsed], a
+	predef UsedCut
+	ld a, $00
+	ld [wArchipelagoFieldMoveItemUsed], a
+	ld a, [wActionResultOrTookBattleTurn]
+	and a
+	jr z, .didntCut
+	call CloseTextDisplay
+.didntCut
+    ret
+ItemUseFly:
+    ld a, [wObtainedBadges]
+ItemUseFlash:
+    ld a, [wObtainedBadges]
+ItemUseStrength:
+    ld a, [wObtainedBadges]
 ; used for Surf out-of-battle effect
 ItemUseSurfboard:
+    ld a, [wObtainedBadges]
+	bit BIT_SOULBADGE, a
+	jp z, newBadgeRequired2
+	farcall IsSurfingAllowed
+	ld hl, wd728
+	bit 1, [hl]
+	res 1, [hl]
+	jp nz, .continuesurf
+	xor a
+	ld [wActionResultOrTookBattleTurn], a
+	ret
+.continuesurf
 	ld a, [wWalkBikeSurfState]
 	ld [wWalkBikeSurfStateCopy], a
 	cp 2 ; is the player already surfing?
@@ -745,6 +788,19 @@ ItemUseSurfboard:
 	ld [wSimulatedJoypadStatesIndex], a
 	ret
 
+newBadgeRequired2:
+	ld hl, .newBadgeRequiredText2
+	call PrintText
+	xor a
+	ld [wActionResultOrTookBattleTurn], a
+	ret
+
+.newBadgeRequiredText2
+	text "No! A new BADGE"
+	line "is required."
+	prompt
+
+
 SurfingGotOnText:
 	text_far _SurfingGotOnText
 	text_end
@@ -796,6 +852,18 @@ ItemUseEvoStone:
 	ld [wActionResultOrTookBattleTurn], a ; item not used
 	pop af
 	ret
+
+ItemUsePC:
+	ld a, [wIsInBattle]
+	and a
+	jp nz, ItemUseNotTime
+	ld a, SFX_TURN_ON_PC
+	call PlaySoundWaitForCurrent
+	call ReloadMapData
+	call UpdateSprites
+	ld b, BANK(ActivatePC)
+	ld hl, ActivatePC
+	jp bankswitchAndContinue
 
 ItemUseVitamin:
 	ld a, [wIsInBattle]

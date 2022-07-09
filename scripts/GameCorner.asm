@@ -448,7 +448,18 @@ CeladonGameCornerText12:
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, CeladonGameCornerText_48f09
 	call PrintText
+	call WaitForTextScrollButtonPress
+	ld b, HIDEOUT_KEY
+	call IsItemInBag
+	jr z, .locked
+	;ld c, 10
+	;call DelayFrames
+	ld hl, CeladonGameCornerText_unlock
+	call PrintText
+	ld a, SFX_START_MENU
+	call PlaySound
 	call WaitForSoundToFinish
+	call WaitForTextScrollButtonPress
 	ld a, SFX_GO_INSIDE
 	call PlaySound
 	call WaitForSoundToFinish
@@ -457,15 +468,20 @@ CeladonGameCornerText12:
 	ld [wNewTileBlockID], a
 	lb bc, 2, 8
 	predef ReplaceTileBlock
+.locked
 	jp TextScriptEnd
 
 CeladonGameCornerText_48f09:
 	text_far _CeladonGameCornerText_48f09
-	text_asm
-	ld a, SFX_SWITCH
-	call PlaySound
-	call WaitForSoundToFinish
+	text_end
+
+.locked
 	jp TextScriptEnd
+
+CeladonGameCornerText_unlock:
+    text "Used the"
+    line "HIDEOUT KEY!"
+	done
 
 CeladonGameCornerText_48f19:
 	text_far _CeladonGameCornerText_48f19

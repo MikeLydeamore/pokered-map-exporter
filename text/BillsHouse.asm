@@ -55,7 +55,7 @@ _BillThankYouText::
 
 _SSTicketReceivedText::
 	text "<PLAYER> received"
-	line "an @"
+	line "@"
 	text_ram wStringBuffer
 	text "!@"
 	text_end

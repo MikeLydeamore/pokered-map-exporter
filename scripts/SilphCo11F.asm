@@ -294,6 +294,7 @@ SilphCo11Text1:
 	jp nz, .got_item
 	ld hl, SilphCoPresidentText
 	call PrintText
+.Archipelago_Event_Silph_Co_President
 	lb bc, MASTER_BALL, 1
 	call GiveItem
 	jr nc, .bag_full

@@ -23,6 +23,7 @@ CopycatsHouse2FText1:
 	jr z, .done
 	ld hl, TM31PreReceiveText
 	call PrintText
+.Archipelago_Event_Copycat
 	lb bc, TM_MIMIC, 1
 	call GiveItem
 	jr nc, .bag_full

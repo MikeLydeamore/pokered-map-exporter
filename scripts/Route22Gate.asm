@@ -59,8 +59,15 @@ Route22Gate_TextPointers:
 Route22GateText1:
 	text_asm
 	ld a, [wObtainedBadges]
-	bit BIT_BOULDERBADGE, a
-	jr nz, .asm_1e6f6
+	;bit BIT_BOULDERBADGE, a
+	ld hl, wObtainedBadges
+	ld b, $1
+	call CountSetBits
+	ld a, [wNumSetBits]
+;.Archipelago_Badge_Check_1
+	cp 1
+	jr nc, .asm_1e6f6
+	;jr nz, .asm_1e6f6
 	ld hl, Route22GateText_1e704
 	call PrintText
 	call Route22GateScript_1e6ba

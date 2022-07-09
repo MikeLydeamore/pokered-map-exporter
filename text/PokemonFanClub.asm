@@ -84,7 +84,7 @@ FanClubChairStoryText::
 
 ReceivedBikeVoucherText::
 	text "<PLAYER> received"
-	line "a @"
+	line "@"
 	text_ram wStringBuffer
 	text "!@"
 	text_end

@@ -15,6 +15,7 @@ VermilionHouse2Text1:
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .refused
+.Archipelago_Rod_Vermilion_City_Fishing_Guru
 	lb bc, OLD_ROD, 1
 	call GiveItem
 	jr nc, .bag_full

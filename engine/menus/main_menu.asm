@@ -496,6 +496,10 @@ DisplayOptionMenu:
 	ld [wTopMenuItemX], a
 	call EraseMenuCursor
 	jp .loop
+.eraseOldMenuCursor2
+	ld [wTopMenuItemX], a
+	call EraseMenuCursor2
+	jp .loop
 .checkDirectionKeys
 	ld a, [wTopMenuItemY]
 	bit BIT_D_DOWN, b
@@ -562,30 +566,37 @@ DisplayOptionMenu:
 	ld a, [wOptionsTextSpeedCursorX] ; text speed cursor X coordinate
 	cp 1
 	jr z, .updateTextSpeedXCoord
-	cp 7
-	jr nz, .fromSlowToMedium
-	sub 6
-	jr .updateTextSpeedXCoord
+;	cp 7
+;	jr nz, .fromSlowToMedium
+;	sub 6
+;	jr .updateTextSpeedXCoord
 .fromSlowToMedium
-	sub 7
+	sub 1
 	jr .updateTextSpeedXCoord
 .pressedRightInTextSpeed
 	ld a, [wOptionsTextSpeedCursorX] ; text speed cursor X coordinate
-	cp 14
+	cp 16
 	jr z, .updateTextSpeedXCoord
-	cp 7
-	jr nz, .fromFastToMedium
-	add 7
+;	cp 7
+;	jr nz, .fromFastToMedium
+;	add 7
+	add 1
+	cp 2
+	jr z, .updateTextSpeedXCoord2	  
 	jr .updateTextSpeedXCoord
-.fromFastToMedium
-	add 6
+;.fromFastToMedium
+;	add 6
 .updateTextSpeedXCoord
+	ld [wOptionsTextSpeedCursorX], a ; text speed cursor X coordinate
+	jp .eraseOldMenuCursor2
+.updateTextSpeedXCoord2
 	ld [wOptionsTextSpeedCursorX], a ; text speed cursor X coordinate
 	jp .eraseOldMenuCursor
 
 TextSpeedOptionText:
 	db   "TEXT SPEED"
-	next " FAST  MEDIUM SLOW@"
+	;next " FAST  MEDIUM SLOW@"
+	next " ||||||||||||||||@"
 
 BattleAnimationOptionText:
 	db   "BATTLE ANIMATION"
@@ -680,10 +691,25 @@ SetCursorPositionsFromOptions:
 ; 00: X coordinate of menu cursor
 ; 01: delay after printing a letter (in frames)
 TextSpeedOptionData:
-	db 14, TEXT_DELAY_SLOW
-	db  7, TEXT_DELAY_MEDIUM
-	db  1, TEXT_DELAY_FAST
-	db  7, -1 ; end (default X coordinate)
+	db 17,16
+	db 16,15
+	db 15,14
+	db 14,13
+	db 13,12
+	db 12,11
+	db 11,10
+	db 10,9
+	db 9,8
+	db 8,7
+	db 7,6
+	db 6,5 ; Slow
+	db 5,4
+	db  4,3 ; Medium
+	db  3,2
+	db  2,1 ; Fast
+	db 1,0
+	db 5 ; default X coordinate (Medium)
+	db $ff ; terminator
 
 CheckForPlayerNameInSRAM:
 ; Check if the player name data in SRAM has a string terminator character

@@ -47,6 +47,7 @@ SaffronGymReceiveTM46:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_SABRINA
+.Archipelago_Event_Saffron_Gym
 	lb bc, TM_PSYWAVE, 1
 	call GiveItem
 	jr nc, .BagFull
@@ -60,13 +61,18 @@ SaffronGymReceiveTM46:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .gymVictory
+	ld hl, wArchipelagoOptions
+    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
+    jr nz, .skipBadge
 	ld hl, wObtainedBadges
+.Archipelago_Badge_Saffron_Gym
 	set BIT_MARSHBADGE, [hl]
+.skipBadge
 	ld hl, wBeatGymFlags
 	set BIT_MARSHBADGE, [hl]
 
 	; deactivate gym trainers
-	SetEventRange EVENT_BEAT_SAFFRON_GYM_TRAINER_0, EVENT_BEAT_SAFFRON_GYM_TRAINER_6
+	; SetEventRange EVENT_BEAT_SAFFRON_GYM_TRAINER_0, EVENT_BEAT_SAFFRON_GYM_TRAINER_6
 
 	jp SaffronGymResetScripts
 

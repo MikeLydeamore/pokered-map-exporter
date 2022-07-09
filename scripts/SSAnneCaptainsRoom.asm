@@ -22,6 +22,7 @@ SSAnne7Text1:
 	call PrintText
 	ld hl, ReceivingHM01Text
 	call PrintText
+.Archipelago_Event_SS_Anne_Captain
 	lb bc, HM_CUT, 1
 	call GiveItem
 	jr nc, .bag_full

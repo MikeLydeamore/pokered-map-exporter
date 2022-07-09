@@ -17,9 +17,15 @@ ViridianCityScript0:
 ViridianCityScript_1900b:
 	CheckEvent EVENT_VIRIDIAN_GYM_OPEN
 	ret nz
-	ld a, [wObtainedBadges]
-	cp ~(1 << BIT_EARTHBADGE)
-	jr nz, .gym_closed
+	;ld a, [wObtainedBadges]
+	;cp ~(1 << BIT_EARTHBADGE)
+	ld hl, wObtainedBadges
+	ld b, $1
+	call CountSetBits
+	ld a, [wNumSetBits]
+.Archipelago_Option_Viridian_Gym_Badges
+	cp 7
+	jr c, .gym_closed
 	SetEvent EVENT_VIRIDIAN_GYM_OPEN
 	ret
 .gym_closed
@@ -41,6 +47,9 @@ ViridianCityScript_1900b:
 
 ViridianCityScript_1903d:
 	CheckEvent EVENT_GOT_POKEDEX
+	ret nz
+	ld a, [wMissableObjectFlags]
+	bit 1, a
 	ret nz
 	ld a, [wYCoord]
 	cp 9
@@ -147,10 +156,15 @@ ViridianCityText1:
 
 ViridianCityText2:
 	text_asm
-	ld a, [wObtainedBadges]
-	cp ~(1 << BIT_EARTHBADGE)
+	;ld a, [wObtainedBadges]
+	;cp ~(1 << BIT_EARTHBADGE)
+	ld hl, wObtainedBadges
+	ld b, $1
+	call CountSetBits
+	ld a, [wNumSetBits]
+	cp 7
 	ld hl, ViridianCityText_19127
-	jr z, .done
+	jr c, .done
 	CheckEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
 	jr nz, .done
 	ld hl, ViridianCityText_19122
@@ -235,6 +249,7 @@ ViridianCityText6:
 	jr nz, .got_item
 	ld hl, ViridianCityText_191ca
 	call PrintText
+.Archipelago_Event_Sleepy_Guy
 	lb bc, TM_DREAM_EATER, 1
 	call GiveItem
 	jr nc, .bag_full

@@ -63,7 +63,9 @@ _GiovanniEarthBadgeInfoText::
 
 _ReceivedTM27Text::
 	text "<PLAYER> received"
-	line "TM27!@"
+	line "@"
+	text_ram wStringBuffer
+	text "!@"
 	text_end
 
 _TM27ExplanationText::

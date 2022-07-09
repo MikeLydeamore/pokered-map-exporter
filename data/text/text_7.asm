@@ -198,3 +198,4 @@ _UsedCutText::
 	text " hacked"
 	line "away with CUT!"
 	prompt
+

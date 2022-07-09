@@ -1,4 +1,7 @@
 HiddenItems:
+	ld b, ITEMFINDER
+	call IsItemInBag
+	ret z
 	ld hl, HiddenItemCoords
 	call FindHiddenItemOrCoinsIndex
 	ld [wHiddenItemOrCoinsIndex], a

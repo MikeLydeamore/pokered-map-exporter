@@ -17,7 +17,7 @@ _VermilionHouse2Text_560b6::
 	line "fish, young one!"
 
 	para "<PLAYER> received"
-	line "an @"
+	line "@"
 	text_ram wStringBuffer
 	text "!@"
 	text_end

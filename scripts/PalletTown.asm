@@ -36,7 +36,25 @@ PalletTownScript0:
 	ld a, $FC
 	ld [wJoyIgnore], a
 	SetEvent EVENT_OAK_APPEARED_IN_PALLET
-
+;.Archipelago_Option_Routing
+	;ld a, $1
+	;and a
+	;jr z, .noRouting
+	;ld a,  [wMissableObjectFlags]
+    ;or a, $2
+	;ld [wMissableObjectFlags], a
+	;ld a, HS_ROUTE_11_BOULDER_1
+	;ld [wMissableObjectIndex], a
+	;predef ShowObject
+	;ld a, HS_ROUTE_11_BOULDER_2
+	;ld [wMissableObjectIndex], a
+	;predef ShowObject
+    ;jp .movedoldman
+;.noRouting
+	;ld a,  [wMissableObjectFlags + 3]
+    ;or a, $10
+	;ld [wMissableObjectFlags + 3], a
+;.movedoldman
 	; trigger the next script
 	ld a, 1
 	ld [wPalletTownCurScript], a

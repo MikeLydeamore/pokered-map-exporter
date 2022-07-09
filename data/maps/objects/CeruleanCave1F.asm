@@ -15,8 +15,11 @@ CeruleanCave1F_Object:
 	def_bg_events
 
 	def_object_events
+.Archipelago_Missable_Cerulean_Cave_1F_Item_1
 	object_event  7, 13, SPRITE_POKE_BALL, STAY, NONE, 1, FULL_RESTORE
+.Archipelago_Missable_Cerulean_Cave_1F_Item_2
 	object_event 19,  3, SPRITE_POKE_BALL, STAY, NONE, 2, MAX_ELIXER
+.Archipelago_Missable_Cerulean_Cave_1F_Item_3
 	object_event  5,  0, SPRITE_POKE_BALL, STAY, NONE, 3, NUGGET
 
 	def_warps_to CERULEAN_CAVE_1F

@@ -19,11 +19,17 @@ MtMoon1F_Object:
 	object_event 16, 23, SPRITE_COOLTRAINER_F, STAY, DOWN, 5, OPP_LASS, 6
 	object_event  7, 22, SPRITE_YOUNGSTER, STAY, DOWN, 6, OPP_BUG_CATCHER, 7
 	object_event 30, 27, SPRITE_YOUNGSTER, STAY, RIGHT, 7, OPP_BUG_CATCHER, 8
+.Archipelago_Missable_Mt_Moon_1F_Item_1
 	object_event  2, 20, SPRITE_POKE_BALL, STAY, NONE, 8, POTION
+.Archipelago_Missable_Mt_Moon_1F_Item_2
 	object_event  2,  2, SPRITE_POKE_BALL, STAY, NONE, 9, MOON_STONE
+.Archipelago_Missable_Mt_Moon_1F_Item_3
 	object_event 35, 31, SPRITE_POKE_BALL, STAY, NONE, 10, RARE_CANDY
+.Archipelago_Missable_Mt_Moon_1F_Item_4
 	object_event 36, 23, SPRITE_POKE_BALL, STAY, NONE, 11, ESCAPE_ROPE
+.Archipelago_Missable_Mt_Moon_1F_Item_5
 	object_event 20, 33, SPRITE_POKE_BALL, STAY, NONE, 12, POTION
+.Archipelago_Missable_Mt_Moon_1F_Item_6
 	object_event  5, 32, SPRITE_POKE_BALL, STAY, NONE, 13, TM_WATER_GUN
 
 	def_warps_to MT_MOON_1F

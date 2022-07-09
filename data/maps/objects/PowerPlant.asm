@@ -18,10 +18,15 @@ PowerPlant_Object:
 	object_event 21, 14, SPRITE_POKE_BALL, STAY, NONE, 7, ELECTRODE, 43
 	object_event 37, 32, SPRITE_POKE_BALL, STAY, NONE, 8, VOLTORB, 40
 	object_event  4,  9, SPRITE_BIRD, STAY, UP, 9, ZAPDOS, 50
+.Archipelago_Missable_Power_Plant_Item_1
 	object_event  7, 25, SPRITE_POKE_BALL, STAY, NONE, 10, CARBOS
+.Archipelago_Missable_Power_Plant_Item_2
 	object_event 28,  3, SPRITE_POKE_BALL, STAY, NONE, 11, HP_UP
+.Archipelago_Missable_Power_Plant_Item_3
 	object_event 34,  3, SPRITE_POKE_BALL, STAY, NONE, 12, RARE_CANDY
+.Archipelago_Missable_Power_Plant_Item_4
 	object_event 26, 32, SPRITE_POKE_BALL, STAY, NONE, 13, TM_THUNDER
+.Archipelago_Missable_Power_Plant_Item_5
 	object_event 20, 32, SPRITE_POKE_BALL, STAY, NONE, 14, TM_REFLECT
 
 	def_warps_to POWER_PLANT

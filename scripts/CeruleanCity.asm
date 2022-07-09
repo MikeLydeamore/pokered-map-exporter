@@ -35,10 +35,8 @@ CeruleanCityScript4:
 	ret
 
 CeruleanCityScript0:
-IF DEF(_DEBUG)
 	call DebugPressedOrHeldB
 	ret nz
-ENDC
 	CheckEvent EVENT_BEAT_CERULEAN_ROCKET_THIEF
 	jr nz, .skipRocketThiefEncounter
 	ld hl, CeruleanCityCoords1
@@ -303,6 +301,7 @@ CeruleanCityText2:
 .beatRocketThief
 	ld hl, CeruleanCityText_196f3
 	call PrintText
+.Archipelago_Event_Rocket_Thief
 	lb bc, TM_DIG, 1
 	call GiveItem
 	jr c, .Success

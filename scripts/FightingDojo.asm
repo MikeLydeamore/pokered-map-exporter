@@ -70,7 +70,8 @@ FightingDojoScript3:
 .asm_5cde4
 	ld a, $f0
 	ld [wJoyIgnore], a
-	SetEventRange EVENT_BEAT_KARATE_MASTER, EVENT_BEAT_FIGHTING_DOJO_TRAINER_3
+	; SetEventRange EVENT_BEAT_KARATE_MASTER, EVENT_BEAT_FIGHTING_DOJO_TRAINER_3
+	SetEvent EVENT_BEAT_KARATE_MASTER
 	ld a, $8
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
