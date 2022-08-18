@@ -50,6 +50,12 @@ MainMenu:
 	ld de, NewGameText
 	call PlaceString
 .next2
+    hlcoord 0, 9
+    ld de, BottomText
+    call PlaceString
+
+
+
 	ld hl, wd730
 	res 6, [hl]
 	call UpdateSprites
@@ -84,6 +90,7 @@ MainMenu:
 	jr z, .choseContinue
 	cp 1
 	jp z, StartNewGame
+	call ClearScreen
 	call DisplayOptionMenu
 	ld a, 1
 	ld [wOptionsInitialized], a
@@ -339,6 +346,14 @@ ContinueText:
 NewGameText:
 	db   "NEW GAME"
 	next "OPTION@"
+
+BottomText:
+    db "MULTIWORLD SEED:"
+.Archipelago_Title_Seed_1
+    next "(NOT RANDOMIZED)    "
+    next "SLOT NAME:"
+.Archipelago_Title_Slot_Name_1
+    next "(NOT RANDOMIZED)@"
 
 CableClubOptionsText:
 	db   "TRADE CENTER"

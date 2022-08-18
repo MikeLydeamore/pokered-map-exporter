@@ -47,6 +47,16 @@ SaffronGymReceiveTM46:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_SABRINA
+	CheckEvent EVENT_GOT_MARSHBADGE
+	jr nz, .Archipelago_Event_Saffron_Gym
+.Archipelago_Badge_Saffron_Gym
+	lb bc, MARSHBADGE, 1
+	call GiveItem
+	jr nc, .BagFull
+	ld a, $b
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	SetEvent EVENT_GOT_MARSHBADGE
 .Archipelago_Event_Saffron_Gym
 	lb bc, TM_PSYWAVE, 1
 	call GiveItem
@@ -61,13 +71,13 @@ SaffronGymReceiveTM46:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .gymVictory
-	ld hl, wArchipelagoOptions
-    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
-    jr nz, .skipBadge
-	ld hl, wObtainedBadges
-.Archipelago_Badge_Saffron_Gym
-	set BIT_MARSHBADGE, [hl]
-.skipBadge
+;	ld hl, wArchipelagoOptions
+;    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
+;    jr nz, .skipBadge
+;	ld hl, wObtainedBadges
+;.Archipelago_Badge_Saffron_Gym
+;	set BIT_MARSHBADGE, [hl]
+;.skipBadge
 	ld hl, wBeatGymFlags
 	set BIT_MARSHBADGE, [hl]
 

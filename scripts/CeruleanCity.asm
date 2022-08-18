@@ -438,8 +438,162 @@ CeruleanCityText9:
 	text_end
 
 CeruleanCityText10:
-	text_far _CeruleanCityText10
-	text_end
+	text_asm
+	ld hl, wObtainedBadges
+	ld b, $1
+	call CountSetBits
+	ld a, [wNumSetBits]
+	ld c, a
+	push bc
+	ld hl, wBeatGymFlags
+	ld b, $1
+	call CountSetBits
+	ld a, [wNumSetBits]
+	pop bc
+	add c
+	ld c, a
+	push bc
+	ld b, SECRET_KEY
+	call IsItemInBag
+	pop bc
+	add c
+	ld c, a
+	push bc
+	ld b, MANSION_KEY
+	call IsItemInBag
+	pop bc
+	add c
+	ld c, a
+	push bc
+	ld b, SAFARI_PASS
+	call IsItemInBag
+	pop bc
+	add c
+	ld c, a
+	push bc
+	ld b, PLANT_KEY
+	call IsItemInBag
+	pop bc
+	add c
+	ld c, a
+	push bc
+	ld b, HIDEOUT_KEY
+	call IsItemInBag
+	pop bc
+	add c
+	ld c, a
+	push bc
+	ld b, BICYCLE
+	call IsItemInBag
+	pop bc
+	add c
+	ld c, a
+	push bc
+	ld b, SILPH_SCOPE
+	call IsItemInBag
+	pop bc
+	add c
+	ld c, a
+	push bc
+	ld b, ITEMFINDER
+	call IsItemInBag
+	pop bc
+	add c
+	ld c, a
+	push bc
+	ld b, SUPER_ROD
+	call IsItemInBag
+	pop bc
+	add c
+	ld c, a
+	push bc
+	ld b, GOOD_ROD
+	call IsItemInBag
+	pop bc
+	add c
+	ld c, a
+	push bc
+	ld b, OLD_ROD
+	call IsItemInBag
+	pop bc
+	add c
+	ld c, a
+	push bc
+	ld b, LIFT_KEY
+	call IsItemInBag
+	pop bc
+	add c
+	ld c, a
+	push bc
+	ld b, CARD_KEY
+	call IsItemInBag
+	pop bc
+	add c
+	ld c, a
+	push bc
+	ld b, TOWN_MAP
+	call IsItemInBag
+	pop bc
+	add c
+	ld c, a
+	push bc
+	ld b, COIN_CASE
+	call IsItemInBag
+	pop bc
+	add c
+	ld c, a
+	push bc
+	ld b, S_S_TICKET
+	call IsItemInBag
+	pop bc
+	add c
+	ld [wUnusedCC5B], a
+.Archipelago_Option_Cerulean_Cave_Condition_LD_A
+	ld a, 20
+	ld [wUnusedD366], a
+	ld hl, CeruleanCityTextCaveGuy
+	call PrintText
+	ld a, [wUnusedCC5B]
+    inc a
+    ld b, a
+    ld a, [wUnusedD366]
+    cp b
+    jp c, .leave
+    ld hl, CeruleanCityCaveGuyYouHave
+    call PrintText
+    jp TextScriptEnd
+.leave
+    ld hl, CeruleanCityCaveGuyLeaves
+    call PrintText
+	call GBFadeOutToBlack
+	ld a, HS_CERULEAN_CAVE_GUY
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	call GBFadeInFromBlack
+	jp TextScriptEnd
+
+CeruleanCityTextCaveGuy:
+    text "To pass through,"
+    line "you need a total"
+    cont "of @"
+    text_decimal wUnusedD366, 1, 2
+    text " badges,"
+    cont "gyms defeated,"
+    cont "and key items."
+    prompt
+
+CeruleanCityCaveGuyYouHave:
+    text "You have @"
+	text_decimal wUnusedCC5B, 1, 2
+	text ".@"
+    text_end
+
+CeruleanCityCaveGuyLeaves:
+    text "Oh, you've reached"
+    line "your goal!"
+    cont "I'm outta here!@"
+	text_waitbutton
+    text_end
 
 CeruleanCityText12:
 	text_far _CeruleanCityText12

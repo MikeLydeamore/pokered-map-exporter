@@ -10,34 +10,33 @@ DEF SHOW EQU $15
 
 	const_def
 	const HS_PALLET_TOWN_OAK               ; 00
-	;const HS_LYING_OLD_MAN
-	const HS_OLD_MAN                       ; 01
-	const HS_MUSEUM_GUY                    ; 02
-	const HS_GYM_GUY                       ; 03
-	const HS_CERULEAN_RIVAL                ; 04
-	const HS_CERULEAN_ROCKET               ; 05
-	const HS_CERULEAN_GUARD_1              ; 06
-	const HS_CERULEAN_CAVE_GUY             ; 07
-	const HS_CERULEAN_GUARD_2              ; 08
-	const HS_SAFFRON_CITY_1                ; 09
-	const HS_SAFFRON_CITY_2                ; 0A
-	const HS_SAFFRON_CITY_3                ; 0B
-	const HS_SAFFRON_CITY_4                ; 0C
-	const HS_SAFFRON_CITY_5                ; 0D
-	const HS_SAFFRON_CITY_6                ; 0E
-	const HS_SAFFRON_CITY_7                ; 0F
-	const HS_SAFFRON_CITY_8                ; 10
-	const HS_SAFFRON_CITY_9                ; 11
-	const HS_SAFFRON_CITY_A                ; 12
-	const HS_SAFFRON_CITY_B                ; 13
-	const HS_SAFFRON_CITY_C                ; 14
-	const HS_SAFFRON_CITY_D                ; 15
-	const HS_SAFFRON_CITY_E                ; 16
-	const HS_SAFFRON_CITY_F                ; 17
-	const HS_ROUTE_2_ITEM_1                ; 18 X
-	const HS_ROUTE_2_ITEM_2                ; 19 X
-	const HS_ROUTE_4_ITEM                  ; 1A X
-	const HS_ROUTE_4_LYING_OLD_MAN         ; 1B
+	const HS_LYING_OLD_MAN                 ; 01
+	const HS_OLD_MAN                       ; 02
+	const HS_MUSEUM_GUY                    ; 03
+	const HS_GYM_GUY                       ; 04
+	const HS_CERULEAN_RIVAL                ; 05
+	const HS_CERULEAN_ROCKET               ; 06
+	const HS_CERULEAN_GUARD_1              ; 07
+	const HS_CERULEAN_CAVE_GUY             ; 08
+	const HS_CERULEAN_GUARD_2              ; 09
+	const HS_SAFFRON_CITY_1                ; 0A
+	const HS_SAFFRON_CITY_2                ; 0B
+	const HS_SAFFRON_CITY_3                ; 0C
+	const HS_SAFFRON_CITY_4                ; 0D
+	const HS_SAFFRON_CITY_5                ; 0E
+	const HS_SAFFRON_CITY_6                ; 0F
+	const HS_SAFFRON_CITY_7                ; 10
+	const HS_SAFFRON_CITY_8                ; 11
+	const HS_SAFFRON_CITY_9                ; 12
+	const HS_SAFFRON_CITY_A                ; 13
+	const HS_SAFFRON_CITY_B                ; 14
+	const HS_SAFFRON_CITY_C                ; 15
+	const HS_SAFFRON_CITY_D                ; 16
+	const HS_SAFFRON_CITY_E                ; 17
+	const HS_SAFFRON_CITY_F                ; 18
+	const HS_ROUTE_2_ITEM_1                ; 19 X
+	const HS_ROUTE_2_ITEM_2                ; 1A X
+	const HS_ROUTE_4_ITEM                  ; 1B X
 	const HS_ROUTE_9_ITEM                  ; 1C X
 	const HS_ROUTE_12_SNORLAX              ; 1D
 	const HS_ROUTE_12_ITEM_1               ; 1E X

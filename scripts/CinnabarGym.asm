@@ -147,6 +147,16 @@ CinnabarGymReceiveTM38:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_BLAINE
+	CheckEvent EVENT_GOT_VOLCANOBADGE
+	jr nz, .Archipelago_Event_Cinnabar_Gym
+.Archipelago_Badge_Cinnabar_Gym
+	lb bc, VOLCANOBADGE, 1
+	call GiveItem
+	jr nc, .BagFull
+	ld a, $b
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	SetEvent EVENT_GOT_VOLCANOBADGE
 .Archipelago_Event_Cinnabar_Gym
 	lb bc, TM_FIRE_BLAST, 1
 	call GiveItem
@@ -161,13 +171,13 @@ CinnabarGymReceiveTM38:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .gymVictory
-	ld hl, wArchipelagoOptions
-    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
-    jr nz, .skipBadge
-	ld hl, wObtainedBadges
-.Archipelago_Badge_Cinnabar_Gym
-	set BIT_VOLCANOBADGE, [hl]
-.skipBadge
+;	ld hl, wArchipelagoOptions
+;    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
+;    jr nz, .skipBadge
+;	ld hl, wObtainedBadges
+;.Archipelago_Badge_Cinnabar_Gym
+;	set BIT_VOLCANOBADGE, [hl]
+;.skipBadge
 	ld hl, wBeatGymFlags
 	set BIT_VOLCANOBADGE, [hl]
 

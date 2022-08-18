@@ -139,6 +139,16 @@ ViridianGymReceiveTM27:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
+	CheckEvent EVENT_GOT_EARTHBADGE
+	jr nz, .Archipelago_Event_Viridian_Gym
+.Archipelago_Badge_Viridian_Gym
+	lb bc, EARTHBADGE, 1
+	call GiveItem
+	jr nc, .BagFull
+	ld a, $d
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	SetEvent EVENT_GOT_EARTHBADGE
 .Archipelago_Event_Viridian_Gym
 	lb bc, TM_FISSURE, 1
 	call GiveItem
@@ -153,13 +163,13 @@ ViridianGymReceiveTM27:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .gymVictory
-	ld hl, wArchipelagoOptions
-    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
-    jr nz, .skipBadge
-	ld hl, wObtainedBadges
-.Archipelago_Badge_Viridian_Gym
-	set BIT_EARTHBADGE, [hl]
-.skipBadge
+;	ld hl, wArchipelagoOptions
+;    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
+;    jr nz, .skipBadge
+;	ld hl, wObtainedBadges
+;.Archipelago_Badge_Viridian_Gym
+;	set BIT_EARTHBADGE, [hl]
+;.skipBadge
 	ld hl, wBeatGymFlags
 	set BIT_EARTHBADGE, [hl]
 

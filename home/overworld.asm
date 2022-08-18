@@ -5,6 +5,8 @@ HandleMidJump::
 
 EnterMap::
 ; Load a new map.
+    ld a, $AC
+    ld [wArchipelagoGameStarted], a
 	ld a, $ff
 	ld [wJoyIgnore], a
 	call LoadMapData

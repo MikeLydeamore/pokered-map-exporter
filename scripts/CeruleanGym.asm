@@ -47,6 +47,16 @@ CeruleanGymReceiveTM11:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_MISTY
+	CheckEvent EVENT_GOT_CASCADEBADGE
+	jr nz, .Archipelago_Event_Cerulean_Gym
+.Archipelago_Badge_Cerulean_Gym
+	lb bc, CASCADEBADGE, 1
+	call GiveItem
+	jr nc, .BagFull
+	ld a, $6
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	SetEvent EVENT_GOT_CASCADEBADGE
 .Archipelago_Event_Cerulean_Gym
 	lb bc, TM_BUBBLEBEAM, 1
 	call GiveItem
@@ -61,13 +71,13 @@ CeruleanGymReceiveTM11:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .gymVictory
-	ld hl, wArchipelagoOptions
-    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
-    jr nz, .skipBadge
-	ld hl, wObtainedBadges
-.Archipelago_Badge_Cerulean_Gym
-	set BIT_CASCADEBADGE, [hl]
-.skipBadge
+;	ld hl, wArchipelagoOptions
+;    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
+;    jr nz, .skipBadge
+;	ld hl, wObtainedBadges
+;.Archipelago_Badge_Cerulean_Gym
+;	set BIT_CASCADEBADGE, [hl]
+;.skipBadge
 	ld hl, wBeatGymFlags
 	set BIT_CASCADEBADGE, [hl]
 

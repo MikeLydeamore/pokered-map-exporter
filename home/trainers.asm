@@ -97,8 +97,12 @@ TalkToTrainer::
 	ld c, a
 	ld b, FLAG_TEST
 	call TrainerFlagAction      ; read trainer's flag
+
+	ldh a, [hJoyHeld]
+	bit BIT_SELECT, a
+	jr nz, .trainerNotYetFought
 	ld a, c
-	xor a
+    and a
 	jr z, .trainerNotYetFought     ; test trainer's flag
 	ld a, $6
 	call ReadTrainerHeaderInfo     ; print after battle text

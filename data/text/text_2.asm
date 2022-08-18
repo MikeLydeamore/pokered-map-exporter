@@ -1223,7 +1223,7 @@ _BoostedText::
 	text_end
 
 _ExpPointsText::
-	text_decimal wExpAmountGained, 2, 4
+	text_decimal wExpAmountGained, 2, 5
 	text " EXP. Points!"
 	prompt
 

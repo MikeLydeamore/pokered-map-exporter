@@ -16,6 +16,5 @@ Route4_Object:
 	object_event 63,  3, SPRITE_COOLTRAINER_F, STAY, RIGHT, 2, OPP_LASS, 4
 .Archipelago_Missable_Route_4_Item
 	object_event 57,  3, SPRITE_POKE_BALL, STAY, NONE, 3, TM_WHIRLWIND
-	object_event 17,  6, SPRITE_GAMBLER_ASLEEP, STAY, NONE, 4; person
 
 	def_warps_to ROUTE_4

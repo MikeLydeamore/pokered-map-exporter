@@ -1833,7 +1833,6 @@ wWarpEntries:: ds 32 * 4 ; Y, X, warp ID, map ID
 ; if $ff, the player's coordinates are not updated when entering the map
 wDestinationWarpID:: db
 
-	ds 128
 
 ; number of signs in the current map (up to 16)
 wNumSigns:: db
@@ -2038,10 +2037,7 @@ wSeafoamIslandsB3FCurScript:: db
 wRoute23CurScript:: db
 wSeafoamIslandsB4FCurScript:: db
 wRoute18Gate1FCurScript:: db
-	ds 78
 wGameProgressFlagsEnd::
-
-	ds 56
 
 wObtainedHiddenItemsFlags:: flag_array 112
 
@@ -2300,6 +2296,7 @@ wArchipelagoOptions:: db
 
 wMainDataEnd::
 
+wArchipelagoGameStarted:: db
 wArchipelagoFieldMoveItemUsed:: db
 
 SECTION "Current Box Data", WRAM0

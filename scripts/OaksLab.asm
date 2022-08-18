@@ -134,21 +134,21 @@ OaksLabScript4:
 OaksLabScript5:
 	ld a, $fc
 	ld [wJoyIgnore], a
-	ld a, $11
-	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
-	call Delay3
+	;ld a, $11
+	;ldh [hSpriteIndexOrTextID], a
+	;call DisplayTextID
+	;call Delay3
 	ld a, $12
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	call Delay3
-	ld a, $13
-	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
-	call Delay3
-	ld a, $14
-	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
+	;ld a, $13
+	;ldh [hSpriteIndexOrTextID], a
+	;call DisplayTextID
+	;call Delay3
+	;ld a, $14
+	;ldh [hSpriteIndexOrTextID], a
+	;call DisplayTextID
 	SetEvent EVENT_OAK_ASKED_TO_CHOOSE_MON
 	xor a
 	ld [wJoyIgnore], a
@@ -306,9 +306,9 @@ OaksLabScript9:
 	ld a, SPRITE_FACING_UP
 	ldh [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
-	ld a, $d
-	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
+	;ld a, $d
+	;ldh [hSpriteIndexOrTextID], a
+	;call DisplayTextID
 	ld a, [wRivalStarterBallSpriteIndex]
 	cp $2
 	jr nz, .rivalDidNotChoseBall1
@@ -566,20 +566,20 @@ OaksLabScript16:
 	ld a, $fc
 	ld [wJoyIgnore], a
 	call OaksLabScript_1cefd
-	ld a, $16
-	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
-	call DelayFrame
-	call OaksLabScript_1cefd
-	ld a, $17
-	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
-	call DelayFrame
-	call OaksLabScript_1cefd
-	ld a, $18
-	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
-	call DelayFrame
+	;ld a, $16
+	;ldh [hSpriteIndexOrTextID], a
+	;call DisplayTextID
+	;call DelayFrame
+	;call OaksLabScript_1cefd
+	;ld a, $17
+	;ldh [hSpriteIndexOrTextID], a
+	;call DisplayTextID
+	;call DelayFrame
+	;call OaksLabScript_1cefd
+	;ld a, $18
+	;ldh [hSpriteIndexOrTextID], a
+	;call DisplayTextID
+	;call DelayFrame
 	ld a, $19
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
@@ -591,26 +591,30 @@ OaksLabScript16:
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	call OaksLabScript_1cefd
-	ld a, $1a
-	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
+	;ld a, $1a
+	;ldh [hSpriteIndexOrTextID], a
+	;call DisplayTextID
 	ld a, $1
 	ldh [hSpriteIndex], a
 	ld a, SPRITE_FACING_RIGHT
 	ldh [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
-	call Delay3
-	ld a, $1b
-	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
+	;call Delay3
+	;ld a, $1b
+	;ldh [hSpriteIndexOrTextID], a
+	;call DisplayTextID
 	SetEvent EVENT_GOT_POKEDEX
 	SetEvent EVENT_OAK_GOT_PARCEL
-	;ld a, HS_ROUTE_4_LYING_OLD_MAN
-	;ld [wMissableObjectIndex], a
-	;predef HideObject
-	;ld a, HS_OLD_MAN
-	;ld [wMissableObjectIndex], a
-	;predef ShowObject
+
+    ;ld a, $00
+    ;and a
+    ;jr z, .dontDeactivateOldMan
+	ld a, HS_LYING_OLD_MAN
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_OLD_MAN
+	ld [wMissableObjectIndex], a
+	predef ShowObject
 	ld a, [wSavedNPCMovementDirections2Index]
 	ld b, 0
 	ld c, a
@@ -923,8 +927,8 @@ OaksLabMonChoiceMenu:
 	predef HideObject
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	ld hl, OaksLabMonEnergeticText
-	call PrintText
+	;ld hl, OaksLabMonEnergeticText
+	;call PrintText
 	ld hl, OaksLabReceivedMonText
 	call PrintText
 	xor a ; PLAYER_PARTY_DATA

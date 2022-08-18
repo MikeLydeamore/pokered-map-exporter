@@ -148,8 +148,8 @@ CeladonMartRoofText_484f3:
 CeladonMartRoofText_484f9:
 	text_far _CeladonMartRoofText_484f9
 	sound_get_item_1
-	text_far _CeladonMartRoofText_484fe
-	text_waitbutton
+	;text_far _CeladonMartRoofText_484fe
+	;text_waitbutton
 	text_end
 
 CeladonMartRoofText_48504:
@@ -160,8 +160,8 @@ CeladonMartRoofText_48504:
 CeladonMartRoofText_4850a:
 	text_far _CeladonMartRoofText_4850a
 	sound_get_item_1
-	text_far _CeladonMartRoofText_4850f
-	text_waitbutton
+	;text_far _CeladonMartRoofText_4850f
+	;text_waitbutton
 	text_end
 
 CeladonMartRoofText_48515:
@@ -172,8 +172,8 @@ CeladonMartRoofText_48515:
 ReceivedTM49Text:
 	text_far _ReceivedTM49Text
 	sound_get_item_1
-	text_far _CeladonMartRoofText_48520
-	text_waitbutton
+	;text_far _CeladonMartRoofText_48520
+	;text_waitbutton
 	text_end
 
 CeladonMartRoofText_48526:

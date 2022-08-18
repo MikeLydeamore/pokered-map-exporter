@@ -30,7 +30,10 @@ HallOfFamePC:
 	call DelayFrames
 	xor a
 	ld [wNumCreditsMonsDisplayed], a
-	jp Credits
+	ld a, [wArchipelagoOptions]
+	bit BIT_GOAL, a
+	jp z, Credits
+    jp Init
 
 FadeInCreditsText:
 	ld hl, HoFGBPalettes

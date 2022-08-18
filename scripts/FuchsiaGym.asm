@@ -49,6 +49,16 @@ FuchsiaGymReceiveTM06:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_KOGA
+	CheckEvent EVENT_GOT_SOULBADGE
+	jr nz, .Archipelago_Event_Fuschia_Gym
+.Archipelago_Badge_Fuchsia_Gym
+	lb bc, SOULBADGE, 1
+	call GiveItem
+	jr nc, .BagFull
+	ld a, $a
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	SetEvent EVENT_GOT_SOULBADGE
 .Archipelago_Event_Fuschia_Gym
 	lb bc, TM_TOXIC, 1
 	call GiveItem
@@ -63,13 +73,13 @@ FuchsiaGymReceiveTM06:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .gymVictory
-	ld hl, wArchipelagoOptions
-    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
-    jr nz, .skipBadge
-	ld hl, wObtainedBadges
-.Archipelago_Badge_Fuchsia_Gym
-	set BIT_SOULBADGE, [hl]
-.skipBadge
+;	ld hl, wArchipelagoOptions
+;    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
+;    jr nz, .skipBadge
+;	ld hl, wObtainedBadges
+;.Archipelago_Badge_Fuchsia_Gym
+;	set BIT_SOULBADGE, [hl]
+;.skipBadge
 	ld hl, wBeatGymFlags
 	set BIT_SOULBADGE, [hl]
 

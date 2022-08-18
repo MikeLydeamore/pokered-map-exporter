@@ -187,11 +187,11 @@ ViridianCityText3:
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .no
+	jr z, .yes
 	ld hl, ViridianCityText_19157
 	call PrintText
 	jr .done
-.no
+.yes
 	ld hl, ViridianCityText_19152
 	call PrintText
 .done

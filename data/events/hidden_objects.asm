@@ -57,7 +57,7 @@ HiddenObjectMaps:
 	db POKEMON_MANSION_3F
 	db ROUTE_23
 	db VICTORY_ROAD_2F
-	db UNUSED_MAP_6F
+	db VERMILION_DOCK
 	db BILLS_HOUSE
 	db VIRIDIAN_CITY
 	db SAFARI_ZONE_WEST_REST_HOUSE
@@ -587,7 +587,7 @@ VictoryRoad2HiddenObjects:
 
 Unused6FHiddenObjects:
 .Archipelago_Hidden_Item_Unused_6F
-	hidden_object 14, 11, MAX_ELIXER, HiddenItems
+	hidden_object 10, 0, MAX_ELIXER, HiddenItems
 	db -1 ; end
 
 BillsHouseHiddenObjects:

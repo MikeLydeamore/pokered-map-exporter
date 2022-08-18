@@ -126,23 +126,23 @@ BillsHouseText4:
 
 BillsHouseText1:
 	text_asm
-	ld hl, BillsHouseText_1e865
-	call PrintText
-	call YesNoChoice
-	ld a, [wCurrentMenuItem]
-	and a
-	jr nz, .asm_1e85a
-.asm_1e84d
+	;ld hl, BillsHouseText_1e865
+	;call PrintText
+	;call YesNoChoice
+	;ld a, [wCurrentMenuItem]
+	;and a
+	;jr nz, .asm_1e85a
+;.asm_1e84d
 	ld hl, BillsHouseText_1e86a
 	call PrintText
 	ld a, $1
 	ld [wBillsHouseCurScript], a
-	jr .asm_1e862
-.asm_1e85a
-	ld hl, BillsHouseText_1e86f
-	call PrintText
-	jr .asm_1e84d
-.asm_1e862
+;	jr .asm_1e862
+;.asm_1e85a
+;	ld hl, BillsHouseText_1e86f
+;	call PrintText
+;	jr .asm_1e84d
+;.asm_1e862
 	jp TextScriptEnd
 
 BillsHouseText_1e865:
@@ -161,8 +161,8 @@ BillsHouseText2:
 	text_asm
 	CheckEvent EVENT_GOT_SS_TICKET
 	jr nz, .asm_1e8a9
-	ld hl, BillThankYouText
-	call PrintText
+	;ld hl, BillThankYouText
+	;call PrintText
 .Archipelago_Event_Bill
 	lb bc, S_S_TICKET, 1
 	call GiveItem

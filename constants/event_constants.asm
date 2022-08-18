@@ -709,6 +709,17 @@
 	const_next $880
 	const EVENT_GOT_HM03
 
+; received badge checks
+	const_next $8A0
+	const EVENT_GOT_BOULDERBADGE
+	const EVENT_GOT_CASCADEBADGE
+	const EVENT_GOT_THUNDERBADGE
+	const EVENT_GOT_RAINBOWBADGE
+	const EVENT_GOT_SOULBADGE
+	const EVENT_GOT_MARSHBADGE
+	const EVENT_GOT_VOLCANOBADGE
+	const EVENT_GOT_EARTHBADGE
+
 ; Cerulean Cave events
 	const_next $8C0
 	const_skip
@@ -735,7 +746,9 @@
 	const EVENT_LANCES_ROOM_LOCK_DOOR
 	const EVENT_BEATEN_GAME
 	const EVENT_BEAT_CHAMPION_RIVAL
-	const_skip 5
+	const EVENT_BEAT_CHAMPION_RIVAL_REMAINS
+	const EVENT_BEAT_OAK
+	const_skip 3
 	const ELITE4_CHAMPION_EVENTS_END
 
 ; Victory Road 1F events

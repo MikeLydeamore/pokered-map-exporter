@@ -399,12 +399,13 @@ PrintGameVersionOnTitleScreen:
 
 ; these point to special tiles specifically loaded for that purpose and are not usual text
 VersionOnTitleScreenText:
-;IF DEF(_RED)
-;	db $60,$61,$7F,$65,$66,$67,$68,$69,"@" ; "Red Version"
-;ENDC
-;IF DEF(_BLUE)
+IF DEF(_RED)
+	db $60,$61,$7F,$65,$66,$67,$68,$69,"@" ; "Red Version"
+ENDC
+IF DEF(_BLUE)
 	db $61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Blue Version"
-;ENDC
-
-NintenText: db "NINTEN@"
-SonyText:   db "SONY@"
+ENDC
+.Archipelago_Player_Name
+NintenText: db "NINTEN@@"
+.Archipelago_Rival_Name
+SonyText:   db "SONY@@@@"

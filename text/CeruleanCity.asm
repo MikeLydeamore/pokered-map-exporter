@@ -70,7 +70,9 @@ _CeruleanCityText_196d9::
 
 _ReceivedTM28Text::
 	text "<PLAYER> recovered"
-	line "TM28!@"
+	line "@"
+	text_ram wStringBuffer
+	text "!@"
 	text_end
 
 _ReceivedTM28Text2::

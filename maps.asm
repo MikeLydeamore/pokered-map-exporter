@@ -279,6 +279,7 @@ PokemonMansion1F_Blocks: INCBIN "maps/PokemonMansion1F.blk"
 INCLUDE "data/maps/headers/RockTunnel1F.asm"
 INCLUDE "scripts/RockTunnel1F.asm"
 INCLUDE "data/maps/objects/RockTunnel1F.asm"
+.Archipelago_Map_Rock_Tunnel_1F
 RockTunnel1F_Blocks: INCBIN "maps/RockTunnel1F.blk"
 
 INCLUDE "data/maps/headers/SeafoamIslands1F.asm"

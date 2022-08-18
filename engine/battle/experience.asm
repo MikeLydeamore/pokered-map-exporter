@@ -187,6 +187,11 @@ GainExperience:
 	pop af
 	ld [wIncLevel], a
 .loopLevelUp
+    push hl
+    ld a, [wWhichPokemon]
+	ld hl, wPartyMonNicks
+	call GetPartyMonName
+    pop hl
     ld a, [wIncLevel]
 	inc a
 	ld [wIncLevel], a

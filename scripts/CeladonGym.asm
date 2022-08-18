@@ -47,6 +47,16 @@ CeladonGymReceiveTM21:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_ERIKA
+	CheckEvent EVENT_GOT_RAINBOWBADGE
+	jr nz, .Archipelago_Event_Celadon_Gym
+.Archipelago_Badge_Celadon_Gym
+	lb bc, RAINBOWBADGE, 1
+	call GiveItem
+	jr nc, .BagFull
+	ld a, $a
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	SetEvent EVENT_GOT_RAINBOWBADGE
 .Archipelago_Event_Celadon_Gym
 	lb bc, TM_MEGA_DRAIN, 1
 	call GiveItem
@@ -61,13 +71,13 @@ CeladonGymReceiveTM21:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .gymVictory
-	ld hl, wArchipelagoOptions
-    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
-    jr nz, .skipBadge
-	ld hl, wObtainedBadges
-.Archipelago_Badge_Celadon_Gym
-	set BIT_RAINBOWBADGE, [hl]
-.skipBadge
+;	ld hl, wArchipelagoOptions
+;    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
+;    jr nz, .skipBadge
+;	ld hl, wObtainedBadges
+;.Archipelago_Badge_Celadon_Gym
+;	set BIT_RAINBOWBADGE, [hl]
+;.skipBadge
 	ld hl, wBeatGymFlags
 	set BIT_RAINBOWBADGE, [hl]
 

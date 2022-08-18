@@ -66,6 +66,16 @@ VermilionGymReceiveTM24:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_LT_SURGE
+	CheckEvent EVENT_GOT_THUNDERBADGE
+	jr nz, .Archipelago_Event_Vermillion_Gym
+.Archipelago_Badge_Vermilion_Gym
+	lb bc, THUNDERBADGE, 1
+	call GiveItem
+	jr nc, .BagFull
+	ld a, $7
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	SetEvent EVENT_GOT_THUNDERBADGE
 .Archipelago_Event_Vermillion_Gym
 	lb bc, TM_THUNDERBOLT, 1
 	call GiveItem
@@ -80,13 +90,13 @@ VermilionGymReceiveTM24:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .gymVictory
-	ld hl, wArchipelagoOptions
-    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
-    jr nz, .skipBadge
-	ld hl, wObtainedBadges
-.Archipelago_Badge_Vermilion_Gym
-	set BIT_THUNDERBADGE, [hl]
-.skipBadge
+;	ld hl, wArchipelagoOptions
+;    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
+;    jr nz, .skipBadge
+;	ld hl, wObtainedBadges
+;.Archipelago_Badge_Vermilion_Gym
+;	set BIT_THUNDERBADGE, [hl]
+;.skipBadge
 	ld hl, wBeatGymFlags
 	set BIT_THUNDERBADGE, [hl]
 

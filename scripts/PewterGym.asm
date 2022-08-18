@@ -43,10 +43,20 @@ PewterGymBrockPostBattle:
 	ld [wJoyIgnore], a
 ; fallthrough
 PewterGymScriptReceiveTM34:
-	ld a, $4
+;	ld a, $4
+;	ldh [hSpriteIndexOrTextID], a
+;	call DisplayTextID
+	SetEvent EVENT_BEAT_BROCK
+	CheckEvent EVENT_GOT_BOULDERBADGE
+	jr nz, .Archipelago_Event_Pewter_Gym
+.Archipelago_Badge_Pewter_Gym
+    lb bc, BOULDERBADGE, 1
+    call GiveItem
+    jr nc, .BagFull
+    ld a, $5
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	SetEvent EVENT_BEAT_BROCK
+	SetEvent EVENT_GOT_BOULDERBADGE
 .Archipelago_Event_Pewter_Gym
 	lb bc, TM_BIDE, 1
 	call GiveItem
@@ -61,13 +71,13 @@ PewterGymScriptReceiveTM34:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .gymVictory
-    ld hl, wArchipelagoOptions
-    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
-    jr nz, .skipBadge
-	ld hl, wObtainedBadges
-.Archipelago_Badge_Pewter_Gym
-	set BIT_BOULDERBADGE, [hl]
-.skipBadge
+;    ld hl, wArchipelagoOptions
+;    bit BIT_ARCHIPELAGO_BADGE_RANDO, [hl]
+;    jr nz, .skipBadge
+;	ld hl, wObtainedBadges
+;.Archipelago_Badge_Pewter_Gym
+;	set BIT_BOULDERBADGE, [hl]
+;.skipBadge
 	ld hl, wBeatGymFlags
 	set BIT_BOULDERBADGE, [hl]
 
@@ -103,6 +113,8 @@ BrockText:
 	text_asm
 	CheckEvent EVENT_BEAT_BROCK
 	jr z, .beforeBeat
+	CheckEventReuseA EVENT_GOT_BOULDERBADGE
+	jp z, PewterGymScriptReceiveTM34
 	CheckEventReuseA EVENT_GOT_TM34
 	jr nz, .afterBeat
 	call z, PewterGymScriptReceiveTM34
