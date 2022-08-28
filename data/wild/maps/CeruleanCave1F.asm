@@ -1,5 +1,6 @@
 CeruleanCave1FWildMons:
 	def_grass_wildmons 10 ; encounter rate
+.Archipelago_Wild_CeruleanCave1F_0
 	db 46, GOLBAT
 	db 46, HYPNO
 	db 46, MAGNETON

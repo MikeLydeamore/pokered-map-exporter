@@ -305,6 +305,7 @@ SilphCo7Text1:
 .givelapras
 	ld hl, .MeetLaprasGuyText
 	call PrintText
+.Archipelago_Gift_Lapras
 	lb bc, LAPRAS, 15
 	call GivePokemon
 	jr nc, .done

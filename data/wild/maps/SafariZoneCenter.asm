@@ -1,5 +1,6 @@
 SafariZoneCenterWildMons:
 	def_grass_wildmons 30 ; encounter rate
+.Archipelago_Wild_SafariZoneCenter_0
 IF DEF(_RED)
 	db 22, NIDORAN_M
 	db 25, RHYHORN

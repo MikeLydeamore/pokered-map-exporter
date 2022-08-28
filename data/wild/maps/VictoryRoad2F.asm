@@ -1,5 +1,6 @@
 VictoryRoad2FWildMons:
 	def_grass_wildmons 10 ; encounter rate
+.Archipelago_Wild_VictoryRoad2F_0
 	db 22, MACHOP
 	db 24, GEODUDE
 	db 26, ZUBAT

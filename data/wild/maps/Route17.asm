@@ -1,5 +1,6 @@
 Route17WildMons:
 	def_grass_wildmons 25 ; encounter rate
+.Archipelago_Wild_Route17_0
 	db 20, SPEAROW
 	db 22, SPEAROW
 	db 25, RATICATE

@@ -12,4 +12,5 @@ MewPicFront:: INCBIN "gfx/pokemon/front/mew.pic"
 MewPicBack::  INCBIN "gfx/pokemon/back/mewb.pic"
 
 MewBaseStats::
+.Archipelago_Base_Stats_Mew
 INCLUDE "data/pokemon/base_stats/mew.asm"

@@ -53,6 +53,26 @@ Serial::
 ; de = receive data
 ; bc = length of data
 Serial_ExchangeBytes::
+;    ld a, b
+;    ld [wArchipelagoSerialLength], a
+;    ld a, c
+;    ld [wArchipelagoSerialLength + 1], a
+;    ld a, d
+;    ld [wArchipelagoSerialReceiveData], a
+;    ld a, e
+;    ld [wArchipelagoSerialReceiveData + 1], a
+;    ld a, h
+;    ld [wArchipelagoSerialSendData], a
+;    ld a, l
+;    ld [wArchipelagoSerialSendData + 1], a
+;    ld a, 1
+;    ld [wArchipelagoSerialStatus], a
+;.aploop
+;    ld a, [wArchipelagoSerialStatus]
+;    jr nz, .aploop
+;    ret
+
+
 	ld a, 1
 	ldh [hSerialIgnoringInitialData], a
 .loop
@@ -83,7 +103,7 @@ Serial_ExchangeBytes::
 	dec bc
 	ld a, b
 	or c
-	jr nz, .loop
+    jr nz, .loop
 	ret
 
 Serial_ExchangeByte::
@@ -308,6 +328,10 @@ Serial_ExchangeNybble::
 
 Serial_SendZeroByte::
 	xor a
+
+
+
+
 	ldh [hSerialSendData], a
 	ldh a, [hSerialConnectionStatus]
 	cp USING_INTERNAL_CLOCK

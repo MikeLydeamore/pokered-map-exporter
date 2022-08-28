@@ -60,13 +60,7 @@ _TM11NoRoomText::
 _ReceivedCascadeBadgeText::
 	text "Wow!"
 	line "You're too much!"
-
-	para "All right!"
-
-	para "You can have the"
-	line "CASCADEBADGE to"
-	cont "show you beat me!@"
-	text_end
+    text_end
 
 _CeruleanGymBattleText1::
 	text "I'm more than good"

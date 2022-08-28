@@ -1,5 +1,6 @@
 PokemonMansion3FWildMons:
 	def_grass_wildmons 10 ; encounter rate
+.Archipelago_Wild_PokemonMansion3F_0
 IF DEF(_RED)
 	db 31, KOFFING
 	db 33, GROWLITHE

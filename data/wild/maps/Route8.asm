@@ -1,5 +1,6 @@
 Route8WildMons:
 	def_grass_wildmons 15 ; encounter rate
+.Archipelago_Wild_Route8_0
 	db 18, PIDGEY
 IF DEF(_RED)
 	db 18, MANKEY

@@ -2,7 +2,6 @@ SeafoamIslands1F_Object:
 	db $7d ; border block
 
 	def_warp_events
-;.Archipelago_Option_Seafoam_Exits
 	warp_event  26, 17, LAST_MAP, 1
 	warp_event  27, 17, LAST_MAP, 1
 	warp_event 4, 17, LAST_MAP, 2
@@ -17,7 +16,6 @@ SeafoamIslands1F_Object:
 	object_event 18, 10, SPRITE_BOULDER, STAY, BOULDER_MOVEMENT_BYTE_2, 1 ; person
 	object_event 26,  7, SPRITE_BOULDER, STAY, BOULDER_MOVEMENT_BYTE_2, 2 ; person
 
-;.Archipelago_Option_Seafoam_Entrances
 	def_warps_to SEAFOAM_ISLANDS_1F
 
 	; holes

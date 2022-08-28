@@ -27,6 +27,10 @@ Route10_TextPointers:
 	dw Route10Text11
 
 Route10_Script0:
+    call CheckFightingMapTrainers
+    ld a, [wArchipelagoOptions]
+    bit BIT_EXTRA_KEY_ITEMS, a
+    ret z
 	ld b, PLANT_KEY
 	call IsItemInBag
 	ret nz

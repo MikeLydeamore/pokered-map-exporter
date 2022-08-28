@@ -1,5 +1,6 @@
 MtMoonB2FWildMons:
 	def_grass_wildmons 10 ; encounter rate
+.Archipelago_Wild_MtMoonB2F_0
 	db  9, ZUBAT
 	db  9, GEODUDE
 	db 10, ZUBAT

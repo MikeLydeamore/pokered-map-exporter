@@ -1,5 +1,6 @@
 PowerPlantWildMons:
 	def_grass_wildmons 10 ; encounter rate
+.Archipelago_Wild_PowerPlant_0
 	db 21, VOLTORB
 	db 21, MAGNEMITE
 	db 20, PIKACHU

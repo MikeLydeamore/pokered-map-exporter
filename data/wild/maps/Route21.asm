@@ -1,5 +1,6 @@
 Route21WildMons:
 	def_grass_wildmons 25 ; encounter rate
+.Archipelago_Wild_Route21_0
 	db 21, RATTATA
 	db 23, PIDGEY
 	db 30, RATICATE

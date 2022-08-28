@@ -40,12 +40,15 @@ GiveFossilToCinnabarLab::
 	jr z, .choseDomeFossil
 	cp HELIX_FOSSIL
 	jr z, .choseHelixFossil
+.Archipelago_Gift_Aerodactyl_1
 	ld b, AERODACTYL
 	jr .fossilSelected
 .choseHelixFossil
+.Archipelago_Gift_Omanyte_1
 	ld b, OMANYTE
 	jr .fossilSelected
 .choseDomeFossil
+.Archipelago_Gift_Kabuto_1
 	ld b, KABUTO
 .fossilSelected
 	ld [wFossilItem], a

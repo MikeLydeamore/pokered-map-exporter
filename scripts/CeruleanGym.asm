@@ -49,7 +49,7 @@ CeruleanGymReceiveTM11:
 	SetEvent EVENT_BEAT_MISTY
 	CheckEvent EVENT_GOT_CASCADEBADGE
 	jr nz, .Archipelago_Event_Cerulean_Gym
-.Archipelago_Badge_Cerulean_Gym
+.Archipelago_Badge_Cerulean_Gym_2
 	lb bc, CASCADEBADGE, 1
 	call GiveItem
 	jr nc, .BagFull
@@ -161,7 +161,6 @@ TM11NoRoomText:
 
 ReceivedCascadeBadgeText:
 	text_far _ReceivedCascadeBadgeText
-	sound_get_key_item ; actually plays the second channel of SFX_BALL_POOF due to the wrong music bank being loaded
 	text_promptbutton
 	text_end
 

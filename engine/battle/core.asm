@@ -3973,21 +3973,37 @@ CheckForDisobedience:
 .monIsTraded
 ; what level might disobey?
 	ld hl, wObtainedBadges
-	bit BIT_EARTHBADGE, [hl]
-	ld a, 101
+	ld b, $1
+	call CountSetBits
+	ld a, [wNumSetBits]
+	cp 8
+	ld b, 101
+	jr nc, .next
+	cp 6
+	ld b, 70
+	jr nc, .next
+	cp 4
+	ld b, 50
+	jr nc, .next
+	cp 2
+	ld b, 30
 	jr nz, .next
-	bit BIT_MARSHBADGE, [hl]
-	ld a, 70
-	jr nz, .next
-	bit BIT_RAINBOWBADGE, [hl]
-	ld a, 50
-	jr nz, .next
-	bit BIT_CASCADEBADGE, [hl]
-	ld a, 30
-	jr nz, .next
-	ld a, 10
+	ld b, 10
+	;xor a
+	;ldh [hMultiplicand], a
+	;ldh [hMultiplicand + 1], a
+	;ld hl, wObtainedBadges
+	;ld b, $1
+	;call CountSetBits
+	;ld a, [wNumSetBits]
+	;inc a
+	;ldh [hMultiplicand + 2], a
+    ;ld a, 11
+	;ldh [hMultiplier], a
+	;call Multiply
+	;ldh a, [hProduct + 3]
 .next
-	ld b, a
+	ld a, b
 	ld c, a
 	ld a, [wBattleMonLevel]
 	ld d, a
@@ -5193,6 +5209,7 @@ IncrementMovePP:
 ; function to adjust the base damage of an attack to account for type effectiveness
 AdjustDamageForMoveType:
 ; values for player turn
+
 	ld hl, wBattleMonType
 	ld a, [hli]
 	ld b, a    ; b = type 1 of attacker
@@ -5243,6 +5260,14 @@ AdjustDamageForMoveType:
 	ld hl, wDamageMultipliers
 	set 7, [hl]
 .skipSameTypeAttackBonus
+
+    ld a, [wDamage]
+    ld [wOldDamage], a
+    ld a, [wDamage + 1]
+    ld [wOldDamage + 1], a
+
+
+
 	ld a, [wMoveType]
 	ld b, a
 	ld hl, TypeEffects
@@ -5268,21 +5293,21 @@ AdjustDamageForMoveType:
 	ld b, a
 	ld a, [hl] ; a = damage multiplier
 	ldh [hMultiplier], a
-	and a  ; cp NO_EFFECT
-	jr z, .gotMultiplier
-	cp NOT_VERY_EFFECTIVE
-	jr nz, .nothalf
-	ld a, [wDamageMultipliers]
-	and $7f
-	srl a
-	jr .gotMultiplier
-.nothalf
-	cp SUPER_EFFECTIVE
-	jr nz, .gotMultiplier
-	ld a, [wDamageMultipliers]
-	and $7f
-	sla a
-.gotMultiplier
+	;and a  ; cp NO_EFFECT
+	;jr z, .gotMultiplier
+	;cp NOT_VERY_EFFECTIVE
+	;jr nz, .nothalf
+	;ld a, [wDamageMultipliers]
+	;and $7f
+	;srl a
+	;jr .gotMultiplier
+;.nothalf
+	;cp SUPER_EFFECTIVE
+	;jr nz, .gotMultiplier
+	;ld a, [wDamageMultipliers]
+	;and $7f
+	;sla a
+;.gotMultiplier
 	add b
 	ld [wDamageMultipliers], a
 	xor a
@@ -5317,6 +5342,31 @@ AdjustDamageForMoveType:
 	inc hl
 	jp .loop
 .done
+
+    ld a, 0
+    ld [wEffectiveMessage], a
+
+    ld a, [wOldDamage]
+    ld b, a
+    ld a, [wDamage]
+    cp b
+    jr z, .checksecondbyte
+    jr c, .notvery ; old damage was more, not very effective
+    jr nc, .very ;
+.checksecondbyte
+    ld a, [wOldDamage + 1]
+    ld b, a
+    ld a, [wDamage + 1]
+    cp b
+    ret z ; damage didn't change, no message
+    jr c, .notvery ; old damage was more, not very effective
+.very
+    ld a, 2
+    ld [wEffectiveMessage], a
+    ret
+.notvery
+    ld a, 1
+    ld [wEffectiveMessage], a
 	ret
 
 ; function to tell how effective the type of an enemy attack is on the player's current pokemon

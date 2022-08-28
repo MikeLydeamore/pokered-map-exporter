@@ -41,32 +41,38 @@ SuperRodData:
 
 .Group1:
 	db 2
+.Archipelago_Wild_Super_Rod_A
 	db 15, TENTACOOL
 	db 15, POLIWAG
 
 .Group2:
 	db 2
+.Archipelago_Wild_Super_Rod_B
 	db 15, GOLDEEN
 	db 15, POLIWAG
 
 .Group3:
 	db 3
+.Archipelago_Wild_Super_Rod_C
 	db 15, PSYDUCK
 	db 15, GOLDEEN
 	db 15, KRABBY
 
 .Group4:
 	db 2
+.Archipelago_Wild_Super_Rod_D
 	db 15, KRABBY
 	db 15, SHELLDER
 
 .Group5:
 	db 2
+.Archipelago_Wild_Super_Rod_E
 	db 23, POLIWHIRL
 	db 15, SLOWPOKE
 
 .Group6:
 	db 4
+.Archipelago_Wild_Super_Rod_F
 	db 15, DRATINI
 	db 15, KRABBY
 	db 15, PSYDUCK
@@ -74,6 +80,7 @@ SuperRodData:
 
 .Group7:
 	db 4
+.Archipelago_Wild_Super_Rod_G
 	db 5, TENTACOOL
 	db 15, KRABBY
 	db 15, GOLDEEN
@@ -81,6 +88,7 @@ SuperRodData:
 
 .Group8:
 	db 4
+.Archipelago_Wild_Super_Rod_H
 	db 15, STARYU
 	db 15, HORSEA
 	db 15, SHELLDER
@@ -88,6 +96,7 @@ SuperRodData:
 
 .Group9:
 	db 4
+.Archipelago_Wild_Super_Rod_I
 	db 23, SLOWBRO
 	db 23, SEAKING
 	db 23, KINGLER
@@ -95,6 +104,7 @@ SuperRodData:
 
 .Group10:
 	db 4
+.Archipelago_Wild_Super_Rod_J
 	db 23, SEAKING
 	db 15, KRABBY
 	db 15, GOLDEEN

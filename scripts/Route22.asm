@@ -55,8 +55,21 @@ Route22RivalMovementData:
 	db -1 ; end
 
 Route22Script0:
-	CheckEvent EVENT_ROUTE22_RIVAL_WANTS_BATTLE
-	ret z
+	;CheckEvent EVENT_ROUTE22_RIVAL_WANTS_BATTLE
+	;ret z
+	CheckEvent EVENT_1ST_ROUTE22_RIVAL_BATTLE
+	jr z, .check2stBattle
+	CheckEvent EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE
+	jr z, .proceedBattle
+.check2stBattle
+	CheckEvent EVENT_2ND_ROUTE22_RIVAL_BATTLE
+    jr nz, .checkBeat2stBattle
+    ret
+.checkBeat2stBattle
+    CheckEvent EVENT_BEAT_ROUTE22_RIVAL_2ND_BATTLE
+    jr z, .proceedBattle
+    ret
+.proceedBattle
 	ld hl, .Route22RivalBattleCoords
 	call ArePlayerCoordsInArray
 	ret nc
@@ -68,8 +81,8 @@ Route22Script0:
 	ld [wJoyIgnore], a
 	ld a, PLAYER_DIR_LEFT
 	ld [wPlayerMovingDirection], a
-	CheckEvent EVENT_1ST_ROUTE22_RIVAL_BATTLE
-	jr nz, .firstRivalBattle
+	CheckEvent EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE
+	jr z, .firstRivalBattle
 	CheckEventReuseA EVENT_2ND_ROUTE22_RIVAL_BATTLE ; is this the rival at the end of the game?
 	jp nz, Route22Script_5104e
 	ret
@@ -227,12 +240,13 @@ Route22Script3:
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	call PlayDefaultMusic
-	ResetEvents EVENT_1ST_ROUTE22_RIVAL_BATTLE, EVENT_ROUTE22_RIVAL_WANTS_BATTLE
+	;ResetEvents EVENT_1ST_ROUTE22_RIVAL_BATTLE, EVENT_ROUTE22_RIVAL_WANTS_BATTLE
 	ld a, $0
 	ld [wRoute22CurScript], a
 	ret
 
 Route22Script_5104e:
+    ;SetEvent EVENT_1ST_ROUTE22_RIVAL_BATTLE
 	ld a, $2
 	ld [wEmotionBubbleSpriteIndex], a
 	xor a ; EXCLAMATION_BUBBLE
@@ -371,7 +385,7 @@ Route22Script6:
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	call PlayDefaultMusic
-	ResetEvents EVENT_2ND_ROUTE22_RIVAL_BATTLE, EVENT_ROUTE22_RIVAL_WANTS_BATTLE
+	;ResetEvents EVENT_2ND_ROUTE22_RIVAL_BATTLE, EVENT_ROUTE22_RIVAL_WANTS_BATTLE
 	ld a, $7
 	ld [wRoute22CurScript], a
 	ret

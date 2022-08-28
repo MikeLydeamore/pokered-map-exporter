@@ -36,7 +36,8 @@ ENDC
 	db -1 ; end
 
 DebugStart:
-IF DEF(_DEBUG)
+;IF DEF(_DEBUG)
+    ret
 	xor a ; PLAYER_PARTY_DATA
 	ld [wMonDataLocation], a
 
@@ -154,6 +155,6 @@ DebugItemsList:
 
 DebugUnusedList:
 	db -1 ; end
-ELSE
-	ret
-ENDC
+;ELSE
+;	ret
+;ENDC

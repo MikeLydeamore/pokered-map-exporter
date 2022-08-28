@@ -35,8 +35,8 @@ CeruleanCityScript4:
 	ret
 
 CeruleanCityScript0:
-	call DebugPressedOrHeldB
-	ret nz
+	;call DebugPressedOrHeldB
+	;ret nz
 	CheckEvent EVENT_BEAT_CERULEAN_ROCKET_THIEF
 	jr nz, .skipRocketThiefEncounter
 	ld hl, CeruleanCityCoords1
@@ -548,6 +548,42 @@ CeruleanCityText10:
 	pop bc
 	add c
 	ld [wUnusedCC5B], a
+	ld a, [wArchipelagoOptions]
+	bit BIT_EXTRA_KEY_ITEMS, a
+	jr nz, .Archipelago_Option_Cerulean_Cave_Condition_LD_A
+	ld a, [wUnusedCC5B]
+	ld c, a
+	push bc
+	ld b, HM_CUT
+	call IsItemInBag
+	pop bc
+	add c
+	ld c, a
+	push bc
+	ld b, HM_SURF
+	call IsItemInBag
+	pop bc
+	add c
+	ld c, a
+	push bc
+	ld b, HM_STRENGTH
+	call IsItemInBag
+	pop bc
+	add c
+	ld c, a
+	push bc
+	ld b, HM_FLY
+	call IsItemInBag
+	pop bc
+	add c
+	ld c, a
+	push bc
+	ld b, HM_FLASH
+	call IsItemInBag
+	pop bc
+	add c
+	ld [wUnusedCC5B], a
+
 .Archipelago_Option_Cerulean_Cave_Condition_LD_A
 	ld a, 20
 	ld [wUnusedD366], a

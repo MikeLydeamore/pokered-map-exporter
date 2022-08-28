@@ -1,5 +1,9 @@
 HallOfFamePC:
 	farcall AnimateHallOfFame
+	ld a, [wArchipelagoOptions]
+	bit BIT_GOAL, a
+    ret nz
+SkipHOFCredits::
 	call ClearScreen
 	ld c, 100
 	call DelayFrames
@@ -30,10 +34,7 @@ HallOfFamePC:
 	call DelayFrames
 	xor a
 	ld [wNumCreditsMonsDisplayed], a
-	ld a, [wArchipelagoOptions]
-	bit BIT_GOAL, a
-	jp z, Credits
-    jp Init
+	jp Credits
 
 FadeInCreditsText:
 	ld hl, HoFGBPalettes

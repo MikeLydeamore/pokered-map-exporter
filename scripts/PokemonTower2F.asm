@@ -17,8 +17,8 @@ PokemonTower2F_ScriptPointers:
 	dw PokemonTower2Script2
 
 PokemonTower2Script0:
-	call DebugPressedOrHeldB
-	ret nz
+	;call DebugPressedOrHeldB
+	;ret nz
 	CheckEvent EVENT_BEAT_POKEMON_TOWER_RIVAL
 	ret nz
 	ld hl, CoordsData_6055e

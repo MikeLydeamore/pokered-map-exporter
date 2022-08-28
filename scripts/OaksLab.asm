@@ -29,13 +29,28 @@ OaksLab_ScriptPointers:
 	dw OaksLabScript16
 	dw OaksLabScript17
 	dw OaksLabScript18
-	dw OaksLabScript19
+	dw OaksLabScript19 ; after oak battle
 
 OaksLabScript19:
 	;ld a, PALLET_TOWN
 	;ld [wLastBlackoutMap], a
-	farcall SaveSAVtoSRAM
-    farjp Credits
+	call EndTrainerBattle
+	ld a, [wIsInBattle]
+	cp $ff
+	jr z, .lostBattle
+	SetEvent EVENT_VICTORY
+    ld a, $12
+    ld [wOaksLabCurScript], a
+	;farcall SaveSAVtoSRAM
+    ;farjp SkipHOFCredits
+    ld hl, OakVictoryText
+    call PrintText
+.lostBattle
+    ld hl, OakFailureText
+    call PrintText
+    ld a, $12
+    ld [wOaksLabCurScript], a
+    ret
 
 OaksLabScript0:
 	CheckEvent EVENT_OAK_APPEARED_IN_PALLET
@@ -644,8 +659,8 @@ OaksLabScript17:
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	SetEvent EVENT_1ST_ROUTE22_RIVAL_BATTLE
-	ResetEventReuseHL EVENT_2ND_ROUTE22_RIVAL_BATTLE
-	SetEventReuseHL EVENT_ROUTE22_RIVAL_WANTS_BATTLE
+	;ResetEventReuseHL EVENT_2ND_ROUTE22_RIVAL_BATTLE
+	;SetEventReuseHL EVENT_ROUTE22_RIVAL_WANTS_BATTLE
 	ld a, HS_ROUTE_22_RIVAL_1
 	ld [wMissableObjectIndex], a
 	predef ShowObject
@@ -972,6 +987,9 @@ OaksLabLastMonText:
 	text_end
 
 OakFailureText:
+    text "you lost@"
+    text_end
+
 OakVictoryText:
 	text "CONGLATURATION!"
 	para "You have completed"
@@ -982,7 +1000,7 @@ OakVictoryText:
 	cont "culture."
 
 	para "Now go and rest"
-	line "our heroes!"
+	line "our heroes!@"
 	text_asm
 	ld a, $19
 	ld [wOaksLabCurScript], a
@@ -990,7 +1008,8 @@ OakVictoryText:
 
 OaksLabText32:
 OaksLabText5:
-	text_asm
+    text_asm
+	;jr .test
 	CheckEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
 	jr nz, .asm_1d266
 	CheckEvent EVENT_GOT_POKEDEX
@@ -998,10 +1017,12 @@ OaksLabText5:
 	CheckEvent EVENT_GOT_POKEBALLS_FROM_OAK
 	jr z, .asm_1d279
 .asm_1d266
+    jr .noFight
 	CheckEvent EVENT_BEATEN_GAME
     jr z, .noFight
 	CheckEvent EVENT_BEAT_MEWTWO
     jr z, .noFight
+.test
     ld hl, OaksLabPleaseVisitText
 	call PrintText
     ld hl, OakVictoryText
@@ -1025,7 +1046,8 @@ OaksLabText5:
 	ld a, 1
 .done
 	ld [wTrainerNo], a
-
+	ld a, 19
+    ld [wOaksLabCurScript], a
 	jp TextScriptEnd
 .noFight
 	ld hl, OaksLabText_1d31d

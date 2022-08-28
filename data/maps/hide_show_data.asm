@@ -25,9 +25,9 @@ MapHSPointers:
 	dw NoHS
 	dw Route9HS
 	dw NoHS
-	dw NoHS
+	dw Route11HS
 	dw Route12HS
-	dw NoHS
+	dw Route13HS
 	dw NoHS
 	dw Route15HS
 	dw Route16HS
@@ -271,7 +271,7 @@ ViridianCityHS:
 	db VIRIDIAN_CITY, $07, HIDE
 PewterCityHS:
 	db PEWTER_CITY, $03, SHOW
-	db PEWTER_CITY, $05, SHOW
+	db PEWTER_CITY, $05, HIDE
 CeruleanCityHS:
 	db CERULEAN_CITY, $01, HIDE
 	db CERULEAN_CITY, $02, SHOW
@@ -567,5 +567,11 @@ SeafoamIslandsB4FHS:
 	db SEAFOAM_ISLANDS_B4F, $01, HIDE
 	db SEAFOAM_ISLANDS_B4F, $02, HIDE
 	db SEAFOAM_ISLANDS_B4F, $03, SHOW
+Route13HS:
+.Archipelago_Option_Boulders_2
+    db ROUTE_13, 11, HIDE
+Route11HS:
+    db ROUTE_11, 11, HIDE
+    db ROUTE_11, 12, HIDE
 	db $FF, $01, SHOW ; end
 	assert_table_length NUM_HS_OBJECTS + 1

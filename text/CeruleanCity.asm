@@ -98,7 +98,7 @@ _CeruleanCityText_196ee::
 
 _CeruleanCityText_196f3::
 	text "OK! I'll return"
-	line "the TM I stole!"
+	line "the item I stole!"
 	prompt
 
 _CeruleanCityText3::

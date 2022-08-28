@@ -49,7 +49,7 @@ SaffronGymReceiveTM46:
 	SetEvent EVENT_BEAT_SABRINA
 	CheckEvent EVENT_GOT_MARSHBADGE
 	jr nz, .Archipelago_Event_Saffron_Gym
-.Archipelago_Badge_Saffron_Gym
+.Archipelago_Badge_Saffron_Gym_2
 	lb bc, MARSHBADGE, 1
 	call GiveItem
 	jr nc, .BagFull

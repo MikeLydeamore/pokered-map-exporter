@@ -130,8 +130,13 @@ StartMenu_Pokemon::
 	dw .teleport
 	dw .softboiled
 .fly
+.Archipelago_HM_Fly_Badge_a_0
+	bit BIT_THUNDERBADGE, a
+	jr nz, .hasFlyBadge
+.Archipelago_HM_Fly_Badge_b_1
 	bit BIT_THUNDERBADGE, a
 	jp z, .newBadgeRequired
+.hasFlyBadge
 	call CheckIfInOutsideMap
 	jr z, .canFly
 	ld a, [wWhichPokemon]
@@ -150,8 +155,13 @@ StartMenu_Pokemon::
 	set 1, [hl]
 	jp StartMenu_Pokemon
 .cut
+.Archipelago_HM_Cut_Badge_a_0
+	bit BIT_CASCADEBADGE, a
+	jr nz, .hasCutBadge
+.Archipelago_HM_Cut_Badge_b_1
 	bit BIT_CASCADEBADGE, a
 	jp z, .newBadgeRequired
+.hasCutBadge
 	predef UsedCut
 	ld a, [wActionResultOrTookBattleTurn]
 	and a
@@ -168,14 +178,24 @@ StartMenu_Pokemon::
 	call GBPalWhiteOutWithDelay3
 	jp .goBackToMap
 .strength
+.Archipelago_HM_Strength_Badge_a_0
+	bit BIT_RAINBOWBADGE, a
+	jr nz, .hasStrengthBadge
+.Archipelago_HM_Strength_Badge_b_1
 	bit BIT_RAINBOWBADGE, a
 	jp z, .newBadgeRequired
+.hasStrengthBadge
 	predef PrintStrengthTxt
 	call GBPalWhiteOutWithDelay3
 	jp .goBackToMap
 .flash
+.Archipelago_HM_Flash_Badge_a_0
+	bit BIT_BOULDERBADGE, a
+	jr nz, .hasFlashBadge
+.Archipelago_HM_Flash_Badge_b_1
 	bit BIT_BOULDERBADGE, a
 	jp z, .newBadgeRequired
+.hasFlashBadge
 	xor a
 	ld [wMapPalOffset], a
 	ld hl, .flashLightsAreaText

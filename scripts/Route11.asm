@@ -23,9 +23,9 @@ Route11_TextPointers:
 	dw Route11Text8
 	dw Route11Text9
 	dw Route11Text10
+	dw BoulderText
+	dw BoulderText
 	dw Route11Text11
-	dw BoulderText
-	dw BoulderText
 
 Route11TrainerHeaders:
 	def_trainers

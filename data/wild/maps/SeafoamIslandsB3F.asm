@@ -1,5 +1,6 @@
 SeafoamIslandsB3FWildMons:
 	def_grass_wildmons 10 ; encounter rate
+.Archipelago_Wild_SeafoamIslandsB3F_0
 IF DEF(_RED)
 	db 31, SLOWPOKE
 	db 31, SEEL

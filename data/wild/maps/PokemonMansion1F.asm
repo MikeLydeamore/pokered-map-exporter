@@ -1,5 +1,6 @@
 PokemonMansion1FWildMons:
 	def_grass_wildmons 10 ; encounter rate
+.Archipelago_Wild_PokemonMansion1F_0
 IF DEF(_RED)
 	db 32, KOFFING
 	db 30, KOFFING

@@ -1,5 +1,6 @@
 Route5WildMons:
 	def_grass_wildmons 15 ; encounter rate
+.Archipelago_Wild_Route5_0
 IF DEF(_RED)
 	db 13, ODDISH
 	db 13, PIDGEY

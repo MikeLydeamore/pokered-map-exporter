@@ -1,5 +1,6 @@
 Route22WildMons:
 	def_grass_wildmons 25 ; encounter rate
+.Archipelago_Wild_Route22_0
 	db  3, RATTATA
 IF DEF(_RED)
 	db  3, NIDORAN_M

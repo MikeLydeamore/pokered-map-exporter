@@ -1,5 +1,6 @@
 Route11WildMons:
 	def_grass_wildmons 15 ; encounter rate
+.Archipelago_Wild_Route11_0
 IF DEF(_RED)
 	db 14, EKANS
 	db 15, SPEAROW

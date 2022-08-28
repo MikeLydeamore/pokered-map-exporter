@@ -141,7 +141,7 @@ ViridianGymReceiveTM27:
 	SetEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
 	CheckEvent EVENT_GOT_EARTHBADGE
 	jr nz, .Archipelago_Event_Viridian_Gym
-.Archipelago_Badge_Viridian_Gym
+.Archipelago_Badge_Viridian_Gym_2
 	lb bc, EARTHBADGE, 1
 	call GiveItem
 	jr nc, .BagFull
@@ -179,7 +179,7 @@ ViridianGymReceiveTM27:
 	ld a, HS_ROUTE_22_RIVAL_2
 	ld [wMissableObjectIndex], a
 	predef ShowObject
-	SetEvents EVENT_2ND_ROUTE22_RIVAL_BATTLE, EVENT_ROUTE22_RIVAL_WANTS_BATTLE
+	SetEvent EVENT_2ND_ROUTE22_RIVAL_BATTLE ;, EVENT_ROUTE22_RIVAL_WANTS_BATTLE
 	jp ViridianGymResetScripts
 
 ViridianGym_TextPointers:
@@ -281,6 +281,7 @@ GiovanniEarthBadgeInfoText:
 ReceivedTM27Text:
 	text_far _ReceivedTM27Text
 	sound_get_item_1
+    text_end
 
 TM27ExplanationText:
 	text_far _TM27ExplanationText

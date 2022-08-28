@@ -23,6 +23,9 @@ CinnabarIslandScript0:
 	cp 18
 	jr z, .locked
 .MansionCheck
+    ld a, [wArchipelagoOptions]
+    bit BIT_EXTRA_KEY_ITEMS, a
+    ret z
     ld b, MANSION_KEY
     call IsItemInBag
     ret nz

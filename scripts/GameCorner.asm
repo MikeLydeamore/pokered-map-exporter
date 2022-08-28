@@ -446,6 +446,15 @@ CeladonGameCornerText12:
 	text_asm
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+
+	ld a, [wArchipelagoOptions]
+	bit BIT_EXTRA_KEY_ITEMS, a
+	jr nz, .checkKey
+	ld hl, CeladonGameCornerTextOrig1
+	call PrintText
+	jr .skipKey
+.checkKey
+
 	ld hl, CeladonGameCornerText_48f09
 	call PrintText
 	call WaitForTextScrollButtonPress
@@ -456,6 +465,7 @@ CeladonGameCornerText12:
 	;call DelayFrames
 	ld hl, CeladonGameCornerText_unlock
 	call PrintText
+.skipKey
 	ld a, SFX_START_MENU
 	call PlaySound
 	call WaitForSoundToFinish
@@ -470,6 +480,14 @@ CeladonGameCornerText12:
 	predef ReplaceTileBlock
 .locked
 	jp TextScriptEnd
+
+CeladonGameCornerTextOrig1:
+	text "Hey!"
+
+	para "A switch behind"
+	line "the poster!?"
+	cont "Let's push it!@"
+	text_end
 
 CeladonGameCornerText_48f09:
 	text_far _CeladonGameCornerText_48f09

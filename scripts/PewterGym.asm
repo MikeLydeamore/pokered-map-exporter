@@ -49,7 +49,7 @@ PewterGymScriptReceiveTM34:
 	SetEvent EVENT_BEAT_BROCK
 	CheckEvent EVENT_GOT_BOULDERBADGE
 	jr nz, .Archipelago_Event_Pewter_Gym
-.Archipelago_Badge_Pewter_Gym
+.Archipelago_Badge_Pewter_Gym_2
     lb bc, BOULDERBADGE, 1
     call GiveItem
     jr nc, .BagFull
@@ -84,11 +84,11 @@ PewterGymScriptReceiveTM34:
 	ld a, HS_GYM_GUY
 	ld [wMissableObjectIndex], a
 	predef HideObject
-	ld a, HS_ROUTE_22_RIVAL_1
-	ld [wMissableObjectIndex], a
-	predef HideObject
+	;ld a, HS_ROUTE_22_RIVAL_1
+	;ld [wMissableObjectIndex], a
+	;predef HideObject
 
-	ResetEvents EVENT_1ST_ROUTE22_RIVAL_BATTLE, EVENT_ROUTE22_RIVAL_WANTS_BATTLE
+	;ResetEvents EVENT_1ST_ROUTE22_RIVAL_BATTLE, EVENT_ROUTE22_RIVAL_WANTS_BATTLE
 
 	; deactivate gym trainers
 	;SetEvent EVENT_BEAT_PEWTER_GYM_TRAINER_0

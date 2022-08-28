@@ -68,7 +68,7 @@ VermilionGymReceiveTM24:
 	SetEvent EVENT_BEAT_LT_SURGE
 	CheckEvent EVENT_GOT_THUNDERBADGE
 	jr nz, .Archipelago_Event_Vermillion_Gym
-.Archipelago_Badge_Vermilion_Gym
+.Archipelago_Badge_Vermilion_Gym_2
 	lb bc, THUNDERBADGE, 1
 	call GiveItem
 	jr nc, .BagFull

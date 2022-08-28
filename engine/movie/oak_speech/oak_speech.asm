@@ -71,9 +71,12 @@ OakSpeech:
 	call SpecialWarpIn
 	xor a
 	ldh [hTileAnimations], a
-	ld a, $FF ; [wd732]
-	bit 1, a ; possibly a debug mode bit
-	jp nz, .skipChoosingNames
+	;ld a, $FF ; [wd732]
+	;bit 1, a ; possibly a debug mode bit
+
+	call ChoosePlayerName
+	call ChooseRivalName
+	jp .skipChoosingNames
 	ld de, ProfOakPic
 	lb bc, BANK(ProfOakPic), $00
 	call IntroDisplayPicCenteredOrUpperRight

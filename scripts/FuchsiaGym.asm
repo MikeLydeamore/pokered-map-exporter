@@ -51,7 +51,7 @@ FuchsiaGymReceiveTM06:
 	SetEvent EVENT_BEAT_KOGA
 	CheckEvent EVENT_GOT_SOULBADGE
 	jr nz, .Archipelago_Event_Fuschia_Gym
-.Archipelago_Badge_Fuchsia_Gym
+.Archipelago_Badge_Fuchsia_Gym_2
 	lb bc, SOULBADGE, 1
 	call GiveItem
 	jr nc, .BagFull

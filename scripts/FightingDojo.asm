@@ -21,9 +21,9 @@ FightingDojo_ScriptPointers:
 	dw FightingDojoScript3
 
 FightingDojoScript1:
+	call CheckFightingMapTrainers
 	CheckEvent EVENT_DEFEATED_FIGHTING_DOJO
 	ret nz
-	call CheckFightingMapTrainers
 	ld a, [wTrainerHeaderFlagBit]
 	and a
 	ret nz
@@ -232,6 +232,7 @@ FightingDojoText6:
 	call PrintText
 	jr .done
 .GetMon
+.Archipelago_Gift_Hitmonlee_1
 	ld a, HITMONLEE
 	call DisplayPokedex
 	ld hl, WantHitmonleeText
@@ -267,6 +268,7 @@ FightingDojoText7:
 	call PrintText
 	jr .done
 .GetMon
+.Archipelago_Gift_Hitmonchan_1
 	ld a, HITMONCHAN
 	call DisplayPokedex
 	ld hl, WantHitmonchanText

@@ -1,5 +1,6 @@
 CeruleanCaveB1FWildMons:
 	def_grass_wildmons 25 ; encounter rate
+.Archipelago_Wild_CeruleanCaveB1F_0
 	db 55, RHYDON
 	db 55, MAROWAK
 	db 55, ELECTRODE

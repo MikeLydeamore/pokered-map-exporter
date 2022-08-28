@@ -49,7 +49,7 @@ CeladonGymReceiveTM21:
 	SetEvent EVENT_BEAT_ERIKA
 	CheckEvent EVENT_GOT_RAINBOWBADGE
 	jr nz, .Archipelago_Event_Celadon_Gym
-.Archipelago_Badge_Celadon_Gym
+.Archipelago_Badge_Celadon_Gym_2
 	lb bc, RAINBOWBADGE, 1
 	call GiveItem
 	jr nc, .BagFull

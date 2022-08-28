@@ -1,5 +1,6 @@
 Route23WildMons:
 	def_grass_wildmons 10 ; encounter rate
+.Archipelago_Wild_Route23_0
 IF DEF(_RED)
 	db 26, EKANS
 ENDC

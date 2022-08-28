@@ -144,6 +144,13 @@ SafariZoneGate_TextPointers:
 
 .SafariZoneEntranceText4
 	text_asm
+	ld a, [wArchipelagoOptions]
+	bit BIT_EXTRA_KEY_ITEMS, a
+	jr nz, .pass
+	ld hl, SafariZoneEntranceText_noPass
+	call PrintText
+	jr .skipPass
+.pass
 	ld b, SAFARI_PASS
 	call IsItemInBag
 	jp nz, .hasCard
@@ -198,6 +205,7 @@ SafariZoneGate_TextPointers:
 .hasCard
     ld hl, SafariZoneEntranceText_9e747
 	call PrintText
+.skipPass
 	ld a, 30
 	ld [wNumSafariBalls], a
 	ld a, HIGH(502)
@@ -213,6 +221,8 @@ SafariZoneGate_TextPointers:
 	ld [wSafariZoneGateCurScript], a
 	jr .done
 
+
+
 .PleaseComeAgain
 	ld hl, .PleaseComeAgainText
 	call PrintText
@@ -224,12 +234,6 @@ SafariZoneGate_TextPointers:
 	ld [wSafariZoneGateCurScript], a
 .done
 	jp TextScriptEnd
-
-.MakePaymentText
-	text_far SafariZoneEntranceText_9e747
-	sound_get_item_1
-	text_far _SafariZoneEntranceText_75360
-	text_end
 
 .PleaseComeAgainText
 	text_far _SafariZoneEntranceText_75365
@@ -346,6 +350,14 @@ SafariZoneEntranceText_9e747::
 	;cont "here."
 	text "Ah, a season pass!"
 	line "Right this way!"
+
+	para "<PLAYER> received"
+	line "30 SAFARI BALLs!@"
+	text_end
+
+
+SafariZoneEntranceText_noPass::
+	text "Right this way!"
 
 	para "<PLAYER> received"
 	line "30 SAFARI BALLs!@"

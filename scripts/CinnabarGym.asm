@@ -149,7 +149,7 @@ CinnabarGymReceiveTM38:
 	SetEvent EVENT_BEAT_BLAINE
 	CheckEvent EVENT_GOT_VOLCANOBADGE
 	jr nz, .Archipelago_Event_Cinnabar_Gym
-.Archipelago_Badge_Cinnabar_Gym
+.Archipelago_Badge_Cinnabar_Gym_2
 	lb bc, VOLCANOBADGE, 1
 	call GiveItem
 	jr nc, .BagFull

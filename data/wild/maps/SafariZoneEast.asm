@@ -1,5 +1,6 @@
 SafariZoneEastWildMons:
 	def_grass_wildmons 30 ; encounter rate
+.Archipelago_Wild_SafariZoneEast_0
 IF DEF(_RED)
 	db 24, NIDORAN_M
 	db 26, DODUO

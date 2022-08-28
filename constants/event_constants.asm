@@ -4,7 +4,7 @@
 	const_def
 	const EVENT_FOLLOWED_OAK_INTO_LAB
 	const EVENT_CHECKED_PC
-	const_skip 1
+	const EVENT_GOT_TEA
 	const EVENT_HALL_OF_FAME_DEX_RATING
 	const_skip 2
 	const EVENT_PALLET_AFTER_GETTING_POKEBALLS
@@ -468,7 +468,7 @@
 	const_next $520
 	const EVENT_1ST_ROUTE22_RIVAL_BATTLE
 	const EVENT_2ND_ROUTE22_RIVAL_BATTLE
-	const_skip 3
+	const_skip 2
 	const EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE
 	const EVENT_BEAT_ROUTE22_RIVAL_2ND_BATTLE
 	const EVENT_ROUTE22_RIVAL_WANTS_BATTLE
@@ -722,8 +722,10 @@
 
 ; Cerulean Cave events
 	const_next $8C0
-	const_skip
+	const EVENT_VICTORY
 	const EVENT_BEAT_MEWTWO
+	const EVENT_BEATEN_GAME
+	const EVENT_BEAT_OAK
 
 ; Indigo Plateau events
 	const_next $8E0
@@ -744,11 +746,9 @@
 	const_skip 4
 	const EVENT_BEAT_LANCE
 	const EVENT_LANCES_ROOM_LOCK_DOOR
-	const EVENT_BEATEN_GAME
+	const_skip
 	const EVENT_BEAT_CHAMPION_RIVAL
-	const EVENT_BEAT_CHAMPION_RIVAL_REMAINS
-	const EVENT_BEAT_OAK
-	const_skip 3
+	const_skip 5
 	const ELITE4_CHAMPION_EVENTS_END
 
 ; Victory Road 1F events

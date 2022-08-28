@@ -103,16 +103,16 @@ FanClubText5:
 	CheckEvent EVENT_GOT_BIKE_VOUCHER
 	jr nz, .nothingleft
 
-	ld hl, .meetchairtext
-	call PrintText
-	call YesNoChoice
-	ld a, [wCurrentMenuItem]
-	and a
-	jr nz, .nothanks
+	;ld hl, .meetchairtext
+	;call PrintText
+	;call YesNoChoice
+	;ld a, [wCurrentMenuItem]
+	;and a
+	;jr nz, .nothanks
 
 	; tell the story
-	ld hl, .storytext
-	call PrintText
+	;ld hl, .storytext
+	;call PrintText
 .Archipelago_Event_Pokemon_Fan_Club
 	lb bc, BIKE_VOUCHER, 1
 	call GiveItem
@@ -146,7 +146,7 @@ FanClubText5:
 .receivedvouchertext
 	text_far ReceivedBikeVoucherText
 	sound_get_key_item
-	text_far ExplainBikeVoucherText
+	;text_far ExplainBikeVoucherText
 	text_end
 
 .nostorytext

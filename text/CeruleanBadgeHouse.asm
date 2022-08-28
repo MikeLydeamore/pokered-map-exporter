@@ -11,9 +11,8 @@ _CeruleanHouse2Text_74e77::
 	prompt
 
 _CeruleanHouse2Text_74e7c::
-	text "Now then..."
 
-	para "Which of the 8"
+	text "Which of the 8"
 	line "BADGEs should I"
 	cont "describe?"
 	done
@@ -28,21 +27,17 @@ _CeruleanHouse2Text_74e96::
 	line "#MON increases"
 	cont "a little bit."
 
-	para "It also lets you"
-	line "use FLASH any"
-	cont "time you desire."
+	para "Enables:"
+	line "FLASH"
+.Archipelago_Badge_Text_Boulder_Badge
+	db "          "
 	prompt
 
 _CeruleanHouse2Text_74e9b::
-	text "#MON up to L30"
-	line "will obey you."
-
-	para "Any higher, they"
-	line "become unruly!"
-
-	para "It also lets you"
-	line "use CUT outside"
-	cont "of battle."
+	text "Enables:"
+	line "CUT"
+.Archipelago_Badge_Text_Cascade_Badge
+	db "          "
 	prompt
 
 _CeruleanHouse2Text_74ea0::
@@ -50,21 +45,17 @@ _CeruleanHouse2Text_74ea0::
 	line "#MON increases"
 	cont "a little bit."
 
-	para "It also lets you"
-	line "use FLY outside"
-	cont "of battle."
+	para "Enables:"
+	line "FLY"
+.Archipelago_Badge_Text_Thunder_Badge
+	db "          "
 	prompt
 
 _CeruleanHouse2Text_74ea5::
-	text "#MON up to L50"
-	line "will obey you."
-
-	para "Any higher, they"
-	line "become unruly!"
-
-	para "It also lets you"
-	line "use STRENGTH out-"
-	cont "side of battle."
+	text "Enables:"
+	line "STRENGTH"
+.Archipelago_Badge_Text_Rainbow_Badge
+	db "          "
 	prompt
 
 _CeruleanHouse2Text_74eaa::
@@ -72,26 +63,33 @@ _CeruleanHouse2Text_74eaa::
 	line "#MON increases"
 	cont "a little bit."
 
-	para "It also lets you"
-	line "use SURF outside"
-	cont "of battle."
+	para "Enables:"
+	line "SURF"
+.Archipelago_Badge_Text_Soul_Badge
+	db "          "
 	prompt
 
 _CeruleanHouse2Text_74eaf::
-	text "#MON up to L70"
-	line "will obey you."
+	text "Enables:"
+	line ""
+.Archipelago_Badge_Text_Marsh_Badge
+	db "          "
 
-	para "Any higher, they"
-	line "become unruly!"
 	prompt
 
 _CeruleanHouse2Text_74eb4::
 	text "Your #MON's"
 	line "SPECIAL abilities"
 	cont "increase a bit."
+	para "Enables:"
+	line ""
+.Archipelago_Badge_Text_Volcano_Badge
+	db "          "
 	prompt
 
 _CeruleanHouse2Text_74eb9::
-	text "All #MON will"
-	line "obey you!"
+	text "Enables:"
+	line ""
+.Archipelago_Badge_Text_Earth_Badge
+	db "          "
 	prompt

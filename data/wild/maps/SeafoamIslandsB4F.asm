@@ -1,5 +1,6 @@
 SeafoamIslandsB4FWildMons:
 	def_grass_wildmons 10 ; encounter rate
+.Archipelago_Wild_SeafoamIslandsB4F_0
 IF DEF(_RED)
 	db 31, HORSEA
 	db 31, SHELLDER

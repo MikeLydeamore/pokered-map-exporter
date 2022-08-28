@@ -699,8 +699,13 @@ ItemUseStrength:
 ; used for Surf out-of-battle effect
 ItemUseSurfboard:
     ld a, [wObtainedBadges]
+.Archipelago_HM_Surf_Badge_a_0
+	bit BIT_SOULBADGE, a
+	jr nz, .hasSurfBadge
+.Archipelago_HM_Surf_Badge_b_1
 	bit BIT_SOULBADGE, a
 	jp z, newBadgeRequired2
+.hasSurfBadge
 	farcall IsSurfingAllowed
 	ld hl, wd728
 	bit 1, [hl]

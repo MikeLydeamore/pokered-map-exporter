@@ -2298,7 +2298,12 @@ wMainDataEnd::
 
 wArchipelagoGameStarted:: db
 wArchipelagoFieldMoveItemUsed:: db
-
+wArchipelagoSerialStatus:: db
+wArchipelagoSerialLength:: ds 2
+wArchipelagoSerialSendData:: ds 2
+wArchipelagoSerialReceiveData:: ds 2
+wOldDamage:: ds 2
+wEffectiveMessage:: db
 SECTION "Current Box Data", WRAM0
 
 wBoxDataStart::

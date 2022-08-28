@@ -23,7 +23,7 @@ ViridianCityScript_1900b:
 	ld b, $1
 	call CountSetBits
 	ld a, [wNumSetBits]
-.Archipelago_Option_Viridian_Gym_Badges
+.Archipelago_Option_Viridian_Gym_Badges_1
 	cp 7
 	jr c, .gym_closed
 	SetEvent EVENT_VIRIDIAN_GYM_OPEN
