@@ -135,9 +135,9 @@ ViridianGymGiovanniPostBattle:
 	ld [wJoyIgnore], a
 ; fallthrough
 ViridianGymReceiveTM27:
-	ld a, $c
-	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
+	;ld a, $c
+	;ldh [hSpriteIndexOrTextID], a
+	;call DisplayTextID
 	SetEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
 	CheckEvent EVENT_GOT_EARTHBADGE
 	jr nz, .Archipelago_Event_Viridian_Gym

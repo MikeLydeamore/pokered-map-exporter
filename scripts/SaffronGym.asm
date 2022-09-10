@@ -43,9 +43,9 @@ SaffronGymSabrinaPostBattle:
 	ld [wJoyIgnore], a
 
 SaffronGymReceiveTM46:
-	ld a, $a
-	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
+	;ld a, $a
+	;ldh [hSpriteIndexOrTextID], a
+	;call DisplayTextID
 	SetEvent EVENT_BEAT_SABRINA
 	CheckEvent EVENT_GOT_MARSHBADGE
 	jr nz, .Archipelago_Event_Saffron_Gym

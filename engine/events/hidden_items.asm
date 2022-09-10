@@ -1,6 +1,7 @@
 HiddenItems:
 	ld b, ITEMFINDER
 	call IsItemInBag
+.Archipelago_Option_Itemfinder_0
 	ret z
 	ld hl, HiddenItemCoords
 	call FindHiddenItemOrCoinsIndex

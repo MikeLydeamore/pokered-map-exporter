@@ -736,7 +736,7 @@ _VermilionGymTrashSuccessText2::
 	prompt
 
 _VermilionGymTrashSuccessText3::
-	text "The 2nd electric"
+	text "The electric"
 	line "lock opened!"
 
 	para "The motorized door"

@@ -8,7 +8,11 @@ Route15Gate2F_TextPointers:
 Route15GateUpstairsText1:
 	text_asm
 	CheckEvent EVENT_GOT_EXP_ALL
-	jr nz, .got_item
+	jr z, .Archipelago_Option_Aide_Rt15_1
+    ld hl, Route15GateUpstairsText_4968c
+    call PrintText
+    jp TextScriptEnd
+.Archipelago_Option_Aide_Rt15_1
 	ld a, 50
 	ldh [hOaksAideRequirement], a
 .Archipelago_Event_LD_A_Rt_15_Oaks_Aide
@@ -26,8 +30,8 @@ Route15GateUpstairsText1:
 	jr nz, .no_item
 	SetEvent EVENT_GOT_EXP_ALL
 .got_item
-	ld hl, Route15GateUpstairsText_4968c
-	call PrintText
+	;ld hl, Route15GateUpstairsText_4968c
+	;call PrintText
 .no_item
 	jp TextScriptEnd
 

@@ -143,9 +143,9 @@ CinnabarGymBlainePostBattle:
 	ld [wJoyIgnore], a
 ; fallthrough
 CinnabarGymReceiveTM38:
-	ld a, $a
-	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
+	;ld a, $a
+	;ldh [hSpriteIndexOrTextID], a
+	;call DisplayTextID
 	SetEvent EVENT_BEAT_BLAINE
 	CheckEvent EVENT_GOT_VOLCANOBADGE
 	jr nz, .Archipelago_Event_Cinnabar_Gym

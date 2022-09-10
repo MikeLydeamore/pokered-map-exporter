@@ -445,14 +445,6 @@ CeruleanCityText10:
 	ld a, [wNumSetBits]
 	ld c, a
 	push bc
-	ld hl, wBeatGymFlags
-	ld b, $1
-	call CountSetBits
-	ld a, [wNumSetBits]
-	pop bc
-	add c
-	ld c, a
-	push bc
 	ld b, SECRET_KEY
 	call IsItemInBag
 	pop bc
@@ -547,11 +539,11 @@ CeruleanCityText10:
 	call IsItemInBag
 	pop bc
 	add c
-	ld [wUnusedCC5B], a
-	ld a, [wArchipelagoOptions]
-	bit BIT_EXTRA_KEY_ITEMS, a
-	jr nz, .Archipelago_Option_Cerulean_Cave_Condition_LD_A
-	ld a, [wUnusedCC5B]
+	;ld [wUnusedCC5B], a
+	;ld a, [wArchipelagoOptions]
+	;bit BIT_EXTRA_KEY_ITEMS, a
+	;jr nz, .Archipelago_Option_Cerulean_Cave_Condition_LD_A
+	;ld a, [wUnusedCC5B]
 	ld c, a
 	push bc
 	ld b, HM_CUT
@@ -614,8 +606,8 @@ CeruleanCityTextCaveGuy:
     cont "of @"
     text_decimal wUnusedD366, 1, 2
     text " badges,"
-    cont "gyms defeated,"
-    cont "and key items."
+    text "HMs, and key"
+    text "items."
     prompt
 
 CeruleanCityCaveGuyYouHave:

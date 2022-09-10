@@ -62,9 +62,9 @@ VermilionGymLTSurgePostBattle:
 	ld [wJoyIgnore], a
 
 VermilionGymReceiveTM24:
-	ld a, $6
-	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
+	;ld a, $6
+	;ldh [hSpriteIndexOrTextID], a
+	;call DisplayTextID
 	SetEvent EVENT_BEAT_LT_SURGE
 	CheckEvent EVENT_GOT_THUNDERBADGE
 	jr nz, .Archipelago_Event_Vermillion_Gym

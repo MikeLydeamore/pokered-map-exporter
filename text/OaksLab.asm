@@ -207,8 +207,8 @@ _OaksLabRivalChallengeText::
 	done
 
 _OaksLabText_1d3be::
-	text "I hate this"
-	line "game."
+	text "I hate"
+	line "this game."
 	prompt
 
 _OaksLabText_1d3c3::

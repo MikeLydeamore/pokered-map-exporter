@@ -18,7 +18,11 @@ Route11GateUpstairsScriptEnd:
 Route11GateUpstairsText2:
 	text_asm
 	CheckEvent EVENT_GOT_ITEMFINDER, 1
-	jr c, .got_item
+	jr nc, .Archipelago_Option_Aide_Rt11_1
+	ld hl, Route11GateUpstairsText_494a3
+	call PrintText
+	jp TextScriptEnd
+.Archipelago_Option_Aide_Rt11_1
 	ld a, 30
 	ldh [hOaksAideRequirement], a
 .Archipelago_Event_LD_A_Rt11_Oaks_Aide
@@ -37,8 +41,8 @@ Route11GateUpstairsText2:
 	jr nz, .no_item
 	SetEvent EVENT_GOT_ITEMFINDER
 .got_item
-	ld hl, Route11GateUpstairsText_494a3
-	call PrintText
+	;ld hl, Route11GateUpstairsText_494a3
+	;call PrintText
 .no_item
 	jr Route11GateUpstairsScriptEnd
 

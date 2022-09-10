@@ -45,9 +45,9 @@ FuchsiaGymKogaPostBattle:
 	ld [wJoyIgnore], a
 ; fallthrough
 FuchsiaGymReceiveTM06:
-	ld a, $9
-	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
+	;ld a, $9
+	;ldh [hSpriteIndexOrTextID], a
+	;call DisplayTextID
 	SetEvent EVENT_BEAT_KOGA
 	CheckEvent EVENT_GOT_SOULBADGE
 	jr nz, .Archipelago_Event_Fuschia_Gym

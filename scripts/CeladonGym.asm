@@ -43,9 +43,9 @@ CeladonGymErikaPostBattle:
 	ld [wJoyIgnore], a
 
 CeladonGymReceiveTM21:
-	ld a, $9
-	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
+	;ld a, $9
+	;ldh [hSpriteIndexOrTextID], a
+	;call DisplayTextID
 	SetEvent EVENT_BEAT_ERIKA
 	CheckEvent EVENT_GOT_RAINBOWBADGE
 	jr nz, .Archipelago_Event_Celadon_Gym

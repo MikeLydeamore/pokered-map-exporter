@@ -110,6 +110,15 @@ GainExperience:
 	inc hl
 	inc hl
 	inc hl
+
+; check for carry
+    ldh a, [hQuotient + 1]
+    and a
+    jr z, .notOver
+    ld a, 255
+    ldh [hQuotient + 2], a
+    ldh [hQuotient + 3], a
+.notOver
 ; add the gained exp to the party mon's exp
 	ld b, [hl]
 	ldh a, [hQuotient + 3]
@@ -167,8 +176,8 @@ GainExperience:
 	ld a, [wWhichPokemon]
 	ld hl, wPartyMonNicks
 	call GetPartyMonName
-	ld hl, GainedText
-	call PrintText
+	;ld hl, GainedText
+	;call PrintText
 	xor a ; PLAYER_PARTY_DATA
 	ld [wMonDataLocation], a
 	call LoadMonData
@@ -410,5 +419,5 @@ ExpPointsText:
 
 GrewLevelText:
 	text_far _GrewLevelText
-	sound_level_up
+	;sound_level_up
 	text_end

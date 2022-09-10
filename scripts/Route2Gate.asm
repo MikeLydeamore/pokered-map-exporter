@@ -8,7 +8,11 @@ Route2Gate_TextPointers:
 Route2GateText1:
 	text_asm
 	CheckEvent EVENT_GOT_HM05
-	jr nz, .got_item
+	jr z, .Archipelago_Option_Aide_Rt2_1
+	ld hl, Route2GateText_5d616
+	call PrintText
+	jp TextScriptEnd
+.Archipelago_Option_Aide_Rt2_1
 	ld a, 10
 	ldh [hOaksAideRequirement], a
 .Archipelago_Event_LD_A_Route_2_Oaks_Aide
@@ -26,8 +30,8 @@ Route2GateText1:
 	jr nz, .no_item
 	SetEvent EVENT_GOT_HM05
 .got_item
-	ld hl, Route2GateText_5d616
-	call PrintText
+	;ld hl, Route2GateText_5d616
+	;call PrintText
 .no_item
 	jp TextScriptEnd
 

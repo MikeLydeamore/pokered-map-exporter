@@ -81,8 +81,11 @@ Route22Script0:
 	ld [wJoyIgnore], a
 	ld a, PLAYER_DIR_LEFT
 	ld [wPlayerMovingDirection], a
+	CheckEvent EVENT_1ST_ROUTE22_RIVAL_BATTLE
+	jr z, .2stRivalBattleNotAvailable
 	CheckEvent EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE
 	jr z, .firstRivalBattle
+.2stRivalBattleNotAvailable
 	CheckEventReuseA EVENT_2ND_ROUTE22_RIVAL_BATTLE ; is this the rival at the end of the game?
 	jp nz, Route22Script_5104e
 	ret

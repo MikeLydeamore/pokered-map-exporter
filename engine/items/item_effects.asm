@@ -1893,6 +1893,7 @@ CoinCaseNumCoinsText:
 ItemUseOldRod:
 	call FishingInit
 	jp c, ItemUseNotTime
+.Archipelago_Wild_Old_Rod
 	lb bc, 5, MAGIKARP
 	ld a, $1 ; set bite
 	jr RodResponse

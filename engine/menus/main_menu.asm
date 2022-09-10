@@ -719,9 +719,9 @@ TextSpeedOptionData:
 	db 7,6
 	db 6,5 ; Slow
 	db 5,4
-	db  4,3 ; Medium
-	db  3,2
-	db  2,1 ; Fast
+	db 4,3 ; Medium
+	db 3,2
+	db 2,1 ; Fast
 	db 1,0
 	db 5 ; default X coordinate (Medium)
 	db $ff ; terminator

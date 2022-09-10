@@ -117,14 +117,14 @@ OverworldLoopLessDelay::
 	ld [wEnteringCableClub], a
 	jr z, .changeMap
 ; XXX can this code be reached?
-	predef LoadSAV
-	ld a, [wCurMap]
-	ld [wDestinationMap], a
-	call SpecialWarpIn
-	ld a, [wCurMap]
-	call SwitchToMapRomBank ; switch to the ROM bank of the current map
-	ld hl, wCurMapTileset
-	set 7, [hl]
+;	predef LoadSAV
+;	ld a, [wCurMap]
+;	ld [wDestinationMap], a
+;	call SpecialWarpIn
+;	ld a, [wCurMap]
+;	call SwitchToMapRomBank ; switch to the ROM bank of the current map
+;	ld hl, wCurMapTileset
+;	set 7, [hl]
 .changeMap
 	jp EnterMap
 .checkForOpponent
@@ -324,6 +324,7 @@ OverworldLoopLessDelay::
 	call UpdateSprites
 
 .moveAhead2
+    ;call AdvancePlayerSprite
 	ld hl, wFlags_0xcd60
 	res 2, [hl]
 	ld a, [wWalkBikeSurfState]
@@ -335,6 +336,7 @@ OverworldLoopLessDelay::
 	call DoBikeSpeedup
 .normalPlayerSpriteAdvancement
 	call AdvancePlayerSprite
+	call RunSpeed
 	ld a, [wWalkCounter]
 	and a
 	jp nz, CheckMapConnections ; it seems like this check will never succeed (the other place where CheckMapConnections is run works)
@@ -435,7 +437,17 @@ DoBikeSpeedup::
 	and D_UP | D_LEFT | D_RIGHT
 	ret nz
 .goFaster
+    call RunSpeed
 	jp AdvancePlayerSprite
+
+RunSpeed:
+    ldh a, [hJoyHeld]
+	bit BIT_B_BUTTON, a
+	ret z
+	call IsPlayerCharacterBeingControlledByGame
+	ret nz
+	call AdvancePlayerSprite
+	ret
 
 ; check if the player has stepped onto a warp after having not collided
 CheckWarpsNoCollision::

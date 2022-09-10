@@ -50,7 +50,6 @@ RocketHideout4Script3:
 	call UpdateSprites
 	ld a, $f0
 	ld [wJoyIgnore], a
-	SetEvent EVENT_BEAT_ROCKET_HIDEOUT_GIOVANNI
 	ld a, $a
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
@@ -61,6 +60,7 @@ RocketHideout4Script3:
 	ld a, HS_ROCKET_HIDEOUT_B4F_ITEM_4
 	ld [wMissableObjectIndex], a
 	predef ShowObject
+	SetEvent EVENT_BEAT_ROCKET_HIDEOUT_GIOVANNI
 	call UpdateSprites
 	call GBFadeInFromBlack
 	xor a

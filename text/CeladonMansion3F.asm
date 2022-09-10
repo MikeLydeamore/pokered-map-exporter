@@ -1,67 +1,58 @@
 _ProgrammerText::
-	text "Me? I'm the"
-	line "programmer!"
-	done
+	text "neveroutbass:"
+    line "Looking for more"
+    cont "variable names I"
+    cont "can change in the"
+    cont "core to break"
+    cont "everyone's dev"
+    cont "branches!"
+    done
 
 _GraphicArtistText::
-	text "I'm the graphic"
-	line "artist!"
-	cont "I drew you!"
+	text "Jugyes:"
+	line "pp is the male"
+	cont "genital."
 	done
 
 _WriterText::
-	text "I wrote the story!"
-	line "Isn't ERIKA cute?"
-
-	para "I like MISTY a"
-	line "lot too!"
-
-	para "Oh, and SABRINA,"
-	line "I like her!"
+	text "Klose:"
+	line "smh my head."
 	done
 
 _GameDesignerText::
-	text "Is that right?"
-
-	para "I'm the game"
-	line "designer!"
-
-	para "Filling up your"
-	line "#DEX is tough,"
-	cont "but don't quit!"
-
-	para "When you finish,"
-	line "come tell me!"
+	text "Rationaler:"
+	line "Can we make this"
+	cont "a set instead of"
+	cont "a list? That will"
+	cont "save 0.0000000001"
+	cont "seconds of"
+	cont "generation time!"
 	done
 
 _CompletedDexText::
-	text "Wow! Excellent!"
-	line "You completed"
-	cont "your #DEX!"
-	cont "Congratulations!"
-	cont "...@"
+	text "I don't know why"
+	line "I'm in charge of"
+	cont "handing out"
+	cont "diplomas, but"
+	cont "here you go.@"
 	text_end
 
 _CeladonMansion3Text5::
-	text "It's the game"
-	line "program! Messing"
-	cont "with it could bug"
-	cont "out the game!"
+	text "The “game”"
+	line "variable is now"
+	cont "“game_name” just"
+	cont "to mess with devs!"
 	done
 
 _CeladonMansion3Text6::
-	text "Someone's playing"
-	line "a game instead of"
-	cont "working!"
+	text "This looks"
+	line "satisfactory."
 	done
 
 _CeladonMansion3Text7::
-	text "It's the script!"
-	line "Better not look"
-	cont "at the ending!"
+	text "Ooh, cookies!"
 	done
 
 _CeladonMansion3Text8::
-	text "GAME FREAK"
-	line "Development Room"
+	text "▶archipelago-dev"
 	done

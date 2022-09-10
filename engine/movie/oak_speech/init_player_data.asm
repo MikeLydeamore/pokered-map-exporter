@@ -21,14 +21,18 @@ InitPlayerData2:
 	ld hl, wNumBoxItems
 	call InitializeEmptyList
 
-DEF START_MONEY EQU $3000
-	ld hl, wPlayerMoney + 1
-	ld a, HIGH(START_MONEY)
-	ld [hld], a
-	xor a ; LOW(START_MONEY)
+;DEF START_MONEY EQU $3000
+	ld hl, wPlayerMoney
+.Archipelago_Starting_Money_High_1
+	ld a, 0
 	ld [hli], a
-	inc hl
+.Archipelago_Starting_Money_Middle_1
+	ld a, 0
+	ld [hli], a
+.Archipelago_Starting_Money_Low_1
+	ld a, 0
 	ld [hl], a
+    ld a, 0
 
 	ld [wMonDataLocation], a
 

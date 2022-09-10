@@ -15,6 +15,8 @@ DisplayEffectiveness:
 	jr nz, .done
 	ld hl, NotVeryEffectiveText
 .done
+    ld a, 0
+    ld [wEffectiveMessage], a
 	jp PrintText
 
 SuperEffectiveText:

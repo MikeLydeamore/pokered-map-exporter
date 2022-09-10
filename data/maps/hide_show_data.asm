@@ -235,7 +235,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw NoHS
+	dw RockTunnelB1FHS
 	dw SilphCo9FHS
 	dw SilphCo10FHS
 	dw SilphCo11FHS
@@ -573,5 +573,11 @@ Route13HS:
 Route11HS:
     db ROUTE_11, 11, HIDE
     db ROUTE_11, 12, HIDE
+RockTunnelB1FHS:
+.Archipelago_Option_Rock_Tunnel_Extra_Items_2
+    db ROCK_TUNNEL_B1F, 9, HIDE
+    db ROCK_TUNNEL_B1F, 10, HIDE
+    db ROCK_TUNNEL_B1F, 11, HIDE
+    db ROCK_TUNNEL_B1F, 12, HIDE
 	db $FF, $01, SHOW ; end
 	assert_table_length NUM_HS_OBJECTS + 1

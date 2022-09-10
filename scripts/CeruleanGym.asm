@@ -43,9 +43,9 @@ CeruleanGymMistyPostBattle:
 	ld [wJoyIgnore], a
 
 CeruleanGymReceiveTM11:
-	ld a, $5
-	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
+	;ld a, $5
+	;ldh [hSpriteIndexOrTextID], a
+	;call DisplayTextID
 	SetEvent EVENT_BEAT_MISTY
 	CheckEvent EVENT_GOT_CASCADEBADGE
 	jr nz, .Archipelago_Event_Cerulean_Gym

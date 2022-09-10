@@ -103,14 +103,8 @@ _VermilionGymEndBattleText3::
 	prompt
 
 _VermilionGymAfterBattleText3::
-	text "LT.SURGE set up"
-	line "double locks!"
-	cont "Here's a hint!"
-
-	para "When you open the"
-	line "1st lock, the 2nd"
-	cont "lock is right"
-	cont "next to it!"
+	text "You only have to"
+	line "find one lock!"
 	done
 
 _VermilionGymGuidePreBattleText::

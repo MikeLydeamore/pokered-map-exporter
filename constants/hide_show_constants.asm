@@ -237,7 +237,11 @@ DEF SHOW EQU $15
 	const HS_SEAFOAM_ISLANDS_B4F_BOULDER_1 ; E1
 	const HS_SEAFOAM_ISLANDS_B4F_BOULDER_2 ; E2
 	const HS_ARTICUNO                      ; E3 X
-	const HS_ROUTE_13_BOULDER
-	const HS_ROUTE_11_BOULDER_1
-	const HS_ROUTE_11_BOULDER_2
+	const HS_ROUTE_13_BOULDER              ; E4
+	const HS_ROUTE_11_BOULDER_1            ; E5
+	const HS_ROUTE_11_BOULDER_2            ; E6
+	const HS_ROCK_TUNNEL_B1F_ITEM_1        ; E7
+	const HS_ROCK_TUNNEL_B1F_ITEM_2        ; E8
+	const HS_ROCK_TUNNEL_B1F_ITEM_3        ; E9
+	const HS_ROCK_TUNNEL_B1F_ITEM_4        ; EA
 DEF NUM_HS_OBJECTS EQU const_value

@@ -34,8 +34,9 @@ _ViridianCityText_1914d::
 	text "Has anyone really"
 	line "been far even as"
 	cont "decided to use"
-	cont "even go want to do"
-	cont "look more like?"
+	cont "even go want to"
+	cont "do look more"
+	cont "like?"
 	done
 
 _ViridianCityText_19152::

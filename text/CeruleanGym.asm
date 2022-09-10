@@ -59,7 +59,7 @@ _TM11NoRoomText::
 
 _ReceivedCascadeBadgeText::
 	text "Wow!"
-	line "You're too much!"
+	line "You're too much!@"
     text_end
 
 _CeruleanGymBattleText1::
