@@ -32,6 +32,7 @@ PokemonTower6Script0:
 	ld a, $6
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
+.Archipelago_Ghost_Battle1_1
 	ld a, RESTLESS_SOUL
 	ld [wCurOpponent], a
 	ld a, 30
@@ -136,6 +137,7 @@ PokemonTower6Text7:
 	text_asm
 	ld hl, PokemonTower2Text_60c1f
 	call PrintText
+.Archipelago_Ghost_Battle2_1
 	ld a, RESTLESS_SOUL
 	call PlayCry
 	call WaitForSoundToFinish

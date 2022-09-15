@@ -157,8 +157,11 @@ Route22Script1:
 
 StarterMons_50faf:
 ; starter the rival picked, rival trainer number
+.Archipelago_Starter2_B
 	db STARTER2, 4
+.Archipelago_Starter3_B
 	db STARTER3, 5
+.Archipelago_Starter1_B
 	db STARTER1, 6
 
 Route22Script2:
@@ -313,8 +316,11 @@ Route22Script4:
 	ret
 
 StarterMons_510d9:
+.Archipelago_Starter2_A
 	db STARTER2, 10
+.Archipelago_Starter3_A
 	db STARTER3, 11
+.Archipelago_Starter1_A
 	db STARTER1, 12
 
 Route22Script5:

@@ -605,9 +605,9 @@ CeruleanCityTextCaveGuy:
     line "you need a total"
     cont "of @"
     text_decimal wUnusedD366, 1, 2
-    text " badges,"
-    text "HMs, and key"
-    text "items."
+    cont " badges,"
+    cont "HMs, and key"
+    cont "items."
     prompt
 
 CeruleanCityCaveGuyYouHave:

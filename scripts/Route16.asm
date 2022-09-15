@@ -29,6 +29,7 @@ Route16Script0:
 	ld a, $a
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
+.Archipelago_Static_Encounter_Snorlax_B_1
 	ld a, SNORLAX
 	ld [wCurOpponent], a
 	ld a, 30

@@ -43,6 +43,7 @@ MagikarpSalesmanText:
 	ld hl, .NoMoneyText
 	jr .printText
 .enoughMoney
+.Archipelago_Gift_Magikarp_2
 	lb bc, MAGIKARP, 5
 	call GivePokemon
 	jr nc, .done

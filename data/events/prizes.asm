@@ -7,12 +7,16 @@ NoThanksText:
 	db "NO THANKS@"
 
 PrizeMenuMon1Entries:
+.Archipelago_Prize_Mon_A2
 	db ABRA
+.Archipelago_Prize_Mon_B2
 	db CLEFAIRY
 IF DEF(_RED)
+.Archipelago_Prize_Mon_C2
 	db NIDORINA
 ENDC
 IF DEF(_BLUE)
+.Archipelago_Prize_Mon_C2
 	db NIDORINO
 ENDC
 	db "@"
@@ -31,13 +35,18 @@ ENDC
 
 PrizeMenuMon2Entries:
 IF DEF(_RED)
+.Archipelago_Prize_Mon_D2
 	db DRATINI
+.Archipelago_Prize_Mon_E2
 	db SCYTHER
 ENDC
 IF DEF(_BLUE)
+.Archipelago_Prize_Mon_D2
 	db PINSIR
+.Archipelago_Prize_Mon_E2
 	db DRATINI
 ENDC
+.Archipelago_Prize_Mon_F2
 	db PORYGON
 	db "@"
 

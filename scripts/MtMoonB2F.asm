@@ -237,14 +237,20 @@ MtMoon3Text5:
 
 MtMoon3Text6:
 	text_asm
+.Archipelago_Dome_Fossil_Text_1
+	ld a, DOME_FOSSIL
+	ld [wd11e], a
+	call GetItemName
+	call CopyToStringBuffer
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	ld hl, MtMoon3Text_49f24
+	ld hl, MtMoon3WantText
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .asm_49f21
+.Archipelago_Event_Dome_Fossil
 	lb bc, DOME_FOSSIL, 1
 	call GiveItem
 	jp nc, MtMoon3Script_49f76
@@ -259,20 +265,29 @@ MtMoon3Text6:
 .asm_49f21
 	jp TextScriptEnd
 
-MtMoon3Text_49f24:
-	text_far _MtMoon3Text_49f24
+MtMoon3WantText:
+	text "You want the"
+	line "@"
+	text_ram wStringBuffer
+	text "?@"
 	text_end
 
 MtMoon3Text7:
 	text_asm
+.Archipelago_Helix_Fossil_Text_1
+	ld a, HELIX_FOSSIL
+	ld [wd11e], a
+	call GetItemName
+	call CopyToStringBuffer
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	ld hl, MtMoon3Text_49f64
+	ld hl, MtMoon3WantText
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .asm_49f61
+.Archipelago_Event_Helix_Fossil
 	lb bc, HELIX_FOSSIL, 1
 	call GiveItem
 	jp nc, MtMoon3Script_49f76

@@ -214,8 +214,10 @@ OaksLabScript7:
 
 OaksLabScript8:
 	ld a, [wPlayerStarter]
+.Archipelago_Starter1_F_1
 	cp STARTER1
 	jr z, .Charmander
+.Archipelago_Starter2_F_1
 	cp STARTER2
 	jr z, .Squirtle
 	jr .Bulbasaur
@@ -406,11 +408,13 @@ OaksLabScript11:
 	ld a, OPP_RIVAL1
 	ld [wCurOpponent], a
 	ld a, [wRivalStarter]
+.Archipelago_Starter2_G_1
 	cp STARTER2
 	jr nz, .NotSquirtle
 	ld a, $1
 	jr .done
 .NotSquirtle
+.Archipelago_Starter3_G_1
 	cp STARTER3
 	jr nz, .Charmander
 	ld a, $2
@@ -820,30 +824,36 @@ OaksLabText41:
 
 OaksLabText2:
 	text_asm
+.Archipelago_Starter2_H_1
 	ld a, STARTER2
 	ld [wRivalStarterTemp], a
 	ld a, $3
 	ld [wRivalStarterBallSpriteIndex], a
+.Archipelago_Starter1_H_1
 	ld a, STARTER1
 	ld b, $2
 	jr OaksLabScript_1d133
 
 OaksLabText3:
 	text_asm
+.Archipelago_Starter3_I_1
 	ld a, STARTER3
 	ld [wRivalStarterTemp], a
 	ld a, $4
 	ld [wRivalStarterBallSpriteIndex], a
+.Archipelago_Starter2_I_1
 	ld a, STARTER2
 	ld b, $3
 	jr OaksLabScript_1d133
 
 OaksLabText4:
 	text_asm
+.Archipelago_Starter1_D_1
 	ld a, STARTER1
 	ld [wRivalStarterTemp], a
 	ld a, $2
 	ld [wRivalStarterBallSpriteIndex], a
+.Archipelago_Starter3_D_1
 	ld a, STARTER3
 	ld b, $4
 
@@ -1033,11 +1043,13 @@ OaksLabText5:
 
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
+.Archipelago_Starter2_E_1
 	cp STARTER2
 	jr nz, .NotSquirtle
 	ld a, 2
 	jr .done
 .NotSquirtle
+.Archipelago_Starter3_E_1
 	cp STARTER3
 	jr nz, .Charmander
 	ld a, 3

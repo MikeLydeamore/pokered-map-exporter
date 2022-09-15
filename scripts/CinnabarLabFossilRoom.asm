@@ -48,6 +48,17 @@ FossilsList:
 
 Lab4Text1:
 	text_asm
+	CheckEvent EVENT_HAS_REVIVED_POKEMON
+	jr z, .proceed
+	CheckEvent EVENT_GOT_HELIX_FOSSIL
+	jr z, .checkDome
+	CheckEvent EVENT_GOT_DOME_FOSSIL
+	jr nz, .proceed
+	jr .Archipelago_Event_Dome_Fossil_B
+.checkDome
+	CheckEvent EVENT_GOT_DOME_FOSSIL
+	jr nz, .Archipelago_Event_Helix_Fossil_B
+.proceed
 	CheckEvent EVENT_GAVE_FOSSIL_TO_LAB
 	jr nz, .asm_75d96
 	ld hl, Lab4Text_75dc6
@@ -80,7 +91,44 @@ Lab4Text1:
 	call GivePokemon
 	jr nc, .asm_75d93
 	ResetEvents EVENT_GAVE_FOSSIL_TO_LAB, EVENT_LAB_STILL_REVIVING_FOSSIL, EVENT_LAB_HANDING_OVER_FOSSIL_MON
+	SetEvent EVENT_HAS_REVIVED_POKEMON
 	jr .asm_75d93
+.Archipelago_Event_Dome_Fossil_B
+    lb bc, DOME_FOSSIL, 1
+    call GiveItem
+    jp c, .notFullDome
+    ld hl, LabBagFull
+    call PrintText
+    jp TextScriptEnd
+.notFullDome
+    ld hl, LabRecItem
+    call PrintText
+    SetEvent EVENT_GOT_DOME_FOSSIL
+    jp TextScriptEnd
+.Archipelago_Event_Helix_Fossil_B
+    lb bc, HELIX_FOSSIL, 1
+    call GiveItem
+    jp c, .notFullHelix
+    ld hl, LabBagFull
+    call PrintText
+    jp TextScriptEnd
+.notFullHelix
+    ld hl, LabRecItem
+    call PrintText
+    SetEvent EVENT_GOT_HELIX_FOSSIL
+    jp TextScriptEnd
+
+LabRecItem:
+	text "<PLAYER> received "
+	line "@"
+	text_ram wStringBuffer
+	text "!@"
+	text_end
+
+LabBagFull:
+	text "You can't carry"
+	line "any more items."
+    done
 
 Lab4Text_75dc6:
 	text_far _Lab4Text_75dc6

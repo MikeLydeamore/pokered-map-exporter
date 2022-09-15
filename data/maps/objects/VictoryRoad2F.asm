@@ -18,6 +18,7 @@ VictoryRoad2F_Object:
 	object_event 19,  8, SPRITE_COOLTRAINER_M, STAY, DOWN, 3, OPP_TAMER, 5
 	object_event  4,  2, SPRITE_SUPER_NERD, STAY, DOWN, 4, OPP_POKEMANIAC, 6
 	object_event 26,  3, SPRITE_SUPER_NERD, STAY, LEFT, 5, OPP_JUGGLER, 5
+.Archipelago_Static_Encounter_Moltres_6
 	object_event 11,  5, SPRITE_BIRD, STAY, UP, 6, MOLTRES, 50
 .Archipelago_Missable_Victory_Road_2F_Item_1
 	object_event 27,  5, SPRITE_POKE_BALL, STAY, NONE, 7, TM_SUBMISSION

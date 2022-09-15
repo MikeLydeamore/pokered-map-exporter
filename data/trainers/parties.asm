@@ -58,6 +58,7 @@ TrainerDataPointers:
 
 YoungsterData:
 ; Route 3
+.Archipelago_Trainer_Data
 	db 11, RATTATA, EKANS, 0
 	db 14, SPEAROW, 0
 ; Mt. Moon 1F
@@ -740,3 +741,4 @@ AgathaData:
 
 LanceData:
 	db $FF, 58, GYARADOS, 56, DRAGONAIR, 56, DRAGONAIR, 60, AERODACTYL, 62, DRAGONITE, 0
+.Archipelago_Trainer_Data_End

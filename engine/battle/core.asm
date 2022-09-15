@@ -6878,6 +6878,7 @@ InitWildBattle:
 	call LoadEnemyMonData
 	call DoBattleTransitionAndInitBattleVariables
 	ld a, [wCurOpponent]
+.Archipelago_Ghost_Battle3_1
 	cp RESTLESS_SOUL
 	jr z, .isGhost
 	call IsGhostBattle

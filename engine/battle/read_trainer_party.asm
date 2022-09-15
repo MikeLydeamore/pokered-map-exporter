@@ -131,9 +131,11 @@ ReadTrainer:
 
 ; starter
 	ld a, [wRivalStarter]
+.Archipelago_Starter3_C_1
 	cp STARTER3
 	ld b, MEGA_DRAIN
 	jr z, .GiveStarterMove
+.Archipelago_Starter1_C_1
 	cp STARTER1
 	ld b, FIRE_BLAST
 	jr z, .GiveStarterMove

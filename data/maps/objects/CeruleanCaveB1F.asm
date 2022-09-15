@@ -7,6 +7,7 @@ CeruleanCaveB1F_Object:
 	def_bg_events
 
 	def_object_events
+.Archipelago_Static_Encounter_Mewtwo_6
 	object_event 27, 13, SPRITE_MONSTER, STAY, DOWN, 1, MEWTWO, 70
 .Archipelago_Missable_Cerulean_Cave_B1F_Item_1
 	object_event 16,  9, SPRITE_POKE_BALL, STAY, NONE, 2, ULTRA_BALL
