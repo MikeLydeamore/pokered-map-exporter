@@ -2314,6 +2314,7 @@ ItemUseTMHM:
 	ret z
 	ld a, [wcf91]
 	call IsItemHM
+.Archipelago_Option_Reusable_TMs
 	ret c
 	jp RemoveUsedItem
 

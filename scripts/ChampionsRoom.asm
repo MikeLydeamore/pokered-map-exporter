@@ -69,11 +69,13 @@ GaryScript2:
 
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
+.Archipelago_Starter2_N
 	cp STARTER2
 	jr nz, .NotStarter2
 	ld a, $1
 	jr .saveTrainerId
 .NotStarter2
+.Archipelago_Starter3_N
 	cp STARTER3
 	jr nz, .NotStarter3
 	ld a, $2
