@@ -186,13 +186,13 @@ SilphCo7Script3:
 	ld a, OPP_RIVAL2
 	ld [wCurOpponent], a
 	ld a, [wRivalStarter]
-.Archipelago_Starter2_L
+.Archipelago_Starter2_L_1
 	cp STARTER2
 	jr nz, .asm_51cb6
 	ld a, $7
 	jr .asm_51cc0
 .asm_51cb6
-.Archipelago_Starter3_L
+.Archipelago_Starter3_L_1
 	cp STARTER3
 	jr nz, .asm_51cbe
 	ld a, $8

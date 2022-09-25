@@ -91,7 +91,7 @@ ItemNames::
 	li "PLANT KEY"
 	li "MANSION KEY"
 	li "HIDEOUT KEY"
-	li "UNKNOWN PASS"
+	li "TRADE STONE"
 	li "SAFARI PASS"
 	assert_list_length NUM_ITEMS
 	li "B2F"

@@ -20,6 +20,10 @@ CeladonMansion1Text1:
 
 CeladonMansion1Text2:
     text_asm
+.Archipelago_Option_Tea_1
+    ld a, 0
+    and a
+    jr z, .proceed
     CheckEvent EVENT_GOT_TEA
     jr nz, .proceed
 .Archipelago_Event_Mansion_Lady

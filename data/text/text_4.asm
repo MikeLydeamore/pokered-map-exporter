@@ -125,15 +125,8 @@ _TryingToLearnText::
 	text_ram wStringBuffer
 	text "!"
 
-	para "But, @"
-	text_ram wLearnMoveMonName
-	text_start
-	line "can't learn more"
-	cont "than 4 moves!"
-
-	para "Delete an older"
-	line "move to make room"
-	cont "for @"
+	para "Delete a move"
+	line "for @"
 	text_ram wStringBuffer
 	text "?"
 	done

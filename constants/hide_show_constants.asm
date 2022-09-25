@@ -244,4 +244,5 @@ DEF SHOW EQU $15
 	const HS_ROCK_TUNNEL_B1F_ITEM_2        ; E8
 	const HS_ROCK_TUNNEL_B1F_ITEM_3        ; E9
 	const HS_ROCK_TUNNEL_B1F_ITEM_4        ; EA
+	const HS_MEW
 DEF NUM_HS_OBJECTS EQU const_value

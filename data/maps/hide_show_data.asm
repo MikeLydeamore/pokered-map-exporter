@@ -97,7 +97,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw NoHS
+	dw VermilionDockHS
 	dw NoHS
 	dw SSAnne2FHS
 	dw NoHS
@@ -579,5 +579,7 @@ RockTunnelB1FHS:
     db ROCK_TUNNEL_B1F, 10, HIDE
     db ROCK_TUNNEL_B1F, 11, HIDE
     db ROCK_TUNNEL_B1F, 12, HIDE
+VermilionDockHS:
+    db VERMILION_DOCK, 1, SHOW
 	db $FF, $01, SHOW ; end
 	assert_table_length NUM_HS_OBJECTS + 1

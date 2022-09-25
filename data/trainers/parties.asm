@@ -484,16 +484,25 @@ BlackbeltData:
 	db 43, MACHOKE, MACHOP, MACHOKE, 0
 
 Green1Data:
+.Archipelago_Rival_Starter2_A_1
 	db 5, SQUIRTLE, 0
+.Archipelago_Rival_Starter3_A_1
 	db 5, BULBASAUR, 0
+.Archipelago_Rival_Starter1_A_1
 	db 5, CHARMANDER, 0
 ; Route 22
+.Archipelago_Rival_Starter2_B_4
 	db $FF, 9, PIDGEY, 8, SQUIRTLE, 0
+.Archipelago_Rival_Starter3_B_4
 	db $FF, 9, PIDGEY, 8, BULBASAUR, 0
+.Archipelago_Rival_Starter1_B_4
 	db $FF, 9, PIDGEY, 8, CHARMANDER, 0
 ; Cerulean City
+.Archipelago_Rival_Starter2_C_8
 	db $FF, 18, PIDGEOTTO, 15, ABRA, 15, RATTATA, 17, SQUIRTLE, 0
+.Archipelago_Rival_Starter3_C_8
 	db $FF, 18, PIDGEOTTO, 15, ABRA, 15, RATTATA, 17, BULBASAUR, 0
+.Archipelago_Rival_Starter1_C_8
 	db $FF, 18, PIDGEOTTO, 15, ABRA, 15, RATTATA, 17, CHARMANDER, 0
 
 ProfOakData:
@@ -673,25 +682,40 @@ GentlemanData:
 
 Green2Data:
 ; SS Anne 2F
+.Archipelago_Rival_Starter2_D_8
 	db $FF, 19, PIDGEOTTO, 16, RATICATE, 18, KADABRA, 20, WARTORTLE, 0
+.Archipelago_Rival_Starter3_D_8
 	db $FF, 19, PIDGEOTTO, 16, RATICATE, 18, KADABRA, 20, IVYSAUR, 0
+.Archipelago_Rival_Starter1_D_8
 	db $FF, 19, PIDGEOTTO, 16, RATICATE, 18, KADABRA, 20, CHARMELEON, 0
 ; Pokémon Tower 2F
+.Archipelago_Rival_Starter2_E_10
 	db $FF, 25, PIDGEOTTO, 23, GROWLITHE, 22, EXEGGCUTE, 20, KADABRA, 25, WARTORTLE, 0
+.Archipelago_Rival_Starter3_E_10
 	db $FF, 25, PIDGEOTTO, 23, GYARADOS, 22, GROWLITHE, 20, KADABRA, 25, IVYSAUR, 0
+.Archipelago_Rival_Starter1_E_10
 	db $FF, 25, PIDGEOTTO, 23, EXEGGCUTE, 22, GYARADOS, 20, KADABRA, 25, CHARMELEON, 0
 ; Silph Co. 7F
+.Archipelago_Rival_Starter2_F_10
 	db $FF, 37, PIDGEOT, 38, GROWLITHE, 35, EXEGGCUTE, 35, ALAKAZAM, 40, BLASTOISE, 0
+.Archipelago_Rival_Starter3_F_10
 	db $FF, 37, PIDGEOT, 38, GYARADOS, 35, GROWLITHE, 35, ALAKAZAM, 40, VENUSAUR, 0
+.Archipelago_Rival_Starter1_F_10
 	db $FF, 37, PIDGEOT, 38, EXEGGCUTE, 35, GYARADOS, 35, ALAKAZAM, 40, CHARIZARD, 0
 ; Route 22
+.Archipelago_Rival_Starter2_G_12
 	db $FF, 47, PIDGEOT, 45, RHYHORN, 45, GROWLITHE, 47, EXEGGCUTE, 50, ALAKAZAM, 53, BLASTOISE, 0
+.Archipelago_Rival_Starter3_G_12
 	db $FF, 47, PIDGEOT, 45, RHYHORN, 45, GYARADOS, 47, GROWLITHE, 50, ALAKAZAM, 53, VENUSAUR, 0
+.Archipelago_Rival_Starter1_G_12
 	db $FF, 47, PIDGEOT, 45, RHYHORN, 45, EXEGGCUTE, 47, GYARADOS, 50, ALAKAZAM, 53, CHARIZARD, 0
 
 Green3Data:
+.Archipelago_Rival_Starter2_H_12
 	db $FF, 61, PIDGEOT, 59, ALAKAZAM, 61, RHYDON, 61, ARCANINE, 63, EXEGGUTOR, 65, BLASTOISE, 0
+.Archipelago_Rival_Starter3_H_12
 	db $FF, 61, PIDGEOT, 59, ALAKAZAM, 61, RHYDON, 61, GYARADOS, 63, ARCANINE, 65, VENUSAUR, 0
+.Archipelago_Rival_Starter1_H_12
 	db $FF, 61, PIDGEOT, 59, ALAKAZAM, 61, RHYDON, 61, EXEGGUTOR, 63, GYARADOS, 65, CHARIZARD, 0
 
 LoreleiData:

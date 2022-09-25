@@ -12,7 +12,7 @@ Route7Gate_ScriptPointers:
 Route7GateScript_1e111:
 	ld hl, wd730
 	set 7, [hl]
-	ld [wSaffronGateDir], a
+	ld a, [wSaffronGateDir]
     cp PLAYER_DIR_LEFT
     jr nz, .goLeft
     ld a, D_RIGHT

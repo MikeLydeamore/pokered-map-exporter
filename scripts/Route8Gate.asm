@@ -11,7 +11,7 @@ Route8Gate_ScriptPointers:
 Route8GateScript_1e1d7:
 	ld hl, wd730
 	set 7, [hl]
-	ld [wSaffronGateDir], a
+	ld a, [wSaffronGateDir]
 	cp PLAYER_DIR_LEFT
     jr nz, .goLeft
     ld a, D_RIGHT

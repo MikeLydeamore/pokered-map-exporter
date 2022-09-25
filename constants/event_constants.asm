@@ -727,6 +727,8 @@
 	const EVENT_BEAT_MEWTWO
 	const EVENT_BEATEN_GAME
 	const EVENT_BEAT_OAK
+	const_next $8C9
+	const EVENT_BEAT_MEW
 
 ; Indigo Plateau events
 	const_next $8E0

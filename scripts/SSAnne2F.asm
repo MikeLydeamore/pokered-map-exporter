@@ -101,13 +101,13 @@ SSAnne2Script1:
 
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
-.Archipelago_Starter2_M
+.Archipelago_Starter2_M_1
 	cp STARTER2
 	jr nz, .NotSquirtle
 	ld a, $1
 	jr .done
 .NotSquirtle
-.Archipelago_Starter3_M
+.Archipelago_Starter3_M_1
 	cp STARTER3
 	jr nz, .Charmander
 	ld a, $2

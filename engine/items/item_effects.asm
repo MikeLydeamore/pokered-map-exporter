@@ -108,7 +108,7 @@ ItemUsePtrTable:
 	dw UnusableItem      ;
 	dw UnusableItem      ;
 	dw UnusableItem      ;
-	dw UnusableItem      ;
+	dw ItemUseEvoStone   ; trade stone?
 	dw UnusableItem      ;
 
 ItemUseBall:
@@ -646,6 +646,23 @@ ItemUseTownMap:
 	jp nz, ItemUseNotTime
 	farjp DisplayTownMap
 
+;BikeButtonCombo::
+;	ldh a, [hJoyHeld] ; current joypad state
+;	bit BIT_SELECT, a
+;	ret z
+;	ldh a, [hJoyPressed] ; current joypad state
+;	bit BIT_B_BUTTON, a
+;	ret z
+;	ld b, BICYCLE
+;	call IsItemInBag
+;	ret z
+;	ld a, BICYCLE
+;	ld [wcf91], a
+;	ld [wPseudoItemID], a
+;	call UseItem
+ ;   call LoadTextBoxTilePatterns
+;	ret
+
 ItemUseBicycle:
 	ld a, [wIsInBattle]
 	and a
@@ -674,6 +691,7 @@ ItemUseBicycle:
 	ld hl, GotOnBicycleText
 	call PlayDefaultMusic ; play bike riding music
 .printText
+    ret
 	jp PrintText
 
 ItemUseCut:
@@ -847,6 +865,7 @@ ItemUseEvoStone:
 	jr z, .noEffect
 	pop af
 	ld [wWhichPokemon], a
+	ret
 	ld hl, wNumBagItems
 	ld a, 1 ; remove 1 stone
 	ld [wItemQuantity], a

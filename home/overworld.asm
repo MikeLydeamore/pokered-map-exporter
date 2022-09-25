@@ -147,6 +147,7 @@ OverworldLoopLessDelay::
 	ld [wPlayerMovingDirection], a ; zero the direction
 	jp OverworldLoop
 .continue
+;    farcall BikeButtonCombo
 	ld a, [wArchipelagoItemReceived]
 	cp $00
 	jr z, .archipelagoItemNotReceived
@@ -221,7 +222,7 @@ OverworldLoopLessDelay::
 
 .checkIfRightButtonIsPressed
 	bit BIT_D_RIGHT, a
-	jr z, .noDirectionButtonsPressed
+	jp z, .noDirectionButtonsPressed
 	ld a, 1
 	ld [wSpritePlayerStateData1XStepVector], a
 

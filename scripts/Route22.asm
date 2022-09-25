@@ -395,7 +395,7 @@ Route22Script6:
 	predef HideObject
 	call PlayDefaultMusic
 	;ResetEvents EVENT_2ND_ROUTE22_RIVAL_BATTLE, EVENT_ROUTE22_RIVAL_WANTS_BATTLE
-	ld a, $7
+	ld a, $0
 	ld [wRoute22CurScript], a
 	ret
 

@@ -28,3 +28,9 @@ RockTunnelB1F_Object:
 	object_event 23, 2, SPRITE_POKE_BALL, STAY, NONE, 12, SAFARI_PASS
 
 	def_warps_to ROCK_TUNNEL_B1F
+
+
+
+
+
+

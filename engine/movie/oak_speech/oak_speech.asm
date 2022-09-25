@@ -74,8 +74,8 @@ OakSpeech:
 	;ld a, $FF ; [wd732]
 	;bit 1, a ; possibly a debug mode bit
 
-	call ChoosePlayerName
-	call ChooseRivalName
+	;call ChoosePlayerName
+	;call ChooseRivalName
 	jp .skipChoosingNames
 	ld de, ProfOakPic
 	lb bc, BANK(ProfOakPic), $00

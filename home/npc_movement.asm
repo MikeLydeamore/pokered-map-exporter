@@ -55,14 +55,28 @@ DebugPressedOrHeldB::
 ;.Archipelago_Option_Blind_Trainers
 ;    ld a, 0
 ;    ret nz
-.Archipelago_Option_Trainer_Encounters_LD_A
-    ld a, 0
+;.Archipelago_Option_Trainer_Encounters_LD_A
+;    ld a, 0
+;    and a
+;	ret z
+.Archipelago_Option_Blind_Trainers_1
+    ld b, 0
+    call Random
+    ldh a, [hRandomAdd]
+    cp b
+    jr nc, .battle
+.noBattle
+    ld a, 1
     and a
-	ret z
-	ldh a, [hJoyHeld]
-	bit BIT_B_BUTTON, a
-	ret nz
-	ldh a, [hJoyPressed]
-	bit BIT_B_BUTTON, a
+    ret
+.battle
+    jr nz, .noBattle
+    xor a
+    and a
+;	ldh a, [hJoyHeld]
+;	bit BIT_B_BUTTON, a
+;	ret nz
+;	ldh a, [hJoyPressed]
+;	bit BIT_B_BUTTON, a
 ;ENDC
 	ret

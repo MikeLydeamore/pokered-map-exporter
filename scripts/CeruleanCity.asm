@@ -141,13 +141,13 @@ CeruleanCityScript1:
 
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
-.Archipelago_Starter2_K
+.Archipelago_Starter2_K_1
 	cp STARTER2
 	jr nz, .NotSquirtle
 	ld a, $7
 	jr .done
 .NotSquirtle
-.Archipelago_Starter3_K
+.Archipelago_Starter3_K_1
 	cp STARTER3
 	jr nz, .Charmander
 	ld a, $8

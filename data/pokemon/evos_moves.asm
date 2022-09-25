@@ -649,6 +649,8 @@ SlowpokeEvosMoves:
 KadabraEvosMoves:
 ; Evolutions
 	db EV_TRADE, 1, ALAKAZAM
+	db EV_ITEM, TRADE_STONE, 1, ALAKAZAM
+	db EV_LEVEL, 35, ALAKAZAM
 	db 0
 ; Learnset
 .Archipelago_Learnset_Kadabra_0
@@ -663,6 +665,8 @@ KadabraEvosMoves:
 GravelerEvosMoves:
 ; Evolutions
 	db EV_TRADE, 1, GOLEM
+	db EV_ITEM, TRADE_STONE, 1, GOLEM
+	db EV_LEVEL, 35, GOLEM
 	db 0
 ; Learnset
 .Archipelago_Learnset_Graveler_0
@@ -690,6 +694,8 @@ ChanseyEvosMoves:
 MachokeEvosMoves:
 ; Evolutions
 	db EV_TRADE, 1, MACHAMP
+	db EV_ITEM, TRADE_STONE, 1, MACHAMP
+	db EV_LEVEL, 35, MACHAMP
 	db 0
 ; Learnset
 .Archipelago_Learnset_Machoke_0
@@ -1796,6 +1802,8 @@ MissingNo92EvosMoves:
 HaunterEvosMoves:
 ; Evolutions
 	db EV_TRADE, 1, GENGAR
+	db EV_ITEM, TRADE_STONE, 1, GENGAR
+	db EV_LEVEL, 35, GENGAR
 	db 0
 ; Learnset
 .Archipelago_Learnset_Haunter_0

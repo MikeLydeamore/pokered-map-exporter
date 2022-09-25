@@ -100,7 +100,7 @@ DEF SAFARI_ROCK EQU $16 ; overload
  	const PLANT_KEY     ; $59
  	const MANSION_KEY   ; $5A
  	const HIDEOUT_KEY   ; $5B
- 	const UNKNOWN_PASS  ; $5C
+ 	const TRADE_STONE  ; $5C
  	const SAFARI_PASS   ; $5D
 DEF NUM_ITEMS EQU const_value - 1
 

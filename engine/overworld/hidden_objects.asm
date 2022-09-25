@@ -131,3 +131,4 @@ CheckIfCoordsInFrontOfPlayerMatch:
 	ret
 
 INCLUDE "data/events/hidden_objects.asm"
+

@@ -9,7 +9,7 @@ KeyItemFlags:
 	dbit TRUE  ; SURFBOARD
 	dbit TRUE  ; SAFARI_BALL
 	dbit TRUE  ; POKEDEX
-	dbit FALSE ; MOON_STONE
+	dbit TRUE ; MOON_STONE
 	dbit FALSE ; ANTIDOTE
 	dbit FALSE ; BURN_HEAL
 	dbit FALSE ; ICE_HEAL

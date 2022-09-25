@@ -4,12 +4,12 @@ ItemPrices::
 	bcd3 1200  ; ULTRA_BALL
 	bcd3 600   ; GREAT_BALL
 	bcd3 200   ; POKE_BALL
-	bcd3 0     ; TOWN_MAP
-	bcd3 0     ; BICYCLE
-	bcd3 0     ; SURFBOARD
+	bcd3 3000     ; TOWN_MAP
+	bcd3 3000     ; BICYCLE
+	bcd3 3000     ; SURFBOARD
 	bcd3 1000  ; SAFARI_BALL
-	bcd3 0     ; POKEDEX
-	bcd3 0     ; MOON_STONE
+	bcd3 3000     ; POKEDEX
+	bcd3 2100     ; MOON_STONE
 	bcd3 100   ; ANTIDOTE
 	bcd3 250   ; BURN_HEAL
 	bcd3 250   ; ICE_HEAL
@@ -20,17 +20,17 @@ ItemPrices::
 	bcd3 1500  ; HYPER_POTION
 	bcd3 700   ; SUPER_POTION
 	bcd3 300   ; POTION
-	bcd3 0     ; BOULDERBADGE
-	bcd3 0     ; CASCADEBADGE
-	bcd3 0     ; THUNDERBADGE
-	bcd3 0     ; RAINBOWBADGE
-	bcd3 0     ; SOULBADGE
-	bcd3 0     ; MARSHBADGE
-	bcd3 0     ; VOLCANOBADGE
-	bcd3 0     ; EARTHBADGE
+	bcd3 3000     ; BOULDERBADGE
+	bcd3 3000     ; CASCADEBADGE
+	bcd3 3000     ; THUNDERBADGE
+	bcd3 3000     ; RAINBOWBADGE
+	bcd3 3000     ; SOULBADGE
+	bcd3 3000     ; MARSHBADGE
+	bcd3 3000     ; VOLCANOBADGE
+	bcd3 3000     ; EARTHBADGE
 	bcd3 550   ; ESCAPE_ROPE
 	bcd3 350   ; REPEL
-	bcd3 0     ; OLD_AMBER
+	bcd3 3000     ; OLD_AMBER
 	bcd3 2100  ; FIRE_STONE
 	bcd3 2100  ; THUNDER_STONE
 	bcd3 2100  ; WATER_STONE
@@ -40,14 +40,14 @@ ItemPrices::
 	bcd3 9800  ; CARBOS
 	bcd3 9800  ; CALCIUM
 	bcd3 4800  ; RARE_CANDY
-	bcd3 0     ; DOME_FOSSIL
-	bcd3 0     ; HELIX_FOSSIL
-	bcd3 0     ; SECRET_KEY
-	bcd3 0     ; XXX
-	bcd3 0     ; BIKE_VOUCHER
+	bcd3 3000     ; DOME_FOSSIL
+	bcd3 3000     ; HELIX_FOSSIL
+	bcd3 3000     ; SECRET_KEY
+	bcd3 1000     ; AP_ITEM
+	bcd3 3000     ; BIKE_VOUCHER
 	bcd3 950   ; X_ACCURACY
 	bcd3 2100  ; LEAF_STONE
-	bcd3 0     ; CARD_KEY
+	bcd3 3000     ; CARD_KEY
 	bcd3 10000 ; NUGGET
 	bcd3 9800  ; XXX PP_UP
 	bcd3 1000  ; POKE_DOLL
@@ -62,37 +62,37 @@ ItemPrices::
 	bcd3 200   ; FRESH_WATER
 	bcd3 300   ; SODA_POP
 	bcd3 350   ; LEMONADE
-	bcd3 0     ; S_S_TICKET
-	bcd3 0     ; GOLD_TEETH
+	bcd3 3000     ; S_S_TICKET
+	bcd3 3000     ; GOLD_TEETH
 	bcd3 500   ; X_ATTACK
 	bcd3 550   ; X_DEFEND
 	bcd3 350   ; X_SPEED
 	bcd3 350   ; X_SPECIAL
-	bcd3 0     ; COIN_CASE
-	bcd3 0     ; OAKS_PARCEL
-	bcd3 0     ; ITEMFINDER
-	bcd3 0     ; SILPH_SCOPE
-	bcd3 0     ; POKE_FLUTE
-	bcd3 0     ; LIFT_KEY
-	bcd3 0     ; EXP_ALL
-	bcd3 0     ; OLD_ROD
-	bcd3 0     ; GOOD_ROD
-	bcd3 0     ; SUPER_ROD
+	bcd3 3000     ; COIN_CASE
+	bcd3 3000     ; OAKS_PARCEL
+	bcd3 3000     ; ITEMFINDER
+	bcd3 3000     ; SILPH_SCOPE
+	bcd3 3000     ; POKE_FLUTE
+	bcd3 3000     ; LIFT_KEY
+	bcd3 3000     ; EXP_ALL
+	bcd3 3000     ; OLD_ROD
+	bcd3 3000     ; GOOD_ROD
+	bcd3 3000     ; SUPER_ROD
 	bcd3 0     ; PP_UP
 	bcd3 0     ; ETHER
 	bcd3 0     ; MAX_ETHER
 	bcd3 0     ; ELIXER
 	bcd3 0     ; MAX_ELIXER
-	bcd3 0     ; tea
-	bcd3 0     ; master sword
-	bcd3 0     ; flute
-	bcd3 0     ; titans mitt
-	bcd3 0     ; lamp
-	bcd3 0
-	bcd3 0
-	bcd3 0
-	bcd3 0
-	bcd3 0
+	bcd3 3000     ; tea
+	bcd3 3000     ; master sword
+	bcd3 3000     ; flute
+	bcd3 3000     ; titans mitt
+	bcd3 3000     ; lamp
+	bcd3 3000
+	bcd3 3000
+	bcd3 3000
+	bcd3 2100
+	bcd3 3000
 	assert_table_length NUM_ITEMS
 	bcd3 0     ; FLOOR_B2F
 	bcd3 0     ; FLOOR_B1F

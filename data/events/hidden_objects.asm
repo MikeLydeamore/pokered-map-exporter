@@ -587,7 +587,7 @@ VictoryRoad2HiddenObjects:
 
 Unused6FHiddenObjects:
 .Archipelago_Hidden_Item_Unused_6F
-	hidden_object 10, 0, MAX_ELIXER, HiddenItems
+	hidden_object 255, 255, MAX_ELIXER, HiddenItems
 	db -1 ; end
 
 BillsHouseHiddenObjects:

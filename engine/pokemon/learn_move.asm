@@ -32,7 +32,7 @@ DontAbandonLearning:
 	ld [wd11e], a
 	call GetMoveName
 	ld hl, OneTwoAndText
-	call PrintText
+	;call PrintText
 	pop de
 	pop hl
 .next
