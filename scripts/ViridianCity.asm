@@ -293,7 +293,7 @@ ViridianCityText7:
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr z, .refused
+	jr nz, .refused
 	ld hl, ViridianCityText_1920f
 	call PrintText
 	ld a, $1
