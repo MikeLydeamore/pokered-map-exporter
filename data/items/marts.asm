@@ -11,7 +11,7 @@ CeruleanCashierText::
 	script_mart POKE_BALL, POTION, REPEL, ANTIDOTE, BURN_HEAL, AWAKENING, PARLYZ_HEAL
 
 BikeShopCashierText:: ; unreferenced
-	script_mart BICYCLE
+	script_mart FRESH_WATER, SODA_POP, LEMONADE
 
 VermilionCashierText::
 	script_mart POKE_BALL, SUPER_POTION, ICE_HEAL, AWAKENING, PARLYZ_HEAL, REPEL

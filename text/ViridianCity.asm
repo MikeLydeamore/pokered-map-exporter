@@ -5,7 +5,7 @@ _ViridianCityText1::
     ;     ------------------
 	para "...that didn't"
 	line "come out right."
-    line "Nevermind..."
+    cont "Nevermind..."
 	done
 
 _ViridianCityText_19122::
@@ -17,10 +17,10 @@ _ViridianCityText_19122::
 
 	para "I think it's"
 	line "probably GIOVANNI,"
-	line "the leader of"
-	line "the criminal"
-	line "organization"
-	line "Team Rocket."
+	cont "the leader of"
+	cont "the criminal"
+	cont "organization"
+	cont "Team Rocket."
 	para "That's just a"
 	line "hunch, though."
 	done

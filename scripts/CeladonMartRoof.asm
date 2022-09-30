@@ -213,7 +213,7 @@ CeladonMartRoof_TextPointers:
 	dw CeladonMartRoofText2
 	dw CeladonMartRoofText5
 	dw CeladonMartRoofText5
-	dw CeladonMartRoofText5
+	dw BikeShopCashierText
 	dw CeladonMartRoofText6
 
 CeladonMartRoofText1:

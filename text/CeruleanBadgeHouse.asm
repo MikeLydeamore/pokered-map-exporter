@@ -73,7 +73,8 @@ _CeruleanHouse2Text_74eaf::
 	text "Enables:"
 	line ""
 .Archipelago_Badge_Text_Marsh_Badge
-	db "          "
+	db "                  "
+
 
 	prompt
 
@@ -84,12 +85,12 @@ _CeruleanHouse2Text_74eb4::
 	para "Enables:"
 	line ""
 .Archipelago_Badge_Text_Volcano_Badge
-	db "          "
+	db "                  "
 	prompt
 
 _CeruleanHouse2Text_74eb9::
 	text "Enables:"
 	line ""
 .Archipelago_Badge_Text_Earth_Badge
-	db "          "
+	db "                  "
 	prompt
