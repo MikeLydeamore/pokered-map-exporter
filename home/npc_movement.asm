@@ -59,10 +59,9 @@ DebugPressedOrHeldB::
 ;    ld a, 0
 ;    and a
 ;	ret z
+    call Random
 .Archipelago_Option_Blind_Trainers_1
     ld b, 0
-    call Random
-    ldh a, [hRandomAdd]
     cp b
     jr nc, .battle
 .noBattle
@@ -70,7 +69,7 @@ DebugPressedOrHeldB::
     and a
     ret
 .battle
-    jr nz, .noBattle
+    jr z, .noBattle
     xor a
     and a
 ;	ldh a, [hJoyHeld]

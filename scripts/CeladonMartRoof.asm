@@ -211,8 +211,8 @@ CeladonMartRoofScript_PrintDrinksInBag:
 CeladonMartRoof_TextPointers:
 	dw CeladonMartRoofText1
 	dw CeladonMartRoofText2
-	dw CeladonMartRoofText5
-	dw CeladonMartRoofText5
+	dw BikeShopCashierText
+	dw BikeShopCashierText
 	dw BikeShopCashierText
 	dw CeladonMartRoofText6
 

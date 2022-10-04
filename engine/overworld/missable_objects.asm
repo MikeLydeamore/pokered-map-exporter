@@ -144,7 +144,7 @@ HideObject:
 	call MissableObjectFlagAction   ; set "removed" flag
 	jp UpdateSprites
 
-MissableObjectFlagAction:
+MissableObjectFlagAction::
 ; identical to FlagAction
 
 	push hl

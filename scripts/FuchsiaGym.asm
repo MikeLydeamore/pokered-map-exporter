@@ -171,6 +171,7 @@ KogaSoulBadgeInfoText:
 ReceivedTM06Text:
 	text_far _ReceivedTM06Text
 	sound_get_key_item
+	text_end
 
 TM06ExplanationText:
 	text_far _TM06ExplanationText

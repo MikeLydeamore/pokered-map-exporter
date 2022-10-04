@@ -176,7 +176,6 @@ LTSurgeThunderBadgeInfoText:
 ReceivedTM24Text:
 	text_far _ReceivedTM24Text
 	sound_get_key_item
-	text_far _TM24ExplanationText
 	text_end
 
 TM24NoRoomText:

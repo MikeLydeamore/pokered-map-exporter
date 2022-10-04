@@ -495,8 +495,8 @@ Route13HiddenObjects:
 	db -1 ; end
 
 SafariZoneEntranceHiddenObjects:
-.Archipelago_Hidden_Item_Safari_Zone_Gate
-	hidden_object  3,  3, NUGGET, HiddenItems ; inaccessible
+;.Archipelago_Hidden_Item_Safari_Zone_Gate
+	hidden_object  10,  1, NUGGET, HiddenItems ; inaccessible
 	db -1 ; end
 
 SafariZoneWestHiddenObjects:

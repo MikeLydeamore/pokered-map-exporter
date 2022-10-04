@@ -3836,6 +3836,8 @@ DetermineExclamationPointTextNum:
 INCLUDE "data/moves/grammar.asm"
 
 PrintMoveFailureText:
+	ld a, 0
+    ld [wEffectiveMessage], a
 	ld de, wPlayerMoveEffect
 	ldh a, [hWhoseTurn]
 	and a

@@ -97,6 +97,7 @@ LavenderHouse1Text_1d94c:
 ReceivedFluteText:
 	text_far _ReceivedFluteText
 	sound_get_key_item
+	text_end
 	text_far _FluteExplanationText
 	text_end
 

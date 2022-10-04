@@ -23,6 +23,37 @@ MomWakeUpText:
 	text_end
 
 MomHealPokemon:
+    ld b, ULTRA_BALL
+	call IsItemInBag
+	jr nz, .noGift
+    ld b, GREAT_BALL
+	call IsItemInBag
+	jr nz, .noGift
+    ld b, POKE_BALL
+	call IsItemInBag
+	jr nz, .noGift
+    ld b, OAKS_PARCEL
+	call IsItemInBag
+	jr nz, .noGift
+    ld a, [wPlayerMoney]
+    cp 1
+    jr nc, .noGift
+    ld a, [wPlayerMoney + 1]
+    cp 2
+    jr nc, .noGift
+    ld a, HS_LYING_OLD_MAN
+	ld c, a
+	ld b, FLAG_TEST
+	ld hl, wMissableObjectFlags
+	farcall MissableObjectFlagAction
+	ld a, c
+	and a
+	jr z, .noGift
+	lb bc, POKE_BALL, 1
+	call GiveItem
+	ld hl, PokeballGiftText
+	jp PrintText
+.noGift
 	ld hl, MomHealText1
 	call PrintText
 	call GBFadeOutToWhite
@@ -41,6 +72,13 @@ MomHealPokemon:
 	call GBFadeInFromWhite
 	ld hl, MomHealText2
 	jp PrintText
+
+PokeballGiftText:
+	text "<PLAYER> received "
+	line "@"
+	text_ram wStringBuffer
+	text "!@"
+	text_end
 
 MomHealText1:
 	text_far _MomHealText1
