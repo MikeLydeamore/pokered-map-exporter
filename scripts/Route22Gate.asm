@@ -58,23 +58,33 @@ Route22Gate_TextPointers:
 
 Route22GateText1:
 	text_asm
-	ld a, [wObtainedBadges]
+	;ld a, [wObtainedBadges]
 	;bit BIT_BOULDERBADGE, a
+.Archipelago_Option_Victory_Road_Badges_1
+    ld a, 8
+    ld [wcd6d], a
+	;jr nc, .asm_1e6f6
+	;jr nz, .asm_1e6f6
+	ld hl, BadgesNeededTextv
+	call PrintText
 	ld hl, wObtainedBadges
 	ld b, $1
 	call CountSetBits
 	ld a, [wNumSetBits]
-;.Archipelago_Badge_Check_1
-	cp 1
-	jr nc, .asm_1e6f6
-	;jr nz, .asm_1e6f6
-	ld hl, Route22GateText_1e704
+	ld b, a
+	inc b
+	ld a, [wcd6d]
+	cp b
+	jr c, .enoughBadges
+
+	ld hl, NotEnoughBadgesv
 	call PrintText
+
 	call Route22GateScript_1e6ba
 	ld a, $1
 	jr .asm_1e6fe
-.asm_1e6f6
-	ld hl, Route22GateText_1e71a
+.enoughBadges
+	ld hl, EnoughBadgesv
 	call PrintText
 	ld a, $2
 .asm_1e6fe
@@ -97,4 +107,28 @@ Route22GateText_1e715:
 Route22GateText_1e71a:
 	text_far _Route22GateText_1e71a
 	sound_get_item_1
+	text_end
+
+BadgesNeededTextv:
+    text "You can pass here"
+	line "only if you have"
+	cont "@"
+	text_decimal wcd6d, 1, 1
+	text " badges!"
+    prompt
+
+NotEnoughBadgesv:
+	text "You don't have"
+	line "@"
+	text_decimal wcd6d, 1, 1
+	text " badges yet!@"
+	text_end
+
+EnoughBadgesv:
+	text "Oh! You do have"
+	line "@"
+	text_decimal wcd6d, 1, 1
+	text " badges!"
+	para "OK then! Please,"
+	line "go right ahead!@"
 	text_end

@@ -2,26 +2,26 @@
 	const_def
 
 DEF PHYSICAL EQU const_value
-	const NORMAL       ; $00
-	const FIGHTING     ; $01
-	const FLYING       ; $02
-	const POISON       ; $03
-	const GROUND       ; $04
-	const ROCK         ; $05
+	const NORMAL       ; $00    mewmon
+	const FIGHTING     ; $01    earthy red
+	const FLYING       ; $02    earthy yellow
+	const POISON       ; $03    PAL_0F
+	const GROUND       ; $04    brown
+	const ROCK         ; $05    greymon
 	const BIRD         ; $06
-	const BUG          ; $07
-	const GHOST        ; $08
+	const BUG          ; $07    PAL_BADGE
+	const GHOST        ; $08    purple
 	const STRUGGLE_TYPE; $09
 
 	const_next 20
 
 DEF SPECIAL EQU const_value
-	const FIRE         ; $14
-	const WATER        ; $15
-	const GRASS        ; $16
-	const ELECTRIC     ; $17
-	const PSYCHIC_TYPE ; $18
-	const ICE          ; $19
-	const DRAGON       ; $1A
+	const FIRE         ; $14    red
+	const WATER        ; $15    cyan
+	const GRASS        ; $16    green
+	const ELECTRIC     ; $17    yellow
+	const PSYCHIC_TYPE ; $18    pink
+	const ICE          ; $19    blue
+	const DRAGON       ; $1A    earthy green
 
 DEF NUM_TYPES EQU const_value

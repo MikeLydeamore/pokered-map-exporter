@@ -70,6 +70,15 @@ MomHealPokemon:
 	ld [wNewSoundID], a
 	call PlaySound
 	call GBFadeInFromWhite
+	ld hl, wPokedexOwned
+	ld b, wPokedexOwnedEnd - wPokedexOwned
+	call CountSetBits
+	ld a, [wNumSetBits]
+	cp 50
+	jr c, .normalText
+	ld hl, MomHealText3
+	jp PrintText
+.normalText
 	ld hl, MomHealText2
 	jp PrintText
 
@@ -86,6 +95,9 @@ MomHealText1:
 MomHealText2:
 	text_far _MomHealText2
 	text_end
+MomHealText3:
+    text_far _MomHealText3
+    text_end
 
 RedsHouse1FTVText:
 	text_asm

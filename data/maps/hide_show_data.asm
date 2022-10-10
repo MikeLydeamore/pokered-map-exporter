@@ -177,7 +177,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw NoHS
+	dw IndigoLeagueHS
 	dw NoHS
 	dw NoHS
 	dw FightingDojoHS
@@ -581,5 +581,7 @@ RockTunnelB1FHS:
     db ROCK_TUNNEL_B1F, 12, HIDE
 VermilionDockHS:
     db VERMILION_DOCK, 1, SHOW
+IndigoLeagueHS:
+    db INDIGO_PLATEAU_LOBBY, 6, SHOW
 	db $FF, $01, SHOW ; end
 	assert_table_length NUM_HS_OBJECTS + 1

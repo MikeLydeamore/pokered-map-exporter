@@ -415,13 +415,6 @@ _BillsHousePokemonListText2::
 	line "you want to see?"
 	done
 
-_OakLabEmailText::
-	text "Epsilon Minus"
-	line "Girlfriend Alert!"
-	para "Status Level:"
-	line "Blue."
-	done
-
 _GameCornerCoinCaseText::
 	text "A COIN CASE is"
 	line "required!"

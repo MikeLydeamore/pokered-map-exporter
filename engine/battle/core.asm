@@ -6882,7 +6882,11 @@ InitWildBattle:
 	ld a, [wCurOpponent]
 .Archipelago_Ghost_Battle3_1
 	cp RESTLESS_SOUL
+	jr nz, .checkGhost
+	ld a, [wCurMap]
+	cp POKEMON_TOWER_6F
 	jr z, .isGhost
+.checkGhost
 	call IsGhostBattle
 	jr nz, .isNoGhost
 .isGhost

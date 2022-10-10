@@ -48,8 +48,10 @@ FossilsList:
 
 Lab4Text1:
 	text_asm
-	CheckEvent EVENT_HAS_REVIVED_POKEMON
-	jr z, .proceed
+	ld a, [wFossilsRevived]
+.Archipelago_Fossils_Needed_For_Second_Item_1
+	cp 3
+	jr c, .proceed
 	CheckEvent EVENT_GOT_HELIX_FOSSIL
 	jr z, .checkDome
 	CheckEvent EVENT_GOT_DOME_FOSSIL
@@ -57,7 +59,7 @@ Lab4Text1:
 	jr .Archipelago_Event_Dome_Fossil_B
 .checkDome
 	CheckEvent EVENT_GOT_DOME_FOSSIL
-	jr nz, .Archipelago_Event_Helix_Fossil_B
+	jp nz, .Archipelago_Event_Helix_Fossil_B
 .proceed
 	CheckEvent EVENT_GAVE_FOSSIL_TO_LAB
 	jr nz, .asm_75d96
@@ -91,7 +93,9 @@ Lab4Text1:
 	call GivePokemon
 	jr nc, .asm_75d93
 	ResetEvents EVENT_GAVE_FOSSIL_TO_LAB, EVENT_LAB_STILL_REVIVING_FOSSIL, EVENT_LAB_HANDING_OVER_FOSSIL_MON
-	SetEvent EVENT_HAS_REVIVED_POKEMON
+	ld a, [wFossilsRevived]
+	inc a
+	ld [wFossilsRevived], a
 	jr .asm_75d93
 .Archipelago_Event_Dome_Fossil_B
     lb bc, DOME_FOSSIL, 1

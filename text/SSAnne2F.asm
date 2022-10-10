@@ -1,11 +1,8 @@
 _SSAnne2Text1::
-	text "This ship, she is"
-	line "a luxury liner"
-	cont "for trainers!"
-
-	para "At every port, we"
-	line "hold parties with"
-	cont "invited trainers!"
+	text "We all have all"
+	line "have cell phones,"
+	cont "so come on, let's"
+	cont "get real."
 	done
 
 _SSAnneRivalBeforeBattleText::
