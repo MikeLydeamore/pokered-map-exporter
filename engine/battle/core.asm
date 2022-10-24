@@ -932,14 +932,14 @@ TrainerBattleVictory:
 	ld a, b
 	call nz, PlayBattleVictoryMusic
 	ld hl, TrainerDefeatedText
-	call PrintText
+	;call PrintText
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	ret z
 	call ScrollTrainerPicAfterBattle
 	ld c, 40
 	call DelayFrames
-	call PrintEndBattleText
+	;call PrintEndBattleText
 ; win money
 	ld hl, MoneyForWinningText
 	call PrintText
