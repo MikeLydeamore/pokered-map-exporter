@@ -163,4 +163,10 @@ _ViridianCityText13::
 _ViridianCityText14::
 	text "The GYM's doors"
 	line "are locked..."
+	para "Maybe you should"
+	line "try back later,"
+	cont "after obtaining"
+	cont ""
+.Archipelago_Text_Badges_Needed_Viridian_Gym_0
+	db "0 or so badges."
 	done

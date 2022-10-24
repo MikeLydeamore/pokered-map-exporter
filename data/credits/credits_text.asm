@@ -65,6 +65,8 @@ CreditsTextPointers:
 	dw CredFukui
 	dw CredClub
 	dw CredPAAD
+	dw CredMod
+	dw CredAlchav
 	assert_table_length NUM_CRED_STRINGS
 
 CredVersion: ; this 1 byte difference makes all bank addresses offset by 1 in the blue version
@@ -200,3 +202,7 @@ CredClub:
 	db -9, "NCL SUPER MARIO CLUB@"
 CredPAAD:
 	db -5, "PAAD TESTING@"
+CredMod:
+    db -6, "ARCHIPELAGO MOD@"
+CredAlchav:
+    db  -8, "ALEX “ALCHAV” AVERY@"

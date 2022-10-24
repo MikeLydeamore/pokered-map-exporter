@@ -35,16 +35,16 @@ DisplayTitleScreen:
 	call ClearScreen
 	call DisableLCD
 	call LoadFontTilePatterns
-	ld hl, NintendoCopyrightLogoGraphics
-	ld de, vTitleLogo2 tile 16
-	ld bc, 5 tiles
-	ld a, BANK(NintendoCopyrightLogoGraphics)
-	call FarCopyData2
-	ld hl, GamefreakLogoGraphics
-	ld de, vTitleLogo2 tile (16 + 5)
-	ld bc, 9 tiles
-	ld a, BANK(GamefreakLogoGraphics)
-	call FarCopyData2
+	;ld hl, NintendoCopyrightLogoGraphics
+	;ld de, vTitleLogo2 tile 16
+	;ld bc, 19 tiles
+	;ld a, BANK(NintendoCopyrightLogoGraphics)
+	;call FarCopyData2
+	;ld hl, GamefreakLogoGraphics
+	;ld de, vTitleLogo2 tile (16 + 5)
+	;ld bc, 9 tiles
+	;ld a, BANK(GamefreakLogoGraphics)
+	;call FarCopyData2
 	ld hl, PokemonLogoGraphics
 	ld de, vTitleLogo
 	ld bc, $60 tiles
@@ -100,7 +100,7 @@ DisplayTitleScreen:
 ; place tiles for title screen copyright
 	hlcoord 2, 17
 	ld de, .tileScreenCopyrightTiles
-	ld b, $10
+	ld b, 1
 .tileScreenCopyrightTilesLoop
 	ld a, [de]
 	ld [hli], a
@@ -111,8 +111,9 @@ DisplayTitleScreen:
 	jr .next
 
 .tileScreenCopyrightTiles
-	db $41,$42,$43,$42,$44,$42,$45,$46,$47,$48,$49,$4A,$4B,$4C,$4D,$4E ; ©'95.'96.'98 GAME FREAK inc.
-
+	;db $41,$42,$43,$42,$44,$42,$45,$46,$47,$48,$49,$4A,$4B,$4C,$4D,$4E ; ©'95.'96.'98 GAME FREAK inc.
+    db $7F
+    ;db $41,$42,$43,$44,$45,$46,$47,$48,$49,$4A,$4B,$4C,$4D,$4E,$4F,$50
 .next
 	call SaveScreenTilesToBuffer2
 	call LoadScreenTilesFromBuffer2
@@ -379,14 +380,16 @@ LoadCopyrightTiles:
 	ld hl, vChars2 tile $60
 	lb bc, BANK(NintendoCopyrightLogoGraphics), (GamefreakLogoGraphicsEnd - NintendoCopyrightLogoGraphics) / $10
 	call CopyVideoData
-	hlcoord 2, 7
+	hlcoord 2, 8
 	ld de, CopyrightTextString
 	jp PlaceString
 
 CopyrightTextString:
-	db   $60,$61,$62,$61,$63,$61,$64,$7F,$65,$66,$67,$68,$69,$6A             ; ©'95.'96.'98 Nintendo
-	next $60,$61,$62,$61,$63,$61,$64,$7F,$6B,$6C,$6D,$6E,$6F,$70,$71,$72     ; ©'95.'96.'98 Creatures inc.
-	next $60,$61,$62,$61,$63,$61,$64,$7F,$73,$74,$75,$76,$77,$78,$79,$7A,$7B ; ©'95.'96.'98 GAME FREAK inc.
+	;db   $60,$61,$62,$61,$63,$61,$64,$7F,$65,$66,$67,$68,$69,$6A             ; ©'95.'96.'98 Nintendo
+	;next $60,$61,$62,$61,$63,$61,$64,$7F,$6B,$6C,$6D,$6E,$6F,$70,$71,$72     ; ©'95.'96.'98 Creatures inc.
+	;next $60,$61,$62,$61,$63,$61,$64,$7F,$73,$74,$75,$76,$77,$78,$79,$7A,$7B ; ©'95.'96.'98 GAME FREAK inc.
+	db   $7F,$7F,$60,$61,$62,$63,$64,$65,$66,$67,$68,$69,$6A,$7F,$7F
+	next $7F,$7F,$7F,$6B,$6C,$6D,$6E,$6F,$70,$71,$72
 	db   "@"
 
 INCLUDE "data/pokemon/title_mons.asm"
