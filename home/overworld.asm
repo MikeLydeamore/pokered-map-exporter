@@ -157,8 +157,6 @@ OverworldLoopLessDelay::
 	ld c, a
 	call GiveItem
 	jr nc, .bagFull
-	ld a, $00
-	ld [wArchipelagoItemReceived], a
 	ld a, [wArchipelagoItemsReceivedCount]
 	ld c, a
 	ld a, [wArchipelagoItemsReceivedCount+1]
@@ -168,6 +166,8 @@ OverworldLoopLessDelay::
 	ld [wArchipelagoItemsReceivedCount], a
 	ld a, b
 	ld [wArchipelagoItemsReceivedCount+1], a
+	ld a, $00
+	ld [wArchipelagoItemReceived], a
 	;push hl
 	;hlcoord 0, 12
 	;ld b, $04
