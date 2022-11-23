@@ -665,7 +665,7 @@ HandlePoisonBurnLeechSeed_IncreaseEnemyHP:
 	pop hl
 	ret
 
-UpdateCurMonHPBar:
+UpdateCurMonHPBar::
 	hlcoord 10, 9    ; tile pointer to player HP bar
 	ldh a, [hWhoseTurn]
 	and a
@@ -966,7 +966,7 @@ PlayBattleVictoryMusic:
 	call PlayMusic
 	jp Delay3
 
-HandlePlayerMonFainted:
+HandlePlayerMonFainted::
 	ld a, 1
 	ld [wInHandlePlayerMonFainted], a
 	call RemoveFaintedPlayerMon
@@ -1130,6 +1130,8 @@ ChooseNextMon:
 ; called when player is out of usable mons.
 ; prints appropriate lose message, sets carry flag if player blacked out (special case for initial rival fight)
 HandlePlayerBlackOut:
+
+
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	jr z, .notRival1Battle
@@ -1148,6 +1150,15 @@ HandlePlayerBlackOut:
 	cp OAKS_LAB
 	ret z            ; starter battle in oak's lab: don't black out
 .notRival1Battle
+
+	ld a, [wArchipelagoDeathLink]
+    and a
+    ld a, 3
+    jr z, .sendDeathLink
+	ld a, 0
+.sendDeathLink
+	ld [wArchipelagoDeathLink], a
+
 	ld b, SET_PAL_BATTLE_BLACK
 	call RunPaletteCommand
 	ld hl, PlayerBlackedOutText2

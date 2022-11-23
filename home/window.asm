@@ -28,6 +28,7 @@ HandleMenuInput_::
 	ldh a, [hJoy5]
 	and a ; was a key pressed?
 	jr nz, .keyPressed
+	call receiveArchipelagoItem
 	push hl
 	hlcoord 18, 11 ; coordinates of blinking down arrow in some menus
 	call HandleDownArrowBlinkTiming ; blink down arrow (if any)

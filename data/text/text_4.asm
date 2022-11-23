@@ -11,7 +11,7 @@ _PokemonFaintedText::
 
 _PlayerBlackedOutText::
 	text "<PLAYER> is out of"
-	line "useable #MON!"
+	line "usable #MON!"
 
 	para "<PLAYER> blacked"
 	line "out!"

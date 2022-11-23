@@ -73,8 +73,9 @@ wAudioSavedROMBank:: db
 wFrequencyModifier:: db
 wTempoModifier:: db
 
-	ds 11
+	ds 10
 
+wArchipelagoDeathLink:: db
 wSaffronGateDir:: db
 wArchipelagoItemReceived:: db
 

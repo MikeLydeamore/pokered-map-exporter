@@ -870,7 +870,7 @@ _Rival1WinText::
 
 _PlayerBlackedOutText2::
 	text "<PLAYER> is out of"
-	line "useable #MON!"
+	line "usable #MON!"
 
 	para "<PLAYER> blacked"
 	line "out!"

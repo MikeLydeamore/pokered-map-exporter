@@ -148,51 +148,8 @@ OverworldLoopLessDelay::
 	jp OverworldLoop
 .continue
 ;    farcall BikeButtonCombo
-	ld a, [wArchipelagoItemReceived]
-	cp $00
-	jr z, .archipelagoItemNotReceived
-    push bc
-	ld b, a
-	ld a, 1
-	ld c, a
-	call GiveItem
-	jr nc, .bagFull
-	ld a, [wArchipelagoItemsReceivedCount]
-	ld c, a
-	ld a, [wArchipelagoItemsReceivedCount+1]
-	ld b, a
-	inc bc
-	ld a, c
-	ld [wArchipelagoItemsReceivedCount], a
-	ld a, b
-	ld [wArchipelagoItemsReceivedCount+1], a
-	ld a, $00
-	ld [wArchipelagoItemReceived], a
-	;push hl
-	;hlcoord 0, 12
-	;ld b, $04
-	;ld c, $12
-	;call TextBoxBorder
-	;ld hl, ReceivedArchipelagoItemText
-	;call justprinttext
-	;ld a, MESSAGE_BOX
-	;call DisplayTextBoxID
-	;ld hl, ReceivedArchipelagoItemText
-	;call PrintText
-	;jp PrintText
-	;pop hl
-	;jp AfterDisplayingTextID
-	;call EnableAutoTextBoxDrawing
-	;tx_pre UnusedBenchGuyText1
-	ld a, SFX_GET_ITEM_1
-	call PlaySound
-	;ld a, TEXT_RECEIVED_ITEM
-	;ldh [hSpriteIndexOrTextID], a
-	;call EnableAutoTextBoxDrawing
-	;call DisplayTextID
-.bagFull
-	pop bc
-.archipelagoItemNotReceived
+    call receiveArchipelagoItem
+;.archipelagoItemNotReceived
 	jp OverworldLoop
 
 .checkIfDownButtonIsPressed
@@ -2516,3 +2473,7 @@ LoadDestinationWarpPosition::
 	ldh [hLoadedROMBank], a
 	ld [MBC1RomBank], a
 	ret
+
+receiveArchipelagoItem::
+    farcall receiveArchipelagoItem_
+    ret

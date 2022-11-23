@@ -250,6 +250,95 @@ INCLUDE "engine/events/hidden_objects/school_notebooks.asm"
 INCLUDE "engine/events/hidden_objects/fighting_dojo.asm"
 INCLUDE "engine/events/hidden_objects/indigo_plateau_hq.asm"
 
+receiveArchipelagoItem_::
+	ld a, [wArchipelagoDeathLink]
+	cp 1
+	jr nz, .noDeathLink
+	ld a, 0
+	ld [wPartyMon1HP], a
+	ld [wPartyMon2HP], a
+	ld [wPartyMon3HP], a
+	ld [wPartyMon4HP], a
+	ld [wPartyMon5HP], a
+	ld [wPartyMon6HP], a
+	ld [wPartyMon1HP + 1], a
+	ld [wPartyMon2HP + 1], a
+	ld [wPartyMon3HP + 1], a
+	ld [wPartyMon4HP + 1], a
+	ld [wPartyMon5HP + 1], a
+	ld [wPartyMon6HP + 1], a
+	ld [wLoadedMonHP], a
+	ld [wLoadedMonHP + 1], a
+	ld [wBattleMonHP], a
+	ld [wBattleMonHP + 1], a
+	ld a, 2
+	ld [wArchipelagoDeathLink], a
+	;ld a, [wIsInBattle]
+	;and a
+	;ret z
+    ;jp HandlePlayerMonFainted
+	;ld a, [wBattleMonHP]
+	;ld [wHPBarOldHP], a
+	;ld a, [wBattleMonHP + 1]
+	;ld [wHPBarOldHP + 1], a
+
+	;ld a, 0
+	;ld [wBattleMonHP], a
+	;ld [wBattleMonHP + 1], a
+	;ld [wHPBarNewHP], a
+	;ld [wHPBarNewHP + 1], a
+	;ld a,0
+	;ldh [hWhoseTurn], a
+	;farcall UpdateCurMonHPBar
+	ret
+	;predef DrawPlayerHUDAndHPBar
+
+.noDeathLink
+	ld a, [wArchipelagoItemReceived]
+	cp $00
+	ret z
+    push bc
+	ld b, a
+	ld a, 1
+	ld c, a
+	call GiveItem
+	jr nc, .bagFull
+	ld a, [wArchipelagoItemsReceivedCount]
+	ld c, a
+	ld a, [wArchipelagoItemsReceivedCount+1]
+	ld b, a
+	inc bc
+	ld a, c
+	ld [wArchipelagoItemsReceivedCount], a
+	ld a, b
+	ld [wArchipelagoItemsReceivedCount+1], a
+	ld a, $00
+	ld [wArchipelagoItemReceived], a
+	;push hl
+	;hlcoord 0, 12
+	;ld b, $04
+	;ld c, $12
+	;call TextBoxBorder
+	;ld hl, ReceivedArchipelagoItemText
+	;call justprinttext
+	;ld a, MESSAGE_BOX
+	;call DisplayTextBoxID
+	;ld hl, ReceivedArchipelagoItemText
+	;call PrintText
+	;jp PrintText
+	;pop hl
+	;jp AfterDisplayingTextID
+	;call EnableAutoTextBoxDrawing
+	;tx_pre UnusedBenchGuyText1
+	ld a, SFX_GET_ITEM_1
+	call PlaySound
+	;ld a, TEXT_RECEIVED_ITEM
+	;ldh [hSpriteIndexOrTextID], a
+	;call EnableAutoTextBoxDrawing
+	;call DisplayTextID
+.bagFull
+	pop bc
+	ret
 
 SECTION "Battle Engine 9", ROMX
 

@@ -103,6 +103,15 @@ ApplyOutOfBattlePoisonDamage:
 	call DisplayTextID
 	ld hl, wd72e
 	set 5, [hl]
+
+	ld a, [wArchipelagoDeathLink]
+    and a
+    ld a, 3
+    jr z, .sendDeathLink
+	ld a, 0
+.sendDeathLink
+	ld [wArchipelagoDeathLink], a
+
 	ld a, $ff
 	jr .done
 .noBlackOut
