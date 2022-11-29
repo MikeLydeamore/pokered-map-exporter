@@ -13,3 +13,8 @@ CeruleanMartText2:
 CeruleanMartText3:
 	text_far _CeruleanMartText3
 	text_end
+
+CeruleanCashierText::
+.Archipelago_Shop3
+	script_mart POKE_BALL, POTION, REPEL, ANTIDOTE, BURN_HEAL, AWAKENING, PARLYZ_HEAL
+    ds 30, 0

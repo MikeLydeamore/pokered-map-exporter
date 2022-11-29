@@ -1059,11 +1059,15 @@ wExpAmountGained:: dw
 wGainBoostedExp:: db
 ENDU
 
+UNION
+wItemList:: ds 33
+
+NEXTU
 wGymCityName:: ds 17
+ENDU
 
 wGymLeaderName:: ds NAME_LENGTH
 
-wItemList:: ds 16
 
 wListPointer:: dw
 

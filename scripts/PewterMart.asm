@@ -28,3 +28,9 @@ PewterMartText3:
 .Text
 	text_far _PewterMartText3
 	text_end
+
+
+PewterCashierText::
+.Archipelago_Shop2
+	script_mart POKE_BALL, POTION, ESCAPE_ROPE, ANTIDOTE, BURN_HEAL, AWAKENING, PARLYZ_HEAL
+    ds 30, 0

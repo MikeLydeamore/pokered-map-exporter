@@ -13,3 +13,8 @@ FuchsiaMartText2:
 FuchsiaMartText3:
 	text_far _FuchsiaMartText3
 	text_end
+
+FuchsiaCashierText::
+.Archipelago_Shop7
+	script_mart ULTRA_BALL, GREAT_BALL, SUPER_POTION, REVIVE, FULL_HEAL, SUPER_REPEL
+    ds 30, 0
