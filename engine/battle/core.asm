@@ -5248,6 +5248,23 @@ AdjustDamageForMoveType:
 	ld a, [wEnemyMoveType]
 	ld [wMoveType], a
 .next
+.Archipelago_Option_Always_Half_STAB
+    ld a, 0
+    and a
+    jr z, .checkSTAB
+    ld hl, wDamage + 1
+	ld a, [hld]
+	ld h, [hl]
+	ld l, a    ; hl = damage
+	ld b, h
+	ld c, l    ; bc = damage
+	srl b
+	rr c      ; bc = floor(0.5 * damage)
+	srl b
+	rr c      ; bc = floor(0.5 * damage)
+	add hl, bc ; hl = floor(1.5 * damage)
+	jr .skipSameTypeAttackBonus
+.checkSTAB
 	ld a, [wMoveType]
 	cp b ; does the move type match type 1 of the attacker?
 	jr z, .sameTypeAttackBonus

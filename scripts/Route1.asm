@@ -8,7 +8,7 @@ Route1_TextPointers:
 
 Route1Text1:
 	text_asm
-	CheckAndSetEvent EVENT_GOT_POTION_SAMPLE
+	CheckEvent EVENT_GOT_POTION_SAMPLE
 	jr nz, .got_item
 	ld hl, Route1ViridianMartSampleText
 	call PrintText
@@ -22,6 +22,7 @@ Route1Text1:
 	ld hl, Route1Text_1caf3
 	jr .done
 .got_item
+    SetEvent EVENT_GOT_POTION_SAMPLE
 	ld hl, Route1Text_1caee
 .done
 	call PrintText

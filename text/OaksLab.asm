@@ -236,8 +236,10 @@ _OaksLabText25::
 	line "<RIVAL>! Take"
 	cont "these with you!"
 
-	para "<PLAYER> got"
-	line "#DEX from OAK!@"
+	para "<PLAYER> received"
+	line "@"
+	text_ram wStringBuffer
+	text "!@"
 	text_end
 
 _OaksLabText26::
@@ -247,6 +249,10 @@ _OaksLabText26::
 _OaksLabText27::
 	text "<RIVAL>: Alright."
 	done
+
+_OaksLabText28::
+    text "Bag full already?!"
+    done
 
 _OaksLabText_1d405::
 	text "I study #MON as"

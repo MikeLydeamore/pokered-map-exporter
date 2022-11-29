@@ -22,6 +22,31 @@ PokemonTower6F_ScriptPointers:
 	dw PokemonTower6Script4
 
 PokemonTower6Script0:
+.Archipelago_Option_Trainersanity2_1
+    ld a, 1
+    and a
+    jr z, .continue
+	CheckEvent EVENT_BEAT_POKEMONTOWER_7_TRAINER_0_ITEM
+	jr nz, .firstGood
+	ld a, HS_POKEMON_TOWER_7F_ROCKET_1
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+.firstGood
+	CheckEvent EVENT_BEAT_POKEMONTOWER_7_TRAINER_1_ITEM
+	jr nz, .secondGood
+	ld a, HS_POKEMON_TOWER_7F_ROCKET_2
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+
+.secondGood
+
+	CheckEvent EVENT_BEAT_POKEMONTOWER_7_TRAINER_2_ITEM
+	jr nz, .continue
+	ld a, HS_POKEMON_TOWER_7F_ROCKET_3
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+
+.continue
 	CheckEvent EVENT_BEAT_GHOST_MAROWAK
 	jp nz, CheckFightingMapTrainers
 	ld hl, CoordsData_60b45

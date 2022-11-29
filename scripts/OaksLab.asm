@@ -599,6 +599,7 @@ OaksLabScript16:
 	;ldh [hSpriteIndexOrTextID], a
 	;call DisplayTextID
 	;call DelayFrame
+
 	ld a, $19
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
@@ -622,7 +623,7 @@ OaksLabScript16:
 	;ld a, $1b
 	;ldh [hSpriteIndexOrTextID], a
 	;call DisplayTextID
-	SetEvent EVENT_GOT_POKEDEX
+	;SetEvent EVENT_GOT_POKEDEX
 	SetEvent EVENT_OAK_GOT_PARCEL
 
     ;ld a, $00
@@ -777,6 +778,7 @@ OaksLab_TextPointers:
 	dw OaksLabText25
 	dw OaksLabText26
 	dw OaksLabText27
+	dw OaksLabText28
 
 OaksLab_TextPointers2:
 	dw OaksLabText1
@@ -1093,6 +1095,14 @@ OaksLabText5:
 	call PrintText
 	jr .asm_1d2ed
 .asm_1d2b8
+.Archipelago_Event_Pokedex
+	lb bc, POKEDEX, 1
+	call GiveItem
+	jr c, .notBagFull
+	ld hl, OaksLabText28
+	call PrintText
+	jp TextScriptEnd
+.notBagFull
 	ld hl, OaksLabDeliverParcelText
 	call PrintText
 	call OaksLabScript_RemoveParcel
@@ -1310,6 +1320,10 @@ OaksLabText26:
 
 OaksLabText27:
 	text_far _OaksLabText27
+	text_end
+
+OaksLabText28:
+	text_far _OaksLabText28
 	text_end
 
 OaksLabText11:

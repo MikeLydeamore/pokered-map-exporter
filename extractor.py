@@ -28,7 +28,7 @@ for line in data.split("\n"):
         elif "Event" in line or "Hidden_Item" in line:
             address += 2
         elif "_0" in line:
-            line = "".join(line.split("_0"))
+            line = "_0".join(line.split("_0")[:-1])
         elif "_10" in line:
             address += 10
             line = "".join(line.split("_10"))

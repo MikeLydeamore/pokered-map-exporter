@@ -51,6 +51,8 @@ OakSpeech:
 	ld [wItemQuantity], a
 	call AddItemToInventory  ; give one potion
 
+	farcall FillStartInventory
+
 .Archipelago_Options_LD_A
     ld a, $00
     ld [wArchipelagoOptions], a
