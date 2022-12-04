@@ -1024,7 +1024,7 @@ OaksLabText5:
 	;jr .test
 	CheckEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
 	jr nz, .asm_1d266
-	CheckEvent EVENT_GOT_POKEDEX
+	CheckEvent EVENT_OAK_GOT_PARCEL
 	jr z, .asm_1d279
 	CheckEvent EVENT_GOT_POKEBALLS_FROM_OAK
 	jr z, .asm_1d279
@@ -1073,7 +1073,7 @@ OaksLabText5:
 .asm_1d279
 	CheckEvent EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE
 	jr nz, .asm_1d2d0
-	CheckEvent EVENT_GOT_POKEDEX
+	CheckEvent EVENT_OAK_GOT_PARCEL
 	jr nz, .asm_1d2c8
 	CheckEventReuseA EVENT_BATTLED_RIVAL_IN_OAKS_LAB
 	jr nz, .asm_1d2a9

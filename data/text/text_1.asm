@@ -109,6 +109,12 @@ _OaksAideUhOhText::
 	text "."
 	done
 
+_OaksAideNoDexText::
+    text "Oh, you don't"
+    line "even have a"
+    cont "POKéDEX?"
+    done
+
 _OaksAideComeBackText::
 	text "Oh. I see."
 

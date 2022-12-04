@@ -66,6 +66,10 @@
 	const CRED_PAAD           ; $3F
 	const CRED_MOD
 	const CRED_ALCHAV
+	const CRED_J_IM
+	const CRED_PRET
+	const CRED_DANNY
+
 DEF NUM_CRED_STRINGS EQU const_value
 
 	const_def -1, -1

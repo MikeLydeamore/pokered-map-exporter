@@ -93,6 +93,10 @@ ItemNames::
 	li "HIDEOUT KEY"
 	li "TRADE STONE"
 	li "SAFARI PASS"
+	li "POISON TRAP"
+	li "PARLYZ TRAP"
+	li "ICE TRAP"
+	li "FIRE TRAP"
 	assert_list_length NUM_ITEMS
 	li "B2F"
 	li "B1F"

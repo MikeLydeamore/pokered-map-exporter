@@ -26,7 +26,7 @@ _DisplayArchipelagoItem::
 	text "<PLAYER> received"
 	line "@"
 	text_ram wStringBuffer
-	text "!@"
+	text "!"
 	done
 
 _PokemartBuyingGreetingText::
@@ -153,7 +153,10 @@ _ForgotAndText::
 
 _HMCantDeleteText::
 	text "HM techniques"
-	line "can't be deleted!"
+	line "can't be deleted"
+	cont "unless you have"
+	cont "the HM in your"
+	cont "bag!"
 	prompt
 
 _PokemonCenterWelcomeText::

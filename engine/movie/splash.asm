@@ -1,4 +1,5 @@
 LoadShootingStarGraphics:
+
 	ld a, $f9
 	ldh [rOBP0], a
 	ld a, $a4

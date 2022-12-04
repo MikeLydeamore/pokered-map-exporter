@@ -62,20 +62,23 @@ ReadTrainerHeaderInfo::
 	ld [wTrainerHeaderFlagBit], a  ; store flag's bit
 	jr .done
 .nonZeroOffset
-	cp $2
-	jr z, .readPointer ; read flag's byte ptr
-	cp $4
-	jr z, .readPointer ; read before battle text
-	cp $6
-	jr z, .readPointer ; read after battle text
-	cp $8
-	jr z, .readPointer ; read end battle text
-	cp $a
-	jr nz, .done
-	ld a, [hli]        ; read end battle text (2) but override the result afterwards (XXX why, bug?)
-	ld d, [hl]
-	ld e, a
+	cp $c
+	jr c, .readPointer
+	ld a, [hli]
 	jr .done
+	;jr z, .readPointer ; read flag's byte ptr
+	;cp $4
+	;jr z, .readPointer ; read before battle text
+	;cp $6
+	;jr z, .readPointer ; read after battle text
+	;cp $8
+	;jr z, .readPointer ; read end battle text
+	;cp $a
+	;jr nz, .done
+	;ld a, [hli]        ; read end battle text (2) but override the result afterwards (XXX why, bug?)
+	;ld d, [hl]
+	;ld e, a
+	;jr .done
 .readPointer
 	ld a, [hli]
 	ld h, [hl]
@@ -104,6 +107,55 @@ TalkToTrainer::
 	ld a, c
     and a
 	jr z, .trainerNotYetFought     ; test trainer's flag
+
+.Archipelago_Option_Trainersanity_1
+    ld a, 1
+    and a
+    jr z, .noTrainersanity
+    ld a, $c
+	call ReadTrainerHeaderInfo
+	ld c, a
+	push bc
+	push bc
+
+	ld a, $a
+	call ReadTrainerHeaderInfo
+	pop bc
+	push hl
+
+	ld b, FLAG_TEST
+
+	predef FlagActionPredef
+
+
+	ld a, c
+	and a
+	jr nz, .noItem
+
+	ld a, $d
+	call ReadTrainerHeaderInfo
+	ld b, a
+	ld a, 1
+	ld c, a
+	call GiveItem
+    pop hl
+    pop bc
+	jr c, .notBagFull
+
+
+	ld hl, bagFullText
+	jp PrintText
+
+.notBagFull
+    ld b, FLAG_SET
+    predef FlagActionPredef
+	ld hl, DisplayArchipelagoItem
+	jp PrintText
+.noItem
+
+    pop bc
+    pop hl
+.noTrainersanity
 	ld a, $6
 	call ReadTrainerHeaderInfo     ; print after battle text
 	jp PrintText
@@ -128,6 +180,13 @@ TalkToTrainer::
 	ld hl, wCurMapScript
 	inc [hl]      ; increment map script index before StartTrainerBattle increments it again (next script function is usually EndTrainerBattle)
 	jp StartTrainerBattle
+
+
+
+bagFullText:
+    text "You can't carry"
+	line "any more items."
+    done
 
 ; checks if any trainers are seeing the player and wanting to fight
 CheckFightingMapTrainers::
@@ -301,7 +360,7 @@ CheckForEngagingTrainers::
 	and a
 	ret nz        ; break if the trainer is engaging
 .continue
-	ld hl, $c
+	ld hl, $e
 	add hl, de
 	ld d, h
 	ld e, l
@@ -338,28 +397,28 @@ EngageMapTrainer::
 	ld [wEngagedTrainerSet], a
 	jp PlayTrainerMusic
 
-PrintEndBattleText::
-	push hl
-	ld hl, wd72d
-	bit 7, [hl]
-	res 7, [hl]
-	pop hl
-	ret z
-	ldh a, [hLoadedROMBank]
-	push af
-	ld a, [wEndBattleTextRomBank]
-	ldh [hLoadedROMBank], a
-	ld [MBC1RomBank], a
-	push hl
-	farcall SaveTrainerName
-	ld hl, TrainerEndBattleText
-	call PrintText
-	pop hl
-	pop af
-	ldh [hLoadedROMBank], a
-	ld [MBC1RomBank], a
-	farcall FreezeEnemyTrainerSprite
-	jp WaitForSoundToFinish
+;PrintEndBattleText::
+;	push hl
+;	ld hl, wd72d
+;	bit 7, [hl]
+;	res 7, [hl]
+;	pop hl
+;	ret z
+;	ldh a, [hLoadedROMBank]
+;	push af
+;	ld a, [wEndBattleTextRomBank]
+;	ldh [hLoadedROMBank], a
+;	ld [MBC1RomBank], a
+;	push hl
+;	farcall SaveTrainerName
+;	ld hl, TrainerEndBattleText
+;	call PrintText
+;	pop hl
+;	pop af
+;	ldh [hLoadedROMBank], a
+;	ld [MBC1RomBank], a
+;	farcall FreezeEnemyTrainerSprite
+;	jp WaitForSoundToFinish
 
 GetSavedEndBattleTextPointer::
 	ld a, [wBattleResult]

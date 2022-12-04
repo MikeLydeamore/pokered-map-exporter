@@ -169,16 +169,54 @@ TryingToLearn:
 	pop bc
 	pop de
 	ld a, d
+    push bc
 	jr c, .hm
+.deleteHM
+    pop bc
 	pop hl
 	add hl, bc
 	and a
 	ret
 .hm
+    cp FLASH
+    jr nz, .notFlash
+    ld b, HM_FLASH
+    call IsItemInBag
+    jr z, .cantDel
+    jr .deleteHM
+.notFlash
+    cp STRENGTH
+    jr nz, .notStrength
+    ld b, HM_STRENGTH
+    call IsItemInBag
+    jr z, .cantDel
+    jr .deleteHM
+.notStrength
+    cp CUT
+    jr nz, .notCut
+    ld b, HM_CUT
+    call IsItemInBag
+    jr z, .cantDel
+    jr .deleteHM
+.notCut
+    cp SURF
+    jr nz, .notSurf
+    ld b, HM_SURF
+    call IsItemInBag
+    jr z, .cantDel
+    jr .deleteHM
+
+.notSurf
+    ld b, HM_FLY
+    call IsItemInBag
+    jr z, .cantDel
+    jr .deleteHM
+.cantDel
+    pop bc
 	ld hl, HMCantDeleteText
 	call PrintText
 	pop hl
-	jr .loop
+	jp .loop
 .cancel
 	scf
 	ret

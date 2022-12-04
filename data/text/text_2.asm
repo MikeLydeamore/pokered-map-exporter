@@ -1669,13 +1669,11 @@ _LinkCanceledText::
 	done
 
 _OakSpeechText1::
-	text "Hello there!"
-	line "Welcome to the"
-	cont "world of #MON!"
-
-	para "My name is OAK!"
-	line "People call me"
-	cont "the #MON PROF!"
+	text "What's your name?"
+	prompt
+_OakSpeechText2::
+	text "What's your"
+	line "rival's name?"
 	prompt
 
 _OakSpeechText2A::
@@ -1736,14 +1734,11 @@ _DoYouWantToNicknameText::
 	done
 
 _YourNameIsText::
-	text "Right! So your"
-	line "name is <PLAYER>!"
+	text "Of course!"
 	prompt
 
 _HisNameIsText::
-	text "That's right! I"
-	line "remember now! His"
-	cont "name is <RIVAL>!"
+	text "That's right!"
 	prompt
 
 _WillBeTradedText::

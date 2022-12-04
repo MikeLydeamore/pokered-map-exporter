@@ -172,7 +172,6 @@ KogaMarshBadgeInfoText:
 ReceivedTM46Text:
 	text_far _ReceivedTM46Text
 	sound_get_item_1
-	text_far _TM46ExplanationText
 	text_end
 
 TM46NoRoomText:

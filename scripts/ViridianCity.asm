@@ -46,7 +46,7 @@ ViridianCityScript_1900b:
 	ret
 
 ViridianCityScript_1903d:
-	CheckEvent EVENT_GOT_POKEDEX
+	CheckEvent EVENT_OAK_GOT_PARCEL
 	ret nz
 	ld a, [wMissableObjectFlags]
 	bit 1, a
@@ -211,7 +211,7 @@ ViridianCityText_19157:
 
 ViridianCityText4:
 	text_asm
-	CheckEvent EVENT_GOT_POKEDEX
+	CheckEvent EVENT_OAK_GOT_PARCEL
 	jr nz, .gotPokedex
 	ld hl, ViridianCityText_19175
 	call PrintText

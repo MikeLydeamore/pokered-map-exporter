@@ -148,6 +148,7 @@ OverworldLoopLessDelay::
 	jp OverworldLoop
 .continue
 ;    farcall BikeButtonCombo
+    call checkDeathLink
     call receiveArchipelagoItem
 ;.archipelagoItemNotReceived
 	jp OverworldLoop
@@ -2476,4 +2477,8 @@ LoadDestinationWarpPosition::
 
 receiveArchipelagoItem::
     farcall receiveArchipelagoItem_
+    ret
+
+checkDeathLink::
+    farcall checkDeathLink_
     ret

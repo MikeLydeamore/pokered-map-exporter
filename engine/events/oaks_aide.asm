@@ -5,6 +5,8 @@ OaksAideScript:
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .choseNo
+	CheckEvent EVENT_GOT_POKEDEX
+	jr z, .noDex
 	ld hl, wPokedexOwned
 	ld b, wPokedexOwnedEnd - wPokedexOwned
 	call CountSetBits
@@ -37,6 +39,11 @@ OaksAideScript:
 	call PrintText
 	ld a, OAKS_AIDE_NOT_ENOUGH_MONS
 	jr .done
+.noDex
+    ld hl, OaksAideNoDexText
+    call PrintText
+	ld a, OAKS_AIDE_NOT_ENOUGH_MONS
+	jr .done
 .choseNo
 	ld hl, OaksAideComeBackText
 	call PrintText
@@ -52,6 +59,10 @@ OaksAideHiText:
 OaksAideUhOhText:
 	text_far _OaksAideUhOhText
 	text_end
+
+OaksAideNoDexText:
+    text_far _OaksAideNoDexText
+    text_end
 
 OaksAideComeBackText:
 	text_far _OaksAideComeBackText

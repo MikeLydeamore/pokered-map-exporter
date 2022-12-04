@@ -67,6 +67,9 @@ CreditsTextPointers:
 	dw CredPAAD
 	dw CredMod
 	dw CredAlchav
+	dw CredJim
+	dw CredPret
+	dw CredDanny
 	assert_table_length NUM_CRED_STRINGS
 
 CredVersion: ; this 1 byte difference makes all bank addresses offset by 1 in the blue version
@@ -206,3 +209,9 @@ CredMod:
     db -6, "ARCHIPELAGO MOD@"
 CredAlchav:
     db  -8, "ALEX “ALCHAV” AVERY@"
+CredJim:
+    db -1, "J_IM@"
+CredDanny:
+    db -2, "DANNYE@"
+CredPret:
+    db -8, "THE PRET COMMUNITY@"

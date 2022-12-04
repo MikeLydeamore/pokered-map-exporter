@@ -102,6 +102,10 @@ DEF SAFARI_ROCK EQU $16 ; overload
  	const HIDEOUT_KEY   ; $5B
  	const TRADE_STONE  ; $5C
  	const SAFARI_PASS   ; $5D
+ 	const POISON_TRAP ; $5E
+ 	const PARALYZE_TRAP ; $5F
+ 	const ICE_TRAP ; $60
+ 	const FIRE_TRAP ; $61
 DEF NUM_ITEMS EQU const_value - 1
 
 ; elevator floors use item IDs

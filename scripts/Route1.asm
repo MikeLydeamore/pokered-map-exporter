@@ -10,19 +10,17 @@ Route1Text1:
 	text_asm
 	CheckEvent EVENT_GOT_POTION_SAMPLE
 	jr nz, .got_item
-	ld hl, Route1ViridianMartSampleText
-	call PrintText
 .Archipelago_Event_Free_Sample
 	lb bc, POTION, 1
 	call GiveItem
 	jr nc, .bag_full
+    SetEvent EVENT_GOT_POTION_SAMPLE
 	ld hl, Route1Text_1cae8
 	jr .done
 .bag_full
 	ld hl, Route1Text_1caf3
 	jr .done
 .got_item
-    SetEvent EVENT_GOT_POTION_SAMPLE
 	ld hl, Route1Text_1caee
 .done
 	call PrintText

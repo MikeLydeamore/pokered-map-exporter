@@ -267,7 +267,6 @@ BlaineVolcanoBadgeInfoText:
 ReceivedTM38Text:
 	text_far _ReceivedTM38Text
 	sound_get_item_1
-	text_far _TM38ExplanationText
 	text_end
 
 TM38NoRoomText:

@@ -93,4 +93,8 @@ KeyItemFlags:
 	dbit TRUE
 	dbit TRUE
 	dbit TRUE
+	dbit FALSE
+	dbit FALSE
+	dbit FALSE
+	dbit FALSE
 	end_bit_array NUM_ITEMS

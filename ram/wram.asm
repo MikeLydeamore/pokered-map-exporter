@@ -2309,6 +2309,7 @@ wArchipelagoSerialSendData:: ds 2
 wArchipelagoSerialReceiveData:: ds 2
 wOldDamage:: ds 2
 wEffectiveMessage:: db
+wArchipelagoReceiveItemsInMenuAllowed:: db
 SECTION "Current Box Data", WRAM0
 
 wBoxDataStart::

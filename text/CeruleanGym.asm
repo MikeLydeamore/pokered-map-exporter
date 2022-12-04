@@ -1,20 +1,6 @@
 _MistyPreBattleText::
 	text "Hi, you're a new"
 	line "face!"
-
-	para "Trainers who want"
-	line "to turn pro have"
-	cont "to have a policy"
-	cont "about #MON!"
-
-	para "What is your"
-	line "approach when you"
-	cont "catch #MON?"
-
-	para "My policy is an"
-	line "all-out offensive"
-	cont "with water-type"
-	cont "#MON!"
 	done
 
 _TM11ExplanationText::

@@ -32,6 +32,7 @@ SetDefaultNames:
 	jp CopyData
 
 OakSpeech:
+    ;farjp SkipHOFCredits
 	ld a, SFX_STOP_ALL_MUSIC
 	call PlaySound
 	ld a, BANK(Music_Routes2)
@@ -75,9 +76,22 @@ OakSpeech:
 	ldh [hTileAnimations], a
 	;ld a, $FF ; [wd732]
 	;bit 1, a ; possibly a debug mode bit
-
-	;call ChoosePlayerName
-	;call ChooseRivalName
+.Archipelago_Skip_Player_Name_1
+    ld a, 1
+    and a
+    jr nz, .skipPlayerName
+	ld hl, OakSpeechText1
+	call PrintText
+	call ChoosePlayerName
+.skipPlayerName
+.Archipelago_Skip_Rival_Name_1
+    ld a, 1
+    and a
+    jr nz, .skipRivalName
+	ld hl, OakSpeechText2
+	call PrintText
+	call ChooseRivalName
+.skipRivalName
 	jp .skipChoosingNames
 	ld de, ProfOakPic
 	lb bc, BANK(ProfOakPic), $00
@@ -179,9 +193,7 @@ OakSpeechText1:
 	text_far _OakSpeechText1
 	text_end
 OakSpeechText2:
-	text_far _OakSpeechText2A
-	sound_cry_nidorina
-	text_far _OakSpeechText2B
+	text_far _OakSpeechText2
 	text_end
 IntroducePlayerText:
 	text_far _IntroducePlayerText

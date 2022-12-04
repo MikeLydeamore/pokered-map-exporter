@@ -2097,7 +2097,13 @@ DisplayBattleMenu::
 	ld a, $1
 	ld [hli], a ; wMaxMenuItem
 	ld [hl], D_RIGHT | A_BUTTON ; wMenuWatchedKeys
+	ld a, 1
+	ld [wArchipelagoReceiveItemsInMenuAllowed], a
 	call HandleMenuInput
+	push af
+	ld a, 0
+	ld [wArchipelagoReceiveItemsInMenuAllowed], a
+	pop af
 	bit BIT_D_RIGHT, a
 	jr nz, .rightColumn
 	jr .AButtonPressed ; the A button was pressed
@@ -2131,9 +2137,15 @@ DisplayBattleMenu::
 	ld [hli], a ; wMaxMenuItem
 	ld a, D_LEFT | A_BUTTON
 	ld [hli], a ; wMenuWatchedKeys
+	ld a, 1
+	ld [wArchipelagoReceiveItemsInMenuAllowed], a
 	call HandleMenuInput
+	push af
+	ld a, 0
+	ld [wArchipelagoReceiveItemsInMenuAllowed], a
+	pop af
 	bit 5, a ; check if left was pressed
-	jr nz, .leftColumn ; if left was pressed, jump
+	jp nz, .leftColumn ; if left was pressed, jump
 	ld a, [wCurrentMenuItem]
 	add $2 ; if we're in the right column, the actual id is +2
 	ld [wCurrentMenuItem], a

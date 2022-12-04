@@ -250,10 +250,11 @@ INCLUDE "engine/events/hidden_objects/school_notebooks.asm"
 INCLUDE "engine/events/hidden_objects/fighting_dojo.asm"
 INCLUDE "engine/events/hidden_objects/indigo_plateau_hq.asm"
 
-receiveArchipelagoItem_::
+
+checkDeathLink_::
 	ld a, [wArchipelagoDeathLink]
 	cp 1
-	jr nz, .noDeathLink
+	ret nz
 	ld a, 0
 	ld [wPartyMon1HP], a
 	ld [wPartyMon2HP], a
@@ -267,12 +268,12 @@ receiveArchipelagoItem_::
 	ld [wPartyMon4HP + 1], a
 	ld [wPartyMon5HP + 1], a
 	ld [wPartyMon6HP + 1], a
-	ld [wLoadedMonHP], a
-	ld [wLoadedMonHP + 1], a
 	ld [wBattleMonHP], a
 	ld [wBattleMonHP + 1], a
-	ld a, 2
-	ld [wArchipelagoDeathLink], a
+	ret
+
+	;ld a, 2
+	;ld [wArchipelagoDeathLink], a
 	;ld a, [wIsInBattle]
 	;and a
 	;ret z
@@ -290,8 +291,10 @@ receiveArchipelagoItem_::
 	;ld a,0
 	;ldh [hWhoseTurn], a
 	;farcall UpdateCurMonHPBar
-	ret
+
 	;predef DrawPlayerHUDAndHPBar
+
+receiveArchipelagoItem_::
 
 .noDeathLink
 	ld a, [wArchipelagoItemReceived]
@@ -368,58 +371,40 @@ StartInventoryTable:
 .Archipelago_Start_Inventory_0
     DS 256, $00
 
-_GiveItem::
-	ldh a, [hJoyHeld]
-	and a
-	bit BIT_B_BUTTON, a
-	ret nz
-	ld a, b
-	ld [wd11e], a
-	ld [wcf91], a
-    cp AP_ITEM
-    jr z, .apitem
-    cp POKEDEX
-    jr z, .pokedex
-    ;ld hl, BadgeList
-    ;ld a, hli
-    ld a, BOULDERBADGE - 1
-.loop1
-    cp EARTHBADGE
-    jr z, .continue
-    inc a
-    cp b
-    jr nz, .loop1
-; match found
-    ld a, 1
-    ld c, a
-    ld a, b
-    sub a, BOULDERBADGE
-    ;ld b, a
-    jr .skipsla
-.loop2
-    SLA c
-    dec a
-.skipsla
-    cp 0
-    jr nz, .loop2
-    ld a, [wObtainedBadges]
-    or c
-    ld [wObtainedBadges], a
-    jr .apitem
-.continue
-	ld a, c
-	ld [wItemQuantity], a
-	ld hl, wNumBagItems
-	call AddItemToInventory
-	ret nc
-.apitem
-	call GetItemName
-	call CopyToStringBuffer
-	scf
-	ret
-.pokedex
-    SetEvent EVENT_GOT_POKEDEX
-    jr .apitem
+;_GiveItem::
+ParalyzeTrap::
+    ld a, (1 << PAR)
+    call ApplyTrap
+    ld a, [wIsInBattle]
+    and a
+    ret z
+    farcall QuarterSpeedDueToParalysis
+    ret
+IceTrap::
+    ld a, (1 << FRZ)
+    jr ApplyTrap
+FireTrap::
+    ld a, (1 << BRN)
+    call ApplyTrap
+    ld a, [wIsInBattle]
+    and a
+    ret z
+    farcall HalveAttackDueToBurn
+    ret
+PoisonTrap::
+    ld a, (1 << PSN)
+    jr ApplyTrap
+
+ApplyTrap:
+    ld [wBattleMonStatus], a
+    ld [wPartyMon1Status], a
+    ld [wPartyMon2Status], a
+    ld [wPartyMon3Status], a
+    ld [wPartyMon4Status], a
+    ld [wPartyMon5Status], a
+    ld [wPartyMon6Status], a
+    ret
+
 
 SECTION "Battle Engine 9", ROMX
 
