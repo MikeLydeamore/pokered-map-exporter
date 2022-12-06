@@ -102,7 +102,6 @@ _levelRedText:
 	line "Level Red."
 
 	para "Oh ♂ぁ▼¥!"
-	line "He's all up in it!"
 	done
 
 levelCriticalText:
@@ -117,16 +116,6 @@ _levelCriticalText:
 	para "Red alert!"
 
 	para "Red alert!"
-
-	para "He's doing your"
-	cont "girlfriend!"
-
-	para "                  "
-	line "                  "
-
 	para "Son of a ♀¥ぅ▷♂!"
-
-	para "He's in the back"
-	line "door!"
 	done
 

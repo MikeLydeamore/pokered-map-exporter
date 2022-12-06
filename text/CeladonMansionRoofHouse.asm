@@ -1,6 +1,6 @@
 _CeladonMansion5Text1::
-	text "Did you know that"
-	line "in terms of..."
-	para "Ahem..."
-	line "Nevermind."
+    text "My dialogue was"
+    line "removed after"
+    cont "complaints from"
+    cont "players."
 	done
