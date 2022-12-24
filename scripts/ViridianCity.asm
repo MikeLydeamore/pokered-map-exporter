@@ -188,11 +188,11 @@ ViridianCityText3:
 	ld a, [wCurrentMenuItem]
 	and a
 	jr z, .yes
-	ld hl, ViridianCityText_19157
+	ld hl, ViridianCityText_19152
 	call PrintText
 	jr .done
 .yes
-	ld hl, ViridianCityText_19152
+	ld hl, ViridianCityText_19157
 	call PrintText
 .done
 	jp TextScriptEnd
