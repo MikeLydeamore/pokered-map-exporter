@@ -129,6 +129,9 @@ CoordsData_60de3:
 	map_coord_movement 10,  7, MovementData_60e22
 	map_coord_movement 11,  7, MovementData_60e22
 	map_coord_movement 12,  7, MovementData_60e22
+	map_coord_movement 9,  10, MovementData_60e13
+	map_coord_movement 12,  8, MovementData_60e28
+	map_coord_movement 9,   6, MovementData_60e37
 
 MovementData_60e13:
 	db NPC_MOVEMENT_RIGHT
