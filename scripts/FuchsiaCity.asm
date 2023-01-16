@@ -1,4 +1,6 @@
 FuchsiaCity_Script:
+    ld a, 0
+    ld [wSafariZoneGateCurScript], a
 	jp EnableAutoTextBoxDrawing
 
 FuchsiaCity_TextPointers:
