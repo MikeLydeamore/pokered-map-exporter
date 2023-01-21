@@ -167,12 +167,45 @@ GaryScript5:
 GaryScript6:
 	ld a, $2
 	ldh [hSpriteIndex], a
-	ld a, SPRITE_FACING_RIGHT
-	ldh [hSpriteFacingDirection], a
-	call SetSpriteFacingDirectionAndDelay
+	;ld a, SPRITE_FACING_RIGHT
+	;ldh [hSpriteFacingDirection], a
+	;call SetSpriteFacingDirectionAndDelay
+
+	ld a, 0
+	ld [wJoyIgnore], a
+	ld a, [wArchipelagoForfeitCollect]
+	bit 0, a
+	jr z, .noForfeit
 	ld a, $4
 	ldh [hSpriteIndexOrTextID], a
-	call GaryScript_760c8
+	call DisplayTextID
+
+	;call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .noForfeit
+	ld a, [wArchipelagoForfeitCollect]
+	set 2, a
+	ld [wArchipelagoForfeitCollect], a
+
+.noForfeit
+	bit 1, a
+	jr z, .noCollect
+	ld a, $6
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .noCollect
+	ld a, [wArchipelagoForfeitCollect]
+	set 3, a
+	ld [wArchipelagoForfeitCollect], a
+
+.noCollect
+	ld a, $ff
+	ld [wJoyIgnore], a
 	ld a, $7
 	ld [wChampionsRoomCurScript], a
 	ret
@@ -252,6 +285,7 @@ ChampionsRoom_TextPointers:
 	dw GaryText3
 	dw GaryText4
 	dw GaryText5
+	dw GaryText4b
 
 GaryText1:
 	text_asm
@@ -297,7 +331,26 @@ GaryText_76120:
 	text_end
 
 GaryText4:
+	text_asm
+	ld hl, GaryText4x
+	call PrintText
+	call YesNoChoice
+	jp TextScriptEnd
+
+
+GaryText4x:
 	text_far _GaryText_76125
+	text_end
+
+GaryText4b:
+	text_asm
+	ld hl, GaryText4b
+	call PrintText
+	call YesNoChoice
+	jp TextScriptEnd
+
+GaryText4bx:
+	text_far _GaryText_76125b
 	text_end
 
 GaryText5:
