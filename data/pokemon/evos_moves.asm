@@ -2088,6 +2088,7 @@ MissingNoACEvosMoves:
 MagnemiteEvosMoves:
 ; Evolutions
 	db EV_LEVEL, 30, MAGNETON
+	db 0
 ; Learnset
 .Archipelago_Learnset_Magnemite_0
 	db 21, SONICBOOM
