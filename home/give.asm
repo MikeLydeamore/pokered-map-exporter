@@ -7,6 +7,8 @@ GiveItem::
 	ld [wcf91], a
     cp AP_ITEM
     jr z, .apitem
+    ;cp COIN
+    ;jr z, .coin
     cp POKEDEX
     jr z, .pokedex
     cp POISON_TRAP
@@ -69,6 +71,8 @@ GiveItem::
 .icetrap
     farcall IceTrap
     jr .apitem
+;.coin
+
 
 
 ;BadgeList:

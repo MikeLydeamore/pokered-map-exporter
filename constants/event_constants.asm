@@ -1689,9 +1689,9 @@
 	const EVENT_697 ; 0x697
 	const EVENT_698 ; 0x698
 	const EVENT_699 ; 0x699
-	const EVENT_69A ; 0x69a
-	const EVENT_69B ; 0x69b
-	const EVENT_69C ; 0x69c
+	const EVENT_PRIZE_A ; 0x69a
+	const EVENT_PRIZE_B ; 0x69b
+	const EVENT_PRIZE_C ; 0x69c
 	const EVENT_69D ; 0x69d
 	const EVENT_69E ; 0x69e
 	const EVENT_69F ; 0x69f

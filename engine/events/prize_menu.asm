@@ -219,6 +219,18 @@ HandlePrizeChoice:
 	ld c, a
 	call GiveItem
 	jr nc, .bagFull
+	ld a, [wWhichPrize]
+    and a
+    jr z, .zero
+    dec a
+    jr z, .one
+    SetEvent EVENT_PRIZE_C
+	jr .subtractCoins
+.zero
+    SetEvent EVENT_PRIZE_A
+	jr .subtractCoins
+.one
+    SetEvent EVENT_PRIZE_B
 	jr .subtractCoins
 .giveMon
 	ld a, [wd11e]

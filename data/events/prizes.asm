@@ -64,8 +64,11 @@ ENDC
 	db "@"
 
 PrizeMenuTMsEntries:
+.Archipelago_Prize_Item_A_0
 	db TM_DRAGON_RAGE
+.Archipelago_Prize_Item_B_0
 	db TM_HYPER_BEAM
+.Archipelago_Prize_Item_C_0
 	db TM_SUBSTITUTE
 	db "@"
 
