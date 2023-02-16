@@ -14,6 +14,13 @@ FarCopyData::
 
 CopyData::
 ; Copy bc bytes from hl to de.
+    ;ld a, b
+    ;ld [$C0F0], a
+    ;cp 30
+    ;jr c, .dontStop
+    ;stop
+    ;halt
+.dontStop
 	ld a, [hli]
 	ld [de], a
 	inc de

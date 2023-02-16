@@ -537,6 +537,12 @@ CeruleanCityText10:
 	add c
 	ld c, a
 	push bc
+	ld b, POKE_FLUTE
+	call IsItemInBag
+	pop bc
+	add c
+	ld c, a
+	push bc
 	ld b, S_S_TICKET
 	call IsItemInBag
 	pop bc

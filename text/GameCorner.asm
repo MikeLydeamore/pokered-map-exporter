@@ -8,20 +8,20 @@ _CeladonGameCornerText1::
 	done
 
 _CeladonGameCornerText_48d22::
-	text "Welcome to ROCKET"
-	line "GAME CORNER!"
-
-	para "Do you need some"
-	line "game coins?"
-
-	para "It's ¥1000 for 50"
+	text  "It's ¥1000 for 50"
 	line "coins. Would you"
 	cont "like some?"
 	done
 
+_CeladonGameCornerText_48d22b::
+	text  "It's ¥40000 for"
+	line "2000 coins. Would"
+	cont "you like some?"
+	done
+
 _CeladonGameCornerText_48d27::
 	text "Thanks! Here are"
-	line "your 50 coins!"
+	line "your coins!"
 	done
 
 _CeladonGameCornerText_48d2c::

@@ -395,14 +395,27 @@ PoisonTrap::
     ld a, (1 << PSN)
     jr ApplyTrap
 
+MACRO applytrap
+    ld a, [\1HP]
+    and a
+    jr nz, .\1apply
+    ld a, [\1HP + 1]
+    and a
+    jr z, .\1skip
+.\1apply
+    ld [\1Status], a
+.\1skip
+ENDM
+
 ApplyTrap:
-    ld [wBattleMonStatus], a
-    ld [wPartyMon1Status], a
-    ld [wPartyMon2Status], a
-    ld [wPartyMon3Status], a
-    ld [wPartyMon4Status], a
-    ld [wPartyMon5Status], a
-    ld [wPartyMon6Status], a
+    ld b, a
+    applytrap wBattleMon
+    applytrap wPartyMon1
+    applytrap wPartyMon2
+    applytrap wPartyMon3
+    applytrap wPartyMon4
+    applytrap wPartyMon5
+    applytrap wPartyMon6
     ret
 
 

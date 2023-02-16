@@ -132,8 +132,63 @@ GameCorner_TextPointers:
 	dw CeladonGameCornerText13
 
 CeladonGameCornerText1:
-	text_far _CeladonGameCornerText1
-	text_end
+	;text_far _CeladonGameCornerText1
+	;text_end
+	text_asm
+	call CeladonGameCornerScript_48f1e
+	ld hl, CeladonGameCornerText_48d22b
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .asm_48d0f
+	ld b, COIN_CASE
+	call IsItemInBag
+	jr z, .asm_48d19
+	call Has8540Coins
+	jr nc, .asm_48d14
+	xor a
+	ldh [hMoney + 2], a
+	ldh [hMoney + 1], a
+	ld a, $03
+	ldh [hMoney], a
+	call HasEnoughMoney
+	jr nc, .asm_48cdb
+	ld hl, CeladonGameCornerText_48d31
+	jr .asm_48d1c
+.asm_48cdb
+	xor a
+	ldh [hMoney + 2], a
+	ldh [hMoney + 1], a
+	ld a, $03
+	ldh [hMoney], a
+	ld hl, hMoney + 2
+	ld de, wPlayerMoney + 2
+	ld c, $3
+	predef SubBCDPredef
+	xor a
+	ldh [hUnusedCoinsByte], a
+	ldh [hCoins + 1], a
+	ld a, $15
+	ldh [hCoins], a
+	ld de, wPlayerCoins + 1
+	ld hl, hCoins + 1
+	ld c, $2
+	predef AddBCDPredef
+	call CeladonGameCornerScript_48f1e
+	ld hl, CeladonGameCornerText_48d27
+	jr .asm_48d1c
+.asm_48d0f
+	ld hl, CeladonGameCornerText_48d2c
+	jr .asm_48d1c
+.asm_48d14
+	ld hl, CeladonGameCornerText_48d36
+	jr .asm_48d1c
+.asm_48d19
+	ld hl, CeladonGameCornerText_48d3b
+.asm_48d1c
+	call PrintText
+	jp TextScriptEnd
 
 CeladonGameCornerText2:
 	text_asm
@@ -194,6 +249,10 @@ CeladonGameCornerText2:
 
 CeladonGameCornerText_48d22:
 	text_far _CeladonGameCornerText_48d22
+	text_end
+
+CeladonGameCornerText_48d22b:
+	text_far _CeladonGameCornerText_48d22b
 	text_end
 
 CeladonGameCornerText_48d27:
@@ -552,6 +611,13 @@ GameCornerBlankText1:
 
 GameCornerBlankText2:
 	db "       @"
+
+Has8540Coins:
+	ld a, $85
+	ldh [hCoins], a
+	ld a, $40
+	ldh [hCoins + 1], a
+	jp HasEnoughCoins
 
 Has9990Coins:
 	ld a, $99
