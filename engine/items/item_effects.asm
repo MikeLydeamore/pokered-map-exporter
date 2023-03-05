@@ -554,7 +554,11 @@ ItemUseBall:
 	call ClearSprites
 	ld a, [wEnemyMonSpecies]
 	ld [wd11e], a
+	push af
 	predef ShowPokedexData
+	;farcall registerDexSanity
+	pop af
+	ld [wcf91], a
 
 .skipShowingPokedexData
 	ld a, [wPartyCount]

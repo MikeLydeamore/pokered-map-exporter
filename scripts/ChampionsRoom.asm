@@ -167,9 +167,9 @@ GaryScript5:
 GaryScript6:
 	ld a, $2
 	ldh [hSpriteIndex], a
-	;ld a, SPRITE_FACING_RIGHT
-	;ldh [hSpriteFacingDirection], a
-	;call SetSpriteFacingDirectionAndDelay
+	ld a, SPRITE_FACING_DOWN
+	ldh [hSpriteFacingDirection], a
+	call SetSpriteFacingDirectionAndDelay
 
 	ld a, 0
 	ld [wJoyIgnore], a
@@ -180,22 +180,22 @@ GaryScript6:
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 
-	;call YesNoChoice
+	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .noForfeit
 	ld a, [wArchipelagoForfeitCollect]
 	set 2, a
+.noForfeit
 	ld [wArchipelagoForfeitCollect], a
 
-.noForfeit
 	bit 1, a
 	jr z, .noCollect
 	ld a, $6
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
 
-	call YesNoChoice
+	;call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .noCollect
@@ -339,12 +339,16 @@ GaryText4:
 
 
 GaryText4x:
-	text_far _GaryText_76125
-	text_end
+	text "OAK: Would you"
+	line "like to release"
+    cont "the remaining"
+    cont "items in your"
+    cont "world?@"
+    text_end
 
 GaryText4b:
 	text_asm
-	ld hl, GaryText4b
+	ld hl, GaryText4bx
 	call PrintText
 	call YesNoChoice
 	jp TextScriptEnd

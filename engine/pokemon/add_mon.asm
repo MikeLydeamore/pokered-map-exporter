@@ -102,6 +102,9 @@ _AddPartyMon::
 	pop bc
 	ld hl, wPokedexSeen
 	call FlagAction
+	;ld hl, wDexSanity
+	;ld b, FLAG_TEST
+
 
 	pop hl
 	push hl

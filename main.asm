@@ -218,6 +218,7 @@ INCLUDE "engine/movie/trade2.asm"
 SECTION "Pokédex Rating", ROMX
 
 INCLUDE "engine/events/pokedex_rating.asm"
+INCLUDE "engine/events/give_pokemon.asm"
 
 
 SECTION "Hidden Objects Core", ROMX
@@ -232,7 +233,6 @@ INCLUDE "engine/gfx/screen_effects.asm"
 
 SECTION "Predefs", ROMX
 
-INCLUDE "engine/events/give_pokemon.asm"
 INCLUDE "engine/predefs.asm"
 
 
@@ -371,7 +371,6 @@ StartInventoryTable:
 .Archipelago_Start_Inventory_0
     DS 256, $00
 
-;_GiveItem::
 ParalyzeTrap::
     ld a, (1 << PAR)
     call ApplyTrap
@@ -403,6 +402,7 @@ MACRO applytrap
     and a
     jr z, .\1skip
 .\1apply
+    ld a, b
     ld [\1Status], a
 .\1skip
 ENDM
@@ -417,6 +417,32 @@ ApplyTrap:
     applytrap wPartyMon5
     applytrap wPartyMon6
     ret
+
+TenCoins::
+    ld a, $10
+	ldh [hCoins + 1], a
+    jr addCoins
+TwentyCoins::
+    ld a, $20
+	ldh [hCoins + 1], a
+    jr addCoins
+HundredCoins::
+    ld a, $00
+	ldh [hCoins + 1], a
+    ld a, $01
+	ldh [hCoins], a
+	jr addCoins2
+addCoins:
+    xor a
+	ldh [hCoins], a
+addCoins2:
+    xor a
+	ldh [hUnusedCoinsByte], a
+	ld de, wPlayerCoins + 1
+	ld hl, hCoins + 1
+	ld c, $2
+	predef AddBCDPredef
+	ret
 
 
 SECTION "Battle Engine 9", ROMX

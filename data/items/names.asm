@@ -58,7 +58,7 @@ ItemNames::
 	li "SUPER REPEL"
 	li "MAX REPEL"
 	li "DIRE HIT"
-	li "COIN"
+	li "10 COINS"
 	li "FRESH WATER"
 	li "SODA POP"
 	li "LEMONADE"
@@ -97,6 +97,8 @@ ItemNames::
 	li "PARLYZ TRAP"
 	li "ICE TRAP"
 	li "FIRE TRAP"
+	li "20 COINS"
+	li "100 COINS"
 	assert_list_length NUM_ITEMS
 	li "B2F"
 	li "B1F"

@@ -353,18 +353,28 @@ GameCornerHiddenObjects:
 	hidden_object  1, 13, ANY_FACING, StartSlotMachine
 	hidden_object  1, 14, ANY_FACING, StartSlotMachine
 	hidden_object  1, 15, ANY_FACING, StartSlotMachine
-	hidden_object  0,  8, COIN+10, HiddenCoins
-	hidden_object  1, 16, COIN+10, HiddenCoins
-	hidden_object  3, 11, COIN+20, HiddenCoins
-	hidden_object  3, 14, COIN+10, HiddenCoins
-	hidden_object  4, 12, COIN+10, HiddenCoins
-	hidden_object  9, 12, COIN+20, HiddenCoins
-	hidden_object  9, 15, COIN+10, HiddenCoins
-	hidden_object 16, 14, COIN+10, HiddenCoins
-	hidden_object 10, 16, COIN+10, HiddenCoins
-	hidden_object 11,  7, COIN+40, HiddenCoins
-	hidden_object 15,  8, COIN+100, HiddenCoins
-	hidden_object 12, 15, COIN+10, HiddenCoins
+.Archipelago_Hidden_Item_Game_Corner_1
+	hidden_object  0,  8, TEN_COINS, HiddenItems
+.Archipelago_Hidden_Item_Game_Corner_2
+	hidden_object  1, 16, TEN_COINS, HiddenItems
+.Archipelago_Hidden_Item_Game_Corner_3
+	hidden_object  3, 11, TWENTY_COINS, HiddenItems
+.Archipelago_Hidden_Item_Game_Corner_4
+	hidden_object  3, 14, TEN_COINS, HiddenItems
+.Archipelago_Hidden_Item_Game_Corner_5
+	hidden_object  4, 12, TEN_COINS, HiddenItems
+.Archipelago_Hidden_Item_Game_Corner_6
+	hidden_object  9, 12, TWENTY_COINS, HiddenItems
+.Archipelago_Hidden_Item_Game_Corner_7
+	hidden_object  9, 15, TEN_COINS, HiddenItems
+.Archipelago_Hidden_Item_Game_Corner_8
+	hidden_object 16, 14, TEN_COINS, HiddenItems
+.Archipelago_Hidden_Item_Game_Corner_9
+	hidden_object 10, 16, TEN_COINS, HiddenItems
+.Archipelago_Hidden_Item_Game_Corner_10
+	hidden_object 11,  7, TWENTY_COINS, HiddenItems
+.Archipelago_Hidden_Item_Game_Corner_11
+	hidden_object 15,  8, HUNDRED_COINS, HiddenItems
 	db -1 ; end
 
 CeladonHotelHiddenObjects:

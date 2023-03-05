@@ -292,17 +292,22 @@ CeladonGameCornerText5:
 	ld b, COIN_CASE
 	call IsItemInBag
 	jr z, .asm_48d93
-	call Has9990Coins
+
+	;call Has9990Coins
+	;jr nc, .asm_48d8e
+	;xor a
+	;ldh [hUnusedCoinsByte], a
+	;ldh [hCoins], a
+	;ld a, $10
+	;ldh [hCoins + 1], a
+	;ld de, wPlayerCoins + 1
+	;ld hl, hCoins + 1
+	;ld c, $2
+	;predef AddBCDPredef
+.Archipelago_Event_Game_Corner_Gift_A
+	lb bc, TEN_COINS, 1
+	call GiveItem
 	jr nc, .asm_48d8e
-	xor a
-	ldh [hUnusedCoinsByte], a
-	ldh [hCoins], a
-	ld a, $10
-	ldh [hCoins + 1], a
-	ld de, wPlayerCoins + 1
-	ld hl, hCoins + 1
-	ld c, $2
-	predef AddBCDPredef
 	SetEvent EVENT_GOT_10_COINS
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
@@ -372,17 +377,10 @@ CeladonGameCornerText9:
 	ld b, COIN_CASE
 	call IsItemInBag
 	jr z, .asm_48e1d
-	call Has9990Coins
+.Archipelago_Event_Game_Corner_Gift_C
+	lb bc, TWENTY_COINS, 1
+	call GiveItem
 	jr nc, .asm_48e18
-	xor a
-	ldh [hUnusedCoinsByte], a
-	ldh [hCoins], a
-	ld a, $20
-	ldh [hCoins + 1], a
-	ld de, wPlayerCoins + 1
-	ld hl, hCoins + 1
-	ld c, $2
-	predef AddBCDPredef
 	SetEvent EVENT_GOT_20_COINS_2
 	ld hl, Received20CoinsText
 	jr .asm_48e20
@@ -424,17 +422,10 @@ CeladonGameCornerText10:
 	ld b, COIN_CASE
 	call IsItemInBag
 	jr z, .asm_48e7f
-	call Has9990Coins
-	jr z, .asm_48e7a
-	xor a
-	ldh [hUnusedCoinsByte], a
-	ldh [hCoins], a
-	ld a, $20
-	ldh [hCoins + 1], a
-	ld de, wPlayerCoins + 1
-	ld hl, hCoins + 1
-	ld c, $2
-	predef AddBCDPredef
+.Archipelago_Event_Game_Corner_Gift_B
+	lb bc, TWENTY_COINS, 1
+	call GiveItem
+	jr nc, .asm_48e7a
 	SetEvent EVENT_GOT_20_COINS
 	ld hl, CeladonGameCornerText_48e8d
 	jr .asm_48e82

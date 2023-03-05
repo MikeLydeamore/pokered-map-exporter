@@ -30,12 +30,7 @@ _GaryText_76120::
 	done
 
 _GaryText_76125::
-	text "OAK: Would you"
-	line "like to release"
-    cont "the remaining"
-    cont "items in your"
-    cont "world?"
-    done
+
 
 _GaryText_76125b::
 	text "OAK: Would you"

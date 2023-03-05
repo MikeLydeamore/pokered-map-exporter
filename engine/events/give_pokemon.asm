@@ -66,7 +66,9 @@ SetPokedexOwnedFlag:
 	ld [wd11e], a
 	call GetMonName
 	ld hl, GotMonText
-	jp PrintText
+	;call PrintText
+    ;jp registerDexSanity
+    jp PrintText
 
 GotMonText:
 	text_far _GotMonText

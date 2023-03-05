@@ -1,5 +1,4 @@
 MACRO move
-.Archipelago_Move_Data_\1
 	db \1 ; animation (interchangeable with move id)
 	db \2 ; effect
 	db \3 ; power
@@ -10,6 +9,7 @@ ENDM
 
 Moves:
 ; Characteristics of each move.
+.Archipelago_Move_Data
 	table_width MOVE_LENGTH, Moves
 
 	move POUND,        NO_ADDITIONAL_EFFECT,        40, NORMAL,       100, 35

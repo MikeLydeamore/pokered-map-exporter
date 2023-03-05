@@ -1021,6 +1021,7 @@ OakVictoryText:
 OaksLabText32:
 OaksLabText5:
     text_asm
+    farcall CheckAllDexSanity
 	;jr .test
 	CheckEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
 	jr nz, .asm_1d266

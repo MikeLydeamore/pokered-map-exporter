@@ -2299,6 +2299,8 @@ wDayCareMon:: box_struct wDayCareMon
 wArchipelagoItemsReceivedCount:: ds 2
 wArchipelagoOptions:: db
 
+wDexSanity:: flag_array NUM_POKEMON
+
 wMainDataEnd::
 
 wArchipelagoGameStarted:: db

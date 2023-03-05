@@ -67,7 +67,7 @@ DEF SAFARI_ROCK EQU $16 ; overload
 	const SUPER_REPEL   ; $38
 	const MAX_REPEL     ; $39
 	const DIRE_HIT      ; $3A
-	const COIN          ; $3B
+	const TEN_COINS          ; $3B
 	const FRESH_WATER   ; $3C
 	const SODA_POP      ; $3D
 	const LEMONADE      ; $3E
@@ -106,6 +106,8 @@ DEF SAFARI_ROCK EQU $16 ; overload
  	const PARALYZE_TRAP ; $5F
  	const ICE_TRAP ; $60
  	const FIRE_TRAP ; $61
+ 	const TWENTY_COINS
+ 	const HUNDRED_COINS
 DEF NUM_ITEMS EQU const_value - 1
 
 ; elevator floors use item IDs

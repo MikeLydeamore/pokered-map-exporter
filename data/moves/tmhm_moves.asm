@@ -2,6 +2,7 @@
 ; define constants for the item IDs and for the corresponding move values.
 
 TechnicalMachines:
+.Archipelago_TM_Moves
 	table_width 1, TechnicalMachines
 
 FOR n, 1, NUM_TMS + 1

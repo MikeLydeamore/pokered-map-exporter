@@ -3,6 +3,15 @@ HiddenItems:
 	call IsItemInBag
 .Archipelago_Option_Itemfinder_0
 	ret z
+	ld a, [wCurMap]
+	cp GAME_CORNER
+	jr nz, .notGameCorner
+	ld b, COIN_CASE
+	predef GetQuantityOfItemInBag
+	ld a, b
+	and a
+	ret z
+.notGameCorner
 	ld hl, HiddenItemCoords
 	call FindHiddenItemOrCoinsIndex
 	ld [wHiddenItemOrCoinsIndex], a
@@ -75,7 +84,7 @@ HiddenCoins:
 	ldh [hCoins], a
 	ldh [hCoins + 1], a
 	ld a, [wHiddenObjectFunctionArgument]
-	sub COIN
+	sub TEN_COINS
 	cp 10
 	jr z, .bcd10
 	cp 20

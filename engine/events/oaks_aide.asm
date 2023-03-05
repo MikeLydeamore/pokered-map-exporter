@@ -5,8 +5,13 @@ OaksAideScript:
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .choseNo
+.Archipelago_Require_Pokedex_A_1
+	ld a, 0
+	and a
+	jr z, .skipDexCheck
 	CheckEvent EVENT_GOT_POKEDEX
 	jr z, .noDex
+.skipDexCheck
 	ld hl, wPokedexOwned
 	ld b, wPokedexOwnedEnd - wPokedexOwned
 	call CountSetBits

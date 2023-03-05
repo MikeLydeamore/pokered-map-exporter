@@ -101,8 +101,12 @@ _Route10AfterBattleText6::
 
 _Route10Text9::
 _Route10Text7::
-	text "ROCK TUNNEL"
+	text "ROCK TUNNEL "
+.Archipelago_Text_Rock_Tunnel_Sign
+	db "      "
+	line "                  "
 	done
+
 
 _Route10Text10::
 	text "POWER PLANT"

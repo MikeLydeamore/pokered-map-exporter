@@ -6,19 +6,47 @@ GiveItem::
 	ld [wd11e], a
 	ld [wcf91], a
     cp AP_ITEM
-    jr z, .apitem
-    ;cp COIN
-    ;jr z, .coin
+    jp z, .apitem
+    cp TEN_COINS
+    jr nz, .no10coins
+    farcall TenCoins
+    jp .apitem
+.no10coins
+    cp TWENTY_COINS
+    jr nz, .no20coins
+    farcall TwentyCoins
+    jr .apitem
+.no20coins
+    cp HUNDRED_COINS
+    jr nz, .no100coins
+    farcall HundredCoins
+    jr .apitem
+.no100coins
     cp POKEDEX
-    jr z, .pokedex
+    jr nz, .nopokedex
+    SetEvent EVENT_GOT_POKEDEX
+    jr .apitem
+.nopokedex
     cp POISON_TRAP
-    jr z, .poisontrap
+    jr nz, .nopoisontrap
+    farcall PoisonTrap
+    jr .apitem
+.nopoisontrap
     cp PARALYZE_TRAP
-    jr z, .paralyzetrap
+    jr nz, .noparalyzetrap
+    farcall ParalyzeTrap
+    jr .apitem
+.noparalyzetrap
     cp FIRE_TRAP
-    jr z, .firetrap
+    jr nz, .nofiretrap
+    farcall FireTrap
+    jr .apitem
+.nofiretrap
     CP ICE_TRAP
-    jr z, .icetrap
+    jr nz, .noicetrap
+    farcall IceTrap
+    jr .apitem
+.noicetrap
     ;ld hl, BadgeList
     ;ld a, hli
     ld a, BOULDERBADGE - 1
@@ -29,8 +57,7 @@ GiveItem::
     cp b
     jr nz, .loop1
 ; match found
-    ld a, 1
-    ld c, a
+    ld c, 1
     ld a, b
     sub a, BOULDERBADGE
     ;ld b, a
@@ -56,22 +83,6 @@ GiveItem::
 	call CopyToStringBuffer
 	scf
 	ret
-.pokedex
-    SetEvent EVENT_GOT_POKEDEX
-    jr .apitem
-.poisontrap
-    farcall PoisonTrap
-    jr .apitem
-.paralyzetrap
-    farcall ParalyzeTrap
-    jr .apitem
-.firetrap
-    farcall FireTrap
-    jr .apitem
-.icetrap
-    farcall IceTrap
-    jr .apitem
-;.coin
 
 
 

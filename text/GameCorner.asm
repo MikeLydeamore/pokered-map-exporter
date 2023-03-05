@@ -14,8 +14,8 @@ _CeladonGameCornerText_48d22::
 	done
 
 _CeladonGameCornerText_48d22b::
-	text  "It's ¥40000 for"
-	line "2000 coins. Would"
+	text  "It's ¥30,000 for"
+	line "1500 coins. Would"
 	cont "you like some?"
 	done
 
@@ -63,14 +63,9 @@ _CeladonGameCornerText_48d9c::
 	line "to play?"
 	prompt
 
-_Received10CoinsText::
-	text "<PLAYER> received"
-	line "10 coins!@"
-	text_end
 
 _CeladonGameCornerText_48da7::
-	text "You don't need my"
-	line "coins!"
+	text "Your bag is full!"
 	done
 
 _CeladonGameCornerText_48dac::
@@ -121,14 +116,17 @@ _CeladonGameCornerText_48e26::
 	line "some coins?"
 	prompt
 
+_CeladonGameCornerText_48e8d::
 _Received20CoinsText::
+_Received10CoinsText::
 	text "<PLAYER> received"
-	line "20 coins!@"
+	line "a @"
+	text_ram wcd6d
+	text "!@"
 	text_end
 
 _CeladonGameCornerText_48e31::
-	text "You have lots of"
-	line "coins!"
+	text "Your bag is full!"
 	done
 
 _CeladonGameCornerText_48e36::
@@ -144,14 +142,9 @@ _CeladonGameCornerText_48e88::
 	cont "coins, shoo!"
 	prompt
 
-_CeladonGameCornerText_48e8d::
-	text "<PLAYER> received"
-	line "20 coins!@"
-	text_end
 
 _CeladonGameCornerText_48e93::
-	text "You've got your"
-	line "own coins!"
+	text "Your bag is full!"
 	done
 
 _CeladonGameCornerText_48e98::

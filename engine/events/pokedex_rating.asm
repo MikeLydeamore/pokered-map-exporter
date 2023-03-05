@@ -1,4 +1,6 @@
 DisplayDexRating:
+    call CheckAllDexSanity
+
 	ld hl, wPokedexSeen
 	ld b, wPokedexSeenEnd - wPokedexSeen
 	call CountSetBits
@@ -136,3 +138,150 @@ PokedexRatingText_44247:
 PokedexRatingText_4424c:
 	text_far _OaksLabText_4424c
 	text_end
+
+DexSanityItems:
+.Archipelago_Dexsanity_Items
+    ds 151, $2C
+
+receivedDexItem:
+	text "<PLAYER> received "
+	line "@"
+	text_ram wStringBuffer
+	text "!@"
+	text_end
+
+
+CheckAllDexSanity::
+.Archipelago_Dexsanity_Enabled_1
+    ld a, 0
+    and a
+    ret z
+.Archipelago_Require_Pokedex_B_1
+    ld a, 0
+    and a
+    jr z, .skipDexCheck
+	CheckEvent EVENT_GOT_POKEDEX
+	ret z
+.skipDexCheck
+    ld hl, wPokedexOwned
+    ld de, wDexSanity
+
+    xor a
+    ld b, a
+    ld c, a
+
+.loop
+    and a
+    jr z, .inc
+	rl a
+	jr .noinc
+.inc
+    inc a
+.noinc
+    and a
+    jr nz, .notNextByte
+    inc a
+    inc hl
+    inc de
+.notNextByte
+    inc bc
+; check if loop done
+    push af
+    ld a, c
+    cp 152
+    jr z, .donedex
+    pop af
+;
+    push af
+    and [hl]
+    jr nz, .a
+    pop af
+    jr .loop
+.a
+    pop af
+    push af
+
+    push de
+    push hl
+    pop de
+    pop hl
+    and [hl]
+
+    push de
+    push hl
+    pop de
+    pop hl
+    jr z, .aa
+    pop af
+    jr .loop
+.aa
+    pop af
+
+    push bc
+    push af
+    push hl
+    push de
+    ld hl, DexSanityItems - 1
+    add hl, bc
+    ld a, [hl]
+    ld b, a
+    ld c, 1
+    call GiveItem
+    jr nc, .bagFull
+	ld hl, receivedDexItem
+	call PrintText
+	call WaitForTextScrollButtonPress
+    pop de
+    pop hl
+    pop af
+    push af
+    ld a, [de]
+    ld b, a
+    pop af
+    or b
+    ld [de], a
+    pop bc
+    jr .loop
+.bagFull
+
+    pop de
+    pop hl
+    pop af
+    pop bc
+    ret
+.donedex
+    pop af
+    ret
+
+registerDexSanity::
+	ld a, [wd11e]
+	dec a
+	ld c, a
+	ld hl, wDexSanity
+	ld b, FLAG_TEST
+	predef FlagActionPredef
+	ld a, c
+    and a
+    ret nz
+	ld a, [wd11e]
+	dec a
+	ld c, a
+	ld b, 0
+    ld hl, DexSanityItems
+    add hl, bc
+    ld a, [hl]
+	ld b, a
+	ld c, 1
+    call GiveItem
+    ret nc
+    ld hl, receivedDexItem
+    call PrintText
+	call WaitForTextScrollButtonPress
+	ld a, [wd11e]
+	dec a
+	ld c, a
+	ld hl, wDexSanity
+    ld b, FLAG_SET
+	predef FlagActionPredef
+	ret
+

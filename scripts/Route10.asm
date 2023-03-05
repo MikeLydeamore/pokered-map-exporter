@@ -12,6 +12,7 @@ Route10_ScriptPointers:
 	dw DisplayEnemyTrainerTextAndStartBattle
 	dw EndTrainerBattle
 	dw Route10_Script4
+	dw Route10_Script5
 
 Route10_TextPointers:
 	dw Route10Text1
@@ -67,6 +68,8 @@ Route10_Script4:
 	ld a, $0
 	ld [wRoute10CurScript], a
 	ret
+
+Route10_Script5:
 
 
 Route10TrainerHeaders:
@@ -196,7 +199,10 @@ Route10AfterBattleText6:
 Route10Text9:
 Route10Text7:
 	text_far _Route10Text7 ; _Route10Text9
+
 	text_end
+
+;	text_end
 
 Route10Text10:
 	text_far _Route10Text10
