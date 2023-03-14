@@ -49,6 +49,19 @@ InitPlayerData2:
 	ld bc, wGameProgressFlagsEnd - wGameProgressFlags
 	call FillMemory ; clear all game progress flags
 
+.Archipelago_Option_Pokedex_Seen_1
+    ld a, 0
+    and a
+    jr z, .continue
+
+    ld a, $FF
+	ld hl, wPokedexSeen
+	ld bc, 18
+	call FillMemory ; clear all game progress flags
+    ld a, $7F
+    ld [hl], a
+
+.continue
 	jp InitializeMissableObjectsFlags
 
 InitializeEmptyList:

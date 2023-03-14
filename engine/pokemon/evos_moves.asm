@@ -224,6 +224,9 @@ Evolution_PartyMonLoop: ; loop over party mons
 	pop bc
 	ld hl, wPokedexSeen
 	call Evolution_FlagAction
+
+	farcall registerDexSanity
+
 	pop de
 	pop hl
 	ld a, [wLoadedMonSpecies]

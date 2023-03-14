@@ -215,7 +215,7 @@ RepelWoreOffText::
 	text_far _RepelWoreOffText
 	text_end
 
-DisplayArchipelagoItem:
+DisplayArchipelagoItem::
     text_far _DisplayArchipelagoItem
     sound_get_item_1
 	text_end

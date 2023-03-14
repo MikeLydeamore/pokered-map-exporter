@@ -445,6 +445,53 @@ addCoins2:
 	ret
 
 
+
+;crashtest::
+;    ld a, [wArchipelagoGameStarted]
+;    and a
+;    ret z
+;    ld a, d
+;    cp $d7
+;    jr nz, .notEventFlags
+;    ld a, e
+;    cp $35
+;    jr nz, .notEventFlags
+;    stop
+;.notEventFlags
+;    ld a, d
+;    cp $d6
+;    jr nz, .notMissables
+;    ld a, e
+;    cp $1a
+;    jr nz, .notMissables
+;    stop
+;.notMissables
+;    ld a, d
+;    cp $d7
+;    jr nz, .notRod
+;    ld a, e
+;    cp $16
+;    jr nz, .notRod
+;    stop
+;.notRod
+;    ld a, d
+;    cp $D1
+;    jr nz, .notDex
+;    ld a, e
+;    cp $7a
+;    jr nz, .notDex
+;    stop
+;.notDex
+;    ld a, d
+;    cp $D6
+;    jr nz, .notHidden
+;    ld a, e
+;    cp $DE
+;    jr nz, .notHidden
+;    stop
+;.notHidden
+;    ret
+
 SECTION "Battle Engine 9", ROMX
 
 INCLUDE "engine/battle/experience.asm"

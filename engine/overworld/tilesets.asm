@@ -2,6 +2,11 @@ LoadTilesetHeader:
 	call GetPredefRegisters
 	push hl
 	ld d, 0
+	ld a, [wCurMap]
+	cp $FF
+	jr nz, .continue
+	stop
+.continue
 	ld a, [wCurMapTileset]
 	add a
 	add a

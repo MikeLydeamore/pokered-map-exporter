@@ -108,7 +108,7 @@ TalkToTrainer::
     and a
 	jr z, .trainerNotYetFought     ; test trainer's flag
 
-.Archipelago_Option_Trainersanity_1
+.Archipelago_Option_Trainersanity1_1
     ld a, 1
     and a
     jr z, .noTrainersanity
@@ -183,7 +183,7 @@ TalkToTrainer::
 
 
 
-bagFullText:
+bagFullText::
     text "You can't carry"
 	line "any more items."
     done

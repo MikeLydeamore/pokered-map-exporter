@@ -965,6 +965,12 @@ OaksLabMonChoiceMenu:
 	ld a, [wcf91]
 	ld [wd11e], a
 	call AddPartyMon
+
+	ld a, [wcf91]
+	ld [wd11e], a
+	predef IndexToPokedex
+	farcall registerDexSanity
+
 	ld hl, wd72e
 	set 3, [hl]
 	ld a, $fc

@@ -14,13 +14,13 @@ FarCopyData::
 
 CopyData::
 ; Copy bc bytes from hl to de.
-    ;ld a, b
-    ;ld [$C0F0], a
-    ;cp 30
-    ;jr c, .dontStop
-    ;stop
-    ;halt
-.dontStop
+    ;xor a
+    ;ld [wArchipelagoGameStarted], a
+    ;push bc
+    ;push hl
+    ;farcall crashtest
+    ;pop hl
+    ;pop bc
 	ld a, [hli]
 	ld [de], a
 	inc de
@@ -28,4 +28,6 @@ CopyData::
 	ld a, c
 	or b
 	jr nz, CopyData
+    ;ld a, $2A
+    ;ld [wArchipelagoGameStarted], a
 	ret

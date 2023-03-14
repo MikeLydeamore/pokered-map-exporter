@@ -395,11 +395,17 @@ FuchsiaGymHiddenObjects:
 CinnabarGymHiddenObjects:
 	hidden_object 17, 13, SPRITE_FACING_UP, GymStatues
 	; third param: ([hGymGateAnswer] << 4) | [hGymGateIndex]
+.Archipelago_Quiz_Answer_A_2
 	hidden_object 15,  7, (FALSE << 4) | 1, PrintCinnabarQuiz
+.Archipelago_Quiz_Answer_B_2
 	hidden_object 10,  1, (TRUE  << 4) | 2, PrintCinnabarQuiz
+.Archipelago_Quiz_Answer_C_2
 	hidden_object  9,  7, (TRUE  << 4) | 3, PrintCinnabarQuiz
+.Archipelago_Quiz_Answer_D_2
 	hidden_object  9, 13, (TRUE  << 4) | 4, PrintCinnabarQuiz
+.Archipelago_Quiz_Answer_E_2
 	hidden_object  1, 13, (FALSE << 4) | 5, PrintCinnabarQuiz
+.Archipelago_Quiz_Answer_F_2
 	hidden_object  1,  7, (TRUE  << 4) | 6, PrintCinnabarQuiz
 	db -1 ; end
 

@@ -17,8 +17,8 @@ CinnabarGymQuiz::
 	and $f0
 	swap a
 	ldh [hGymGateAnswer], a
-	ld hl, CinnabarGymQuizIntroText
-	call PrintText
+	;ld hl, CinnabarGymQuizIntroText
+	;call PrintText
 	ldh a, [hGymGateIndex]
 	dec a
 	add a
@@ -93,6 +93,15 @@ CinnabarGymQuiz_1ea92:
 	ld c, a
 	ld b, FLAG_SET
 	call CinnabarGymGateFlagAction
+
+	ldh a, [hBackupGymGateIndex]
+	;AdjustEventBit EVENT_GOT_TM38, 4
+	add 2
+	ld c, a
+	ld b, FLAG_SET
+	EventFlagAddress hl, EVENT_GOT_TM38
+	predef FlagActionPredef
+
 	jp UpdateCinnabarGymGateTileBlocks_
 .wrongAnswer
 	call WaitForSoundToFinish

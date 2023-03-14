@@ -102,7 +102,7 @@ InGameTrade_DoTrade:
 	ld a, [wcf91]
 	cp b
 	ld a, $2
-	jr nz, .tradeFailed ; jump if the selected mon's species is not the required one
+	jp nz, .tradeFailed ; jump if the selected mon's species is not the required one
 	ld a, [wWhichPokemon]
 	ld hl, wPartyMon1Level
 	ld bc, wPartyMon2 - wPartyMon1
@@ -137,6 +137,12 @@ InGameTrade_DoTrade:
 	ld [wMonDataLocation], a
 	call AddPartyMon
 	call InGameTrade_CopyDataToReceivedMon
+
+	ld a, [wcf91]
+	ld [wd11e], a
+	predef IndexToPokedex
+	farcall registerDexSanity
+
 	callfar EvolveTradeMon
 	call ClearScreen
 	call InGameTrade_RestoreScreen

@@ -152,7 +152,7 @@ receivedDexItem:
 
 
 CheckAllDexSanity::
-.Archipelago_Dexsanity_Enabled_1
+.Archipelago_Option_Dexsanity_A_1
     ld a, 0
     and a
     ret z
@@ -163,106 +163,76 @@ CheckAllDexSanity::
 	CheckEvent EVENT_GOT_POKEDEX
 	ret z
 .skipDexCheck
-    ld hl, wPokedexOwned
-    ld de, wDexSanity
 
     xor a
-    ld b, a
-    ld c, a
+    ld c, 255
 
 .loop
-    and a
-    jr z, .inc
-	rl a
-	jr .noinc
-.inc
-    inc a
-.noinc
-    and a
-    jr nz, .notNextByte
-    inc a
-    inc hl
-    inc de
-.notNextByte
-    inc bc
-; check if loop done
-    push af
+    inc c
     ld a, c
     cp 152
-    jr z, .donedex
-    pop af
-;
-    push af
-    and [hl]
-    jr nz, .a
-    pop af
-    jr .loop
-.a
-    pop af
-    push af
-
-    push de
-    push hl
-    pop de
-    pop hl
-    and [hl]
-
-    push de
-    push hl
-    pop de
-    pop hl
-    jr z, .aa
-    pop af
-    jr .loop
-.aa
-    pop af
-
-    push bc
-    push af
-    push hl
-    push de
-    ld hl, DexSanityItems - 1
+    ret z
+    ld hl, wPokedexOwned
+	ld b, FLAG_TEST
+	push bc
+	predef FlagActionPredef
+	ld a, c
+	pop bc
+	and a
+	jr z, .loop
+    ld hl, wDexSanity
+	ld b, FLAG_TEST
+	push bc
+	predef FlagActionPredef
+	ld a, c
+	pop bc
+	and a
+	jr nz, .loop
+	ld b, 0
+	ld hl, DexSanityItems
     add hl, bc
+    push bc
     ld a, [hl]
     ld b, a
     ld c, 1
+
     call GiveItem
     jr nc, .bagFull
 	ld hl, receivedDexItem
 	call PrintText
 	call WaitForTextScrollButtonPress
-    pop de
-    pop hl
-    pop af
-    push af
-    ld a, [de]
-    ld b, a
-    pop af
-    or b
-    ld [de], a
+
     pop bc
+    push bc
+	ld b, FLAG_SET
+    ld hl, wDexSanity
+	predef FlagActionPredef
+	pop bc
     jr .loop
 .bagFull
-
-    pop de
-    pop hl
-    pop af
     pop bc
     ret
-.donedex
-    pop af
-    ret
+
+
 
 registerDexSanity::
+.Archipelago_Option_Dexsanity_B_1
+    ld a, 0
+    and a
+    ret z
 	ld a, [wd11e]
 	dec a
 	ld c, a
 	ld hl, wDexSanity
 	ld b, FLAG_TEST
+	push bc
 	predef FlagActionPredef
 	ld a, c
     and a
-    ret nz
+    jr z, .continue
+    pop bc
+    ret
+.continue
 	ld a, [wd11e]
 	dec a
 	ld c, a
@@ -273,15 +243,16 @@ registerDexSanity::
 	ld b, a
 	ld c, 1
     call GiveItem
-    ret nc
+    jr c, .bagNotFull
+    pop bc
+    ret
+.bagNotFull
     ld hl, receivedDexItem
     call PrintText
 	call WaitForTextScrollButtonPress
-	ld a, [wd11e]
-	dec a
-	ld c, a
-	ld hl, wDexSanity
+    pop bc
     ld b, FLAG_SET
+	ld hl, wDexSanity
 	predef FlagActionPredef
 	ret
 

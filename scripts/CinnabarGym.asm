@@ -285,6 +285,19 @@ CinnabarGymTrainerText1:
 	call SaveEndBattleTextPointers
 	jp CinnabarGymScript_758b7
 .asm_46bb4
+.Archipelago_Option_Trainersanity4_1
+    ld a, 0
+    and a
+    jr z, .noTrainerSanity
+    CheckEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_1_ITEM
+    jr nz, .noTrainerSanity
+.Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_B_ITEM_1
+    ld b, AP_ITEM
+    call GiveCGItem
+    jr nc, .noTrainerSanity
+    SetEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_1_ITEM
+    jp TextScriptEnd
+.noTrainerSanity
 	ld hl, CinnabarGymAfterBattleText2
 	call PrintText
 	jp TextScriptEnd
@@ -313,9 +326,36 @@ CinnabarGymTrainerText2:
 	call SaveEndBattleTextPointers
 	jp CinnabarGymScript_758b7
 .asm_4b406
+.Archipelago_Option_Trainersanity3_1
+    ld a, 0
+    and a
+    jr z, .noTrainerSanity
+    CheckEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_0_ITEM
+    jr nz, .noTrainerSanity
+.Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_A_ITEM_1
+    ld b, AP_ITEM
+    call GiveCGItem
+    jr nc, .noTrainerSanity
+    SetEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_0_ITEM
+    jp TextScriptEnd
+.noTrainerSanity
 	ld hl, CinnabarGymAfterBattleText1
 	call PrintText
 	jp TextScriptEnd
+
+GiveCGItem:
+    ld c, 1
+    call GiveItem
+    jr c, .BagNotFull
+    ld hl, bagFullText
+	call PrintText
+	ccf
+	ret
+.BagNotFull
+	ld hl, DisplayArchipelagoItem
+	call PrintText
+	scf
+	ret
 
 CinnabarGymBattleText1:
 	text_far _CinnabarGymBattleText1
@@ -341,6 +381,19 @@ CinnabarGymTrainerText3:
 	call SaveEndBattleTextPointers
 	jp CinnabarGymScript_758b7
 .afterBeat
+.Archipelago_Option_Trainersanity5_1
+    ld a, 0
+    and a
+    jr z, .noTrainerSanity
+    CheckEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_2_ITEM
+    jr nz, .noTrainerSanity
+.Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_2_ITEM_1
+    ld b, AP_ITEM
+    call GiveCGItem
+    jr nc, .noTrainerSanity
+    SetEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_2_ITEM
+    jp TextScriptEnd
+.noTrainerSanity
 	ld hl, CinnabarGymAfterBattleText3
 	call PrintText
 	jp TextScriptEnd
@@ -369,6 +422,19 @@ CinnabarGymTrainerText4:
 	call SaveEndBattleTextPointers
 	jp CinnabarGymScript_758b7
 .afterBeat
+.Archipelago_Option_Trainersanity6_1
+    ld a, 0
+    and a
+    jr z, .noTrainerSanity
+    CheckEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_3_ITEM
+    jr nz, .noTrainerSanity
+.Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_3_ITEM_1
+    ld b, AP_ITEM
+    call GiveCGItem
+    jr nc, .noTrainerSanity
+    SetEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_3_ITEM
+    jp TextScriptEnd
+.noTrainerSanity
 	ld hl, CinnabarGymAfterBattleText4
 	call PrintText
 	jp TextScriptEnd
@@ -397,6 +463,19 @@ CinnabarGymTrainerText5:
 	call SaveEndBattleTextPointers
 	jp CinnabarGymScript_758b7
 .afterBeat
+.Archipelago_Option_Trainersanity7_1
+    ld a, 0
+    and a
+    jr z, .noTrainerSanity
+    CheckEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_4_ITEM
+    jr nz, .noTrainerSanity
+.Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_4_ITEM_1
+    ld b, AP_ITEM
+    call GiveCGItem
+    jr nc, .noTrainerSanity
+    SetEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_4_ITEM
+    jp TextScriptEnd
+.noTrainerSanity
 	ld hl, CinnabarGymAfterBattleText5
 	call PrintText
 	jp TextScriptEnd
@@ -425,6 +504,19 @@ CinnabarGymTrainerText6:
 	call SaveEndBattleTextPointers
 	jp CinnabarGymScript_758b7
 .afterBeat
+.Archipelago_Option_Trainersanity8_1
+    ld a, 0
+    and a
+    jr z, .noTrainerSanity
+    CheckEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_5_ITEM
+    jr nz, .noTrainerSanity
+.Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_5_ITEM_1
+    ld b, AP_ITEM
+    call GiveCGItem
+    jr nc, .noTrainerSanity
+    SetEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_5_ITEM
+    jp TextScriptEnd
+.noTrainerSanity
 	ld hl, CinnabarGymAfterBattleText6
 	call PrintText
 	jp TextScriptEnd
@@ -453,6 +545,19 @@ CinnabarGymTrainerText7:
 	call SaveEndBattleTextPointers
 	jp CinnabarGymScript_758b7
 .afterBeat
+.Archipelago_Option_Trainersanity9_1
+    ld a, 0
+    and a
+    jr z, .noTrainerSanity
+    CheckEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_6_ITEM
+    jr nz, .noTrainerSanity
+.Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_6_ITEM_1
+    ld b, AP_ITEM
+    call GiveCGItem
+    jr nc, .noTrainerSanity
+    SetEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_6_ITEM
+    jp TextScriptEnd
+.noTrainerSanity
 	ld hl, CinnabarGymAfterBattleText7
 	call PrintText
 	jp TextScriptEnd
