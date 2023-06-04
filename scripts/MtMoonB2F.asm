@@ -118,7 +118,7 @@ CoordsData_49dea:
 CoordsData_49df1:
 	dbmapcoord 13,  7
 	dbmapcoord 14,  6
-	dbmapcoord 14,  5
+	dbmapcoord 13,  5
 	db -1 ; end
 
 MovementData_49df8:

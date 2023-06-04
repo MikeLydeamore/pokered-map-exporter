@@ -89,6 +89,7 @@ Lab4Text1:
 	SetEvent EVENT_LAB_HANDING_OVER_FOSSIL_MON
 	ld a, [wFossilMon]
 	ld b, a
+.Archipelago_Fossil_Level_1
 	ld c, 30
 	call GivePokemon
 	jr nc, .asm_75d93

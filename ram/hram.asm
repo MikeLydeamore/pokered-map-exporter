@@ -9,7 +9,6 @@ hSoftReset:: db
 UNION
 hBaseTileID:: ; base tile ID to which offsets are added
 hDexWeight::
-hWarpDestinationMap::
 hOAMTile::
 hROMBankTemp::
 hPreviousTileset::
@@ -399,4 +398,5 @@ hJoyInput:: db
 
 hDisableJoypadPolling:: db
 
-	ds 5
+hWarpDestinationMap:: db
+	ds 4

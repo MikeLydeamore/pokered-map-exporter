@@ -220,6 +220,13 @@ registerDexSanity::
     ld a, 0
     and a
     ret z
+.Archipelago_Require_Pokedex_C_1
+    ld a, 0
+    and a
+    jr z, .skipDexCheck
+	CheckEvent EVENT_GOT_POKEDEX
+	ret z
+.skipDexCheck
 	ld a, [wd11e]
 	dec a
 	ld c, a

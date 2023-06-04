@@ -9,7 +9,7 @@ Route5Gate_ScriptPointers:
 	dw Route5GateScript1
 
 Route5GateScript_1df43:
-    ld a, [wSaffronGateDir]
+    ld a, [wCheckDir]
     cp PLAYER_DIR_UP
     jr nz, .goUp
     ld a, D_DOWN
@@ -30,7 +30,7 @@ Route5GateScript0:
 	call ArePlayerCoordsInArray
 	ret nc
 	ld a, [wPlayerMovingDirection]
-	ld [wSaffronGateDir], a
+	ld [wCheckDir], a
 	ld a, PLAYER_DIR_LEFT
 	ld [wPlayerMovingDirection], a
 	xor a

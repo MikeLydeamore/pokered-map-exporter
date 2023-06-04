@@ -52,6 +52,8 @@ PokemonTower6Script0:
 	ld hl, CoordsData_60b45
 	call ArePlayerCoordsInArray
 	jp nc, CheckFightingMapTrainers
+	ld a, [wPlayerMovingDirection]
+	ld [wCheckDir], a
 	xor a
 	ldh [hJoyHeld], a
 	ld a, $6
@@ -60,6 +62,7 @@ PokemonTower6Script0:
 .Archipelago_Ghost_Battle1_1
 	ld a, RESTLESS_SOUL
 	ld [wCurOpponent], a
+.Archipelago_Ghost_Battle_Level_1
 	ld a, 30
 	ld [wCurEnemyLVL], a
 	ld a, $4
@@ -99,7 +102,12 @@ PokemonTower6Script4:
 .asm_60b82
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
-	ld a, $10
+    ld a, [wCheckDir]
+    cp PLAYER_DIR_RIGHT
+    ld a, D_LEFT
+    jr z, .goLeft
+	ld a, D_RIGHT
+.goLeft
 	ld [wSimulatedJoypadStatesEnd], a
 	xor a
 	ld [wSpritePlayerStateData2MovementByte1], a

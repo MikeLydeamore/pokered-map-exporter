@@ -21,9 +21,35 @@ PewterCityScript0:
 	ret
 
 PewterCityScript_1925e:
-    ret
+    ; 0 = open, 1 = brock, 2 = any gym leader, 3 = boulder badge, 4 = any badge
+.Archipelago_Option_Route3_Guard_B_1
+    ld a, 0
+    and a
+    jr z, .noGymGuy
+    cp 1
+    jr z, .brock
+    cp 2
+    jr z, .anyGym
+    cp 3
+    ld a, [wObtainedBadges]
+    jr z, .boulderBadge
+    ; any badge
+    and a
+    jr nz, .noGymGuy
+    jr .continue
+.boulderBadge
+    bit BIT_BOULDERBADGE, a
+    jr nz, .noGymGuy
+    jr .continue
+.anyGym
+    ld a, [wBeatGymFlags]
+    and a
+    jr nz, .noGymGuy
+    jr .continue
+.brock
 	CheckEvent EVENT_BEAT_BROCK
-	ret nz
+    jr nz, .noGymGuy
+.continue
 ;IF DEF(_DEBUG)
 ;	call DebugPressedOrHeldB
 ;	ret nz
@@ -36,6 +62,12 @@ PewterCityScript_1925e:
 	ld a, $5
 	ldh [hSpriteIndexOrTextID], a
 	jp DisplayTextID
+.noGymGuy
+    ld a, HS_GYM_GUY
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ret
+
 
 CoordsData_19277:
 	dbmapcoord 35, 17

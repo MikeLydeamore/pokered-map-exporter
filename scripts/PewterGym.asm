@@ -81,9 +81,9 @@ PewterGymScriptReceiveTM34:
 	ld hl, wBeatGymFlags
 	set BIT_BOULDERBADGE, [hl]
 
-	ld a, HS_GYM_GUY
-	ld [wMissableObjectIndex], a
-	predef HideObject
+	;ld a, HS_GYM_GUY
+	;ld [wMissableObjectIndex], a
+	;predef HideObject
 	;ld a, HS_ROUTE_22_RIVAL_1
 	;ld [wMissableObjectIndex], a
 	;predef HideObject

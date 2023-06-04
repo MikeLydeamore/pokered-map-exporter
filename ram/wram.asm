@@ -76,7 +76,7 @@ wTempoModifier:: db
 	ds 10
 
 wArchipelagoDeathLink:: db
-wSaffronGateDir:: db
+wCheckDir:: db
 wArchipelagoItemReceived:: db
 
 SECTION "Sprite State Data", WRAM0
@@ -2297,7 +2297,7 @@ wDayCareMon:: box_struct wDayCareMon
 
 ;wArchipelagoMaxBadges:: db
 wArchipelagoItemsReceivedCount:: ds 2
-wArchipelagoOptions:: db
+wArchipelagoProgressiveKeys:: db
 
 wDexSanity:: flag_array NUM_POKEMON
 

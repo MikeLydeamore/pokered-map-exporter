@@ -23,8 +23,10 @@ CinnabarIslandScript0:
 	cp 18
 	jr z, .locked
 .MansionCheck
-    ld a, [wArchipelagoOptions]
-    bit BIT_EXTRA_KEY_ITEMS, a
+
+.Archipelago_Option_Extra_Key_Items_B_1
+	ld a, 0
+	and a
     ret z
     ld b, MANSION_KEY
     call IsItemInBag
@@ -33,6 +35,8 @@ CinnabarIslandScript0:
 	cp 6
 	ret nz
 .locked
+	ld a, [wPlayerMovingDirection]
+	ld [wCheckDir], a
 	ld a, PLAYER_DIR_UP
 	ld [wPlayerMovingDirection], a
 	ld a, $8
@@ -42,7 +46,12 @@ CinnabarIslandScript0:
 	ldh [hJoyHeld], a
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
-	ld a, D_DOWN
+    ld a, [wCheckDir]
+    cp PLAYER_DIR_DOWN
+    ld a, D_DOWN
+    jr nz, .goDown
+	ld a, D_UP
+.goDown
 	ld [wSimulatedJoypadStatesEnd], a
 	call StartSimulatingJoypadStates
 	xor a

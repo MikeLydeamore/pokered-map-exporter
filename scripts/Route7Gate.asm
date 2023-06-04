@@ -12,7 +12,7 @@ Route7Gate_ScriptPointers:
 Route7GateScript_1e111:
 	ld hl, wd730
 	set 7, [hl]
-	ld a, [wSaffronGateDir]
+	ld a, [wCheckDir]
     cp PLAYER_DIR_LEFT
     jr nz, .goLeft
     ld a, D_RIGHT
@@ -36,7 +36,7 @@ Route7GateScript0:
 	call ArePlayerCoordsInArray
 	ret nc
 	ld a, [wPlayerMovingDirection]
-	ld [wSaffronGateDir], a
+	ld [wCheckDir], a
 	ld a, PLAYER_DIR_UP
 	ld [wPlayerMovingDirection], a
 	xor a

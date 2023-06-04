@@ -38,8 +38,10 @@ VermilionCity_ScriptPointers:
 	dw VermilionCityScript4
 
 VermilionCityScript0:
-	ld a, [wSpritePlayerStateData1FacingDirection]
-	and a ; cp SPRITE_FACING_DOWN
+	ld b, S_S_TICKET
+	predef GetQuantityOfItemInBag
+	ld a, b
+	and a
 	ret nz
 	ld hl, SSAnneTicketCheckCoords
 	call ArePlayerCoordsInArray
@@ -52,13 +54,13 @@ VermilionCityScript0:
 	call DisplayTextID
 	;CheckEvent EVENT_SS_ANNE_LEFT
 	;jr nz, .shipHasDeparted
-	ld b, S_S_TICKET
-	predef GetQuantityOfItemInBag
-	ld a, b
-	and a
-	ret nz
 .shipHasDeparted
+	ld a, [wSpritePlayerStateData1FacingDirection]
+	and a ; cp SPRITE_FACING_DOWN
+	ld a, D_DOWN
+	jr nz, .down
 	ld a, D_UP
+.down
 	ld [wSimulatedJoypadStatesEnd], a
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a

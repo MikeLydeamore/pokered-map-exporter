@@ -71,6 +71,25 @@ SilphCo3TrainerHeader1:
 
 SilphCo3Text1:
 	text_asm
+;	ld hl, SplitKeyChecks
+;	ld a, [hl]
+;	and a
+;	jr z, .noSP
+;	CheckEvent EVENT_SKC_3F
+;	jr nz, .noSP
+;.Archipelago_Event_SKC3F
+;	lb bc, CARD_KEY_3F, 1
+;	call GiveItem
+;	jr nc, .bag_full
+;	ld hl, DisplayArchipelagoItem
+;	call PrintText
+;	SetEvent EVENT_SKC_3F
+;	jp TextScriptEnd
+;.bag_full
+;	ld hl, SKC3NoRoomText
+;	call PrintText
+;	jp TextScriptEnd
+;.noSP
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	ld hl, SilphCo3Text_59ffe
 	jr nz, .asm_59fee
@@ -79,6 +98,9 @@ SilphCo3Text1:
 	call PrintText
 	jp TextScriptEnd
 
+;SKC3NoRoomText:
+;    text_far TM42NoRoomText
+;    text_end
 SilphCo3Text_59ff9:
 	text_far _SilphCo3Text_59ff9
 	text_end

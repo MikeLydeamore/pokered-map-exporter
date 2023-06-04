@@ -4,6 +4,7 @@
 ; the fourth entry in the list.
 LoneMoves:
 	; pokemon index, move to give nth pokemon
+.Archipelago_Gym_Leader_Moves_1
 	db 1, BIDE
 	db 1, BUBBLEBEAM
 	db 2, THUNDERBOLT

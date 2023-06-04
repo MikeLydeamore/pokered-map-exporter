@@ -4,7 +4,7 @@ PrintNumber::
 ; the value to char "0" instead of calling PrintNumber.
 ; Flags LEADING_ZEROES and LEFT_ALIGN can be given
 ; in bits 7 and 6 of b respectively.
-	push bc
+    push bc
 	xor a
 	ldh [hPastLeadingZeros], a
 	ldh [hNumToPrint], a

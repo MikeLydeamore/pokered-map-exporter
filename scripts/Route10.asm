@@ -29,9 +29,11 @@ Route10_TextPointers:
 
 Route10_Script0:
     call CheckFightingMapTrainers
-    ld a, [wArchipelagoOptions]
-    bit BIT_EXTRA_KEY_ITEMS, a
-    ret z
+
+.Archipelago_Option_Extra_Key_Items_D_1
+	ld a, 0
+	and a
+	ret z
 	ld b, PLANT_KEY
 	call IsItemInBag
 	ret nz
@@ -41,7 +43,12 @@ Route10_Script0:
 	ld a, [wXCoord]
 	cp 6
 	ret nz
+	ld a, [wPlayerDirection]
+    cp PLAYER_DIR_DOWN
 	ld a, PLAYER_DIR_UP
+	jr z, .up
+	ld a, PLAYER_DIR_DOWN
+.up
 	ld [wPlayerMovingDirection], a
 	ld a, 11
 	ldh [hSpriteIndexOrTextID], a

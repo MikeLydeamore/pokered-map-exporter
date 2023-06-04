@@ -386,6 +386,27 @@ SilphCo7Text3:
 
 SilphCo7Text4:
 	text_asm
+	ld hl, SplitKeyChecks
+	ld a, [hl]
+	and a
+	jr z, .noSP
+	CheckEvent EVENT_SKC_7F
+	jr nz, .noSP
+.Archipelago_Event_SKC7F
+	lb bc, CARD_KEY_7F, 1
+	call GiveItem
+	jr nc, .bag_full
+	ld hl, DisplayArchipelagoItem
+	call PrintText
+	SetEvent EVENT_SKC_7F
+	jp TextScriptEnd
+.bag_full
+	ld hl, SKC7NoRoomText
+	call PrintText
+	jp TextScriptEnd
+.noSP
+
+
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 	jr nz, .savedsilph
 	ld hl, .rockettext
@@ -404,6 +425,10 @@ SilphCo7Text4:
 .savedtext
 	text_far _SilphCo7Text_51e4b
 	text_end
+
+SKC7NoRoomText:
+    text_far TM42NoRoomText
+    text_end
 
 SilphCo7Text5:
 	text_asm

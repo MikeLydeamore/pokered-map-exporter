@@ -32,9 +32,9 @@ IsPlayerStandingOnWarp::
 	ret
 
 CheckForceBikeOrSurf::
-	ld hl, wd732
-	bit 5, [hl]
-	ret nz
+	;ld hl, wd732
+	;bit 5, [hl]
+	;ret nz
 	ld hl, ForcedBikeOrSurfMaps
 	ld a, [wYCoord]
 	ld b, a
@@ -65,6 +65,12 @@ CheckForceBikeOrSurf::
 	ld [wSeafoamIslandsB4FCurScript], a
 	jr z, .forceSurfing
 	;force bike riding
+	ld b, BICYCLE
+	call IsItemInBag
+	ret z
+	ld a, [wWalkBikeSurfState]
+	cp 1
+	ret z
 	ld hl, wd732
 	set 5, [hl]
 	ld a, $1

@@ -243,6 +243,8 @@ FightingDojoText6:
 	jr nz, .done
 	ld a, [wcf91]
 	ld b, a
+
+.Archipelago_Gift_Hitmonlee_Level_1
 	ld c, 30
 	call GivePokemon
 	jr nc, .done
@@ -279,6 +281,7 @@ FightingDojoText7:
 	jr nz, .done
 	ld a, [wcf91]
 	ld b, a
+.Archipelago_Gift_Hitmonchan_Level_1
 	ld c, 30
 	call GivePokemon
 	jr nc, .done

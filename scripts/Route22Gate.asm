@@ -3,13 +3,13 @@ Route22Gate_Script:
 	ld hl, Route22Gate_ScriptPointers
 	ld a, [wRoute22GateCurScript]
 	call CallFunctionInTable
-	ld a, [wYCoord]
-	cp 4
-	ld a, ROUTE_23
-	jr c, .asm_1e69a
-	ld a, ROUTE_22
+	;ld a, [wYCoord]
+	;cp 4
+	;ld a, ROUTE_23
+	;jr c, .asm_1e69a
+	;ld a, ROUTE_22
 .asm_1e69a
-	ld [wLastMap], a
+	;ld [wLastMap], a
 	ret
 
 Route22Gate_ScriptPointers:
@@ -35,7 +35,12 @@ Route22GateScriptCoords:
 Route22GateScript_1e6ba:
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
-	ld a, D_DOWN
+    ld a, [wPlayerDirection]
+    cp PLAYER_DIR_UP
+    ld a, D_DOWN
+    jr z, .goDown
+	ld a, D_UP
+.goDown
 	ld [wSimulatedJoypadStatesEnd], a
 	ld [wSpritePlayerStateData1FacingDirection], a
 	ld [wJoyIgnore], a

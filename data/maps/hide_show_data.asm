@@ -271,13 +271,16 @@ ViridianCityHS:
 	db VIRIDIAN_CITY, $07, HIDE
 PewterCityHS:
 	db PEWTER_CITY, $03, SHOW
-	db PEWTER_CITY, $05, HIDE
+.Archipelago_Option_Route3_Guard_A_2
+	db PEWTER_CITY, $05, SHOW ;rt3 block
 CeruleanCityHS:
 	db CERULEAN_CITY, $01, HIDE
 	db CERULEAN_CITY, $02, SHOW
-	db CERULEAN_CITY, $06, SHOW
+.Archipelago_Option_Trashed_House_Guard_A_2
+	db CERULEAN_CITY, $06, HIDE ;guard
 	db CERULEAN_CITY, $0A, SHOW
-	db CERULEAN_CITY, $0B, HIDE
+.Archipelago_Option_Trashed_House_Guard_B_2
+	db CERULEAN_CITY, $0B, SHOW ;guard
 SaffronCityHS:
 	db SAFFRON_CITY, $01, SHOW
 	db SAFFRON_CITY, $02, SHOW
@@ -299,7 +302,6 @@ Route2HS:
 	db ROUTE_2, $02, SHOW
 Route4HS:
 	db ROUTE_4, $03, SHOW
-    ;db ROUTE_4, 4, SHOW
 Route9HS:
 	db ROUTE_9, $0A, SHOW
 Route12HS:

@@ -32,6 +32,13 @@ EnterMap::
 	call UpdateSprites
 .didNotEnterUsingFlyWarpOrDungeonWarp
 	farcall CheckForceBikeOrSurf ; handle currents in SF islands and forced bike riding in cycling road
+	ld a, [wWalkBikeSurfState]
+	and a
+	jr nz, .continue
+	ld hl, wd732
+	res 5, [hl]
+
+.continue
 	ld hl, wd72d
 	res 5, [hl]
 	call UpdateSprites
@@ -107,13 +114,13 @@ OverworldLoopLessDelay::
 	bit 0, a
 	jr nz, .checkForOpponent
 	lda_coord 8, 9
-	ld [wTilePlayerStandingOn], a ; unused?
+	;ld [wTilePlayerStandingOn], a ; unused?
 	call DisplayTextID ; display either the start menu or the NPC/sign text
 	ld a, [wEnteringCableClub]
 	and a
 	jr z, .checkForOpponent
 	dec a
-	ld a, 0
+	xor a
 	ld [wEnteringCableClub], a
 	jr z, .changeMap
 ; XXX can this code be reached?
@@ -413,7 +420,6 @@ CheckWarpsNoCollision::
 	ld a, [wNumberOfWarps]
 	and a
 	jp z, CheckMapConnections
-	ld a, [wNumberOfWarps]
 	ld b, 0
 	ld c, a
 	ld a, [wYCoord]
@@ -506,6 +512,27 @@ WarpFound2::
 	ld [wWarpedFromWhichWarp], a ; save ID of used warp
 	ld a, [wCurMap]
 	ld [wWarpedFromWhichMap], a
+	cp ROCK_TUNNEL_1F
+	jr z, .notRockTunnel
+	cp ROCK_TUNNEL_B1F
+	jr z, .notRockTunnel
+	ldh a, [hWarpDestinationMap]
+	cp ROCK_TUNNEL_1F
+	jr z, .rockTunnel
+	cp ROCK_TUNNEL_B1F
+	jr nz, .notRockTunnel
+
+.rockTunnel
+.Archipelago_Option_Pitch_Black_Rock_Tunnel_1
+	ld a, $06
+	ld [wMapPalOffset], a
+	call GBFadeOutToBlack
+	;jr .continue
+
+.notRockTunnel
+	;xor a
+
+.continue
 	call CheckIfInOutsideMap
 	jr nz, .indoorMaps
 ; this is for handling "outside" maps that can't have the 0xFF destination map
@@ -515,12 +542,7 @@ WarpFound2::
 	;ld [wUnusedD366], a ; not read
 	ldh a, [hWarpDestinationMap]
 	ld [wCurMap], a
-	cp ROCK_TUNNEL_1F
-	jr nz, .notRockTunnel
-	ld a, $06
-	ld [wMapPalOffset], a
-	call GBFadeOutToBlack
-.notRockTunnel
+
 	call PlayMapChangeSound
 	jr .done
 
@@ -552,9 +574,15 @@ WarpFound2::
 	ld a, [wLastMap]
 	ld [wCurMap], a
 	call PlayMapChangeSound
+.done
+	ld a, [wCurMap]
+    cp ROCK_TUNNEL_1F
+    jr z, .rtSkip
+    cp ROCK_TUNNEL_B1F
+    jr z, .rtSkip
 	xor a
 	ld [wMapPalOffset], a
-.done
+.rtSkip
 	ld hl, wd736
 	set 0, [hl] ; have the player's sprite step out from the door (if there is one)
 	call IgnoreInputForHalfSecond
@@ -694,6 +722,8 @@ CheckMapConnections::
 	ld a, h
 	ld [wCurrentTileBlockMapViewPointer + 1], a
 .loadNewMap ; load the connected map that was entered
+    ld a, 255
+    ld [wDestinationWarpID], a
 	call LoadMapHeader
 	call PlayDefaultMusicFadeOutCurrent
 	ld b, SET_PAL_OVERWORLD
@@ -1014,7 +1044,7 @@ LoadTileBlockMap::
 .eastConnection
 	ld a, [wEastConnectedMap]
 	cp $ff
-	jr z, .done
+	ret z
 	call SwitchToMapRomBank
 	ld a, [wEastConnectionStripSrc]
 	ld l, a
@@ -1636,7 +1666,7 @@ AdvancePlayerSprite::
 	ld hl, wSprite01StateData1YPixels
 	ld a, [wNumSprites] ; number of sprites
 	and a ; are there any sprites?
-	jr z, .done
+	ret z
 	ld e, a
 .spriteShiftLoop
 	ld a, [hl]
@@ -1953,7 +1983,7 @@ CollisionCheckOnWater::
 	call PlaySound ; play collision sound (if it's not already playing)
 .setCarry
 	scf
-	jr .done
+	ret
 .noCollision
 	and a
 .done

@@ -29,15 +29,19 @@ ViridianCityScript_1900b:
 	SetEvent EVENT_VIRIDIAN_GYM_OPEN
 	ret
 .gym_closed
+
 	ld a, [wYCoord]
 	cp 8
 	ret nz
 	ld a, [wXCoord]
 	cp 32
 	ret nz
+	ld a, [wPlayerMovingDirection]
+	ld [wCheckDir], a
 	ld a, $e
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
+
 	xor a
 	ldh [hJoyHeld], a
 	call ViridianCityScript_190cf
@@ -48,6 +52,8 @@ ViridianCityScript_1900b:
 ViridianCityScript_1903d:
 	CheckEvent EVENT_OAK_GOT_PARCEL
 	ret nz
+	ld a, [wPlayerMovingDirection]
+	ld [wCheckDir], a
 	ld a, [wMissableObjectFlags]
 	bit 1, a
 	ret nz
@@ -126,7 +132,12 @@ ViridianCityScript_190cf:
 	call StartSimulatingJoypadStates
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
-	ld a, D_DOWN
+    ld a, [wCheckDir]
+    cp PLAYER_DIR_DOWN
+    ld a, D_DOWN
+    jr nz, .goDown
+	ld a, D_UP
+.goDown
 	ld [wSimulatedJoypadStatesEnd], a
 	xor a
 	ld [wSpritePlayerStateData1FacingDirection], a
@@ -280,7 +291,7 @@ TM42Explanation:
 	text_far _TM42Explanation
 	text_end
 
-TM42NoRoomText:
+TM42NoRoomText::
 	text_far _TM42NoRoomText
 	text_end
 

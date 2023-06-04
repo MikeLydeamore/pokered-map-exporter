@@ -33,6 +33,7 @@ Route16Script0:
 	ld a, SNORLAX
 	ld [wCurOpponent], a
 	ld a, 30
+.Archipelago_Static_Encounter_Snorlax_B_Level_1
 	ld [wCurEnemyLVL], a
 	ld a, HS_ROUTE_16_SNORLAX
 	ld [wMissableObjectIndex], a

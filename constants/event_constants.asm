@@ -447,15 +447,15 @@
 	const EVENT_BEAT_VIRIDIAN_GYM_TRAINER_1_ITEM ; 0x1bd
 	const EVENT_BEAT_VIRIDIAN_GYM_TRAINER_0_ITEM ; 0x1be
 	const EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI_ITEM ; 0x1bf
-	const EVENT_1C0 ; 0x1c0
-	const EVENT_1C1 ; 0x1c1
-	const EVENT_1C2 ; 0x1c2
-	const EVENT_1C3 ; 0x1c3
-	const EVENT_1C4 ; 0x1c4
-	const EVENT_1C5 ; 0x1c5
-	const EVENT_1C6 ; 0x1c6
-	const EVENT_1C7 ; 0x1c7
-	const EVENT_1C8 ; 0x1c8
+	const EVENT_SKC_1F ; 0x1c0
+	const EVENT_SKC_4F ; 0x1c1
+	const EVENT_SKC_5F ; 0x1c2
+	const EVENT_SKC_6F ; 0x1c3
+	const EVENT_SKC_7F ; 0x1c4
+	const EVENT_SKC_8F ; 0x1c5
+	const EVENT_SKC_9F ; 0x1c6
+	const EVENT_SKC_10F ; 0x1c7
+	const EVENT_SKC_11F ; 0x1c8
 	const EVENT_1C9 ; 0x1c9
 	const EVENT_1CA ; 0x1ca
 	const EVENT_1CB ; 0x1cb

@@ -1334,6 +1334,32 @@ OaksLabText28:
 	text_end
 
 OaksLabText11:
+    text_asm
+    ld hl, OaksLabText11_
+    call PrintText
+	hlcoord 14, 7
+	lb bc, 8, 15
+	ld a, TWO_OPTION_MENU
+	ld [wTextBoxID], a
+	call DisplayTextBoxID
+	ld a, [wMenuExitMethod]
+	cp CHOSE_SECOND_ITEM ; did the player choose NO?
+	ret z
+	farcall ResetStaticPokemon
+	jp TextScriptEnd
+
+OaksLabText11_:
+          ;;;;;;;;;;;;;;;;;;
+    text "I can reset all"
+    line "one-time"
+    cont "encounters"
+    cont "of any #mon"
+    cont "you defeated but"
+    cont "have not caught."
+    para "Would you like me"
+    line "to do that?"
+    done
+
 OaksLabText10:
 	text_asm
 	ld hl, OaksLabText_1d405

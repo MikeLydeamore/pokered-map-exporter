@@ -127,7 +127,8 @@ PalletMovementScript_WalkToLab:
 	ld [wNPCMovementScriptFunctionNum], a
 	ret
 
-RLEList_ProfOakWalkToLab:
+RLEList_ProfOakWalkToLab::
+.Archipelago_Path_Pallet_Oak
 	db NPC_MOVEMENT_DOWN, 5
 	db NPC_MOVEMENT_LEFT, 1
 	db NPC_MOVEMENT_DOWN, 5
@@ -137,6 +138,7 @@ RLEList_ProfOakWalkToLab:
 	db -1 ; end
 
 RLEList_PlayerWalkToLab:
+.Archipelago_Path_Pallet_Player
 	db D_UP, 2
 	db D_RIGHT, 3
 	db D_DOWN, 5

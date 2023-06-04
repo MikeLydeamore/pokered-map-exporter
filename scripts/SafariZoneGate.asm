@@ -144,8 +144,9 @@ SafariZoneGate_TextPointers:
 
 .SafariZoneEntranceText4
 	text_asm
-	ld a, [wArchipelagoOptions]
-	bit BIT_EXTRA_KEY_ITEMS, a
+.Archipelago_Option_Extra_Key_Items_A_1
+	ld a, 0
+	and a
 	jr nz, .pass
 	ld hl, SafariZoneEntranceText_noPass
 	call PrintText

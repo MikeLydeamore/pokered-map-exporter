@@ -2759,7 +2759,9 @@ AnyMoveToSelect:
 	or c
 	jr .handleDisabledMovePPLoop
 .allMovesChecked
+.Archipelago_Option_Fix_Combat_Bugs_Struggle_0
 	and a ; any PP left?
+	nop
 	ret nz ; return if a move has PP left
 .noMovesLeft
 	ld hl, NoMovesLeftText
@@ -2774,6 +2776,9 @@ NoMovesLeftText:
 	text_end
 
 SwapMovesInMenu:
+	ld a, [wPlayerBattleStatus3]
+	bit TRANSFORMED, a
+	jp nz, MoveSelectionMenu ; No move swapping while transformed
 	ld a, [wMenuItemToSwap]
 	and a
 	jr z, .noMenuItemSelected
@@ -3472,6 +3477,7 @@ CheckPlayerStatusConditions:
 	ld hl, wPlayerBattleStatus1
 	ld a, [hl]
 	; clear bide, thrashing, charging up, and trapping moves such as warp (already cleared for confusion damage)
+.Archipelago_Option_Fix_Combat_Bugs_Dig_Fly_1
 	and ~((1 << STORING_ENERGY) | (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE))
 	ld [hl], a
 	ld a, [wPlayerMoveEffect]
@@ -4665,6 +4671,7 @@ CriticalHitTest:
 	ld c, [hl]                   ; read move id
 	ld a, [de]
 	bit GETTING_PUMPED, a        ; test for focus energy
+.Archipelago_Option_Fix_Combat_Bugs_Focus_Energy_0
 	jr nz, .focusEnergyUsed      ; bug: using focus energy causes a shift to the right instead of left,
 	                             ; resulting in 1/4 the usual crit chance
 	sla b                        ; (effective (base speed/2)*2)
@@ -4692,12 +4699,23 @@ CriticalHitTest:
 	jr nc, .SkipHighCritical
 	ld b, $ff
 .SkipHighCritical
+    push hl
+    ld hl, FixCombatBugs
+    ld a, [hl]
+    and a
+    pop hl
+    jr z, .noBugFix
+	ld a, b
+	inc a ; optimization of "cp $ff"
+	jr z, .guaranteedCriticalHit
+.noBugFix
 	call BattleRandom            ; generates a random value, in "a"
 	rlc a
 	rlc a
 	rlc a
 	cp b                         ; check a against calculated crit rate
 	ret nc                       ; no critical hit if no borrow
+.guaranteedCriticalHit
 	ld a, $1
 	ld [wCriticalHitOrOHKO], a   ; set critical hit flag
 	ret
@@ -5479,6 +5497,9 @@ MoveHitTest:
 	jr z, .checkForDigOrFlyStatus
 ; This code is buggy. It's supposed to prevent HP draining moves from working on substitutes.
 ; Since CheckTargetSubstitute overwrites a with either $00 or $01, it never works.
+
+.Archipelago_Option_Fix_Combat_Bugs_HP_Drain_Dream_Eater_0
+    nop
 	cp DRAIN_HP_EFFECT
 	jp z, .moveMissed
 	cp DREAM_EATER_EFFECT
@@ -5546,6 +5567,14 @@ MoveHitTest:
 	ld a, [wEnemyMoveAccuracy]
 	ld b, a
 .doAccuracyCheck
+    ld hl, FixCombatBugs
+    ld a, [hl]
+    and a
+    jr z, .noBugFix
+	ld a, b
+	cp $FF ; Is the value $FF?
+	ret z ; If so, we need not calculate, just so we can fix this bug.
+.noBugFix
 ; if the random number generated is greater than or equal to the scaled accuracy, the move misses
 ; note that this means that even the highest accuracy is still just a 255/256 chance, not 100%
 	call BattleRandom

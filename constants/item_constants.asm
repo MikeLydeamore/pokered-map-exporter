@@ -108,6 +108,18 @@ DEF SAFARI_ROCK EQU $16 ; overload
  	const FIRE_TRAP ; $61
  	const TWENTY_COINS
  	const HUNDRED_COINS
+ 	const CARD_KEY_2F
+ 	const CARD_KEY_3F
+ 	const CARD_KEY_4F
+ 	const CARD_KEY_5F
+ 	const CARD_KEY_6F
+ 	const CARD_KEY_7F
+ 	const CARD_KEY_8F
+ 	const CARD_KEY_9F
+ 	const CARD_KEY_10F
+ 	const CARD_KEY_11F
+ 	const PROGRESSIVE_CARD_KEY
+
 DEF NUM_ITEMS EQU const_value - 1
 
 ; elevator floors use item IDs

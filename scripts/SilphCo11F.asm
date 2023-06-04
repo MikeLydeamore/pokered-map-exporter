@@ -330,6 +330,36 @@ SilphCoMasterBallNoRoomText:
 	text_end
 
 SilphCo11Text2:
+	text_asm
+	ld hl, SplitKeyChecks
+	ld a, [hl]
+	and a
+	jr z, .noSP
+	CheckEvent EVENT_SKC_11F
+	jr nz, .noSP
+.Archipelago_Event_SKC11F
+	lb bc, CARD_KEY_11F, 1
+	call GiveItem
+	jr nc, .bag_full
+	ld hl, DisplayArchipelagoItem
+	call PrintText
+	SetEvent EVENT_SKC_11F
+	jp TextScriptEnd
+.bag_full
+	ld hl, SKC11NoRoomText
+	call PrintText
+	jp TextScriptEnd
+.noSP
+    ld hl, SilphCo11Text2b
+    call PrintText
+    jp TextScriptEnd
+
+SKC11NoRoomText:
+    text_far TM42NoRoomText
+    text_end
+
+
+SilphCo11Text2b:
 	text_far _SilphCo11Text2
 	text_end
 

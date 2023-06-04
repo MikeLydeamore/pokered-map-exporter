@@ -30,7 +30,20 @@ SaffronCity_TextPointers:
 
 SaffronCityText1:
 	text_far _SaffronCityText1
-	text_end
+	text_asm
+	ld a, [wYCoord]
+	cp 5
+	jp nz, TextScriptEnd
+	ld hl, SaffronCopycatWarpData + 2
+	ld a, [hli]
+	ld [wDestinationWarpID], a
+	ld a, [hl]
+	ldh [hWarpDestinationMap], a
+	ld a, SAFFRON_CITY
+	ld [wLastMap], a
+	ld hl, wd72d
+	set 3, [hl]
+	jp TextScriptEnd
 
 SaffronCityText2:
 	text_far _SaffronCityText2
@@ -38,11 +51,37 @@ SaffronCityText2:
 
 SaffronCityText3:
 	text_far _SaffronCityText3
-	text_end
+	text_asm
+	ld a, [wYCoord]
+	cp 3
+	jp nz, TextScriptEnd
+	ld hl, SaffronGymWarpData + 2
+	ld a, [hli]
+	ld [wDestinationWarpID], a
+	ld a, [hl]
+	ldh [hWarpDestinationMap], a
+	ld a, SAFFRON_CITY
+	ld [wLastMap], a
+	ld hl, wd72d
+	set 3, [hl]
+	jp TextScriptEnd
 
 SaffronCityText4:
 	text_far _SaffronCityText4
-	text_end
+	text_asm
+	ld a, [wYCoord]
+	cp 11
+	jp nz, TextScriptEnd
+	ld hl, SaffronPidgeyWarpData + 2
+	ld a, [hli]
+	ld [wDestinationWarpID], a
+	ld a, [hl]
+	ldh [hWarpDestinationMap], a
+	ld a, SAFFRON_CITY
+	ld [wLastMap], a
+	ld hl, wd72d
+	set 3, [hl]
+	jp TextScriptEnd
 
 SaffronCityText5:
 	text_far _SaffronCityText5
@@ -83,7 +122,20 @@ SaffronCityText13:
 
 SaffronCityText14:
 	text_far _SaffronCityText14
-	text_end
+	text_asm
+	ld a, [wYCoord]
+	cp 21
+	jp nz, TextScriptEnd
+	ld hl, SaffronSilphCoWarpData + 2
+	ld a, [hli]
+	ld [wDestinationWarpID], a
+	ld a, [hl]
+	ldh [hWarpDestinationMap], a
+	ld a, SAFFRON_CITY
+	ld [wLastMap], a
+	ld hl, wd72d
+	set 3, [hl]
+	jp TextScriptEnd
 
 SaffronCityText15:
 	text_far _SaffronCityText15

@@ -24,7 +24,24 @@ PrintCardKeyText:
 .cardKeyDoorInFrontOfPlayer
 	ld b, CARD_KEY
 	call IsItemInBag
+	jr nz, .cardKey
+	ld a, [wCurMap]
+	sub SILPH_CO_2F
+	jr c, .noCardKey
+	cp 7
+	jr nc, .checkNext
+	add CARD_KEY_2F
+	ld b, a
+	call IsItemInBag
 	jr z, .noCardKey
+	jr .cardKey
+.checkNext
+    sub 26
+    add CARD_KEY_9F
+    ld b, a
+    call IsItemInBag
+    jr z, .noCardKey
+.cardKey
 	call GetCoordsInFrontOfPlayer
 	push de
 	tx_pre_id CardKeySuccessText

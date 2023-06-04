@@ -74,7 +74,7 @@ KeyItemFlags:
 	dbit TRUE  ; SILPH_SCOPE
 	dbit TRUE  ; POKE_FLUTE
 	dbit TRUE  ; LIFT_KEY
-	dbit FALSE ; EXP_ALL
+	dbit TRUE ; EXP_ALL
 	dbit TRUE  ; OLD_ROD
 	dbit TRUE  ; GOOD_ROD
 	dbit TRUE  ; SUPER_ROD
@@ -99,4 +99,15 @@ KeyItemFlags:
 	dbit FALSE
 	dbit FALSE
 	dbit FALSE
+	dbit TRUE ; Card keys
+	dbit TRUE ; Card keys
+	dbit TRUE ; Card keys
+	dbit TRUE ; Card keys
+	dbit TRUE ; Card keys
+	dbit TRUE ; Card keys
+	dbit TRUE ; Card keys
+	dbit TRUE ; Card keys
+	dbit TRUE ; Card keys
+	dbit TRUE ; Card keys
+	dbit TRUE ; Prog Card keys
 	end_bit_array NUM_ITEMS

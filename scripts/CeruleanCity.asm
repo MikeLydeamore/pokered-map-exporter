@@ -1,3 +1,39 @@
+CaveKeyItems:
+    db SECRET_KEY
+    db BICYCLE
+    db SILPH_SCOPE
+    db ITEMFINDER
+    db SUPER_ROD
+    db GOOD_ROD
+    db OLD_ROD
+    db LIFT_KEY
+    db CARD_KEY
+    db TOWN_MAP
+    db COIN_CASE
+    db POKE_FLUTE
+    db S_S_TICKET
+    db EXP_ALL
+    db MANSION_KEY
+    db SAFARI_PASS
+    db PLANT_KEY
+    db HIDEOUT_KEY
+    db CARD_KEY_2F
+    db CARD_KEY_3F
+    db CARD_KEY_4F
+    db CARD_KEY_5F
+    db CARD_KEY_6F
+    db CARD_KEY_7F
+    db CARD_KEY_8F
+    db CARD_KEY_9F
+    db CARD_KEY_10F
+    db CARD_KEY_11F
+    db MOON_STONE
+    db FIRE_STONE
+    db LEAF_STONE
+    db THUNDER_STONE
+    db WATER_STONE
+    db $FF
+
 CeruleanCity_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, CeruleanCity_ScriptPointers
@@ -357,7 +393,20 @@ CeruleanCityText5:
 CeruleanCityText11:
 CeruleanCityText6:
 	text_far _CeruleanCityText6
-	text_end
+	text_asm
+	ld a, [wYCoord]
+	cp 11
+	jp nz, TextScriptEnd
+	ld hl, CeruleanTrashedHouseWarpData + 2
+	ld a, [hli]
+	ld [wDestinationWarpID], a
+	ld a, [hl]
+	ldh [hWarpDestinationMap], a
+	ld a, CERULEAN_CITY
+	ld [wLastMap], a
+	ld hl, wd72d
+	set 3, [hl]
+	jp TextScriptEnd
 
 CeruleanCityText7:
 	text_asm
@@ -445,159 +494,55 @@ CeruleanCityText10:
 	ld b, $1
 	call CountSetBits
 	ld a, [wNumSetBits]
-	ld c, a
-	push bc
-	ld b, SECRET_KEY
-	call IsItemInBag
-	pop bc
-	add c
-	ld c, a
-	push bc
-	ld b, MANSION_KEY
-	call IsItemInBag
-	pop bc
-	add c
-	ld c, a
-	push bc
-	ld b, SAFARI_PASS
-	call IsItemInBag
-	pop bc
-	add c
-	ld c, a
-	push bc
-	ld b, PLANT_KEY
-	call IsItemInBag
-	pop bc
-	add c
-	ld c, a
-	push bc
-	ld b, HIDEOUT_KEY
-	call IsItemInBag
-	pop bc
-	add c
-	ld c, a
-	push bc
-	ld b, BICYCLE
-	call IsItemInBag
-	pop bc
-	add c
-	ld c, a
-	push bc
-	ld b, SILPH_SCOPE
-	call IsItemInBag
-	pop bc
-	add c
-	ld c, a
-	push bc
-	ld b, ITEMFINDER
-	call IsItemInBag
-	pop bc
-	add c
-	ld c, a
-	push bc
-	ld b, SUPER_ROD
-	call IsItemInBag
-	pop bc
-	add c
-	ld c, a
-	push bc
-	ld b, GOOD_ROD
-	call IsItemInBag
-	pop bc
-	add c
-	ld c, a
-	push bc
-	ld b, OLD_ROD
-	call IsItemInBag
-	pop bc
-	add c
-	ld c, a
-	push bc
-	ld b, LIFT_KEY
-	call IsItemInBag
-	pop bc
-	add c
-	ld c, a
-	push bc
-	ld b, CARD_KEY
-	call IsItemInBag
-	pop bc
-	add c
-	ld c, a
-	push bc
-	ld b, TOWN_MAP
-	call IsItemInBag
-	pop bc
-	add c
-	ld c, a
-	push bc
-	ld b, COIN_CASE
-	call IsItemInBag
-	pop bc
-	add c
-	ld c, a
-	push bc
-	ld b, POKE_FLUTE
-	call IsItemInBag
-	pop bc
-	add c
-	ld c, a
-	push bc
-	ld b, S_S_TICKET
-	call IsItemInBag
-	pop bc
-	add c
-	;ld [wUnusedCC5B], a
-	;ld a, [wArchipelagoOptions]
-	;bit BIT_EXTRA_KEY_ITEMS, a
-	;jr nz, .Archipelago_Option_Cerulean_Cave_Condition_LD_A
-	;ld a, [wUnusedCC5B]
-	ld c, a
-	push bc
-	ld b, HM_CUT
-	call IsItemInBag
-	pop bc
-	add c
-	ld c, a
-	push bc
-	ld b, HM_SURF
-	call IsItemInBag
-	pop bc
-	add c
-	ld c, a
-	push bc
-	ld b, HM_STRENGTH
-	call IsItemInBag
-	pop bc
-	add c
-	ld c, a
-	push bc
-	ld b, HM_FLY
-	call IsItemInBag
-	pop bc
-	add c
-	ld c, a
-	push bc
-	ld b, HM_FLASH
-	call IsItemInBag
-	pop bc
-	add c
 	ld [wUnusedCC5B], a
 
-.Archipelago_Option_Cerulean_Cave_Condition_LD_A
-	ld a, 20
-	ld [wUnusedD366], a
-	ld hl, CeruleanCityTextCaveGuy
+	ld c, 0
+	ld hl, CaveKeyItems
+.loop
+	ld a, [hli]
+	cp $FF
+	jr z, .doneLoop
+	ld b, a
+	push bc
+	push hl
+	call IsItemInBag
+	pop hl
+	pop bc
+	jr z, .loop
+	inc c
+	jr .loop
+.doneLoop
+    ld a, c
+    ld [wUnusedD366], a
+
+    ld hl, CeruleanCityTextCaveGuy
 	call PrintText
+
 	ld a, [wUnusedCC5B]
-    inc a
-    ld b, a
+.Archipelago_Option_Cerulean_Cave_Badges_1
+    cp 0
+    jr nc, .dontleave
     ld a, [wUnusedD366]
-    cp b
+.Archipelago_Option_Cerulean_Cave_Key_Items_1
+    cp 0
     jp c, .leave
-    ld hl, CeruleanCityCaveGuyYouHave
-    call PrintText
-    jp TextScriptEnd
+.dontleave
+	ld a, [wYCoord]
+	cp 11
+	jp nz, TextScriptEnd
+	ld hl, CeruleanCeruleanCaveWarpData + 2
+	ld a, [hli]
+	ld [wDestinationWarpID], a
+	ld a, [hl]
+	ldh [hWarpDestinationMap], a
+	ld a, CERULEAN_CITY
+	ld [wLastMap], a
+	ld hl, wd72d
+	set 3, [hl]
+	jp TextScriptEnd
+
+
+
 .leave
     ld hl, CeruleanCityCaveGuyLeaves
     call PrintText
@@ -611,18 +556,18 @@ CeruleanCityText10:
 CeruleanCityTextCaveGuy:
     text "To pass through,"
     line "you need a total"
-    cont "of @"
-    text_decimal wUnusedD366, 1, 2
-    text " badges,"
-    cont "HMs, and key"
-    cont "items."
-    prompt
-
-CeruleanCityCaveGuyYouHave:
-    text "You have @"
-	text_decimal wUnusedCC5B, 1, 2
-	text ".@"
-    text_end
+    cont "of "
+.Archipelago_Text_Cerulean_Cave_Badges_0
+    db "0 badges and "
+.Archipelago_Text_Cerulean_Cave_Key_Items_1
+    cont "0 key items. "
+    para "You have @"
+	text_decimal wUnusedCC5B, 1, 1
+	text " badges"
+	line "and @"
+	text_decimal wUnusedD366, 1, 2
+	text " key items."
+	done
 
 CeruleanCityCaveGuyLeaves:
     text "Oh, you've reached"

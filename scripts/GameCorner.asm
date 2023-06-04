@@ -497,8 +497,9 @@ CeladonGameCornerText12:
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 
-	ld a, [wArchipelagoOptions]
-	bit BIT_EXTRA_KEY_ITEMS, a
+.Archipelago_Option_Extra_Key_Items_C_1
+	ld a, 0
+	and a
 	jr nz, .checkKey
 	ld hl, CeladonGameCornerTextOrig1
 	call PrintText

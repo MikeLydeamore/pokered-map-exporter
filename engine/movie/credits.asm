@@ -1,8 +1,8 @@
 HallOfFamePC:
 	farcall AnimateHallOfFame
-	ld a, [wArchipelagoOptions]
-	bit BIT_GOAL, a
-    ret nz
+	;ld a, [wArchipelagoOptions]
+	;bit BIT_GOAL, a
+    ;ret nz
 SkipHOFCredits::
 	call ClearScreen
 	ld c, 100

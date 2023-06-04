@@ -66,6 +66,10 @@ PokemonTower7Script3:
 PokemonTower7Script4:
 	ld a, $ff
 	ld [wJoyIgnore], a
+.Archipelago_Entrance_Shuffle_Fuji_Warp_1
+	ld a, 0
+	and a
+	jr nz, .e
 	ld a, HS_POKEMON_TOWER_7F_MR_FUJI
 	ld [wMissableObjectIndex], a
 	predef HideObject
@@ -79,9 +83,22 @@ PokemonTower7Script4:
 	ld [wLastMap], a
 	ld hl, wd72d
 	set 3, [hl]
-	ld a, $0
+	xor a
 	ld [wPokemonTower7FCurScript], a
 	ld [wCurMapScript], a
+	ret
+.e
+	call GBFadeOutToBlack
+	ld a, HS_POKEMON_TOWER_7F_MR_FUJI
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	call GBFadeInFromBlack
+	xor a
+	ld [wPokemonTower7FCurScript], a
+	ld [wCurMapScript], a
+	xor a
+	ld [wJoyIgnore], a
+
 	ret
 
 PokemonTower7Script_60db6:

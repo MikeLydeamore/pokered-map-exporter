@@ -54,9 +54,9 @@ OakSpeech:
 
 	farcall FillStartInventory
 
-.Archipelago_Options_LD_A
-    ld a, $00
-    ld [wArchipelagoOptions], a
+;.Archipelago_Options_LD_A
+   ; ld a, $00
+    ;ld [wArchipelagoOptions], a
 
 ;.Archipelago_Option_Badge_Goal_LD_A
  ;   ld a, 8

@@ -10,14 +10,14 @@ Route23Script_511e9:
 	bit 6, [hl]
 	res 6, [hl]
 	ret z
-	ResetEvents EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1, EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH2
-	ResetEvents EVENT_VICTORY_ROAD_3_BOULDER_ON_SWITCH1, EVENT_VICTORY_ROAD_3_BOULDER_ON_SWITCH2
-	ld a, HS_VICTORY_ROAD_3F_BOULDER
-	ld [wMissableObjectIndex], a
-	predef ShowObject
-	ld a, HS_VICTORY_ROAD_2F_BOULDER
-	ld [wMissableObjectIndex], a
-	predef_jump HideObject
+	;ResetEvents EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1, EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH2
+	;ResetEvents EVENT_VICTORY_ROAD_3_BOULDER_ON_SWITCH1, EVENT_VICTORY_ROAD_3_BOULDER_ON_SWITCH2
+	;ld a, HS_VICTORY_ROAD_3F_BOULDER
+	;ld [wMissableObjectIndex], a
+	;predef ShowObject
+	;ld a, HS_VICTORY_ROAD_2F_BOULDER
+	;ld [wMissableObjectIndex], a
+	;predef_jump HideObject
 
 Route23_ScriptPointers:
 	dw Route23Script0
@@ -25,110 +25,17 @@ Route23_ScriptPointers:
 	dw Route23Script2
 
 Route23Script0:
-	ld hl, YCoordsData_51255
 	ld a, [wYCoord]
-	ld b, a
-	ld e, $0
-	EventFlagBit c, EVENT_PASSED_EARTHBADGE_CHECK + 1, EVENT_PASSED_CASCADEBADGE_CHECK
-.asm_51224
-	ld a, [hli]
-	cp -1
-	ret z
-	inc e
-	dec c
-	cp b
-	jr nz, .asm_51224
 	cp 35
-	jr nz, .asm_51237
-	ld a, [wXCoord]
-	cp 14
-	ret nc
-.asm_51237
-	ld a, e
-	ldh [hSpriteIndexOrTextID], a
-	ld a, c
-	ld [wWhichBadge], a
-	ld b, FLAG_TEST
-	EventFlagAddress hl, EVENT_PASSED_CASCADEBADGE_CHECK
-	predef FlagActionPredef
-	ld a, c
-	and a
 	ret nz
-	call Route23Script_5125d
+
+	CheckEvent EVENT_PASSED_CASCADEBADGE_CHECK
+	ret nz
+    ld a, 1
+	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	xor a
-	ldh [hJoyHeld], a
-	ret
+    ret
 
-YCoordsData_51255:
-	db -1 ; end
-	db 0
-	db 56
-	db 85
-	db 96
-	db 105
-	db 119
-	db 136
-	db -1 ; end
-
-Route23Script_5125d:
-	ld hl, BadgeTextPointers
-	ld a, [wUnusedD119]
-	ld c, a
-	ld b, 0
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld de, wcd6d
-.copyTextLoop
-	ld a, [hli]
-	ld [de], a
-	inc de
-	cp "@"
-	jr nz, .copyTextLoop
-	ret
-
-BadgeTextPointers:
-	dw CascadeBadgeText
-	dw ThunderBadgeText
-	dw RainbowBadgeText
-	dw SoulBadgeText
-	dw MarshBadgeText
-	dw VolcanoBadgeText
-	dw EarthBadgeText
-
-EarthBadgeText:
-	db "8@"
-
-VolcanoBadgeText:
-	db "7@"
-
-MarshBadgeText:
-	db "6@"
-
-SoulBadgeText:
-	db "5@"
-
-RainbowBadgeText:
-	db "4@"
-
-ThunderBadgeText:
-	db "3@"
-
-CascadeBadgeText:
-	db "2@"
-
-Route23Script_512d8:
-	ld a, $1
-	ld [wSimulatedJoypadStatesIndex], a
-	ld a, D_DOWN
-	ld [wSimulatedJoypadStatesEnd], a
-	xor a
-	ld [wSpritePlayerStateData1FacingDirection], a
-	ld [wJoyIgnore], a
-	jp StartSimulatingJoypadStates
 
 Route23Script1:
 	ld a, [wSimulatedJoypadStatesIndex]
@@ -151,94 +58,38 @@ Route23_TextPointers:
 
 Route23Text1:
 	text_asm
-	EventFlagBit a, EVENT_PASSED_EARTHBADGE_CHECK, EVENT_PASSED_CASCADEBADGE_CHECK
-	call Route23Script_51346
-	jp TextScriptEnd
-
-Route23Text2:
-	text_asm
-	EventFlagBit a, EVENT_PASSED_VOLCANOBADGE_CHECK, EVENT_PASSED_CASCADEBADGE_CHECK
-	call Route23Script_51346
-	jp TextScriptEnd
-
-Route23Text3:
-	text_asm
-	EventFlagBit a, EVENT_PASSED_MARSHBADGE_CHECK, EVENT_PASSED_CASCADEBADGE_CHECK
-	call Route23Script_51346
-	jp TextScriptEnd
-
-Route23Text4:
-	text_asm
-	EventFlagBit a, EVENT_PASSED_SOULBADGE_CHECK, EVENT_PASSED_CASCADEBADGE_CHECK
-	call Route23Script_51346
-	jp TextScriptEnd
-
-Route23Text5:
-	text_asm
-	EventFlagBit a, EVENT_PASSED_RAINBOWBADGE_CHECK, EVENT_PASSED_CASCADEBADGE_CHECK
-	call Route23Script_51346
-	jp TextScriptEnd
-
-Route23Text6:
-	text_asm
-	EventFlagBit a, EVENT_PASSED_THUNDERBADGE_CHECK, EVENT_PASSED_CASCADEBADGE_CHECK
-	call Route23Script_51346
-	jp TextScriptEnd
-
-Route23Text7:
-	text_asm
-	EventFlagBit a, EVENT_PASSED_CASCADEBADGE_CHECK
-	call Route23Script_51346
-	jp TextScriptEnd
-
-Route23Script_51346:
-    ld [wWhichBadge], a
-    ld b, a
-.Archipelago_Option_Badge_Goal_LD_A
-    ld a, 0
-	cp b
-	jr c, .capBadge
-	ld a, b
-.capBadge
-	ld [wUnusedD119], a
-	call Route23Script_5125d
-	;inc a
-	;ld c, a
-	;ld b, FLAG_TEST
 	ld hl, wObtainedBadges
-	;predef FlagActionPredef
-	;ld a, c
-	;and a
-	;cp [hl]
 	ld b, 1
 	call CountSetBits
 	ld a, [wNumSetBits]
-	ld b, a
-	ld a, [wUnusedD119]
-	inc a
-	cp b
-	jr c, .asm_5136e
+.Archipelago_Option_Route23_Badges_1
+	cp 0
+	jr nc, .proceed
 	ld hl, VictoryRoadGuardText1
-	call PrintText
-	call Route23Script_512d8
+    call PrintText
+    xor a
+	ldh [hJoyHeld], a
 	ld a, $1
-	ld [wRoute23CurScript], a
-	ret
-.asm_5136e
-	ld hl, VictoryRoadGuardText2
-	call PrintText
-	ld a, [wWhichBadge]
-	ld c, a
-	ld b, FLAG_SET
-	EventFlagAddress hl, EVENT_PASSED_CASCADEBADGE_CHECK
-	predef FlagActionPredef
-	ld a, $2
-	ld [wRoute23CurScript], a
-	ret
+	ld [wSimulatedJoypadStatesIndex], a
+    ld a, [wPlayerDirection]
+    cp PLAYER_DIR_UP
+    ld a, D_UP
+    jr nz, .Up
+	ld a, D_DOWN
+.Up
+	ld [wSimulatedJoypadStatesEnd], a
+	xor a
+	ld [wSpritePlayerStateData1FacingDirection], a
+	ld [wJoyIgnore], a
+	jp StartSimulatingJoypadStates
+	ld a, $1
+	ld [wRoute10CurScript], a
+.proceed
+    ld hl, VictoryRoadGuardText2
+    call PrintText
+    SetEvent EVENT_PASSED_CASCADEBADGE_CHECK
+	jp TextScriptEnd
 
-Route23Script_51388:
-	ld hl, VictoryRoadGuardText2
-	jp PrintText
 
 VictoryRoadGuardText1:
 	text_far _VictoryRoadGuardText1
@@ -254,6 +105,12 @@ VictoryRoadGuardText2:
 	text_far _VictoryRoadGuardText_513a3
 	text_end
 
+Route23Text2:
+Route23Text3:
+Route23Text4:
+Route23Text5:
+Route23Text6:
+Route23Text7:
 Route23Text8:
 	text_far _Route23Text8
 	text_end

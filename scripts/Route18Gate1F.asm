@@ -18,6 +18,8 @@ Route18GateScript0:
 	ld hl, CoordsData_498cc
 	call ArePlayerCoordsInArray
 	ret nc
+	ld a, [wPlayerMovingDirection]
+	ld [wCheckDir], a
 	ld a, $2
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
@@ -25,7 +27,9 @@ Route18GateScript0:
 	ldh [hJoyHeld], a
 	ld a, [wCoordIndex]
 	cp $1
+.Archipelago_Option_Route_18_Gate_Fix_0
 	jr z, .asm_498c6
+	jr z, Route18GateScript2
 	ld a, [wCoordIndex]
 	dec a
 	ld [wSimulatedJoypadStatesIndex], a
@@ -63,7 +67,12 @@ Route18GateScript2:
 	call DisplayTextID
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
+    ld a, [wCheckDir]
+    cp PLAYER_DIR_RIGHT
+    ld a, D_LEFT
+    jr z, .goLeft
 	ld a, D_RIGHT
+.goLeft
 	ld [wSimulatedJoypadStatesEnd], a
 	call StartSimulatingJoypadStates
 	ld a, $3

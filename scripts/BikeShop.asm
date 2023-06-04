@@ -80,7 +80,6 @@ BikeShopText1:
 	jp TextScriptEnd
 
 BikeShopMenuText:
-.Archipelago_Text_Bicycle
 	db   "BICYCLE     "
 	next "CANCEL@"
 

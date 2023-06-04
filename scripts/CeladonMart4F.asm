@@ -20,4 +20,5 @@ CeladonMart4Text4:
 	text_end
 
 CeladonMart4ClerkText:
+.Archipelago_Shop_Stones
     script_mart POKE_DOLL, FIRE_STONE, THUNDER_STONE, WATER_STONE, LEAF_STONE

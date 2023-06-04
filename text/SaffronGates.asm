@@ -1,5 +1,6 @@
 _SaffronGateText_1dfe7::
 	text "I'm on guard duty."
+.Archipelago_Text_Saffron_Gate
 	line "Gee, I'm thirsty,"
 	cont "though!"
 
@@ -7,12 +8,11 @@ _SaffronGateText_1dfe7::
 	line "the road's closed."
 	done
 
+    ds 100
+
 _SaffronGateText_8aaa9::
-	text "Whoa, boy!"
-	line "I'm parched!"
-	cont "..."
-	cont "Huh? I can have"
-	cont "this drink?"
+	text "Huh? I can have"
+	line "this drink?"
 	cont "Gee, thanks!@"
 	text_end
 
@@ -34,5 +34,5 @@ _SaffronGateText_1dff1::
 
 _SaffronGateText_1dff6::
 	text "Hi, thanks for"
-	line "the cool drinks!"
+	line "the drink!"
 	done

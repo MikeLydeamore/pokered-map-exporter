@@ -110,6 +110,22 @@ ItemUsePtrTable:
 	dw UnusableItem      ;
 	dw ItemUseEvoStone   ; trade stone?
 	dw UnusableItem      ;
+	dw UnusableItem      ;
+	dw UnusableItem      ;
+	dw UnusableItem      ;
+	dw UnusableItem      ;
+	dw UnusableItem      ;
+	dw UnusableItem      ;
+	dw ItemUseCardKey    ; CARD_KEY
+	dw ItemUseCardKey    ; CARD_KEY
+	dw ItemUseCardKey    ; CARD_KEY
+	dw ItemUseCardKey    ; CARD_KEY
+	dw ItemUseCardKey    ; CARD_KEY
+	dw ItemUseCardKey    ; CARD_KEY
+	dw ItemUseCardKey    ; CARD_KEY
+	dw ItemUseCardKey    ; CARD_KEY
+	dw ItemUseCardKey    ; CARD_KEY
+	dw ItemUseCardKey    ; CARD_KEY
 
 ItemUseBall:
 
@@ -1697,6 +1713,9 @@ ItemUsePokedoll:
 	dec a
 	jp nz, ItemUseNotTime
 	ld a, $01
+.Archipelago_Option_Silph_Scope_Skip_0
+	ld [wBattleResult], a
+
 	ld [wEscapedFromBattle], a
 	jp PrintItemUseTextAndRemoveItem
 
@@ -2171,6 +2190,9 @@ ItemUsePPRestore:
 ; are used to count how many PP Ups have been used on the move. So, Max Ethers
 ; and Max Elixirs will not be detected as having no effect on a move with full
 ; PP if the move has had any PP Ups used on it.
+.Archipelago_Option_Fix_Combat_Bugs_PP_Restore_0
+    nop
+    nop
 	cp b ; does current PP equal max PP?
 	ret z
 	jr .storeNewAmount

@@ -491,6 +491,151 @@ addCoins2:
 ;    stop
 ;.notHidden
 ;    ret
+_GiveItem::
+    ld a, [wcf91]
+    ld c, a
+    ld a, [wd11e]
+    ld b, a
+    ld [wcf91], a
+
+    cp AP_ITEM
+    jp z, .apitem
+    cp PROGRESSIVE_CARD_KEY
+    jr nz, .noProgCardKey
+    ld a, [wArchipelagoProgressiveKeys]
+    inc a
+    ld [wArchipelagoProgressiveKeys], a
+    add CARD_KEY_2F - 1
+    ld c, a
+    ld [wcf91], a
+    ld [wd11e], a
+    jp .continue
+.noProgCardKey
+    cp TOWN_MAP
+    jr nz, .noTownMap
+.Archipelago_Map_Fly_Location_1
+	ld a, $00
+	ld c, a
+	ld b, FLAG_SET
+	ld hl, wTownVisitedFlag   ; mark town as visited (for flying)
+	predef FlagActionPredef
+	jp .continue
+.noTownMap
+    cp TEN_COINS
+    jr nz, .no10coins
+    farcall TenCoins
+    jp .apitem
+.no10coins
+    cp TWENTY_COINS
+    jr nz, .no20coins
+    farcall TwentyCoins
+    jr .apitem
+.no20coins
+    cp HUNDRED_COINS
+    jr nz, .no100coins
+    farcall HundredCoins
+    jr .apitem
+.no100coins
+    cp POKEDEX
+    jr nz, .nopokedex
+    SetEvent EVENT_GOT_POKEDEX
+    jr .apitem
+.nopokedex
+    cp POISON_TRAP
+    jr nz, .nopoisontrap
+    farcall PoisonTrap
+    jr .apitem
+.nopoisontrap
+    cp PARALYZE_TRAP
+    jr nz, .noparalyzetrap
+    farcall ParalyzeTrap
+    jr .apitem
+.noparalyzetrap
+    cp FIRE_TRAP
+    jr nz, .nofiretrap
+    farcall FireTrap
+    jr .apitem
+.nofiretrap
+    CP ICE_TRAP
+    jr nz, .noicetrap
+    farcall IceTrap
+    jr .apitem
+.noicetrap
+    ;ld hl, BadgeList
+    ;ld a, hli
+    ld a, BOULDERBADGE - 1
+.loop1
+    cp EARTHBADGE
+    jr z, .continue
+    inc a
+    cp b
+    jr nz, .loop1
+; match found
+    ld c, 1
+    ld a, b
+    sub a, BOULDERBADGE
+    ;ld b, a
+    jr .skipsla
+.loop2
+    SLA c
+    dec a
+.skipsla
+    cp 0
+    jr nz, .loop2
+    ld a, [wObtainedBadges]
+    or c
+    ld [wObtainedBadges], a
+    jr .apitem
+.continue
+	ld a, c
+	ld [wItemQuantity], a
+	ld hl, wNumBagItems
+	call AddItemToInventory
+	ret nc
+.apitem
+	call GetItemName
+	call CopyToStringBuffer
+	scf
+	ret
+
+MACRO ResetBattle
+.Archipelago_Reset_\4_1
+    ld a, \1
+    ld [wd11e], a
+    predef IndexToPokedex
+    ld a, [wd11e]
+    dec a
+    ld c, a
+	ld b, FLAG_TEST
+	ld hl, wPokedexOwned
+	predef FlagActionPredef
+	ld a, c
+	and a
+	jr nz, .noReset\4
+	ResetEvent \2
+	ld a, \3
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+.noReset\4
+ENDM
+
+ResetStaticPokemon::
+    ResetBattle SNORLAX, EVENT_BEAT_ROUTE12_SNORLAX, HS_ROUTE_12_SNORLAX, A
+    ResetBattle SNORLAX, EVENT_BEAT_ROUTE16_SNORLAX, HS_ROUTE_16_SNORLAX, B
+    ResetBattle VOLTORB, EVENT_BEAT_POWER_PLANT_VOLTORB_0, HS_VOLTORB_1, C
+    ResetBattle VOLTORB, EVENT_BEAT_POWER_PLANT_VOLTORB_1, HS_VOLTORB_2, D
+    ResetBattle VOLTORB, EVENT_BEAT_POWER_PLANT_VOLTORB_2, HS_VOLTORB_3, E
+    ResetBattle ELECTRODE, EVENT_BEAT_POWER_PLANT_VOLTORB_3, HS_ELECTRODE_1, F
+    ResetBattle VOLTORB, EVENT_BEAT_POWER_PLANT_VOLTORB_4, HS_VOLTORB_4, G
+    ResetBattle VOLTORB, EVENT_BEAT_POWER_PLANT_VOLTORB_5, HS_VOLTORB_5, H
+    ResetBattle ELECTRODE, EVENT_BEAT_POWER_PLANT_VOLTORB_6, HS_ELECTRODE_2, I
+    ResetBattle VOLTORB, EVENT_BEAT_POWER_PLANT_VOLTORB_7, HS_VOLTORB_6, J
+    ResetBattle ZAPDOS, EVENT_BEAT_ZAPDOS, HS_ZAPDOS, K
+    ResetBattle ARTICUNO, EVENT_BEAT_ARTICUNO, HS_ARTICUNO, L
+    ResetBattle MOLTRES, EVENT_BEAT_MOLTRES, HS_MOLTRES, M
+    ResetBattle MEWTWO, EVENT_BEAT_MEWTWO, HS_MEWTWO, N
+    ResetBattle MEW, EVENT_BEAT_MEW, HS_MEW, O
+    ret
 
 SECTION "Battle Engine 9", ROMX
 

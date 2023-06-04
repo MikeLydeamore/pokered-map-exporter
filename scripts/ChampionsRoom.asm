@@ -97,9 +97,9 @@ GaryScript3:
 	jp z, ResetGaryScript
 	call UpdateSprites
 	SetEvent EVENT_BEAT_CHAMPION_RIVAL
-	ld a, [wArchipelagoOptions]
-	bit BIT_GOAL, a
-	jr nz, .notChampionGoal
+	;ld a, [wArchipelagoOptions]
+	;bit BIT_GOAL, a
+	;jr nz, .notChampionGoal
 	SetEvent EVENT_VICTORY
 .notChampionGoal
 	ld a, $f0
