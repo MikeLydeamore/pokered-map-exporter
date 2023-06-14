@@ -10,7 +10,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw NoHS
+	dw FuchsiaCityHS
 	dw NoHS
 	dw NoHS
 	dw SaffronCityHS
@@ -277,10 +277,10 @@ CeruleanCityHS:
 	db CERULEAN_CITY, $01, HIDE
 	db CERULEAN_CITY, $02, SHOW
 .Archipelago_Option_Trashed_House_Guard_A_2
-	db CERULEAN_CITY, $06, HIDE ;guard
+	db CERULEAN_CITY, $06, HIDE ;right guard
 	db CERULEAN_CITY, $0A, SHOW
 .Archipelago_Option_Trashed_House_Guard_B_2
-	db CERULEAN_CITY, $0B, SHOW ;guard
+	db CERULEAN_CITY, $0B, SHOW ;left guard
 SaffronCityHS:
 	db SAFFRON_CITY, $01, SHOW
 	db SAFFRON_CITY, $02, SHOW
@@ -397,7 +397,7 @@ VictoryRoad2FHS:
 	db VICTORY_ROAD_2F, $08, SHOW
 	db VICTORY_ROAD_2F, $09, SHOW
 	db VICTORY_ROAD_2F, $0A, SHOW
-	db VICTORY_ROAD_2F, $0D, SHOW
+	db VICTORY_ROAD_2F, $0D, HIDE
 BillsHouseHS:
 	db BILLS_HOUSE, $01, SHOW
 	db BILLS_HOUSE, $02, HIDE
@@ -511,7 +511,8 @@ SilphCo11FHS:
 	db SILPH_CO_11F, $04, SHOW
 	db SILPH_CO_11F, $05, SHOW
 UnusedMapF4HS:
-	db UNUSED_MAP_F4, $02, SHOW
+FuchsiaCityHS:
+	db FUCHSIA_CITY, $02, HIDE
 PokemonMansion2FHS:
 	db POKEMON_MANSION_2F, $02, SHOW
 PokemonMansion3FHS:

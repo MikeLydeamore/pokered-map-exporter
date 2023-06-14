@@ -189,4 +189,4 @@ SetupPlayerAndEnemyPokeballs:
 ; four tiles: pokeball, black pokeball (status ailment), crossed out pokeball (fainted) and pokeball slot (no mon)
 PokeballTileGraphics::
 	INCBIN "gfx/battle/balls.2bpp"
-PokeballTileGraphicsEnd:
+PokeballTileGraphicsEnd::

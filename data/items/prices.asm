@@ -111,6 +111,7 @@ ItemPrices::
 	bcd3 3000     ; CARD_KEY
 	bcd3 3000     ; CARD_KEY
 	bcd3 3000     ; PROG CARD_KEY
+	bcd3 100 ; sleep trap
 	assert_table_length NUM_ITEMS
 	bcd3 0     ; FLOOR_B2F
 	bcd3 0     ; FLOOR_B1F

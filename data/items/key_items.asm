@@ -110,4 +110,5 @@ KeyItemFlags:
 	dbit TRUE ; Card keys
 	dbit TRUE ; Card keys
 	dbit TRUE ; Prog Card keys
+	dbit FALSE ; Sleep trap
 	end_bit_array NUM_ITEMS

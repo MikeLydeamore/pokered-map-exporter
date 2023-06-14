@@ -141,7 +141,7 @@ PokedexRatingText_4424c:
 
 DexSanityItems:
 .Archipelago_Dexsanity_Items
-    ds 151, $2C
+    ds 151, $00
 
 receivedDexItem:
 	text "<PLAYER> received "
@@ -193,6 +193,11 @@ CheckAllDexSanity::
     add hl, bc
     push bc
     ld a, [hl]
+
+    ; if item is 0 then don't give anything
+    and a
+    jr z, .nextLoop
+
     ld b, a
     ld c, 1
 
@@ -207,6 +212,7 @@ CheckAllDexSanity::
 	ld b, FLAG_SET
     ld hl, wDexSanity
 	predef FlagActionPredef
+.nextLoop
 	pop bc
     jr .loop
 .bagFull
@@ -247,10 +253,15 @@ registerDexSanity::
     ld hl, DexSanityItems
     add hl, bc
     ld a, [hl]
+
+    and a
+    jr z, .noItem
+
 	ld b, a
 	ld c, 1
     call GiveItem
     jr c, .bagNotFull
+.noItem
     pop bc
     ret
 .bagNotFull
@@ -263,3 +274,30 @@ registerDexSanity::
 	predef FlagActionPredef
 	ret
 
+wball:
+    db "<wball>@"
+
+DexSanityIconCheck::
+    ld a, [wd11e]
+    dec a
+	ld c, a
+	ld b, 0
+	ld hl, DexSanityItems
+	add hl, bc
+    ld a, [hl]
+    and a
+    ret z
+	hlcoord 1, 1
+	ld de, wball
+	jp PlaceString
+
+DexSanityIconCheckPokedex::
+    ld a, [wd11e]
+    dec a
+	ld c, a
+	ld b, 0
+	ld hl, DexSanityItems
+	add hl, bc
+    ld a, [hl]
+    and a
+    ret

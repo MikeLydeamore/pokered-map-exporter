@@ -251,9 +251,17 @@ HandlePokedexListMenu:
 	ld hl, wPokedexOwned
 	call IsPokemonBitSet
 	pop hl
-	ld a, " "
-	jr z, .writeTile
+	;ld a, " "
+	jr z, .dexSanityCheck
 	ld a, $72 ; pokeball tile
+	jr .writeTile
+.dexSanityCheck
+    push hl
+    farcall DexSanityIconCheckPokedex
+    pop hl
+    ld a, " "
+    jr z, .writeTile
+    ld a, "<wball>"
 .writeTile
 	ld [hl], a ; put a pokeball next to pokemon that the player has owned
 	push hl

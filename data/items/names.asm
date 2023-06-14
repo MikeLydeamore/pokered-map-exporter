@@ -110,6 +110,7 @@ ItemNames::
 	li "CARD KEY 10F"
 	li "CARD KEY 11F"
 	li "PROGCARDKEY"
+	li "SLEEP TRAP"
 	assert_list_length NUM_ITEMS
 	li "B2F"
 	li "B1F"

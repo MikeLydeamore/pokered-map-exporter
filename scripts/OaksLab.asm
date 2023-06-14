@@ -1361,10 +1361,42 @@ OaksLabText11_:
     done
 
 OaksLabText10:
-	text_asm
-	ld hl, OaksLabText_1d405
-	call PrintText
+    text_asm
+    ld a, [wExpDisabled]
+    and a
+    ld hl, OaksLabText10_b
+    jr nz, .on
+    ld hl, OaksLabText10_
+.on
+    call PrintText
+	hlcoord 14, 7
+	lb bc, 8, 15
+	ld a, TWO_OPTION_MENU
+	ld [wTextBoxID], a
+	call DisplayTextBoxID
+	ld a, [wMenuExitMethod]
+	cp CHOSE_SECOND_ITEM ; did the player choose NO?
+	ld a, [wExpDisabled]
+	jr z, .no
+	xor 1
+.no
+    ld [wExpDisabled], a
 	jp TextScriptEnd
+
+OaksLabText10_:
+                            ;
+    text "Would you like"
+    line "to have all"
+    cont "experience gains"
+    cont "disabled?"
+    done
+OaksLabText10_b:
+                            ;
+    text "Would you like"
+    line "to have"
+    cont "experience gains"
+    cont "re-enabled?"
+    done
 
 OaksLabText_1d405:
 	text_far _OaksLabText_1d405

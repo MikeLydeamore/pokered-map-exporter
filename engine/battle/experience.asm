@@ -75,8 +75,14 @@ GainExperience:
 	ld a, [wEnemyMonLevel]
 	ldh [hMultiplier], a
 	call Multiply
+	ld a, [wExpDisabled]
+	and a
+	jr z, .Archipelago_LD_A_Option_EXP_Modifier
+	xor a
+	jr .noexp
 .Archipelago_LD_A_Option_EXP_Modifier
 	ld a, 16
+.noexp
 	ldh [hMultiplier], a
 	call Multiply
 	ld a, 16

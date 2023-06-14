@@ -157,6 +157,11 @@
 	charmap "'t",        $be
 	charmap "'v",        $bf
 
+    charmap "<ball>",    $c0
+    charmap "<bball>",   $c1
+    charmap "<xball>",   $c2
+    charmap "<wball>",   $c3
+
 	charmap "'",         $e0
 	charmap "<PK>",      $e1
 	charmap "<MN>",      $e2

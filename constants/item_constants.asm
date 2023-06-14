@@ -119,6 +119,7 @@ DEF SAFARI_ROCK EQU $16 ; overload
  	const CARD_KEY_10F
  	const CARD_KEY_11F
  	const PROGRESSIVE_CARD_KEY
+ 	const SLEEP_TRAP
 
 DEF NUM_ITEMS EQU const_value - 1
 

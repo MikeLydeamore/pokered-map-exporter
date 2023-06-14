@@ -393,6 +393,11 @@ FireTrap::
 PoisonTrap::
     ld a, (1 << PSN)
     jr ApplyTrap
+SleepTrap::
+	call Random
+	and $7
+	jr z, SleepTrap
+	jr ApplyTrap
 
 MACRO applytrap
     ld a, [\1HP]
@@ -561,6 +566,11 @@ _GiveItem::
     farcall IceTrap
     jr .apitem
 .noicetrap
+    cp SLEEP_TRAP
+    jr nz, .nosleeptrap
+    farcall SleepTrap
+    jr .apitem
+.nosleeptrap
     ;ld hl, BadgeList
     ;ld a, hli
     ld a, BOULDERBADGE - 1

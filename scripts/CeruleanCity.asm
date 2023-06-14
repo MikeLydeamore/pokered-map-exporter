@@ -521,11 +521,11 @@ CeruleanCityText10:
 	ld a, [wUnusedCC5B]
 .Archipelago_Option_Cerulean_Cave_Badges_1
     cp 0
-    jr nc, .dontleave
+    jr c, .dontleave
     ld a, [wUnusedD366]
 .Archipelago_Option_Cerulean_Cave_Key_Items_1
     cp 0
-    jp c, .leave
+    jp nc, .leave
 .dontleave
 	ld a, [wYCoord]
 	cp 11
@@ -544,6 +544,7 @@ CeruleanCityText10:
 
 
 .leave
+	call WaitForTextScrollButtonPress
     ld hl, CeruleanCityCaveGuyLeaves
     call PrintText
 	call GBFadeOutToBlack
@@ -554,6 +555,7 @@ CeruleanCityText10:
 	jp TextScriptEnd
 
 CeruleanCityTextCaveGuy:
+
     text "To pass through,"
     line "you need a total"
     cont "of "

@@ -1882,6 +1882,9 @@ DrawPlayerHUDAndHPBar:
 	set 7, [hl] ;enable low health alarm
 	ret
 
+ball:
+    db "<ball>@"
+
 DrawEnemyHUDAndHPBar:
 	xor a
 	ldh [hAutoBGTransferEnabled], a
@@ -1893,6 +1896,26 @@ DrawEnemyHUDAndHPBar:
 	hlcoord 1, 0
 	call CenterMonName
 	call PlaceString
+
+	ld a, [wEnemyMonSpecies]
+	ld [wd11e], a
+	farcall IndexToPokedex
+    ld a, [wd11e]
+    dec a
+	ld c, a
+	ld b, FLAG_TEST
+	ld hl, wPokedexOwned
+	predef FlagActionPredef
+	ld a, c
+	and a
+	jr z, .noBall
+	hlcoord 1, 1
+	ld de, ball
+	call PlaceString
+	jr .noDexsanity
+.noBall
+    farcall DexSanityIconCheck
+.noDexsanity
 	hlcoord 4, 1
 	push hl
 	inc hl
