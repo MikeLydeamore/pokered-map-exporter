@@ -287,8 +287,8 @@ CeladonGameCornerText5:
 	text_asm
 	CheckEvent EVENT_GOT_10_COINS
 	jr nz, .asm_48d89
-	ld hl, CeladonGameCornerText_48d9c
-	call PrintText
+	;ld hl, CeladonGameCornerText_48d9c
+	;call PrintText
 	ld b, COIN_CASE
 	call IsItemInBag
 	jr z, .asm_48d93
@@ -372,8 +372,8 @@ CeladonGameCornerText9:
 	text_asm
 	CheckEvent EVENT_GOT_20_COINS_2
 	jr nz, .asm_48e13
-	ld hl, CeladonGameCornerText_48e26
-	call PrintText
+	;ld hl, CeladonGameCornerText_48e26
+	;call PrintText
 	ld b, COIN_CASE
 	call IsItemInBag
 	jr z, .asm_48e1d
@@ -417,8 +417,8 @@ CeladonGameCornerText10:
 	text_asm
 	CheckEvent EVENT_GOT_20_COINS
 	jr nz, .asm_48e75
-	ld hl, CeladonGameCornerText_48e88
-	call PrintText
+	;ld hl, CeladonGameCornerText_48e88
+	;call PrintText
 	ld b, COIN_CASE
 	call IsItemInBag
 	jr z, .asm_48e7f

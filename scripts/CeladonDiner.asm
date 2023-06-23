@@ -29,8 +29,8 @@ CeladonDinerText5:
 	text_asm
 	CheckEvent EVENT_GOT_COIN_CASE
 	jr nz, .got_item
-	ld hl, CeladonDinerText_491a7
-	call PrintText
+	;ld hl, CeladonDinerText_491a7
+	;call PrintText
 .Archipelago_Event_Gambling_Addict
 	lb bc, COIN_CASE, 1
 	call GiveItem

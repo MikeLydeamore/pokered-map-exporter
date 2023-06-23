@@ -10,8 +10,8 @@ Route16HouseText1:
 	CheckEvent EVENT_GOT_HM02
 	ld hl, HM02ExplanationText
 	jr nz, .got_item
-	ld hl, Route16HouseText3
-	call PrintText
+	;ld hl, Route16HouseText3
+	;call PrintText
 .Archipelago_Event_Rt16_House_Woman
 	lb bc, HM_FLY, 1
 	call GiveItem

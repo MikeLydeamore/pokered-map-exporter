@@ -55,6 +55,24 @@ for line in data.split("\n"):
         file.write("    \"" + line.split("Archipelago_")[1] + "\": " + hex(address) + ",\n")
         #file.write(str(count) + ": \"" + line.split("Archipelago_")[1] + "\",")
         count += 1
+    elif "_Object" in line:
+        address = line.split(" ")[0]
+        address = address.split(":")
+        if int(address[0], 16) == 0:
+            address = int(address[1], 16)
+        else:
+            address = (int(address[0], 16) * 0x4000) + int(int(address[1], 16) - 0x4000)
+        address += 4
+        file.write("    \"Warps_" + line.split("_")[0].split(" ")[1] + "\": " + hex(address) + ",\n")
+    elif line.endswith("WarpMaps"):
+        address = line.split(" ")[0]
+        address = address.split(":")
+        if int(address[0], 16) == 0:
+            address = int(address[1], 16)
+        else:
+            address = (int(address[0], 16) * 0x4000) + int(int(address[1], 16) - 0x4000)
+        file.write("    \"" + line.split(" ")[1] + "\": " + hex(address) + ",\n")
+
 
 file.write("}\n")
 file.close()
@@ -79,9 +97,3 @@ with open(world_addr + "basepatch_blue.bsdiff4", "bw") as file:
     file.write(bluepatch)
 with open(world_addr + "basepatch_red.bsdiff4", "bw") as file:
     file.write(redpatch)
-
-#
-# with open("c:\\src\\archipelago\\build\\exe.win-amd64-3.9\\lib\\worlds\\pokemon_rb\\basepatch_blue.bsdiff4", "bw") as file:
-#     file.write(bluepatch)
-# with open("c:\\src\\archipelago\\build\\exe.win-amd64-3.9\\lib\\worlds\\pokemon_rb\\basepatch_red.bsdiff4", "bw") as file:
-#     file.write(redpatch)

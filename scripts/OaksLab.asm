@@ -1191,10 +1191,65 @@ OaksLabText8:
 	text_far _OaksLabText8
 	text_end
 
+BattleAsk:
+                            ;
+    text "I can send you"
+    line "back in time to"
+    cont "battle your rival"
+    cont "again. Would you"
+    cont "like me to do so?"
+    done
+
 OaksLabText9:
 	text_asm
+	ld a, [wRivalStarter]
+	and a
+	jr nz, .battleAsk
 	ld hl, OaksLabText_1d340
 	call PrintText
+    jp TextScriptEnd
+.battleAsk
+    ld hl, BattleAsk
+    call PrintText
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+
+    hlcoord 14, 7
+	lb bc, 8, 15
+	ld a, TWO_OPTION_MENU
+	ld [wTextBoxID], a
+	call DisplayTextBoxID
+	ld a, [wMenuExitMethod]
+	cp CHOSE_SECOND_ITEM ; did the player choose NO?
+	jp z, TextScriptEnd
+
+	ld a, OPP_RIVAL1
+	ld [wCurOpponent], a
+	ld a, [wRivalStarter]
+.Archipelago_Starter2_G_1
+	cp STARTER2
+	jr nz, .NotSquirtle
+	ld a, $1
+	jr .done
+.NotSquirtle
+.Archipelago_Starter3_G_1
+	cp STARTER3
+	jr nz, .Charmander
+	ld a, $2
+	jr .done
+.Charmander
+	ld a, $3
+.done
+	ld [wTrainerNo], a
+	ld a, $1
+	ld [wSpriteIndex], a
+	call GetSpritePosition1
+	ld hl, OaksLabText_1d3be
+	ld de, OaksLabText_1d3c3
+	call SaveEndBattleTextPointers
+
+
+
 	jp TextScriptEnd
 
 OaksLabText_1d340:
@@ -1337,6 +1392,8 @@ OaksLabText11:
     text_asm
     ld hl, OaksLabText11_
     call PrintText
+    ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	hlcoord 14, 7
 	lb bc, 8, 15
 	ld a, TWO_OPTION_MENU
@@ -1344,7 +1401,7 @@ OaksLabText11:
 	call DisplayTextBoxID
 	ld a, [wMenuExitMethod]
 	cp CHOSE_SECOND_ITEM ; did the player choose NO?
-	ret z
+	jp z, TextScriptEnd
 	farcall ResetStaticPokemon
 	jp TextScriptEnd
 
@@ -1353,7 +1410,7 @@ OaksLabText11_:
     text "I can reset all"
     line "one-time"
     cont "encounters"
-    cont "of any #mon"
+    cont "of any #MON"
     cont "you defeated but"
     cont "have not caught."
     para "Would you like me"
@@ -1369,6 +1426,8 @@ OaksLabText10:
     ld hl, OaksLabText10_
 .on
     call PrintText
+    ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	hlcoord 14, 7
 	lb bc, 8, 15
 	ld a, TWO_OPTION_MENU

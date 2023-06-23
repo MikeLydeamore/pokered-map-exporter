@@ -29,11 +29,11 @@ BikeShopText1:
 	SetEvent EVENT_GOT_BICYCLE
 	ld hl, BikeShopText_1d824
 	call PrintText
-	jr .Done
+	jp .Done
 .BagFull
 	ld hl, BikeShopText_1d834
 	call PrintText
-	jr .Done
+	jp .Done
 .asm_41190
 	ld hl, BikeShopText_1d810
 	call PrintText
@@ -55,7 +55,18 @@ BikeShopText1:
 	ld c, 15
 	call TextBoxBorder
 	call UpdateSprites
+
+.Archipelago_Bike_Shop_Item_Display_1
+	ld a, BICYCLE
+	ld [wd11e], a
+	SetEvent EVENT_SEENTBIKESHOP
+	call GetItemName
+	call CopyToStringBuffer
+
 	hlcoord 2, 2
+	ld de, wStringBuffer
+	call PlaceString
+	hlcoord 2, 4
 	ld de, BikeShopMenuText
 	call PlaceString
 	hlcoord 8, 3
@@ -80,8 +91,9 @@ BikeShopText1:
 	jp TextScriptEnd
 
 BikeShopMenuText:
-	db   "BICYCLE     "
-	next "CANCEL@"
+	;db   "BICYCLE     "
+	;next "CANCEL@"
+	db "CANCEL@"
 
 BikeShopMenuPrice:
 	db "¥1000000@"

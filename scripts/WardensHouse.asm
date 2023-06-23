@@ -29,8 +29,8 @@ FuchsiaHouse2Text1:
 	call PrintText
 	jr .done
 .have_gold_teeth
-	ld hl, WardenTeethText1
-	call PrintText
+	;ld hl, WardenTeethText1
+	;call PrintText
 	ld a, GOLD_TEETH
 	ldh [hItemToRemoveID], a
 	farcall RemoveItemByID

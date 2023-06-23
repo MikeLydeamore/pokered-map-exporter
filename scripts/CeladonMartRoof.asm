@@ -87,8 +87,8 @@ CeladonMartRoofScript_GiveDrinkToGirl:
 ; gave Lemonade
 	CheckEvent EVENT_GOT_TM49
 	jr nz, .alreadyGaveDrink
-	ld hl, CeladonMartRoofText_48515
-	call PrintText
+	;ld hl, CeladonMartRoofText_48515
+	;call PrintText
 	call RemoveItemByIDBank12
 .Archipelago_Event_Thirsty_Girl_Lemonade
 	lb bc, TM_TRI_ATTACK, 1
@@ -101,8 +101,8 @@ CeladonMartRoofScript_GiveDrinkToGirl:
 .gaveSodaPop
 	CheckEvent EVENT_GOT_TM48
 	jr nz, .alreadyGaveDrink
-	ld hl, CeladonMartRoofText_48504
-	call PrintText
+	;ld hl, CeladonMartRoofText_48504
+	;call PrintText
 	call RemoveItemByIDBank12
 .Archipelago_Event_Thirsty_Girl_Soda
 	lb bc, TM_ROCK_SLIDE, 1
@@ -115,8 +115,8 @@ CeladonMartRoofScript_GiveDrinkToGirl:
 .gaveFreshWater
 	CheckEvent EVENT_GOT_TM13
 	jr nz, .alreadyGaveDrink
-	ld hl, CeladonMartRoofText_484f3
-	call PrintText
+	;ld hl, CeladonMartRoofText_484f3
+	;call PrintText
 	call RemoveItemByIDBank12
 .Archipelago_Event_Thirsty_Girl_Water
 	lb bc, TM_ICE_BEAM, 1

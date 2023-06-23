@@ -32,9 +32,6 @@ MomHealPokemon:
     ld b, POKE_BALL
 	call IsItemInBag
 	jr nz, .noGift
-    ld b, OAKS_PARCEL
-	call IsItemInBag
-	jr nz, .noGift
     ld a, [wPlayerMoney]
     cp 1
     jr nc, .noGift

@@ -1,6 +1,5 @@
 Route20_Script:
-	CheckAndResetEvent EVENT_IN_SEAFOAM_ISLANDS
-	call nz, Route20Script_50cc6
+	;CheckAndResetEvent EVENT_IN_SEAFOAM_ISLANDS
 	call EnableAutoTextBoxDrawing
 	ld hl, Route20TrainerHeaders
 	ld de, Route20_ScriptPointers
@@ -10,51 +9,51 @@ Route20_Script:
 	ret
 
 Route20Script_50cc6:
-	CheckBothEventsSet EVENT_SEAFOAM3_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM3_BOULDER2_DOWN_HOLE
-	jr z, .asm_50cef
-	ld a, HS_SEAFOAM_ISLANDS_1F_BOULDER_1
-	call Route20Script_50d0c
-	ld a, HS_SEAFOAM_ISLANDS_1F_BOULDER_2
-	call Route20Script_50d0c
-	ld hl, .MissableObjectIDs
-.asm_50cdc
-	ld a, [hli]
-	cp $ff
-	jr z, .asm_50cef
-	push hl
-	call Route20Script_50d14
-	pop hl
-	jr .asm_50cdc
+	;CheckBothEventsSet EVENT_SEAFOAM3_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM3_BOULDER2_DOWN_HOLE
+	;jr z, .asm_50cef
+	;ld a, HS_SEAFOAM_ISLANDS_1F_BOULDER_1
+	;call Route20Script_50d0c
+	;ld a, HS_SEAFOAM_ISLANDS_1F_BOULDER_2
+	;call Route20Script_50d0c
+	;ld hl, .MissableObjectIDs
+;.asm_50cdc
+	;ld a, [hli]
+	;cp $ff
+	;jr z, .asm_50cef
+	;push hl
+	;call Route20Script_50d14
+	;pop hl
+	;jr .asm_50cdc
 
-.MissableObjectIDs:
-	db HS_SEAFOAM_ISLANDS_B1F_BOULDER_1
-	db HS_SEAFOAM_ISLANDS_B1F_BOULDER_2
-	db HS_SEAFOAM_ISLANDS_B2F_BOULDER_1
-	db HS_SEAFOAM_ISLANDS_B2F_BOULDER_2
-	db HS_SEAFOAM_ISLANDS_B3F_BOULDER_3
-	db HS_SEAFOAM_ISLANDS_B3F_BOULDER_4
-	db -1 ; end
+;.MissableObjectIDs:
+;	db HS_SEAFOAM_ISLANDS_B1F_BOULDER_1
+;	db HS_SEAFOAM_ISLANDS_B1F_BOULDER_2
+;	db HS_SEAFOAM_ISLANDS_B2F_BOULDER_1
+;	db HS_SEAFOAM_ISLANDS_B2F_BOULDER_2
+;	db HS_SEAFOAM_ISLANDS_B3F_BOULDER_3
+;	db HS_SEAFOAM_ISLANDS_B3F_BOULDER_4
+;	db -1 ; end
 
-.asm_50cef
-	CheckBothEventsSet EVENT_SEAFOAM4_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM4_BOULDER2_DOWN_HOLE
-	ret z
-	ld a, HS_SEAFOAM_ISLANDS_B3F_BOULDER_1
-	call Route20Script_50d0c
-	ld a, HS_SEAFOAM_ISLANDS_B3F_BOULDER_2
-	call Route20Script_50d0c
-	ld a, HS_SEAFOAM_ISLANDS_B4F_BOULDER_1
-	call Route20Script_50d14
-	ld a, HS_SEAFOAM_ISLANDS_B4F_BOULDER_2
-	call Route20Script_50d14
-	ret
+;.asm_50cef
+;	CheckBothEventsSet EVENT_SEAFOAM4_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM4_BOULDER2_DOWN_HOLE
+;	ret z
+;	ld a, HS_SEAFOAM_ISLANDS_B3F_BOULDER_1
+;	call Route20Script_50d0c
+;	ld a, HS_SEAFOAM_ISLANDS_B3F_BOULDER_2
+;	call Route20Script_50d0c
+;	ld a, HS_SEAFOAM_ISLANDS_B4F_BOULDER_1
+;	call Route20Script_50d14
+;	ld a, HS_SEAFOAM_ISLANDS_B4F_BOULDER_2
+;	call Route20Script_50d14
+;	ret
 
-Route20Script_50d0c:
-	ld [wMissableObjectIndex], a
-	predef_jump ShowObject
+;Route20Script_50d0c:
+;	ld [wMissableObjectIndex], a
+;	predef_jump ShowObject
 
-Route20Script_50d14:
-	ld [wMissableObjectIndex], a
-	predef_jump HideObject
+;Route20Script_50d14:
+;	ld [wMissableObjectIndex], a
+;	predef_jump HideObject
 
 Route20_ScriptPointers:
 	dw CheckFightingMapTrainers

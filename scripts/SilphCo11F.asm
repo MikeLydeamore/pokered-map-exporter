@@ -292,8 +292,8 @@ SilphCo11Text1:
 	text_asm
 	CheckEvent EVENT_GOT_MASTER_BALL
 	jp nz, .got_item
-	ld hl, SilphCoPresidentText
-	call PrintText
+	;ld hl, SilphCoPresidentText
+	;call PrintText
 .Archipelago_Event_Silph_Co_President
 	lb bc, MASTER_BALL, 1
 	call GiveItem

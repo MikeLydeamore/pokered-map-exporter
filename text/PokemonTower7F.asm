@@ -1,24 +1,5 @@
 _TowerRescueFujiText::
-	text "MR.FUJI: Heh? You"
-	line "came to save me?"
-
-	para "Thank you. But, I"
-	line "came here of my"
-	cont "own free will."
-
-	para "I came to calm"
-	line "the soul of"
-	cont "CUBONE's mother."
-
-	para "I think MAROWAK's"
-	line "spirit has gone"
-	cont "to the afterlife."
-
-	para "I must thank you"
-	line "for your kind"
-	cont "concern!"
-
-	para "Follow me to my"
+	text "Follow me to my"
 	line "home, #MON"
 	cont "HOUSE at the foot"
 	cont "of this tower."

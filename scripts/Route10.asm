@@ -43,13 +43,8 @@ Route10_Script0:
 	ld a, [wXCoord]
 	cp 6
 	ret nz
-	ld a, [wPlayerDirection]
-    cp PLAYER_DIR_DOWN
-	ld a, PLAYER_DIR_UP
-	jr z, .up
-	ld a, PLAYER_DIR_DOWN
-.up
-	ld [wPlayerMovingDirection], a
+
+	;ld [wPlayerMovingDirection], a
 	ld a, 11
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
@@ -57,7 +52,13 @@ Route10_Script0:
 	ldh [hJoyHeld], a
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
+
+	ld a, [wPlayerDirection]
+    cp PLAYER_DIR_DOWN
+	ld a, D_UP
+	jr z, .up
 	ld a, D_DOWN
+.up
 	ld [wSimulatedJoypadStatesEnd], a
 	call StartSimulatingJoypadStates
 	xor a
