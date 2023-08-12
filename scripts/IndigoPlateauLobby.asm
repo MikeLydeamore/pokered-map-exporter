@@ -74,6 +74,17 @@ IndigoTradeNurseText:
 
 IndigoGuardText:
     text_asm
+    ld hl, .Archipelago_Option_Elite_Four_Pokedex_1 + 1
+    ld a, [hl]
+    cp 0
+.Archipelago_Require_Pokedex_D_0 ; turns it into jr .afterDexCheck if off
+    jr z, .afterDexCheck
+    CheckEvent EVENT_GOT_POKEDEX
+    jr nz, .afterDexCheck
+    ld hl, noDex
+    call PrintText
+	jp TextScriptEnd
+.afterDexCheck
     ld hl, wPokedexOwned
 	ld b, wPokedexOwnedEnd - wPokedexOwned
 	call CountSetBits
@@ -134,7 +145,14 @@ IndigoGuardText:
 	call PrintText
 	jp TextScriptEnd
 
-
+noDex:
+          ;;;;;;;;;;;;;;;;;;
+    text "You need a"
+    line "#DEX for me to"
+    cont "check that you've"
+    cont "met your goal for"
+    cont "owned #MON.@"
+    text_end
 
 BadgeGuyText:
 

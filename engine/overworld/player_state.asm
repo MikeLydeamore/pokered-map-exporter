@@ -45,7 +45,11 @@ CheckForceBikeOrSurf::
 .loop
 	ld a, [hli]
 	cp $ff
-	ret z ;if we reach FF then it's not part of the list
+	jr nz, .continue ;if we reach FF then it's not part of the list
+	ld hl, wd732
+	res 5, [hl]
+	ret
+.continue
 	cp d ;compare to current map
 	jr nz, .incorrectMap
 	ld a, [hli]

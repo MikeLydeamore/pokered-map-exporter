@@ -315,8 +315,8 @@ SilphCo7Text1:
 	and a
 	call z, WaitForTextScrollButtonPress
 	call EnableAutoTextBoxDrawing
-	ld hl, .HeresYourLaprasText
-	call PrintText
+	;ld hl, .HeresYourLaprasText
+	;call PrintText
 	ld hl, wd72e
 	set 0, [hl]
 	jr .done

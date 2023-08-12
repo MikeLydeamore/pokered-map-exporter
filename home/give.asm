@@ -4,8 +4,9 @@ GiveItem::
 ; Return carry on success.
     ld a, b
     ld [wd11e], a
-    ld a, c
-	ld [wcf91], a
+    ld [wcf91], a
+	ld a, c
+	ld [wItemQuantity], a
     farcall _GiveItem
     ret
 

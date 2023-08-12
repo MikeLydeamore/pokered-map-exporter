@@ -4041,7 +4041,7 @@ CheckForDisobedience:
 	jr nc, .next
 	cp 2
 	ld b, 30
-	jr nz, .next
+	jr nc, .next
 	ld b, 10
 	;xor a
 	;ldh [hMultiplicand], a

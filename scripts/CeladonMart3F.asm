@@ -24,8 +24,8 @@ CeladonMart3Text1:
 	text_asm
 	CheckEvent EVENT_GOT_TM18
 	jr nz, .got_item
-	ld hl, TM18PreReceiveText
-	call PrintText
+	;ld hl, TM18PreReceiveText
+	;call PrintText
 .Archipelago_Event_Counter
 	lb bc, TM_COUNTER, 1
 	call GiveItem

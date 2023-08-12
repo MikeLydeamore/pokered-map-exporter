@@ -177,8 +177,9 @@
 	charmap "ァ",         $e9 ; katakana small a, unused
 	charmap "_",         $e9 ;
 	charmap "ゥ",         $ea ; katakana small u, unused
+	charmap "+", $ea
 	charmap "ェ",         $eb ; katakana small e, unused
-
+    charmap "=", $eb
 	charmap "▷",         $ec
 	charmap "▶",         $ed
 	charmap "▼",         $ee

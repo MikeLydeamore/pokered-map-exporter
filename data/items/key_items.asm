@@ -31,9 +31,9 @@ KeyItemFlags:
 	dbit FALSE ; ESCAPE_ROPE
 	dbit FALSE ; REPEL
 	dbit TRUE  ; OLD_AMBER
-	dbit FALSE ; FIRE_STONE
-	dbit FALSE ; THUNDER_STONE
-	dbit FALSE ; WATER_STONE
+	dbit TRUE ; FIRE_STONE
+	dbit TRUE ; THUNDER_STONE
+	dbit TRUE ; WATER_STONE
 	dbit FALSE ; HP_UP
 	dbit FALSE ; PROTEIN
 	dbit FALSE ; IRON
@@ -46,7 +46,7 @@ KeyItemFlags:
 	dbit TRUE  ; AP_ITEM
 	dbit TRUE  ; BIKE_VOUCHER
 	dbit FALSE ; X_ACCURACY
-	dbit FALSE ; LEAF_STONE
+	dbit TRUE ; LEAF_STONE
 	dbit TRUE  ; CARD_KEY
 	dbit FALSE ; NUGGET
 	dbit TRUE ; LAPTOP

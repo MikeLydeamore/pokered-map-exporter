@@ -968,7 +968,7 @@ ItemUseMedicine:
 .checkItemType
 	ld a, [wcf91]
 	cp REVIVE
-	jr nc, .healHP ; if it's a Revive or Max Revive
+	jp nc, .healHP ; if it's a Revive or Max Revive
 	cp FULL_HEAL
 	jr z, .cureStatusAilment ; if it's a Full Heal
 	cp HP_UP
@@ -1020,7 +1020,18 @@ ItemUseMedicine:
 	ld de, wBattleMonStats
 	ld bc, NUM_STATS * 2
 	call CopyData ; copy party stats to in-battle stat data
+.Archipelago_Option_Fix_Combat_Bugs_Heal_Stat_Modifiers_1
+	ld a, 0
+	and a
+	jr nz, .fix
 	predef DoubleOrHalveSelectedStats
+    jr .nofix
+.fix
+	xor a
+	ld [wCalculateWhoseStats], a
+	callfar CalculateModifiedStats
+	callfar ApplyBadgeStatBoosts
+.nofix
 	jp .doneHealing
 .healHP
 	inc hl ; hl = address of current HP

@@ -16,7 +16,7 @@ Route2GateText1:
 	ld a, 10
 	ldh [hOaksAideRequirement], a
 .Archipelago_Event_LD_A_Route_2_Oaks_Aide
-	ld a, PROGRESSIVE_CARD_KEY ;HM_FLASH
+	ld a, HM_FLASH
 	ldh [hOaksAideRewardItem], a
 	ld [wd11e], a
 	call GetItemName
@@ -33,6 +33,7 @@ Route2GateText1:
 	;ld hl, Route2GateText_5d616
 	;call PrintText
 .no_item
+    SetEvent EVENT_SEENTAIDE2
 	jp TextScriptEnd
 
 Route2GateText_5d616:

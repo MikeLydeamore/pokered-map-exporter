@@ -294,12 +294,7 @@ FreezeBurnParalyzeEffect:
 	jp PrintText
 .freeze2
 ; hyper beam bits aren't reseted for opponent's side
-    ld hl, FixCombatBugs
-    ld a, [hl]
-    and a
-    jr z, .noFix
     call ClearHyperBeam
-.noFix
 	ld a, 1 << FRZ
 	ld [wBattleMonStatus], a
 	ld hl, FrozenText

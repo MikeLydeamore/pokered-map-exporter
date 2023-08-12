@@ -2248,10 +2248,10 @@
 	const EVENT_BEATEN_GAME ; 0x8c2
 	const EVENT_BEAT_OAK ; 0x8c3
 	const EVENT_SEENTBIKESHOP ; 0x8c4
-	const EVENT_8C5 ; 0x8c5
-	const EVENT_8C6 ; 0x8c6
-	const EVENT_8C7 ; 0x8c7
-	const EVENT_8C8 ; 0x8c8
+	const EVENT_SEENTAIDE2 ; 0x8c5
+	const EVENT_SEENTAIDE11 ; 0x8c6
+	const EVENT_SEENTAIDE15 ; 0x8c7
+	const EVENT_SEENTPRIZES ; 0x8c8
 	const EVENT_BEAT_MEW ; 0x8c9
 	const EVENT_8CA ; 0x8ca
 	const EVENT_8CB ; 0x8cb

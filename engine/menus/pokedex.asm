@@ -236,14 +236,102 @@ HandlePokedexListMenu:
 	ld a, [wd11e]
 	inc a
 	ld [wd11e], a
+
+
 	push af
 	push de
 	push hl
+
+
+
 	ld de, -SCREEN_WIDTH
 	add hl, de
 	ld de, wd11e
 	lb bc, LEADING_ZEROES | 1, 3
 	call PrintNumber ; print the pokedex number
+    push hl
+
+    inc hl
+    inc hl
+    inc hl
+    inc hl
+    push hl
+	ld hl, wPokedexSeen
+	call IsPokemonBitSet
+	jr nz, .seen
+	pop hl
+	jr .unseen
+.seen
+	call PokedexToIndex
+	ld a, [wd11e]
+	ld [wcf91], a
+	ld a, CUT
+	ld [wMoveNum], a
+	predef CanLearnTM
+	pop hl
+	ld a, c
+	and a
+	jr z, .noCut
+	ld a, "1"
+    ld [hl], a
+
+.noCut
+    inc hl
+    push hl
+	ld a, FLY
+	ld [wMoveNum], a
+	predef CanLearnTM
+	pop hl
+	ld a, c
+	and a
+	jr z, .noFly
+	ld a, "2"
+    ld [hl], a
+
+.noFly
+    inc hl
+    push hl
+	ld a, SURF
+	ld [wMoveNum], a
+	predef CanLearnTM
+	pop hl
+	ld a, c
+	and a
+	jr z, .noSurf
+	ld a, "3"
+    ld [hl], a
+
+.noSurf
+    inc hl
+    push hl
+	ld a, STRENGTH
+	ld [wMoveNum], a
+	predef CanLearnTM
+	pop hl
+	ld a, c
+	and a
+	jr z, .noStrength
+	ld a, "4"
+    ld [hl], a
+
+.noStrength
+    inc hl
+    push hl
+	ld a, FLASH
+	ld [wMoveNum], a
+	predef CanLearnTM
+	pop hl
+	ld a, c
+	and a
+	jr z, .noFlash
+	ld a, "5"
+    ld [hl], a
+
+.noFlash
+    call IndexToPokedex
+.unseen
+    pop hl
+
 	ld de, SCREEN_WIDTH
 	add hl, de
 	dec hl
@@ -252,6 +340,7 @@ HandlePokedexListMenu:
 	call IsPokemonBitSet
 	pop hl
 	;ld a, " "
+
 	jr z, .dexSanityCheck
 	ld a, $72 ; pokeball tile
 	jr .writeTile
@@ -286,7 +375,7 @@ HandlePokedexListMenu:
 	pop af
 	ld [wd11e], a
 	dec d
-	jr nz, .printPokemonLoop
+	jp nz, .printPokemonLoop
 	ld a, 01
 	ldh [hAutoBGTransferEnabled], a
 	call Delay3

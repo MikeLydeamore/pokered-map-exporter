@@ -29,15 +29,15 @@ FuchsiaHouse2Text1:
 	call PrintText
 	jr .done
 .have_gold_teeth
-	;ld hl, WardenTeethText1
-	;call PrintText
+	ld hl, WardenTeethText1
+	call PrintText
 	ld a, GOLD_TEETH
 	ldh [hItemToRemoveID], a
 	farcall RemoveItemByID
 	SetEvent EVENT_GAVE_GOLD_TEETH
 .gave_gold_teeth
-	ld hl, WardenThankYouText
-	call PrintText
+	;ld hl, WardenThankYouText
+	;call PrintText
 .Archipelago_Event_Warden
 	lb bc, HM_STRENGTH, 1
 	call GiveItem

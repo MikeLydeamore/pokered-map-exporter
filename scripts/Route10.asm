@@ -53,8 +53,8 @@ Route10_Script0:
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
 
-	ld a, [wPlayerDirection]
-    cp PLAYER_DIR_DOWN
+	ld a, [wSpritePlayerStateData1FacingDirection]
+    cp SPRITE_FACING_DOWN
 	ld a, D_UP
 	jr z, .up
 	ld a, D_DOWN

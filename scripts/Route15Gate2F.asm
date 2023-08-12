@@ -33,6 +33,7 @@ Route15GateUpstairsText1:
 	;ld hl, Route15GateUpstairsText_4968c
 	;call PrintText
 .no_item
+    SetEvent EVENT_SEENTAIDE15
 	jp TextScriptEnd
 
 Route15GateUpstairsText_4968c:

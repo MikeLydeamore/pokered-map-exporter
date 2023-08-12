@@ -58,7 +58,7 @@ PokemonTower2Script0:
 CoordsData_6055e:
 	dbmapcoord 15,  5
 	dbmapcoord 14,  6
-	db $0F ; end? (should be $ff?)
+	db $FF ; end? (should be $ff?)
 
 PokemonTower2Script1:
 	ld a, [wIsInBattle]

@@ -2,7 +2,7 @@ CinnabarIsland_Script:
 	call EnableAutoTextBoxDrawing
 	ld hl, wCurrentMapScriptFlags
 	set 5, [hl]
-	ResetEvent EVENT_MANSION_SWITCH_ON
+	;ResetEvent EVENT_MANSION_SWITCH_ON
 	ResetEvent EVENT_LAB_STILL_REVIVING_FOSSIL
 	ld hl, CinnabarIsland_ScriptPointers
 	ld a, [wCinnabarIslandCurScript]
@@ -35,10 +35,10 @@ CinnabarIslandScript0:
 	cp 6
 	ret nz
 .locked
-	ld a, [wPlayerMovingDirection]
+	ld a, [wSpritePlayerStateData1FacingDirection]
 	ld [wCheckDir], a
-	ld a, PLAYER_DIR_UP
-	ld [wPlayerMovingDirection], a
+	;ld a, PLAYER_DIR_UP
+	;ld [wPlayerMovingDirection], a
 	ld a, $8
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
@@ -46,8 +46,8 @@ CinnabarIslandScript0:
 	ldh [hJoyHeld], a
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
-    ld a, [wCheckDir]
-    cp PLAYER_DIR_DOWN
+    ld a, [wSpritePlayerStateData1FacingDirection]
+    cp SPRITE_FACING_DOWN
     ld a, D_DOWN
     jr nz, .goDown
 	ld a, D_UP

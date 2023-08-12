@@ -255,6 +255,14 @@ checkDeathLink_::
 	ld a, [wArchipelagoDeathLink]
 	cp 1
 	ret nz
+	CheckEvent EVENT_IN_SAFARI_ZONE
+	jr z, .noSafari
+	xor a
+	ld [wSafariSteps], a
+	ld [wSafariSteps + 1], a
+	ld [wArchipelagoDeathLink], a
+	ret
+.noSafari
 	ld a, 0
 	ld [wPartyMon1HP], a
 	ld [wPartyMon2HP], a
@@ -295,8 +303,6 @@ checkDeathLink_::
 	;predef DrawPlayerHUDAndHPBar
 
 receiveArchipelagoItem_::
-
-.noDeathLink
 	ld a, [wArchipelagoItemReceived]
 	cp $00
 	ret z
@@ -497,11 +503,8 @@ addCoins2:
 ;.notHidden
 ;    ret
 _GiveItem::
-    ld a, [wcf91]
-    ld c, a
-    ld a, [wd11e]
+    ld a, [wcf91] ; item
     ld b, a
-    ld [wcf91], a
 
     cp AP_ITEM
     jp z, .apitem
@@ -511,7 +514,7 @@ _GiveItem::
     inc a
     ld [wArchipelagoProgressiveKeys], a
     add CARD_KEY_2F - 1
-    ld c, a
+    ld b, a
     ld [wcf91], a
     ld [wd11e], a
     jp .continue
@@ -597,8 +600,6 @@ _GiveItem::
     ld [wObtainedBadges], a
     jr .apitem
 .continue
-	ld a, c
-	ld [wItemQuantity], a
 	ld hl, wNumBagItems
 	call AddItemToInventory
 	ret nc

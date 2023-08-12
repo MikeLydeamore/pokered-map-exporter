@@ -487,6 +487,43 @@ StartMenu_TrainerInfo::
 	ldh [hTileAnimations], a
 	jp RedisplayStartMenu
 
+
+TrainerScreenKeyItems:
+    db SECRET_KEY
+    db BICYCLE
+    db SILPH_SCOPE
+    db ITEMFINDER
+    db SUPER_ROD
+    db GOOD_ROD
+    db OLD_ROD
+    db LIFT_KEY
+    db CARD_KEY
+    db TOWN_MAP
+    db COIN_CASE
+    db POKE_FLUTE
+    db S_S_TICKET
+    db EXP_ALL
+    db MANSION_KEY
+    db SAFARI_PASS
+    db PLANT_KEY
+    db HIDEOUT_KEY
+    db CARD_KEY_2F
+    db CARD_KEY_3F
+    db CARD_KEY_4F
+    db CARD_KEY_5F
+    db CARD_KEY_6F
+    db CARD_KEY_7F
+    db CARD_KEY_8F
+    db CARD_KEY_9F
+    db CARD_KEY_10F
+    db CARD_KEY_11F
+    db MOON_STONE
+    db FIRE_STONE
+    db LEAF_STONE
+    db THUNDER_STONE
+    db WATER_STONE
+    db $FF
+
 ; loads tile patterns and draws everything except for gym leader faces / badges
 DrawTrainerInfo:
 	ld de, RedPicFront
@@ -554,9 +591,33 @@ DrawTrainerInfo:
 	call TrainerInfo_DrawVerticalLine
 	hlcoord 19, 10
 	call TrainerInfo_DrawVerticalLine
-	hlcoord 6, 9
+	hlcoord 1, 9
 	ld de, TrainerInfo_BadgesText
 	call PlaceString
+
+    ld c, 0
+	ld hl, TrainerScreenKeyItems
+.loop
+	ld a, [hli]
+	cp $FF
+	jr z, .doneLoop
+	ld b, a
+	push bc
+	push hl
+	call IsItemInBag
+	pop hl
+	pop bc
+	jr z, .loop
+	inc c
+	jr .loop
+.doneLoop
+    ld a, c
+    ld [wUnusedD366], a
+
+	hlcoord 13, 9
+	ld de, wUnusedD366
+	lb bc, 1, 2
+	call PrintNumber
 	hlcoord 2, 2
 	ld de, TrainerInfo_NameMoneyTimeText
 	call PlaceString
@@ -588,7 +649,9 @@ TrainerInfo_NameMoneyTimeText:
 
 ; $76 is a circle tile
 TrainerInfo_BadgesText:
-	db $76,"BADGES",$76,"@"
+	db $76,"KEY ITEMS:   /"
+.Archipelago_Trainer_Screen_Total_Key_Items_0
+	db "  ",$76,"@"
 
 ; draws a text box on the trainer info screen
 ; height is always 6

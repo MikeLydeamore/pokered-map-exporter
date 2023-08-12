@@ -36,7 +36,7 @@ ViridianCityScript_1900b:
 	ld a, [wXCoord]
 	cp 32
 	ret nz
-	ld a, [wPlayerMovingDirection]
+	ld a, [wSpritePlayerStateData1FacingDirection]
 	ld [wCheckDir], a
 	ld a, $e
 	ldh [hSpriteIndexOrTextID], a
@@ -52,7 +52,7 @@ ViridianCityScript_1900b:
 ViridianCityScript_1903d:
 	CheckEvent EVENT_OAK_GOT_PARCEL
 	ret nz
-	ld a, [wPlayerMovingDirection]
+	ld a, [wSpritePlayerStateData1FacingDirection]
 	ld [wCheckDir], a
 	ld a, [wMissableObjectFlags]
 	bit 1, a
@@ -133,7 +133,7 @@ ViridianCityScript_190cf:
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
     ld a, [wCheckDir]
-    cp PLAYER_DIR_DOWN
+    cp SPRITE_FACING_DOWN
     ld a, D_DOWN
     jr nz, .goDown
 	ld a, D_UP

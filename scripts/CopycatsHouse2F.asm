@@ -16,11 +16,9 @@ CopycatsHouse2FText1:
 	jr nz, .got_item
 	ld a, TRUE
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	ld hl, CopycatsHouse2FText_5ccd4
-	call PrintText
 	ld b, POKE_DOLL
 	call IsItemInBag
-	jr z, .done
+	jr z, .noDoll
 	;ld hl, TM31PreReceiveText
 	;call PrintText
 .Archipelago_Event_Copycat
@@ -40,6 +38,9 @@ CopycatsHouse2FText1:
 	jr .done
 .got_item
 	ld hl, TM31ExplanationText2
+	call PrintText
+.noDoll
+	ld hl, CopycatsHouse2FText_5ccd4
 	call PrintText
 .done
 	jp TextScriptEnd

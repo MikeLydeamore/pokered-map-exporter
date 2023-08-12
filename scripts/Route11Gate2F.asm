@@ -44,6 +44,7 @@ Route11GateUpstairsText2:
 	;ld hl, Route11GateUpstairsText_494a3
 	;call PrintText
 .no_item
+    SetEvent EVENT_SEENTAIDE11
 	jr Route11GateUpstairsScriptEnd
 
 Route11GateUpstairsText_494a3:

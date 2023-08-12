@@ -1226,13 +1226,13 @@ OaksLabText9:
 	ld a, OPP_RIVAL1
 	ld [wCurOpponent], a
 	ld a, [wRivalStarter]
-.Archipelago_Starter2_G_1
+.Archipelago_Starter2_P_1
 	cp STARTER2
 	jr nz, .NotSquirtle
 	ld a, $1
 	jr .done
 .NotSquirtle
-.Archipelago_Starter3_G_1
+.Archipelago_Starter3_P_1
 	cp STARTER3
 	jr nz, .Charmander
 	ld a, $2
