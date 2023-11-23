@@ -512,6 +512,10 @@ _GiveItem::
     jr nz, .noProgCardKey
     ld a, [wArchipelagoProgressiveKeys]
     inc a
+    cp 11
+    jr c, .noCap
+    ld a, 10
+.noCap
     ld [wArchipelagoProgressiveKeys], a
     add CARD_KEY_2F - 1
     ld b, a
