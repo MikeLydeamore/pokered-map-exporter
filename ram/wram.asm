@@ -1907,7 +1907,7 @@ wCurrentBoxNum:: dw
 ; number of HOF teams
 wNumHoFTeams:: db
 
-wUnusedD5A3:: db
+CrashCheck2:: db
 
 wPlayerCoins:: ds 2 ; BCD
 
