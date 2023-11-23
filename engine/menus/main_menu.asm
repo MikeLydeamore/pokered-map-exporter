@@ -124,7 +124,10 @@ MainMenu:
 	call DelayFrames
 	ld a, [wCurrentMenuItem]
     and a
-    jr nz, .goHome
+    jr z, .dontGoHome
+	CheckEvent EVENT_IN_SAFARI_ZONE
+	jr z, .goHome
+.dontGoHome
 	ld a, [wNumHoFTeams]
 	and a
 	jp z, SpecialEnterMap
