@@ -73,13 +73,6 @@ SilphCo6Script_1a22f:
 
 SilphCo6Text1:
 	text_asm
-	ld hl, SilphCo6Text_1a24a
-	ld de, SilphCo6Text_1a24f
-	call SilphCo6Script_1a22f
-	jp TextScriptEnd
-
-SilphCo6Text_1a24a:
-	text_asm
 	ld hl, SplitKeyChecks
 	ld a, [hl]
 	and a
@@ -99,11 +92,12 @@ SilphCo6Text_1a24a:
 	call PrintText
 	jp TextScriptEnd
 .noSP
-    ld hl, SilphCo6Text_1a24ab
-    call PrintText
-    jp TextScriptEnd
+	ld hl, SilphCo6Text_1a24a
+	ld de, SilphCo6Text_1a24f
+	call SilphCo6Script_1a22f
+	jp TextScriptEnd
 
-SilphCo6Text_1a24ab:
+SilphCo6Text_1a24a:
 	text_far _SilphCo6Text_1a24a
 	text_end
 
