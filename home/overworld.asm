@@ -507,11 +507,19 @@ WarpFound1::
 	ldh [hWarpDestinationMap], a
 
 WarpFound2::
+    push hl  ; no idea if this is necessary
 	ld a, [wNumberOfWarps]
 	sub c
+	ld hl, wd72d
+	bit 1, [hl]
+	jr nz, .noModWarps
 	ld [wWarpedFromWhichWarp], a ; save ID of used warp
 	ld a, [wCurMap]
 	ld [wWarpedFromWhichMap], a
+.noModWarps
+    res 1, [hl]
+    pop hl
+	ld a, [wCurMap]
 	cp ROCK_TUNNEL_1F
 	jr z, .notRockTunnel
 	cp ROCK_TUNNEL_B1F

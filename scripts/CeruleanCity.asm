@@ -404,7 +404,11 @@ CeruleanCityText6:
 	ldh [hWarpDestinationMap], a
 	ld a, CERULEAN_CITY
 	ld [wLastMap], a
+	ld [wWarpedFromWhichMap], a
+	ld a, $00
+	ld [wWarpedFromWhichWarp], a
 	ld hl, wd72d
+	set 1, [hl]
 	set 3, [hl]
 	jp TextScriptEnd
 
@@ -537,7 +541,11 @@ CeruleanCityText10:
 	ldh [hWarpDestinationMap], a
 	ld a, CERULEAN_CITY
 	ld [wLastMap], a
+	ld [wWarpedFromWhichMap], a
+	ld a, $06
+	ld [wWarpedFromWhichWarp], a
 	ld hl, wd72d
+	set 1, [hl]
 	set 3, [hl]
 	jp TextScriptEnd
 

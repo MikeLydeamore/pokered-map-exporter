@@ -41,7 +41,11 @@ SaffronCityText1:
 	ldh [hWarpDestinationMap], a
 	ld a, SAFFRON_CITY
 	ld [wLastMap], a
+	ld [wWarpedFromWhichMap], a
+	ld a, $00
+	ld [wWarpedFromWhichWarp], a
 	ld hl, wd72d
+	set 1, [hl]
 	set 3, [hl]
 	jp TextScriptEnd
 
@@ -62,7 +66,11 @@ SaffronCityText3:
 	ldh [hWarpDestinationMap], a
 	ld a, SAFFRON_CITY
 	ld [wLastMap], a
+	ld [wWarpedFromWhichMap], a
+	ld a, $02
+	ld [wWarpedFromWhichWarp], a
 	ld hl, wd72d
+	set 1, [hl]
 	set 3, [hl]
 	jp TextScriptEnd
 
@@ -79,7 +87,11 @@ SaffronCityText4:
 	ldh [hWarpDestinationMap], a
 	ld a, SAFFRON_CITY
 	ld [wLastMap], a
+	ld [wWarpedFromWhichMap], a
+	ld a, $03
+	ld [wWarpedFromWhichWarp], a
 	ld hl, wd72d
+	set 1, [hl]
 	set 3, [hl]
 	jp TextScriptEnd
 
@@ -133,7 +145,11 @@ SaffronCityText14:
 	ldh [hWarpDestinationMap], a
 	ld a, SAFFRON_CITY
 	ld [wLastMap], a
+	ld [wWarpedFromWhichMap], a
+	ld a, $05
+	ld [wWarpedFromWhichWarp], a
 	ld hl, wd72d
+	set 1, [hl]
 	set 3, [hl]
 	jp TextScriptEnd
 
