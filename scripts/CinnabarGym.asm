@@ -285,14 +285,16 @@ CinnabarGymTrainerText1:
 	call SaveEndBattleTextPointers
 	jp CinnabarGymScript_758b7
 .asm_46bb4
-.Archipelago_Option_Trainersanity4_1
-    ld a, 0
-    and a
+;.Archipelago_Option_Trainersanity4_1
+;    ld a, 0
+;    and a
+    ld a, [.Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_B_ITEM_1 + 1]
+    cp NO_ITEM
     jr z, .noTrainerSanity
     CheckEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_1_ITEM
     jr nz, .noTrainerSanity
 .Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_B_ITEM_1
-    ld b, AP_ITEM
+    ld b, NO_ITEM
     call GiveCGItem
     jr nc, .noTrainerSanity
     SetEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_1_ITEM
@@ -326,14 +328,16 @@ CinnabarGymTrainerText2:
 	call SaveEndBattleTextPointers
 	jp CinnabarGymScript_758b7
 .asm_4b406
-.Archipelago_Option_Trainersanity3_1
-    ld a, 0
-    and a
+;.Archipelago_Option_Trainersanity3_1
+;    ld a, 0
+;    and a
+    ld a, [.Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_A_ITEM_1 + 1]
+    cp NO_ITEM
     jr z, .noTrainerSanity
     CheckEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_0_ITEM
     jr nz, .noTrainerSanity
 .Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_A_ITEM_1
-    ld b, AP_ITEM
+    ld b, NO_ITEM
     call GiveCGItem
     jr nc, .noTrainerSanity
     SetEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_0_ITEM
@@ -381,14 +385,16 @@ CinnabarGymTrainerText3:
 	call SaveEndBattleTextPointers
 	jp CinnabarGymScript_758b7
 .afterBeat
-.Archipelago_Option_Trainersanity5_1
-    ld a, 0
-    and a
+;.Archipelago_Option_Trainersanity5_1
+;    ld a, 0
+;    and a
+    ld a, [.Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_2_ITEM_1 + 1]
+    cp NO_ITEM
     jr z, .noTrainerSanity
     CheckEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_2_ITEM
     jr nz, .noTrainerSanity
 .Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_2_ITEM_1
-    ld b, AP_ITEM
+    ld b, NO_ITEM
     call GiveCGItem
     jr nc, .noTrainerSanity
     SetEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_2_ITEM
@@ -422,14 +428,16 @@ CinnabarGymTrainerText4:
 	call SaveEndBattleTextPointers
 	jp CinnabarGymScript_758b7
 .afterBeat
-.Archipelago_Option_Trainersanity6_1
-    ld a, 0
-    and a
+;.Archipelago_Option_Trainersanity6_1
+;    ld a, 0
+;    and a
+    ld a, [.Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_3_ITEM_1 + 1]
+    cp NO_ITEM
     jr z, .noTrainerSanity
     CheckEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_3_ITEM
     jr nz, .noTrainerSanity
 .Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_3_ITEM_1
-    ld b, AP_ITEM
+    ld b, NO_ITEM
     call GiveCGItem
     jr nc, .noTrainerSanity
     SetEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_3_ITEM
@@ -463,14 +471,16 @@ CinnabarGymTrainerText5:
 	call SaveEndBattleTextPointers
 	jp CinnabarGymScript_758b7
 .afterBeat
-.Archipelago_Option_Trainersanity7_1
-    ld a, 0
-    and a
+;.Archipelago_Option_Trainersanity7_1
+;    ld a, 0
+;    and a
+    ld a, [.Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_4_ITEM_1 + 1]
+    cp NO_ITEM
     jr z, .noTrainerSanity
     CheckEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_4_ITEM
     jr nz, .noTrainerSanity
 .Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_4_ITEM_1
-    ld b, AP_ITEM
+    ld b, NO_ITEM
     call GiveCGItem
     jr nc, .noTrainerSanity
     SetEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_4_ITEM
@@ -504,14 +514,17 @@ CinnabarGymTrainerText6:
 	call SaveEndBattleTextPointers
 	jp CinnabarGymScript_758b7
 .afterBeat
-.Archipelago_Option_Trainersanity8_1
-    ld a, 0
-    and a
+;.Archipelago_Option_Trainersanity8_1
+;    ld a, 0
+;    and a
+
+    ld a, [.Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_5_ITEM_1 + 1]
+    cp NO_ITEM
     jr z, .noTrainerSanity
     CheckEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_5_ITEM
     jr nz, .noTrainerSanity
 .Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_5_ITEM_1
-    ld b, AP_ITEM
+    ld b, NO_ITEM
     call GiveCGItem
     jr nc, .noTrainerSanity
     SetEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_5_ITEM
@@ -545,14 +558,16 @@ CinnabarGymTrainerText7:
 	call SaveEndBattleTextPointers
 	jp CinnabarGymScript_758b7
 .afterBeat
-.Archipelago_Option_Trainersanity9_1
-    ld a, 0
-    and a
+;.Archipelago_Option_Trainersanity9_1
+;    ld a, 0
+;    and a
+    ld a, [.Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_6_ITEM_1 + 1]
+    cp NO_ITEM
     jr z, .noTrainerSanity
     CheckEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_6_ITEM
     jr nz, .noTrainerSanity
 .Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_6_ITEM_1
-    ld b, AP_ITEM
+    ld b, NO_ITEM
     call GiveCGItem
     jr nc, .noTrainerSanity
     SetEvent EVENT_BEAT_CINNABAR_GYM_TRAINER_6_ITEM

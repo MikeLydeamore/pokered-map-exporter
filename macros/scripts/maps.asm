@@ -104,7 +104,7 @@ MACRO trainer
 	dw wEventFlags + (\1_ITEM / 8)
 	db (\1_ITEM % 8)
 .Archipelago_Trainersanity_\1_ITEM_0
-	db AP_ITEM
+	db NO_ITEM
 	DEF CURRENT_TRAINER_BIT += 1
 ENDM
 

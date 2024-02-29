@@ -22,18 +22,24 @@ PokemonTower6F_ScriptPointers:
 	dw PokemonTower6Script4
 
 PokemonTower6Script0:
-.Archipelago_Option_Trainersanity2_1
-    ld a, 1
-    and a
-    jr z, .continue
+;.Archipelago_Option_Trainersanity2_1
+;    ld a, 1
+;    and a
+;    jr z, .continue
 	CheckEvent EVENT_BEAT_POKEMONTOWER_7_TRAINER_0_ITEM
 	jr nz, .firstGood
+	ld a, [PokemonTower7TrainerHeader0.Archipelago_Trainersanity_EVENT_BEAT_POKEMONTOWER_7_TRAINER_0_ITEM_0]
+	cp NO_ITEM
+	jr z, .firstGood
 	ld a, HS_POKEMON_TOWER_7F_ROCKET_1
 	ld [wMissableObjectIndex], a
 	predef ShowObject
 .firstGood
 	CheckEvent EVENT_BEAT_POKEMONTOWER_7_TRAINER_1_ITEM
 	jr nz, .secondGood
+	ld a, [PokemonTower7TrainerHeader1.Archipelago_Trainersanity_EVENT_BEAT_POKEMONTOWER_7_TRAINER_1_ITEM_0]
+	cp NO_ITEM
+	jr z, .secondGood
 	ld a, HS_POKEMON_TOWER_7F_ROCKET_2
 	ld [wMissableObjectIndex], a
 	predef ShowObject
@@ -42,6 +48,9 @@ PokemonTower6Script0:
 
 	CheckEvent EVENT_BEAT_POKEMONTOWER_7_TRAINER_2_ITEM
 	jr nz, .continue
+	ld a, [PokemonTower7TrainerHeader2.Archipelago_Trainersanity_EVENT_BEAT_POKEMONTOWER_7_TRAINER_2_ITEM_0]
+	cp NO_ITEM
+	jr z, .continue
 	ld a, HS_POKEMON_TOWER_7F_ROCKET_3
 	ld [wMissableObjectIndex], a
 	predef ShowObject

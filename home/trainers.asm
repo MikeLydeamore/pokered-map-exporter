@@ -108,10 +108,10 @@ TalkToTrainer::
     and a
 	jr z, .trainerNotYetFought     ; test trainer's flag
 
-.Archipelago_Option_Trainersanity1_1
-    ld a, 1
-    and a
-    jr z, .noTrainersanity
+;.Archipelago_Option_Trainersanity1_1
+;    ld a, 1
+;    and a
+;    jr z, .noTrainersanity
     ld a, $c
 	call ReadTrainerHeaderInfo
 	ld c, a
@@ -134,6 +134,8 @@ TalkToTrainer::
 
 	ld a, $d
 	call ReadTrainerHeaderInfo
+	cp NO_ITEM
+	jr z, .noItem
 	ld b, a
 	ld a, 1
 	ld c, a
