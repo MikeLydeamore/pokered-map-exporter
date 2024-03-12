@@ -489,6 +489,13 @@ StartMenu_TrainerInfo::
 
 
 TrainerScreenKeyItems:
+    db OAKS_PARCEL
+    db BIKE_VOUCHER
+    db GOLD_TEETH
+    db HELIX_FOSSIL
+    db DOME_FOSSIL
+    db OLD_AMBER
+    db TEA
     db SECRET_KEY
     db BICYCLE
     db SILPH_SCOPE
@@ -611,6 +618,36 @@ DrawTrainerInfo:
 	inc c
 	jr .loop
 .doneLoop
+    CheckEvent EVENT_GAVE_OLD_AMBER
+    jr z, .nooa
+    inc c
+.nooa
+    CheckEvent EVENT_GAVE_HELIX_FOSSIL
+    jr z, .nohf
+    inc c
+.nohf
+    CheckEvent EVENT_GAVE_DOME_FOSSIL
+    jr z, .nodf
+    inc c
+.nodf
+    CheckEvent EVENT_GAVE_GOLD_TEETH
+    jr z, .nogt
+    inc c
+.nogt
+    CheckEvent EVENT_GOT_BICYCLE
+    jr z, .nobkvchr
+    inc c
+.nobkvchr
+    CheckEvent EVENT_GAVE_PARCEL
+    jr z, .noparc
+    inc c
+.noparc
+    ld a, [wd728]
+	bit 6, a
+.Archipelago_Tea_Key_Item_A_0
+    jr .notea
+    inc c
+.notea
     ld a, c
     ld [wUnusedD366], a
 

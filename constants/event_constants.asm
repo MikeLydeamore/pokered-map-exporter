@@ -456,7 +456,7 @@
 	const EVENT_SKC_9F ; 0x1c6
 	const EVENT_SKC_10F ; 0x1c7
 	const EVENT_SKC_11F ; 0x1c8
-	const EVENT_1C9 ; 0x1c9
+	const EVENT_GAVE_PARCEL ; 0x1c9
 	const EVENT_1CA ; 0x1ca
 	const EVENT_1CB ; 0x1cb
 	const EVENT_1CC ; 0x1cc
@@ -1411,9 +1411,9 @@
 	const EVENT_BEAT_MT_MOON_3_TRAINER_3 ; 0x57d
 	const EVENT_GOT_DOME_FOSSIL ; 0x57e
 	const EVENT_GOT_HELIX_FOSSIL ; 0x57f
-	const EVENT_580 ; 0x580
-	const EVENT_581 ; 0x581
-	const EVENT_582 ; 0x582
+	const EVENT_GAVE_DOME_FOSSIL ; 0x580
+	const EVENT_GAVE_HELIX_FOSSIL ; 0x581
+	const EVENT_GAVE_OLD_AMBER ; 0x582
 	const EVENT_583 ; 0x583
 	const EVENT_584 ; 0x584
 	const EVENT_585 ; 0x585

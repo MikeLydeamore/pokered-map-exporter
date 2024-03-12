@@ -64,6 +64,18 @@ GiveFossilToCinnabarLab::
 	ld hl, LabFossil_610b3
 	call PrintText
 	ld a, [wFossilItem]
+	cp OLD_AMBER
+	jr nz, .notOA
+    SetEvent EVENT_GAVE_OLD_AMBER
+.notOA
+	cp HELIX_FOSSIL
+	jr nz, .notHF
+    SetEvent EVENT_GAVE_HELIX_FOSSIL
+.notHF
+	cp DOME_FOSSIL
+	jr nz, .notDF
+    SetEvent EVENT_GAVE_DOME_FOSSIL
+.notDF
 	ldh [hItemToRemoveID], a
 	farcall RemoveItemByID
 	ld hl, LabFossil_610b8

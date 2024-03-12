@@ -1113,6 +1113,7 @@ OaksLabText5:
 	ld hl, OaksLabDeliverParcelText
 	call PrintText
 	call OaksLabScript_RemoveParcel
+	SetEvent EVENT_GAVE_PARCEL
 	ld a, $f
 	ld [wOaksLabCurScript], a
 	jr .asm_1d2ed
