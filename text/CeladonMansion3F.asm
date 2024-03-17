@@ -9,9 +9,17 @@ _ProgrammerText::
     done
 
 _GraphicArtistText::
-	text "Jugyes:"
-	line "pp is the male"
-	cont "genital."
+	text "Otiakadult:"
+	      ;;;;;;;;;;;;;;;;;;
+	line "Set a rule with"
+	cont "state.has()?"
+	cont "No way, that"
+	cont "would be too"
+	cont "easy to"
+	cont "understand!"
+	para "We're"
+	line "professionals"
+	cont "here!"
 	done
 
 _WriterText::
@@ -45,8 +53,9 @@ _CeladonMansion3Text5::
 	done
 
 _CeladonMansion3Text6::
-	text "This looks"
-	line "satisfactory."
+	text "class None_()?"
+	line "What is going on"
+	cont "here?"
 	done
 
 _CeladonMansion3Text7::
@@ -54,5 +63,5 @@ _CeladonMansion3Text7::
 	done
 
 _CeladonMansion3Text8::
-	text "▶archipelago-dev"
+	text "▶ap-world-dev"
 	done

@@ -1,31 +1,56 @@
 _CeladonCityText1::
-	text "I got my KOFFING"
-	line "in CINNABAR!"
+	text "Nine dudes"
+	line "freaking out, and"
+	cont "going berserk!"
 
-	para "It's nice, but it"
-	line "breathes poison"
-	cont "when it's angry!"
+	para "Nine dudes"
+	line "throwing down,"
+	cont "and going to work!"
+
+	para "A small"
+	line "percentage of the"
+	cont "place, all"
+	cont "getting wild!"
+
+	para "A booth in the"
+	line "back is where the"
+	cont "coats are piled!"
 	done
 
 _CeladonCityText2::
-	text "Heheh! This GYM"
-	line "is great! It's"
-	cont "full of women!"
+	text "Coffee coffee"
+	line "coffee, it's great"
+	cont "to have around,"
+	para "Coffee coffee"
+	line "coffee, I even"
+	cont "eat the grounds!"
+	para "I used to be a"
+	line "troll now I'll"
+	cont "never be the same,"
+	para "I drink a hundred"
+	line "cups a day, Juan"
+	cont "Valdez knows my"
+	cont "name!"
 	done
 
 _CeladonCityText3::
-	text "The GAME CORNER"
-	line "is bad for our"
-	cont "city's image!"
+	text "Once upon a time"
+	line "in the land of"
+	cont "Azeroth, Dave"
+	cont "Chappelle fought"
+	cont "David Hasselhoff!"
 	done
 
 _CeladonCityText4::
-	text "Moan! I blew it"
-	line "all at the slots!"
+	text "Boku wa sekkusu"
+	line "daisuki, itsumo"
+	cont "sekkusu mainichi"
+	cont "yaritai sekkusu!"
 
-	para "I knew I should"
-	line "have cashed in my"
-	cont "coins for prizes!"
+	para "Chinko o manko ni"
+	line "iretai na, ah,"
+	cont "kimochii na"
+	cont "iretai!"
 	done
 
 _TM41PreText::
@@ -47,14 +72,7 @@ _ReceivedTM41Text::
 	text_end
 
 _TM41ExplanationText::
-	text "TM41 teaches"
-	line "SOFTBOILED!"
-
-	para "Only one #MON"
-	line "can use it!"
-
-	para "That #MON is"
-	line "CHANSEY!"
+	text "Mommy's broken."
 	done
 
 _TM41NoRoomText::
@@ -63,12 +81,14 @@ _TM41NoRoomText::
 	done
 
 _CeladonCityText6::
-	text "This is my trusted"
-	line "pal, POLIWRATH!"
-
-	para "It evolved from"
-	line "POLIWHIRL when I"
-	cont "used WATER STONE!"
+	text "Talk with your"
+	line "mouth full,"
+	para "Bite the hand"
+	line "feeds you,"
+	para "Bite off more"
+	line "than you can chew,"
+	para "What can you do?"
+	line "Dare to be stupid!"
 	done
 
 _CeladonCityText7::
@@ -77,13 +97,25 @@ _CeladonCityText7::
 	text_end
 
 _CeladonCityText8::
-	text "What are you"
-	line "staring at?"
+	text "I have a tuba,"
+	line "it's made of wood!"
+	para "It's useless!"
 	done
 
 _CeladonCityText9::
-	text "Keep out of TEAM"
-	line "ROCKET's way!"
+    text "I'm a fake adult,"
+    line "a fraudulent"
+    cont "grown-up,"
+    para "which is obvious"
+    line "to everyone the"
+    cont "moment I've"
+    cont "shown up."
+	para "I'm a fake adult,"
+	line "and it's plain to"
+	cont "see,"
+	para "I'm a master"
+	line "forgery of"
+	cont "maturity."
 	done
 
 _CeladonCityText10::
