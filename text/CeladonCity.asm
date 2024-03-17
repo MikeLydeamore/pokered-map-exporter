@@ -42,15 +42,23 @@ _CeladonCityText3::
 	done
 
 _CeladonCityText4::
-	text "Boku wa sekkusu"
-	line "daisuki, itsumo"
-	cont "sekkusu mainichi"
-	cont "yaritai sekkusu!"
+	text "Nearly visible to"
+	line "me at the edge of"
+	cont "my periphery"
 
-	para "Chinko o manko ni"
-	line "iretai na, ah,"
-	cont "kimochii na"
-	cont "iretai!"
+	para "What do these"
+	line "astral entities"
+	cont "want with human-"
+	cont "kind?"
+
+	para "I can't even tell"
+	line "if they're"
+	cont "substantive or"
+	cont "intangible"
+
+	para "Are spacebugs"
+	line "real, or are they"
+	cont "just in my mind?"
 	done
 
 _TM41PreText::
