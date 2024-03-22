@@ -50,7 +50,7 @@ RunNPCMovementScript::
 EndNPCMovementScript::
 	farjp _EndNPCMovementScript
 
-DebugPressedOrHeldB::
+;DebugPressedOrHeldB::
 ;IF DEF(_DEBUG)
 ;.Archipelago_Option_Blind_Trainers
 ;    ld a, 0
@@ -59,23 +59,11 @@ DebugPressedOrHeldB::
 ;    ld a, 0
 ;    and a
 ;	ret z
-    call Random
-.Archipelago_Option_Blind_Trainers_1
-    ld b, 0
-    cp b
-    jr nc, .battle
-.noBattle
-    ld a, 1
-    and a
-    ret
-.battle
-    jr z, .noBattle
-    xor a
-    and a
+
 ;	ldh a, [hJoyHeld]
 ;	bit BIT_B_BUTTON, a
 ;	ret nz
 ;	ldh a, [hJoyPressed]
 ;	bit BIT_B_BUTTON, a
 ;ENDC
-	ret
+;	ret

@@ -192,8 +192,8 @@ bagFullText::
 
 ; checks if any trainers are seeing the player and wanting to fight
 CheckFightingMapTrainers::
-	call DebugPressedOrHeldB
-	jr nz, .trainerNotEngaging
+	;call DebugPressedOrHeldB
+	;jr nz, .trainerNotEngaging
 	call CheckForEngagingTrainers
 	ld a, [wSpriteIndex]
 	cp $ff
@@ -331,9 +331,28 @@ CheckForEngagingTrainers::
 	call StoreTrainerHeaderPointer   ; set trainer header pointer to current trainer
 	ld a, [de]
 	ld [wSpriteIndex], a                     ; store trainer flag's bit
+
 	ld [wTrainerHeaderFlagBit], a
 	cp -1
 	ret z
+
+	ld a, $d
+	call ReadTrainerHeaderInfo       ; read trainer flag's byte ptr
+	and a
+	jr z, .noTSItem
+.Archipelago_Option_Blind_Trainers_TS_1
+	ld b, 255
+	jr .TSItem
+.noTSItem
+.Archipelago_Option_Blind_Trainers_NO_TS_1
+    ld b, 0
+.TSItem
+	call Random
+    cp b
+    jr z, .continue
+    jr nc, .continue
+
+
 	ld a, $2
 	call ReadTrainerHeaderInfo       ; read trainer flag's byte ptr
 	ld b, FLAG_TEST
