@@ -339,19 +339,14 @@ CheckForEngagingTrainers::
 	ld a, $d
 	call ReadTrainerHeaderInfo       ; read trainer flag's byte ptr
 	and a
-	jr z, .noTSItem
-.Archipelago_Option_Blind_Trainers_TS_1
+	jr nz, .battle
+.Archipelago_Option_Blind_Trainers_1
 	ld b, 255
-	jr .TSItem
-.noTSItem
-.Archipelago_Option_Blind_Trainers_NO_TS_1
-    ld b, 0
-.TSItem
 	call Random
     cp b
+    jr c, .continue
     jr z, .continue
-    jr nc, .continue
-
+.battle
 
 	ld a, $2
 	call ReadTrainerHeaderInfo       ; read trainer flag's byte ptr
