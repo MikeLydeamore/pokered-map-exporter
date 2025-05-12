@@ -312,10 +312,17 @@ PewterCityText_19431:
 	text_far _PewterCityText_19431
 	text_end
 
+bad_coord:
+	dbmapcoord 36, 16
+	db -1 ; end
+
 PewterCityText5:
 	text_asm
 	ld hl, PewterCityText_1945d
 	call PrintText
+	ld hl, bad_coord
+	call ArePlayerCoordsInArray
+	jp c, TextScriptEnd
 	xor a
 	ldh [hJoyHeld], a
 	ld [wNPCMovementScriptFunctionNum], a
