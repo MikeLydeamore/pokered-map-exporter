@@ -379,7 +379,7 @@ OaksLabScript10:
 	call PlayMusic
 	ld a, $f
 	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
+	;call DisplayTextID
 	ld a, $1
 	ldh [hNPCPlayerRelativePosPerspective], a
 	ld a, $1
@@ -542,7 +542,7 @@ OaksLabScript15:
 	farcall Music_RivalAlternateStart
 	ld a, $15
 	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
+	;call DisplayTextID
 	call OaksLabScript_1d02b
 	ld a, HS_OAKS_LAB_RIVAL
 	ld [wMissableObjectIndex], a

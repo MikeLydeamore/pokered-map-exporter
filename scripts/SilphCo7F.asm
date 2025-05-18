@@ -175,7 +175,7 @@ SilphCo7Script3:
 	ld [wJoyIgnore], a
 	ld a, $d
 	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
+	;call DisplayTextID
 	call Delay3
 	ld hl, wd72d
 	set 6, [hl]
@@ -305,8 +305,8 @@ SilphCo7Text1:
 	call PrintText
 	jr .done
 .givelapras
-	ld hl, .MeetLaprasGuyText
-	call PrintText
+	;ld hl, .MeetLaprasGuyText
+	;call PrintText
 .Archipelago_Gift_Lapras_2
 	lb bc, LAPRAS, 15
 	call GivePokemon

@@ -258,8 +258,8 @@ ViridianCityText6:
 	text_asm
 	CheckEvent EVENT_GOT_TM42
 	jr nz, .got_item
-	ld hl, ViridianCityText_191ca
-	call PrintText
+	;ld hl, ViridianCityText_191ca
+	;call PrintText
 .Archipelago_Event_Sleepy_Guy
 	lb bc, TM_DREAM_EATER, 1
 	call GiveItem

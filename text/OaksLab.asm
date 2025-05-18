@@ -191,8 +191,7 @@ _OaksLabRivalReceivedMonText::
 
 _OaksLabRivalChallengeText::
 	text "<RIVAL>: Wait"
-	line "<PLAYER>!"
-	cont "Let's battle!"
+	line "Let's battle!"
 	done
 
 _OaksLabText_1d3be::
@@ -232,11 +231,11 @@ _OaksLabText24::
 	done
 
 _OaksLabText25::
-	text "OAK: <PLAYER> and"
-	line "<RIVAL>! Take"
-	cont "these with you!"
+	;text "OAK: <PLAYER> and"
+	;line "<RIVAL>! Take"
+	;cont "these with you!"
 
-	para "<PLAYER> received"
+	text "<PLAYER> received"
 	line "@"
 	text_ram wStringBuffer
 	text "!@"

@@ -174,9 +174,9 @@ SilphCo11Script0:
 	ldh [hJoyHeld], a
 	ld a, $f0
 	ld [wJoyIgnore], a
-	ld a, $3
-	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
+	;ld a, $3
+	;ldh [hSpriteIndexOrTextID], a
+	;call DisplayTextID
 	ld a, $3
 	ldh [hSpriteIndex], a
 	call SetSpriteMovementBytesToFF
@@ -221,9 +221,9 @@ SilphCo11Script5:
 	call SilphCo11Script_6221a
 	ld a, $f0
 	ld [wJoyIgnore], a
-	ld a, $6
-	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
+	;ld a, $6
+	;ldh [hSpriteIndexOrTextID], a
+	;call DisplayTextID
 	call GBFadeOutToBlack
 	call SilphCo11Script_6216d
 	call UpdateSprites

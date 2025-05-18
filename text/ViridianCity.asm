@@ -116,11 +116,11 @@ _ViridianCityText_1920f::
 	done
 
 _ViridianCityText_19214::
-	text "No refunds"
+	text "No refunds."
 	done
 
 _ViridianCityText_19219::
-	text "No refunds"
+	text "No refunds."
 	done
 
 _ViridianCityText8::

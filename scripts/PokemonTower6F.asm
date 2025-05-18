@@ -99,9 +99,9 @@ PokemonTower6Script4:
 	and a
 	jr nz, .asm_60b82
 	SetEvent EVENT_BEAT_GHOST_MAROWAK
-	ld a, $7
-	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
+	;ld a, $7
+	;ldh [hSpriteIndexOrTextID], a
+	;call DisplayTextID
 	xor a
 	ld [wJoyIgnore], a
 	ld a, $0
@@ -177,8 +177,8 @@ PokemonTower6Text3:
 
 PokemonTower6Text7:
 	text_asm
-	ld hl, PokemonTower2Text_60c1f
-	call PrintText
+	;ld hl, PokemonTower2Text_60c1f
+	;call PrintText
 .Archipelago_Ghost_Battle2_1
 	ld a, RESTLESS_SOUL
 	call PlayCry

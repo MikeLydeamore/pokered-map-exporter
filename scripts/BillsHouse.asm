@@ -176,6 +176,7 @@ BillsHouseText2:
 	ld a, HS_CERULEAN_GUARD_2
 	ld [wMissableObjectIndex], a
 	predef HideObject
+	jr .asm_1e8b7
 .asm_1e8a9
 	ld hl, BillsHouseText_1e8cb
 	call PrintText
@@ -193,7 +194,7 @@ BillThankYouText:
 SSTicketReceivedText:
 	text_far _SSTicketReceivedText
 	sound_get_key_item
-	text_promptbutton
+	;text_promptbutton
 	text_end
 
 SSTicketNoRoomText:

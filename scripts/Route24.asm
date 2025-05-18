@@ -107,8 +107,8 @@ Route24Text1:
 	ResetEvent EVENT_NUGGET_REWARD_AVAILABLE
 	CheckEvent EVENT_GOT_NUGGET
 	jr nz, .got_item
-	ld hl, Route24Text_51510
-	call PrintText
+	;ld hl, Route24Text_51510
+	;call PrintText
 .Archipelago_Event_Nugget_Bridge
 	lb bc, NUGGET, 1
 	call GiveItem
@@ -116,8 +116,8 @@ Route24Text1:
 	SetEvent EVENT_GOT_NUGGET
 	ld hl, Route24Text_5151a
 	call PrintText
-	ld hl, Route24Text_51526
-	call PrintText
+	;ld hl, Route24Text_51526
+	;call PrintText
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]

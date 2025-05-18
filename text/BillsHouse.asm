@@ -20,11 +20,8 @@ _BillsHouseText_1e865::
 	done
 
 _BillsHouseText_1e86a::
-	text "When I'm in the"
-	line "TELEPORTER, go to"
-	cont "my PC and run the"
-	cont "Cell Separation"
-	cont "System!"
+	text "Press the button"
+	line "on my PC!"
 	done
 
 _BillsHouseText_1e86f::
