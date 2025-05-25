@@ -103,9 +103,12 @@ RocketHideout4Text1:
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, RocketHideout4Text_4557f
-	ld de, RocketHideout4Text_4557f
-	call SaveEndBattleTextPointers
+	;ld hl, RocketHideout4Text_4557f
+	;ld de, RocketHideout4Text_4557f
+	;call SaveEndBattleTextPointers
+
+	EventBattleTrainersanity EVENT_BEAT_ROCKET_HIDEOUT_GIOVANNI_ITEM
+
 	ldh a, [hSpriteIndex]
 	ld [wSpriteIndex], a
 	call EngageMapTrainer

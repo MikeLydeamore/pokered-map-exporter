@@ -1419,8 +1419,9 @@ wSubAnimTransform::
 	db
 ENDU
 
-wEndBattleWinTextPointer:: dw
-wEndBattleLoseTextPointer:: dw
+wEndBattleTrainersanityItem:: db
+wEndBattleTrainersanityFlagByte:: dw
+wEndBattleTrainersanityFlagBit:: db
 	ds 2
 wEndBattleTextRomBank:: db
 
@@ -2215,7 +2216,6 @@ wSecondLockTrashCanIndex:: db
 	ds 2
 
 wEventFlags:: flag_array NUM_EVENTS
-
 
 UNION
 wGrassRate:: db

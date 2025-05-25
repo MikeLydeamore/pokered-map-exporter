@@ -114,9 +114,12 @@ FightingDojoText1:
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, FightingDojoText_5ce93
-	ld de, FightingDojoText_5ce93
-	call SaveEndBattleTextPointers
+	;ld hl, FightingDojoText_5ce93
+	;ld de, FightingDojoText_5ce93
+	;call SaveEndBattleTextPointers
+
+	EventBattleTrainersanity EVENT_DEFEATED_FIGHTING_DOJO_ITEM
+
 	ldh a, [hSpriteIndexOrTextID]
 	ld [wSpriteIndex], a
 	call EngageMapTrainer

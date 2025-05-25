@@ -141,9 +141,12 @@ PokemonTower2Text1:
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, PokemonTower2Text_60632
-	ld de, PokemonTower2Text_60637
-	call SaveEndBattleTextPointers
+	;ld hl, PokemonTower2Text_60632
+	;ld de, PokemonTower2Text_60637
+	;call SaveEndBattleTextPointers
+
+	EventBattleTrainersanity EVENT_BEAT_POKEMON_TOWER_RIVAL_ITEM
+
 	ld a, OPP_RIVAL2
 	ld [wCurOpponent], a
 

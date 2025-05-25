@@ -61,9 +61,13 @@ GaryScript2:
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, GaryDefeatedText
-	ld de, GaryVictoryText
-	call SaveEndBattleTextPointers
+	;ld hl, GaryDefeatedText
+	;ld de, GaryVictoryText
+	;call SaveEndBattleTextPointers
+
+	ld a, 0
+	ld [wEndBattleTrainersanityItem], a
+
 	ld a, OPP_RIVAL3
 	ld [wCurOpponent], a
 

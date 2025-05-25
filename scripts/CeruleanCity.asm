@@ -176,9 +176,12 @@ CeruleanCityScript1:
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, CeruleanCityText_1966d
-	ld de, CeruleanCityText_19672
-	call SaveEndBattleTextPointers
+	;ld hl, CeruleanCityText_1966d
+	;ld de, CeruleanCityText_19672
+	;call SaveEndBattleTextPointers
+
+	EventBattleTrainersanity EVENT_BEAT_CERULEAN_RIVAL_ITEM
+
 	ld a, OPP_RIVAL1
 	ld [wCurOpponent], a
 
@@ -333,9 +336,11 @@ CeruleanCityText2:
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, CeruleanCityText_196ee
-	ld de, CeruleanCityText_196ee
-	call SaveEndBattleTextPointers
+	;ld hl, CeruleanCityText_196ee
+	;ld de, CeruleanCityText_196ee
+	;call SaveEndBattleTextPointers
+
+	EventBattleTrainersanity EVENT_BEAT_CERULEAN_ROCKET_THIEF_ITEM
 	ldh a, [hSpriteIndexOrTextID]
 	ld [wSpriteIndex], a
 	call EngageMapTrainer

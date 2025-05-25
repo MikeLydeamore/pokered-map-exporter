@@ -426,9 +426,10 @@ OaksLabScript11:
 	ld a, $1
 	ld [wSpriteIndex], a
 	call GetSpritePosition1
-	ld hl, OaksLabText_1d3be
-	ld de, OaksLabText_1d3c3
-	call SaveEndBattleTextPointers
+	;ld hl, OaksLabText_1d3be
+	;ld de, OaksLabText_1d3c3
+	;call SaveEndBattleTextPointers
+	EventBattleTrainersanity EVENT_BEAT_LAB_RIVAL_ITEM
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
@@ -1027,6 +1028,7 @@ OakVictoryText:
 OaksLabText32:
 OaksLabText5:
     text_asm
+    farcall CheckMissingTrainersanity
     farcall CheckAllDexSanity
 	;jr .test
 	CheckEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
@@ -1044,9 +1046,7 @@ OaksLabText5:
 .test
     ld hl, OaksLabPleaseVisitText
 	call PrintText
-    ld hl, OakVictoryText
-	ld de, OakFailureText
-	call SaveEndBattleTextPointers
+
 	ld a, OPP_PROF_OAK
 	ld [wCurOpponent], a
 

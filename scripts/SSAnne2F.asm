@@ -174,6 +174,7 @@ SSAnne2Script3:
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	call PlayDefaultMusic
+	SetEvent EVENT_BEAT_RIVAL_SS_ANNE
 	ld a, $4
 	ld [wSSAnne2FCurScript], a
 	ret
@@ -194,9 +195,12 @@ SSAnne2Text2:
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, SSAnneRivalDefeatedText
-	ld de, SSAnneRivalWonText
-	call SaveEndBattleTextPointers
+	;ld hl, SSAnneRivalDefeatedText
+	;ld de, SSAnneRivalWonText
+	;call SaveEndBattleTextPointers
+
+	EventBattleTrainersanity EVENT_BEAT_RIVAL_SS_ANNE_ITEM
+
 	jp TextScriptEnd
 
 SSAnneRivalBeforeBattleText:

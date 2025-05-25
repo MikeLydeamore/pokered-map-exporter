@@ -112,6 +112,9 @@ CeladonGameCornerScript2:
 	ld hl, wCurrentMapScriptFlags
 	set 5, [hl]
 	set 6, [hl]
+
+	SetEvent EVENT_BEAT_GAME_CORNER_ROCKET
+
 	ld a, $0
 	ld [wGameCornerCurScript], a
 	ret
@@ -465,9 +468,12 @@ CeladonGameCornerText11:
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, CeladonGameCornerText_48ed3
-	ld de, CeladonGameCornerText_48ed3
-	call SaveEndBattleTextPointers
+	;ld hl, CeladonGameCornerText_48ed3
+	;ld de, CeladonGameCornerText_48ed3
+	;call SaveEndBattleTextPointers
+
+	EventBattleTrainersanity EVENT_BEAT_GAME_CORNER_ROCKET_ITEM
+
 	ldh a, [hSpriteIndex]
 	ld [wSpriteIndex], a
 	call EngageMapTrainer

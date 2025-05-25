@@ -136,9 +136,13 @@ KogaText:
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, ReceivedSoulBadgeText
-	ld de, ReceivedSoulBadgeText
-	call SaveEndBattleTextPointers
+	;ld hl, ReceivedSoulBadgeText
+	;ld de, ReceivedSoulBadgeText
+	;call SaveEndBattleTextPointers
+
+	ld a, 0
+	ld [wEndBattleTrainersanityItem], a
+
 	ldh a, [hSpriteIndex]
 	ld [wSpriteIndex], a
 	call EngageMapTrainer

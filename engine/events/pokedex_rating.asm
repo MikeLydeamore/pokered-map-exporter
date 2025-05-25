@@ -1,4 +1,5 @@
 DisplayDexRating:
+    call CheckMissingTrainersanity
     call CheckAllDexSanity
 
 	ld hl, wPokedexSeen
@@ -150,6 +151,40 @@ receivedDexItem:
 	text "!@"
 	text_end
 
+CheckMissingTrainersanity::
+    ld hl, EventBattleTrainersanityDataStart
+.loop
+    ld a, [hli]
+    cp $FF
+    ret z
+    ld e, a
+    ld a, [hli]
+    ld d, a
+    ld a, [hli]
+    ld c, a
+    push hl
+    ld h, d
+    ld l, e
+    ld b, FLAG_TEST
+    predef FlagActionPredef
+    ld a, c
+	and a
+	jr z, .trainernotbeaten
+    pop hl
+	ld bc, 4
+	ld de, wEndBattleTrainersanityItem
+	call CopyData
+    push hl
+    call CheckForTrainersanityItem
+    pop hl
+    jr .loop
+.trainernotbeaten
+    pop hl
+    inc hl
+    inc hl
+    inc hl
+    inc hl
+    jr .loop
 
 CheckAllDexSanity::
 .Archipelago_Option_Dexsanity_A_1

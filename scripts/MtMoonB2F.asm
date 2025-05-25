@@ -182,6 +182,10 @@ MtMoon3Text1:
 	text_asm
 	CheckEvent EVENT_BEAT_MT_MOON_EXIT_SUPER_NERD
 	jr z, .asm_49e8d
+
+    ScriptCheckTrainersanity EVENT_BEAT_MT_MOON_EXIT_SUPER_NERD_ITEM
+    jr c, .asm_49ebe
+
 	; CheckEitherEventSetReuseA EVENT_GOT_DOME_FOSSIL, EVENT_GOT_HELIX_FOSSIL
 	and (1 << (EVENT_GOT_DOME_FOSSIL % 8)) | (1 << (EVENT_GOT_HELIX_FOSSIL % 8))
 	jr nz, .asm_49eb8
@@ -194,9 +198,12 @@ MtMoon3Text1:
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, MtMoon3Text_49f8a
-	ld de, MtMoon3Text_49f8a
-	call SaveEndBattleTextPointers
+	;ld hl, MtMoon3Text_49f8a
+	;ld de, MtMoon3Text_49f8a
+	;call SaveEndBattleTextPointers
+
+	EventBattleTrainersanity EVENT_BEAT_MT_MOON_EXIT_SUPER_NERD_ITEM
+
 	ldh a, [hSpriteIndex]
 	ld [wSpriteIndex], a
 	call EngageMapTrainer

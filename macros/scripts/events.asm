@@ -446,3 +446,46 @@ MACRO AdjustEventBit
 		add ((\1) % 8) - (\2)
 	ENDC
 ENDM
+
+MACRO EventBattleTrainersanityData
+    DEF __event = \2
+    DEF __addr = $d735 + (__event / 8)
+    DEF __bit  = __event % 8
+    db (__addr & $FF), (__addr >> 8), __bit
+    DEF __event = \1
+    DEF __addr = $d735 + (__event / 8)
+    DEF __bit  = __event % 8
+Trainersanity_\1::
+.Archipelago_Trainersanity_\1_0
+    db MASTER_BALL, (__addr & $FF), (__addr >> 8), __bit
+ENDM
+
+MACRO EventBattleTrainersanity
+    ld hl, Trainersanity_\1
+    ld de, wEndBattleTrainersanityItem
+    ld bc, 4
+    call CopyData
+ENDM
+
+MACRO ScriptCheckTrainersanity
+	;ld a, [Trainersanity_\1]
+	;cp 0
+	;jr z, .no_ts_item
+	;CheckEvent \1
+	;jr z, .no_ts_item
+	EventBattleTrainersanity \1
+	call CheckForTrainersanityItem
+;.no_ts_item
+ENDM
+
+MACRO CinnabarGymTrainersanity
+	ld a, [.Archipelago_Trainersanity_EVENT_BEAT_CINNABAR_GYM_TRAINER_\1_ITEM_1 + 1]
+	ld [wEndBattleTrainersanityItem], a
+	ld hl, $d735 + (EVENT_BEAT_CINNABAR_GYM_TRAINER_\2_ITEM / 8)
+	ld a, l
+	ld [wEndBattleTrainersanityFlagByte], a
+	ld a, h
+	ld [wEndBattleTrainersanityFlagByte + 1], a
+	ld a, (EVENT_BEAT_CINNABAR_GYM_TRAINER_\2_ITEM % 8)
+	ld [wEndBattleTrainersanityFlagBit], a
+ENDM

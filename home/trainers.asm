@@ -92,6 +92,7 @@ TrainerFlagAction::
 
 TalkToTrainer::
 	call StoreTrainerHeaderPointer
+	call GetTrainersanityData
 	xor a
 	call ReadTrainerHeaderInfo     ; read flag's bit
 	ld a, $2
@@ -108,55 +109,10 @@ TalkToTrainer::
     and a
 	jr z, .trainerNotYetFought     ; test trainer's flag
 
-;.Archipelago_Option_Trainersanity1_1
-;    ld a, 1
-;    and a
-;    jr z, .noTrainersanity
-    ld a, $c
-	call ReadTrainerHeaderInfo
-	ld c, a
-	push bc
-	push bc
 
-	ld a, $a
-	call ReadTrainerHeaderInfo
-	pop bc
-	push hl
+    call CheckForTrainersanityItem
+    ret c
 
-	ld b, FLAG_TEST
-
-	predef FlagActionPredef
-
-
-	ld a, c
-	and a
-	jr nz, .noItem
-
-	ld a, $d
-	call ReadTrainerHeaderInfo
-	cp NO_ITEM
-	jr z, .noItem
-	ld b, a
-	ld a, 1
-	ld c, a
-	call GiveItem
-    pop hl
-    pop bc
-	jr c, .notBagFull
-
-
-	ld hl, bagFullText
-	jp PrintText
-
-.notBagFull
-    ld b, FLAG_SET
-    predef FlagActionPredef
-	ld hl, DisplayArchipelagoItem
-	jp PrintText
-.noItem
-
-    pop bc
-    pop hl
 .noTrainersanity
 	ld a, $6
 	call ReadTrainerHeaderInfo     ; print after battle text
@@ -171,7 +127,7 @@ TalkToTrainer::
 	ld a, $8
 	call ReadTrainerHeaderInfo     ; read end battle text
 	pop de
-	call SaveEndBattleTextPointers
+	;call SaveEndBattleTextPointers
 	ld hl, wFlags_D733
 	set 4, [hl]                    ; activate map script index override (index is set below)
 	ld hl, wFlags_0xcd60
@@ -347,7 +303,7 @@ CheckForEngagingTrainers::
     jr c, .continue
     jr z, .continue
 .battle
-
+    call GetTrainersanityData
 	ld a, $2
 	call ReadTrainerHeaderInfo       ; read trainer flag's byte ptr
 	ld b, FLAG_TEST
@@ -385,16 +341,16 @@ CheckForEngagingTrainers::
 ; hl = text if the player wins
 ; de = text if the player loses
 SaveEndBattleTextPointers::
-	ldh a, [hLoadedROMBank]
-	ld [wEndBattleTextRomBank], a
-	ld a, h
-	ld [wEndBattleWinTextPointer], a
-	ld a, l
-	ld [wEndBattleWinTextPointer + 1], a
-	ld a, d
-	ld [wEndBattleLoseTextPointer], a
-	ld a, e
-	ld [wEndBattleLoseTextPointer + 1], a
+	;ldh a, [hLoadedROMBank]
+	;ld [wEndBattleTextRomBank], a
+	;ld a, h
+	;ld [wEndBattleWinTextPointer], a
+	;ld a, l
+	;ld [wEndBattleWinTextPointer + 1], a
+	;ld a, d
+	;ld [wEndBattleLoseTextPointer], a
+	;ld a, e
+	;ld [wEndBattleLoseTextPointer + 1], a
 	ret
 
 ; loads data of some trainer on the current map and plays pre-battle music
@@ -436,29 +392,84 @@ EngageMapTrainer::
 ;	farcall FreezeEnemyTrainerSprite
 ;	jp WaitForSoundToFinish
 
-GetSavedEndBattleTextPointer::
-	ld a, [wBattleResult]
+
+GetTrainersanityData::
+    ; byte
+	ld a, $a
+	call ReadTrainerHeaderInfo
+    ld [wEndBattleTrainersanityFlagByte], a
+    ld a, h
+    ld [wEndBattleTrainersanityFlagByte + 1], a
+    ; bit
+    ld a, $c
+	call ReadTrainerHeaderInfo
+    ld [wEndBattleTrainersanityFlagBit], a
+    ; item
+	ld a, $d
+	call ReadTrainerHeaderInfo
+    ld [wEndBattleTrainersanityItem], a
+    ret
+
+CheckForTrainersanityItem::
+
+    ; check if the trainersanity item is obtained
+	ld a, [wEndBattleTrainersanityFlagByte]
+	ld l, a
+	ld a, [wEndBattleTrainersanityFlagByte + 1]
+	ld h, a
+	ld a, [wEndBattleTrainersanityFlagBit]
+    ld c, a
+	push hl
+    push bc
+	ld b, FLAG_TEST
+
+	predef FlagActionPredef
+
+
+	ld a, c
 	and a
-; won battle
-	jr nz, .lostBattle
-	ld a, [wEndBattleWinTextPointer]
-	ld h, a
-	ld a, [wEndBattleWinTextPointer + 1]
-	ld l, a
+	jr nz, .noItem
+
+    ; check trainersanity item
+
+    ld a, [wEndBattleTrainersanityItem]
+	cp NO_ITEM
+	jr z, .noItem
+	ld b, a
+	ld a, 1
+	ld c, a
+	call GiveItem
+    pop bc
+    pop hl
+	jr c, .notBagFull
+
+
+	ld hl, bagFullText
+    scf
+    ccf
+	jp PrintText
+
+.notBagFull
+    ld b, FLAG_SET
+    predef FlagActionPredef
+	ld hl, DisplayArchipelagoItem
+	call PrintText
+	scf
 	ret
-.lostBattle
-	ld a, [wEndBattleLoseTextPointer]
-	ld h, a
-	ld a, [wEndBattleLoseTextPointer + 1]
-	ld l, a
-	ret
+.noItem
+    pop bc
+    pop hl
+    scf
+    ccf
+    ret
+
 
 TrainerEndBattleText::
-	text_far _TrainerNameText
-	text_asm
-	call GetSavedEndBattleTextPointer
-	call TextCommandProcessor
-	jp TextScriptEnd
+	;text_far _TrainerNameText
+	;text_asm
+	;call GetSavedEndBattleTextPointer
+	;call TextCommandProcessor
+	;jp TextScriptEnd
 
 ; only engage with the trainer if the player is not already
 ; engaged with another trainer

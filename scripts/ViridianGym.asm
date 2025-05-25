@@ -246,9 +246,13 @@ GiovanniText:
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, ReceivedEarthBadgeText
-	ld de, ReceivedEarthBadgeText
-	call SaveEndBattleTextPointers
+	;ld hl, ReceivedEarthBadgeText
+	;ld de, ReceivedEarthBadgeText
+	;call SaveEndBattleTextPointers
+
+	ld a, 0
+	ld [wEndBattleTrainersanityItem], a
+
 	ldh a, [hSpriteIndex]
 	ld [wSpriteIndex], a
 	call EngageMapTrainer

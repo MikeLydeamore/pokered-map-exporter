@@ -144,9 +144,12 @@ Route22Script1:
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, Route22RivalDefeatedText1
-	ld de, Route22Text_511bc
-	call SaveEndBattleTextPointers
+	;ld hl, Route22RivalDefeatedText1
+	;ld de, Route22Text_511bc
+	;call SaveEndBattleTextPointers
+
+	EventBattleTrainersanity EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE_ITEM
+
 	ld a, OPP_RIVAL1
 	ld [wCurOpponent], a
 	ld hl, StarterMons_50faf
@@ -304,9 +307,12 @@ Route22Script4:
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, Route22RivalDefeatedText2
-	ld de, Route22Text_511d0
-	call SaveEndBattleTextPointers
+	;ld hl, Route22RivalDefeatedText2
+	;ld de, Route22Text_511d0
+	;call SaveEndBattleTextPointers
+
+	EventBattleTrainersanity EVENT_BEAT_ROUTE22_RIVAL_2ND_BATTLE_ITEM
+
 	ld a, OPP_RIVAL2
 	ld [wCurOpponent], a
 	ld hl, StarterMons_510d9

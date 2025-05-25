@@ -121,9 +121,12 @@ Route24Text1:
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, Route24Text_5152b
-	ld de, Route24Text_5152b
-	call SaveEndBattleTextPointers
+	;ld hl, Route24Text_5152b
+	;ld de, Route24Text_5152b
+	;call SaveEndBattleTextPointers
+
+	EventBattleTrainersanity EVENT_BEAT_ROUTE_24_LEADER_ITEM
+
 	ldh a, [hSpriteIndexOrTextID]
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
@@ -135,6 +138,11 @@ Route24Text1:
 	ld [wCurMapScript], a
 	jp TextScriptEnd
 .got_item
+
+
+    ScriptCheckTrainersanity EVENT_BEAT_ROUTE_24_LEADER_ITEM
+    jp c, TextScriptEnd
+
 	ld hl, Route24Text_51530
 	call PrintText
 	jp TextScriptEnd

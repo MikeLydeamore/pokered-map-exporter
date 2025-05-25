@@ -239,9 +239,13 @@ BlaineText:
 .beforeBeat
 	ld hl, BlainePreBattleText
 	call PrintText
-	ld hl, ReceivedVolcanoBadgeText
-	ld de, ReceivedVolcanoBadgeText
-	call SaveEndBattleTextPointers
+	;ld hl, ReceivedVolcanoBadgeText
+	;ld de, ReceivedVolcanoBadgeText
+	;call SaveEndBattleTextPointers
+
+	ld a, 0
+	ld [wEndBattleTrainersanityItem], a
+
 	ld a, $7
 	ld [wGymLeaderNo], a
 	jp CinnabarGymScript_758b7
@@ -280,9 +284,10 @@ CinnabarGymTrainerText1:
 	jr nz, .asm_46bb4
 	ld hl, CinnabarGymBattleText2
 	call PrintText
-	ld hl, CinnabarGymEndBattleText2
-	ld de, CinnabarGymEndBattleText2
-	call SaveEndBattleTextPointers
+	;ld hl, CinnabarGymEndBattleText2
+	;ld de, CinnabarGymEndBattleText2
+	;call SaveEndBattleTextPointers
+    CinnabarGymTrainersanity B, 1
 	jp CinnabarGymScript_758b7
 .asm_46bb4
 ;.Archipelago_Option_Trainersanity4_1
@@ -323,9 +328,10 @@ CinnabarGymTrainerText2:
 	jr nz, .asm_4b406
 	ld hl, CinnabarGymBattleText1
 	call PrintText
-	ld hl, CinnabarGymEndBattleText1
-	ld de, CinnabarGymEndBattleText1
-	call SaveEndBattleTextPointers
+	;ld hl, CinnabarGymEndBattleText1
+	;ld de, CinnabarGymEndBattleText1
+	;call SaveEndBattleTextPointers
+    CinnabarGymTrainersanity A, 0
 	jp CinnabarGymScript_758b7
 .asm_4b406
 ;.Archipelago_Option_Trainersanity3_1
@@ -380,9 +386,10 @@ CinnabarGymTrainerText3:
 	jr nz, .afterBeat
 	ld hl, CinnabarGymBattleText3
 	call PrintText
-	ld hl, CinnabarGymEndBattleText3
-	ld de, CinnabarGymEndBattleText3
-	call SaveEndBattleTextPointers
+	;ld hl, CinnabarGymEndBattleText3
+	;ld de, CinnabarGymEndBattleText3
+	;call SaveEndBattleTextPointer
+    CinnabarGymTrainersanity 2, 2
 	jp CinnabarGymScript_758b7
 .afterBeat
 ;.Archipelago_Option_Trainersanity5_1
@@ -423,9 +430,10 @@ CinnabarGymTrainerText4:
 	jr nz, .afterBeat
 	ld hl, CinnabarGymBattleText4
 	call PrintText
-	ld hl, CinnabarGymEndBattleText4
-	ld de, CinnabarGymEndBattleText4
-	call SaveEndBattleTextPointers
+	;ld hl, CinnabarGymEndBattleText4
+	;ld de, CinnabarGymEndBattleText4
+	;call SaveEndBattleTextPointers
+    CinnabarGymTrainersanity 3, 3
 	jp CinnabarGymScript_758b7
 .afterBeat
 ;.Archipelago_Option_Trainersanity6_1
@@ -466,9 +474,10 @@ CinnabarGymTrainerText5:
 	jr nz, .afterBeat
 	ld hl, CinnabarGymBattleText5
 	call PrintText
-	ld hl, CinnabarGymEndBattleText5
-	ld de, CinnabarGymEndBattleText5
-	call SaveEndBattleTextPointers
+	;ld hl, CinnabarGymEndBattleText5
+	;ld de, CinnabarGymEndBattleText5
+	;call SaveEndBattleTextPointers
+    CinnabarGymTrainersanity 4, 4
 	jp CinnabarGymScript_758b7
 .afterBeat
 ;.Archipelago_Option_Trainersanity7_1
@@ -509,9 +518,10 @@ CinnabarGymTrainerText6:
 	jr nz, .afterBeat
 	ld hl, CinnabarGymBattleText6
 	call PrintText
-	ld hl, CinnabarGymEndBattleText6
-	ld de, CinnabarGymEndBattleText6
-	call SaveEndBattleTextPointers
+	;ld hl, CinnabarGymEndBattleText6
+	;ld de, CinnabarGymEndBattleText6
+	;call SaveEndBattleTextPointers
+    CinnabarGymTrainersanity 5, 5
 	jp CinnabarGymScript_758b7
 .afterBeat
 ;.Archipelago_Option_Trainersanity8_1
@@ -553,9 +563,10 @@ CinnabarGymTrainerText7:
 	jr nz, .afterBeat
 	ld hl, CinnabarGymBattleText7
 	call PrintText
-	ld hl, CinnabarGymEndBattleText7
-	ld de, CinnabarGymEndBattleText7
-	call SaveEndBattleTextPointers
+	;ld hl, CinnabarGymEndBattleText7
+	;ld de, CinnabarGymEndBattleText7
+	;call SaveEndBattleTextPointers
+    CinnabarGymTrainersanity 6, 6
 	jp CinnabarGymScript_758b7
 .afterBeat
 ;.Archipelago_Option_Trainersanity9_1
