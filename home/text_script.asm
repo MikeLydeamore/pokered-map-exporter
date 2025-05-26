@@ -27,6 +27,7 @@ testdict:
 	dict TEXT_BLACKED_OUT,      DisplayPlayerBlackedOutText
 	dict TEXT_REPEL_WORE_OFF,   DisplayRepelWoreOffText
 	dict TEXT_RECEIVED_ITEM,    DisplayArchipelagoItemScript
+	dict TEXT_USE_REPEL,        DisplayUseRepelText
 
 	ld a, [wNumSprites]
 	ld e, a
@@ -205,6 +206,11 @@ DisplayPlayerBlackedOutText::
 PlayerBlackedOutText::
 	text_far _PlayerBlackedOutText
 	text_end
+
+DisplayUseRepelText::
+    farcall DisplayUseRepelText_
+    ;jp AfterDisplayingTextID
+    jp CloseTextDisplay
 
 DisplayRepelWoreOffText::
 	ld hl, RepelWoreOffText

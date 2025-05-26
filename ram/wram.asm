@@ -1550,8 +1550,8 @@ wSavedTileAnimations:: db
 
 wDamage:: dw
 
-	ds 2
-
+wDontConsumeRepel:: db
+wRepelItemUsed:: db
 wRepelRemainingSteps:: db
 
 ; list of moves for FormatMovesString
@@ -1760,6 +1760,8 @@ wRivalName:: ds NAME_LENGTH
 ; bit 6 = battle style
 ; 0: Shift
 ; 1: Set
+; bit 5 = Auto Run
+; bit 4 = AP text
 ; bits 0-3 = text speed (number of frames to delay after printing a letter)
 ; 1: Fast
 ; 3: Medium

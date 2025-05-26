@@ -1646,6 +1646,8 @@ ItemUseEscapeRope:
 INCLUDE "data/tilesets/escape_rope_tilesets.asm"
 
 ItemUseRepel:
+    ld a, REPEL
+    ld [wRepelItemUsed], a
 	ld b, 100
 
 ItemUseRepelCommon:
@@ -1739,10 +1741,14 @@ ItemUseGuardSpec:
 	jp PrintItemUseTextAndRemoveItem
 
 ItemUseSuperRepel:
+    ld a, SUPER_REPEL
+    ld [wRepelItemUsed], a
 	ld b, 200
 	jp ItemUseRepelCommon
 
 ItemUseMaxRepel:
+    ld a, MAX_REPEL
+    ld [wRepelItemUsed], a
 	ld b, 250
 	jp ItemUseRepelCommon
 
@@ -1942,6 +1948,7 @@ CoinCaseNumCoinsText:
 	text_far _CoinCaseNumCoinsText
 	text_end
 
+
 ItemUseOldRod:
 	call FishingInit
 	jp c, ItemUseNotTime
@@ -1955,11 +1962,10 @@ ItemUseGoodRod:
 	jp c, ItemUseNotTime
 .RandomLoop
 	call Random
-	srl a
-	jr c, .SetBite
 	and %11
 	cp 2
-	jr nc, .RandomLoop
+	jr nc, .RandomLoop  ; retry until result is 0 or 1
+
 	; choose which monster appears
 	ld hl, GoodRodMons
 	add a
@@ -1969,11 +1975,9 @@ ItemUseGoodRod:
 	ld b, [hl]
 	inc hl
 	ld c, [hl]
-	and a
-.SetBite
-	ld a, 0
-	rla
-	xor 1
+    and a
+	; immediate bite
+	ld a, 1
 	jr RodResponse
 
 INCLUDE "data/wild/good_rod.asm"
@@ -1984,6 +1988,7 @@ ItemUseSuperRod:
 	call ReadSuperRodData
 	ld a, e
 RodResponse:
+    ld a, 1
 	ld [wRodResponse], a
 
 	dec a ; is there a bite?
@@ -2011,9 +2016,12 @@ RodResponse:
 ; checks if fishing is possible and if so, runs initialization code common to all rods
 ; unsets carry if fishing is possible, sets carry if not
 FishingInit:
+    CheckEvent EVENT_GOT_STARTER
+    jr z, .noStarter
 	ld a, [wIsInBattle]
 	and a
 	jr z, .notInBattle
+.noStarter
 	scf ; can't fish during battle
 	ret
 .notInBattle
@@ -2394,6 +2402,11 @@ PrintItemUseTextAndRemoveItem:
 	ld a, SFX_HEAL_AILMENT
 	call PlaySound
 	call WaitForTextScrollButtonPress ; wait for button press
+	ld a, [wDontConsumeRepel]
+	and a
+	ld a, 0
+	ld [wDontConsumeRepel], a
+	ret nz
 
 RemoveUsedItem:
 	ld hl, wNumBagItems
@@ -2990,8 +3003,8 @@ ReadSuperRodData:
 
 .RandomLoop
 	call Random
-	srl a
-	ret c ; 50% chance of no battle
+	;srl a
+	;ret c ; 50% chance of no battle
 
 	and %11 ; 2-bit random number
 	cp b
