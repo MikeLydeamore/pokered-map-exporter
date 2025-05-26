@@ -324,6 +324,10 @@ receiveArchipelagoItem_::
 	ld a, $00
 	ld [wArchipelagoItemReceived], a
 
+    ld a, [wOptions]
+    bit 4, a
+    jr nz, .playSound
+
 	ld a, [wIsInBattle]
 	cp 0
 	jr z, .noBattle
@@ -343,8 +347,8 @@ receiveArchipelagoItem_::
 .noBattle
 	ld a, TEXT_RECEIVED_ITEM
 	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
-
+	jp DisplayTextID
+.playSound
 	ld a, SFX_GET_ITEM_1
 	call PlaySound
 
