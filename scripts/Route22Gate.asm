@@ -36,11 +36,11 @@ Route22GateScript_1e6ba:
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
     ld a, [wPlayerDirection]
-    cp PLAYER_DIR_UP
-    ld a, D_DOWN
-    jr z, .goDown
+    cp PLAYER_DIR_DOWN
 	ld a, D_UP
-.goDown
+    jr z, .goUp
+    ld a, D_DOWN
+.goUp
 	ld [wSimulatedJoypadStatesEnd], a
 	ld [wSpritePlayerStateData1FacingDirection], a
 	ld [wJoyIgnore], a
