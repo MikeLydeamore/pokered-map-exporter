@@ -145,6 +145,7 @@ MainMenu:
 InitOptions:
 	ld a, TEXT_DELAY_FAST
 	ld [wLetterPrintingDelayFlags], a
+.Archipelago_Options_1
 	ld a, TEXT_DELAY_MEDIUM
 	ld [wOptions], a
 	ret
@@ -472,13 +473,13 @@ DisplayOptionMenu:
 	ld c, 18
 	call TextBoxBorder
 	hlcoord 1, 1
-	ld de, TextSpeedOptionText
+	ld de, AutoRunOptionText
 	call PlaceString
 	hlcoord 1, 6
 	ld de, BattleAnimationOptionText
 	call PlaceString
 	hlcoord 1, 11
-	ld de, BattleStyleOptionText
+	ld de, APItemOptionText
 	call PlaceString
 	hlcoord 2, 16
 	ld de, OptionMenuCancelText
@@ -536,7 +537,7 @@ DisplayOptionMenu:
 	cp 8 ; cursor in Battle Animation section?
 	jr z, .cursorInBattleAnimation
 	cp 13 ; cursor in Battle Style section?
-	jr z, .cursorInBattleStyle
+	jr z, .cursorInAPText
 	cp 16 ; cursor on Cancel?
 	jr z, .loop
 .cursorInTextSpeed
@@ -584,72 +585,49 @@ DisplayOptionMenu:
 	xor $0b ; toggle between 1 and 10
 	ld [wOptionsBattleAnimCursorX], a
 	jp .eraseOldMenuCursor
-.cursorInBattleStyle
+.cursorInAPText
 	ld a, [wOptionsBattleStyleCursorX] ; battle style cursor X coordinate
 	xor $0b ; toggle between 1 and 10
 	ld [wOptionsBattleStyleCursorX], a
 	jp .eraseOldMenuCursor
 .pressedLeftInTextSpeed
-	ld a, [wOptionsTextSpeedCursorX] ; text speed cursor X coordinate
-	cp 1
-	jr z, .updateTextSpeedXCoord
-;	cp 7
-;	jr nz, .fromSlowToMedium
-;	sub 6
-;	jr .updateTextSpeedXCoord
-.fromSlowToMedium
-	sub 1
-	jr .updateTextSpeedXCoord
 .pressedRightInTextSpeed
-	ld a, [wOptionsTextSpeedCursorX] ; text speed cursor X coordinate
-	cp 16
-	jr z, .updateTextSpeedXCoord
-;	cp 7
-;	jr nz, .fromFastToMedium
-;	add 7
-	add 1
-	cp 2
-	jr z, .updateTextSpeedXCoord2	  
-	jr .updateTextSpeedXCoord
-;.fromFastToMedium
-;	add 6
-.updateTextSpeedXCoord
-	ld [wOptionsTextSpeedCursorX], a ; text speed cursor X coordinate
-	jp .eraseOldMenuCursor2
-.updateTextSpeedXCoord2
-	ld [wOptionsTextSpeedCursorX], a ; text speed cursor X coordinate
+	ld a, [wOptionsTextSpeedCursorX] ; battle animation cursor X coordinate
+	xor $0b ; toggle between 1 and 10
+	ld [wOptionsTextSpeedCursorX], a
 	jp .eraseOldMenuCursor
 
-TextSpeedOptionText:
-	db   "TEXT SPEED"
+
+AutoRunOptionText:
+	db   "AUTO RUN"
 	;next " FAST  MEDIUM SLOW@"
-	next " ||||||||||||||||@"
+	next " ON       OFF@"
 
 BattleAnimationOptionText:
 	db   "BATTLE ANIMATION"
 	next " ON       OFF@"
 
-BattleStyleOptionText:
-	db   "BATTLE STYLE"
-	next " SHIFT    SET@"
+APItemOptionText:
+          ;;;;;;;;;;;;;;;;;;
+	db   "AP ITEM RECVD TEXT"
+	next " ON       OFF@"
 
 OptionMenuCancelText:
 	db "CANCEL@"
 
 ; sets the options variable according to the current placement of the menu cursors in the options menu
 SetOptionsFromCursorPositions:
-	ld hl, TextSpeedOptionData
-	ld a, [wOptionsTextSpeedCursorX] ; text speed cursor X coordinate
-	ld c, a
-.loop
-	ld a, [hli]
-	cp c
-	jr z, .textSpeedMatchFound
-	inc hl
-	jr .loop
-.textSpeedMatchFound
-	ld a, [hl]
+	ld a, [wOptions]
 	ld d, a
+	ld a, [wOptionsTextSpeedCursorX] ; text speed cursor X coordinate
+	dec a
+    jr z, .battleAutoRunOn
+    set 5, d
+    jr .checkBattleAnimation
+.battleAutoRunOn
+    res 5, d
+
+.checkBattleAnimation
 	ld a, [wOptionsBattleAnimCursorX] ; battle animation cursor X coordinate
 	dec a
 	jr z, .battleAnimationOn
@@ -663,10 +641,10 @@ SetOptionsFromCursorPositions:
 	dec a
 	jr z, .battleStyleShift
 .battleStyleSet
-	set 6, d
+	set 4, d
 	jr .storeOptions
 .battleStyleShift
-	res 6, d
+	res 4, d
 .storeOptions
 	ld a, d
 	ld [wOptions], a
@@ -674,30 +652,31 @@ SetOptionsFromCursorPositions:
 
 ; reads the options variable and places menu cursors in the correct positions within the options menu
 SetCursorPositionsFromOptions:
-	ld hl, TextSpeedOptionData + 1
 	ld a, [wOptions]
-	ld c, a
-	and $3f
-	push bc
-	ld de, 2
-	call IsInArray
-	pop bc
-	dec hl
-	ld a, [hl]
+	bit 5, a
+	jr z, .AutoRunOn
+	ld a, 10
+	jr .AutoRunOff
+.AutoRunOn
+    ld a, 1
+.AutoRunOff
+
 	ld [wOptionsTextSpeedCursorX], a ; text speed cursor X coordinate
 	hlcoord 0, 3
 	call .placeUnfilledRightArrow
-	sla c
-	ld a, 1 ; On
-	jr nc, .storeBattleAnimationCursorX
+	ld a, [wOptions]
+	bit 7, a
 	ld a, 10 ; Off
+	jr nz, .storeBattleAnimationCursorX
+	ld a, 1 ; On
 .storeBattleAnimationCursorX
 	ld [wOptionsBattleAnimCursorX], a ; battle animation cursor X coordinate
 	hlcoord 0, 8
 	call .placeUnfilledRightArrow
-	sla c
+	ld a, [wOptions]
+	bit 4, a
 	ld a, 1
-	jr nc, .storeBattleStyleCursorX
+	jr z, .storeBattleStyleCursorX
 	ld a, 10
 .storeBattleStyleCursorX
 	ld [wOptionsBattleStyleCursorX], a ; battle style cursor X coordinate

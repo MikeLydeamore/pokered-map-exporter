@@ -407,9 +407,18 @@ DoBikeSpeedup::
 	jp AdvancePlayerSprite
 
 RunSpeed:
+    ld a, [wOptions]
+    bit 5, a
+    jr z, .AutoRun
     ldh a, [hJoyHeld]
 	bit BIT_B_BUTTON, a
 	ret z
+	jr .noAutoRun
+.AutoRun
+    ldh a, [hJoyHeld]
+	bit BIT_B_BUTTON, a
+	ret nz
+.noAutoRun
 	call IsPlayerCharacterBeingControlledByGame
 	ret nz
 	call AdvancePlayerSprite
