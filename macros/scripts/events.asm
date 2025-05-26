@@ -457,7 +457,7 @@ MACRO EventBattleTrainersanityData
     DEF __bit  = __event % 8
 Trainersanity_\1::
 .Archipelago_Trainersanity_\1_0
-    db MASTER_BALL, (__addr & $FF), (__addr >> 8), __bit
+    db NO_ITEM, (__addr & $FF), (__addr >> 8), __bit
 ENDM
 
 MACRO EventBattleTrainersanity
