@@ -306,7 +306,7 @@ receiveArchipelagoItem_::
 	ld a, [wArchipelagoItemReceived]
 	cp $00
 	ret z
-    push bc
+    ;push bc
 	ld b, a
 	ld a, 1
 	ld c, a
@@ -323,30 +323,33 @@ receiveArchipelagoItem_::
 	ld [wArchipelagoItemsReceivedCount+1], a
 	ld a, $00
 	ld [wArchipelagoItemReceived], a
-	;push hl
-	;hlcoord 0, 12
-	;ld b, $04
-	;ld c, $12
-	;call TextBoxBorder
-	;ld hl, ReceivedArchipelagoItemText
-	;call justprinttext
-	;ld a, MESSAGE_BOX
-	;call DisplayTextBoxID
-	;ld hl, ReceivedArchipelagoItemText
-	;call PrintText
-	;jp PrintText
-	;pop hl
-	;jp AfterDisplayingTextID
-	;call EnableAutoTextBoxDrawing
-	;tx_pre UnusedBenchGuyText1
+
+	ld a, [wIsInBattle]
+	cp 0
+	jr z, .noBattle
+
+	ld hl, DisplayArchipelagoItem
+	call PrintText
+
+	farcall PrintEmptyString
+    ld a, BATTLE_MENU_TEMPLATE
+	ld [wTextBoxID], a
+	call DisplayTextBoxID
+
+    call PlaceMenuCursor
+
+
+    ret
+.noBattle
+	ld a, TEXT_RECEIVED_ITEM
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+
 	ld a, SFX_GET_ITEM_1
 	call PlaySound
-	;ld a, TEXT_RECEIVED_ITEM
-	;ldh [hSpriteIndexOrTextID], a
-	;call EnableAutoTextBoxDrawing
-	;call DisplayTextID
+
 .bagFull
-	pop bc
+	;pop bc
 	ret
 
 

@@ -26,7 +26,7 @@ testdict:
 	dict TEXT_MON_FAINTED,      DisplayPokemonFaintedText
 	dict TEXT_BLACKED_OUT,      DisplayPlayerBlackedOutText
 	dict TEXT_REPEL_WORE_OFF,   DisplayRepelWoreOffText
-	dict TEXT_RECEIVED_ITEM,    DisplayArchipelagoItem
+	dict TEXT_RECEIVED_ITEM,    DisplayArchipelagoItemScript
 
 	ld a, [wNumSprites]
 	ld e, a
@@ -214,6 +214,19 @@ DisplayRepelWoreOffText::
 RepelWoreOffText::
 	text_far _RepelWoreOffText
 	text_end
+
+DisplayArchipelagoItemScript::
+	ldh a, [hLoadedROMBank]
+	push af
+    ld a, 2
+    ldh [hLoadedROMBank], a
+	ld [MBC1RomBank], a
+	ld hl, DisplayArchipelagoItem
+	call PrintText
+	pop af
+	ldh [hLoadedROMBank], a
+	ld [MBC1RomBank], a
+	jp AfterDisplayingTextID
 
 DisplayArchipelagoItem::
     text_far _DisplayArchipelagoItem
