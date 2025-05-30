@@ -818,7 +818,9 @@ FaintEnemyPokemon:
 	ld b, EXP_ALL
 	call IsItemInBag
 	push af
+.Archipelago_Option_No_Split_EXP_A_0 ; blank out first jr z, switch next jr z to jr nz
 	jr z, .giveExpToMonsThatFought ; if no exp all, then jump
+	jr z, .skipregularexp
 
 ; the player has exp all
 ; first, we halve the values that determine exp gain
@@ -844,6 +846,7 @@ FaintEnemyPokemon:
 ; the player has exp all
 ; now, set the gain exp flag for every party member
 ; half of the total stat exp and normal exp will divided evenly amongst every party member
+.skipregularexp
 	ld a, $1
 	ld [wBoostExpByExpAll], a
 	ld a, [wPartyCount]

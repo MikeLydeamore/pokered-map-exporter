@@ -10,6 +10,7 @@ GainExperience:
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	ret z ; return if link battle
+.Archipelago_Option_No_Split_EXP_B_0
 	call DivideExpDataByNumMonsGainingExp
 	ld hl, wPartyMon1
 	xor a
