@@ -302,7 +302,7 @@ OverworldLoopLessDelay::
 	call DoBikeSpeedup
 .normalPlayerSpriteAdvancement
 	call AdvancePlayerSprite
-	call RunSpeed
+	farcall RunSpeed
 	ld a, [wWalkCounter]
 	and a
 	jp nz, CheckMapConnections ; it seems like this check will never succeed (the other place where CheckMapConnections is run works)
@@ -403,26 +403,10 @@ DoBikeSpeedup::
 	and D_UP | D_LEFT | D_RIGHT
 	ret nz
 .goFaster
-    call RunSpeed
+    farcall RunSpeed
 	jp AdvancePlayerSprite
 
-RunSpeed:
-    ld a, [wOptions]
-    bit 5, a
-    jr z, .AutoRun
-    ldh a, [hJoyHeld]
-	bit BIT_B_BUTTON, a
-	ret z
-	jr .noAutoRun
-.AutoRun
-    ldh a, [hJoyHeld]
-	bit BIT_B_BUTTON, a
-	ret nz
-.noAutoRun
-	call IsPlayerCharacterBeingControlledByGame
-	ret nz
-	call AdvancePlayerSprite
-	ret
+
 
 ; check if the player has stepped onto a warp after having not collided
 CheckWarpsNoCollision::

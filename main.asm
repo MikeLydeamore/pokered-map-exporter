@@ -100,6 +100,24 @@ INCLUDE "engine/battle/move_effects/haze.asm"
 INCLUDE "engine/battle/get_trainer_name.asm"
 INCLUDE "engine/math/random.asm"
 
+RunSpeed::
+    ld a, [wOptions]
+    bit 5, a
+    jr z, .AutoRun
+    ldh a, [hJoyHeld]
+	bit BIT_B_BUTTON, a
+	ret z
+	jr .noAutoRun
+.AutoRun
+    ldh a, [hJoyHeld]
+	bit BIT_B_BUTTON, a
+	ret nz
+.noAutoRun
+	call IsPlayerCharacterBeingControlledByGame
+	ret nz
+	call AdvancePlayerSprite
+	ret
+
 
 SECTION "Battle Engine 2", ROMX
 
