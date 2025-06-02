@@ -4,6 +4,15 @@ CinnabarLabFossilRoom_Script:
 CinnabarLabFossilRoom_TextPointers:
 	dw Lab4Text1
 	dw Lab4Text2
+	dw ShopPC
+	dw HelixShop
+	dw DomeShop
+	dw HelixDomeShop
+	dw AmberShop
+	dw HelixAmberShop
+	dw DomeAmberShop
+	dw AllFossilsShop
+	dw NoFossils
 
 Lab4Script_GetFossilsInBag:
 ; construct a list of all fossils in the player's bag
@@ -160,3 +169,54 @@ Lab4Text2:
 
 LoadFossilItemAndMonNameBank1D:
 	farjp LoadFossilItemAndMonName
+
+ShopPC:
+    text_asm
+    ld b, 0
+    CheckEvent EVENT_GAVE_OLD_AMBER, 1
+    rl b
+    CheckEvent EVENT_GAVE_DOME_FOSSIL, 1
+    rl b
+    CheckEvent EVENT_GAVE_HELIX_FOSSIL, 1
+    rl b
+    ld a, b
+    add 3
+    cp 3
+    jr z, .zero
+.continue
+    ldh [hSpriteIndexOrTextID], a
+    call DisplayTextID
+    call DisableWaitingAfterTextDisplay
+    jp TextScriptEnd
+.zero
+    ld a, 11
+    jr .continue
+
+HelixShop:
+	script_mart HELIX_FOSSIL
+
+DomeShop:
+	script_mart DOME_FOSSIL
+
+AmberShop:
+	script_mart OLD_AMBER
+
+HelixDomeShop:
+	script_mart HELIX_FOSSIL, DOME_FOSSIL
+
+HelixAmberShop:
+	script_mart HELIX_FOSSIL, OLD_AMBER
+
+DomeAmberShop:
+	script_mart DOME_FOSSIL, OLD_AMBER
+
+AllFossilsShop:
+	script_mart HELIX_FOSSIL, DOME_FOSSIL, OLD_AMBER
+
+NoFossils:
+          ;;;;;;;;;;;;;;;;;;
+    text "I can duplicate"
+    line "fossils after"
+    cont "you provide us"
+    cont "with them!"
+    done

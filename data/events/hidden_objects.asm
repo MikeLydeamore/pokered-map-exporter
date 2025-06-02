@@ -658,7 +658,6 @@ IndigoPlateauLobbyHiddenObjects:
 	db -1 ; end
 
 CinnabarLab4HiddenObjects:
-	hidden_object  0,  4, SPRITE_FACING_UP, OpenPokemonCenterPC
 	hidden_object  2,  4, SPRITE_FACING_UP, OpenPokemonCenterPC
 	db -1 ; end
 
