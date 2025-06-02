@@ -2319,15 +2319,16 @@ LoadMapHeader::
 	add a ; double it
 	ld [wCurrentMapWidth2], a ; map width in 2x2 tile blocks
 	ld a, [wCurMap]
-	ld c, a
-
+.Archipelago_Option_Chaos_Music_0
+    jr .noChaosMusic
 ;;;random music
-;.random
-;	call Random
-;	cp $F8
-;	jr nc, .random
-;	ld c, a
-
+.random
+	call Random
+.Archipelago_Chaos_Music_Quantity_1
+	cp $F8
+	jr nc, .random
+.noChaosMusic
+	ld c, a
 	ld b, $00
 	ldh a, [hLoadedROMBank]
 	push af
