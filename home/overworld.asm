@@ -1277,6 +1277,7 @@ CollisionCheckOnLand::
 ; if not jumping a ledge
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
+.wtw
 	jr nz, .noCollision ; no collisions when the player's movements are being controlled by the game
 	ld a, [wPlayerDirection] ; the direction that the player is trying to go in
 	ld d, a
@@ -2319,6 +2320,14 @@ LoadMapHeader::
 	ld [wCurrentMapWidth2], a ; map width in 2x2 tile blocks
 	ld a, [wCurMap]
 	ld c, a
+
+;;;random music
+;.random
+;	call Random
+;	cp $F8
+;	jr nc, .random
+;	ld c, a
+
 	ld b, $00
 	ldh a, [hLoadedROMBank]
 	push af
