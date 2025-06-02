@@ -23,8 +23,8 @@ MtMoonPokecenterText3:
 
 MagikarpSalesmanText:
 	text_asm
-	CheckEvent EVENT_BOUGHT_MAGIKARP, 1
-	jp c, .alreadyBoughtMagikarp
+	;CheckEvent EVENT_BOUGHT_MAGIKARP, 1
+	;jp c, .alreadyBoughtMagikarp
 	ld hl, .Text1
 	call PrintText
 	ld a, MONEY_BOX
