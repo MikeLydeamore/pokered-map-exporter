@@ -97,6 +97,7 @@ _WantHitmonchanText::
 	done
 
 _OtherHitmonText::
-	text "Better not get"
-	line "greedy..."
+          ;;;;;;;;;;;;;;;;;;
+	text "Maybe if you beat"
+	line "Sabrina..."
 	done
