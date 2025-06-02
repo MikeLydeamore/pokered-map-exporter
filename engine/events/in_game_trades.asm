@@ -44,7 +44,7 @@ DoInGameTradeDialogue:
 	and a
 	ld a, $4
 	ld [wInGameTradeTextPointerTableIndex], a
-	jr nz, .printText
+	;jr nz, .printText
 ; if the trade hasn't been done yet
 	xor a
 	ld [wInGameTradeTextPointerTableIndex], a
