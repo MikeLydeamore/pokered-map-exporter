@@ -5,6 +5,17 @@
 ; [wItemQuantity] = item quantity
 ; sets carry flag if successful, unsets carry flag if unsuccessful
 AddItemToInventory_::
+
+.Archipelago_Debug_SelectInvFull_0
+    jr .noSelect
+    ldh a, [hJoyLast]
+	bit BIT_SELECT, a
+	jr z, .noSelect
+	scf
+    ccf
+    ret
+
+.noSelect
 	ld a, [wItemQuantity] ; a = item quantity
 	push af
 	push bc

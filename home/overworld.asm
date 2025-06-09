@@ -1277,7 +1277,7 @@ CollisionCheckOnLand::
 ; if not jumping a ledge
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
-.wtw
+.Archipelago_Debug_WTW_0 ; replace with jr
 	jr nz, .noCollision ; no collisions when the player's movements are being controlled by the game
 	ld a, [wPlayerDirection] ; the direction that the player is trying to go in
 	ld d, a
