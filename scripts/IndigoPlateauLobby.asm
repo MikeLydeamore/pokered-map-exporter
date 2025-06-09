@@ -1,45 +1,4 @@
-IPKeyItems:
-    db OAKS_PARCEL
-    db BIKE_VOUCHER
-    db GOLD_TEETH
-    db HELIX_FOSSIL
-    db DOME_FOSSIL
-    db OLD_AMBER
-    db TEA
-    db SECRET_KEY
-    db BICYCLE
-    db SILPH_SCOPE
-    db ITEMFINDER
-    db SUPER_ROD
-    db GOOD_ROD
-    db OLD_ROD
-    db LIFT_KEY
-    db CARD_KEY
-    db TOWN_MAP
-    db COIN_CASE
-    db POKE_FLUTE
-    db S_S_TICKET
-    db EXP_ALL
-    db MANSION_KEY
-    db SAFARI_PASS
-    db PLANT_KEY
-    db HIDEOUT_KEY
-    db CARD_KEY_2F
-    db CARD_KEY_3F
-    db CARD_KEY_4F
-    db CARD_KEY_5F
-    db CARD_KEY_6F
-    db CARD_KEY_7F
-    db CARD_KEY_8F
-    db CARD_KEY_9F
-    db CARD_KEY_10F
-    db CARD_KEY_11F
-    db MOON_STONE
-    db FIRE_STONE
-    db LEAF_STONE
-    db THUNDER_STONE
-    db WATER_STONE
-    db $FF
+
 
 IndigoPlateauLobby_Script:
 	call Serial_TryEstablishingExternallyClockedConnection
@@ -104,54 +63,8 @@ IndigoGuardText:
 	ld a, [wNumSetBits]
 	ld [wUnusedCC5B], a
 
-	ld c, 0
-	ld hl, IPKeyItems
-.loop
-	ld a, [hli]
-	cp $FF
-	jr z, .doneLoop
-	ld b, a
-	push bc
-	push hl
-	call IsItemInBag
-	pop hl
-	pop bc
-	jr z, .loop
-	inc c
-	jr .loop
-.doneLoop
-    CheckEvent EVENT_GAVE_OLD_AMBER
-    jr z, .nooa
-    inc c
-.nooa
-    CheckEvent EVENT_GAVE_HELIX_FOSSIL
-    jr z, .nohf
-    inc c
-.nohf
-    CheckEvent EVENT_GAVE_DOME_FOSSIL
-    jr z, .nodf
-    inc c
-.nodf
-    CheckEvent EVENT_GAVE_GOLD_TEETH
-    jr z, .nogt
-    inc c
-.nogt
-    CheckEvent EVENT_GOT_BICYCLE
-    jr z, .nobkvchr
-    inc c
-.nobkvchr
-    CheckEvent EVENT_GAVE_PARCEL
-    jr z, .noparc
-    inc c
-.noparc
-    ld a, [wd728]
-	bit 6, a
-.Archipelago_Tea_Key_Item_B_0
-    jr .notea
-    inc c
-.notea
-    ld a, c
-    ld [wUnusedD366], a
+    farcall GetKeyItemCount
+
 .Archipelago_Option_Elite_Four_Key_Items_1
     cp 0
     jr c, .dontleave

@@ -489,3 +489,18 @@ MACRO CinnabarGymTrainersanity
 	ld a, (EVENT_BEAT_CINNABAR_GYM_TRAINER_\2_ITEM % 8)
 	ld [wEndBattleTrainersanityFlagBit], a
 ENDM
+
+MACRO CheckItemOrEvent
+    CheckEvent \2
+    jr z, .no\1
+    inc c
+    jr .after\1
+.no\1
+    ld b, \1
+    push bc
+    call IsItemInBag
+    pop bc
+    jr z, .after\1
+    inc c
+.after\1
+ENDM
