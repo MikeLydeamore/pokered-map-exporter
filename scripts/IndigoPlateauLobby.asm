@@ -64,6 +64,7 @@ IndigoGuardText:
 	ld [wUnusedCC5B], a
 
     farcall GetKeyItemCount
+    ld a, [wUnusedD366]
 
 .Archipelago_Option_Elite_Four_Key_Items_1
     cp 0
