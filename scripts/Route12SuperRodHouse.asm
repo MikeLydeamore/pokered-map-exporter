@@ -42,7 +42,7 @@ Route12HouseText_564c0:
 Route12HouseText_564c5:
 	text_far _Route12HouseText_564c5
 	sound_get_item_1
-	text_far _Route12HouseText_564ca
+	;text_far _Route12HouseText_564ca
 	text_end
 
 Route12HouseText_564cf:
