@@ -12,8 +12,6 @@
 *.patch
 
 # rgbds extras
-*.map
-*.sym
 
 # tool binaries
 *.exe
