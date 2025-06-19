@@ -561,7 +561,7 @@ GetKeyItemCount::
     jr z, .notea
     ld a, [wd728]
 	bit 6, a
-.Archipelago_Tea_Key_Item_A_0
+.Archipelago_Tea_Key_Item_0
     jr .notea
     inc c
 .notea
