@@ -2517,6 +2517,13 @@ LoadDestinationWarpPosition::
 	ret
 
 receiveArchipelagoItem::
+    ld a, [wOptions]
+    bit 4, a
+    jr nz, .goAhead
+    ld a, [wJoyIgnore]
+    bit 7, a
+    ret nz
+.goAhead
     farcall receiveArchipelagoItem_
     ret
 
