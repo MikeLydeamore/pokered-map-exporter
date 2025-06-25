@@ -813,6 +813,7 @@ HandleBlackOut::
 	ld a, $08
 	call StopMusic
 	ld hl, wd72e
+	res 4, [hl] ; reset "no battles" bit
 	res 5, [hl]
 	ld a, BANK(ResetStatusAndHalveMoneyOnBlackout) ; also BANK(SpecialWarpIn) and BANK(SpecialEnterMap)
 	ldh [hLoadedROMBank], a
