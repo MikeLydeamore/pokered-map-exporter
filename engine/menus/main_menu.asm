@@ -137,6 +137,8 @@ MainMenu:
 .goHome
 	xor a
 	ld [wDestinationMap], a
+	ld hl, wd72e
+	res 4, [hl] ; reset "no battles" bit
 	ld hl, wd732
 	set 2, [hl] ; fly warp or dungeon warp
 	call SpecialWarpIn
