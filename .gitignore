@@ -29,3 +29,10 @@
 *.sn*
 *.sa*
 *.sg1
+
+# debug maps
+
+out/debug*
+out/sgb
+
+copymaps.ps1
