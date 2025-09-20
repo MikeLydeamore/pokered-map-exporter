@@ -105,3 +105,4 @@ VictoryRoad3F.png
 ViridianCity.png
 ViridianForest.png
 ViridianGym.png
+FightingDojo.png

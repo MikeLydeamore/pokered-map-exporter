@@ -583,6 +583,8 @@ def main() -> None:
 
                         if ev["facing"] == "RIGHT":
                             spr = spr.transpose(Image.FLIP_LEFT_RIGHT)
+                        if ev["sprite"] != "SPRITE_POKE_BALL" and ev["sprite"] != "SPRITE_BOULDER":
+                            y_px = y_px-4 # NPC sprites are offset up by 4px
                         img.alpha_composite(spr, (x_px, y_px))
                     else:
                         pass
