@@ -62,7 +62,7 @@ def infer_palette_name_for_map(map_const: str) -> str:
     if name.startswith("ROUTE_"):
         return "PAL_ROUTE"
 
-    cave_words = ("CAVE", "TUNNEL", "SEAFOAM", "ROCK_TUNNEL", "VICTORY_ROAD", "UNKNOWN_DUNGEON", "MT_", "MOUNTAIN", "POKEMON_MANSION")
+    cave_words = ("CAVE", "TUNNEL", "SEAFOAM", "ROCK_TUNNEL", "VICTORY_ROAD", "UNKNOWN_DUNGEON", "MT_", "MOUNTAIN")
     if any(w in name for w in cave_words):
         return "PAL_CAVE"
 
@@ -77,9 +77,30 @@ def infer_palette_name_for_map(map_const: str) -> str:
     
     if name == "MR_PSYCHICS_HOUSE":
         return "PAL_SAFFRON"
+    
+    if any(k in name for k in ("POKEMON_TOWER", "AGATHAS_ROOM")):
+        return "PAL_GRAYMON"
+    
+    if name == "BRUNOS_ROOM":
+        return "PAL_CAVE"
+    
+    if name == "LORELEIS_ROOM":
+        return "PAL_ROUTE"
+    
+    if "POKEMON_MANSION" in name:
+        return "PAL_CINNABAR"
+
+    if "ROCKET_HIDEOUT" in name:
+        return "PAL_CELADON"
+
+    if any(k in name for k in ("SILPH", "DOJO")):
+        return "PAL_SAFFRON"
+
+    if "SS_ANNE" in name:
+        return "PAL_VERMILION"
 
     # Common interiors – use the host city's palette if the name includes it
-    interior_words = ("POKECENTER", "POKEMART", "GYM", "MANSION", "SILPH", "GATE", "COPYCAT", "DOJO", "BIKE", "FAN_CLUB", "GAME_CORNER", "ROCKET", "HOUSE", "MANSION")
+    interior_words = ("POKECENTER", "POKEMART", "GYM", "MANSION", "SILPH", "GATE", "COPYCAT", "DOJO", "BIKE", "FAN_CLUB", "GAME_CORNER", "ROCKET", "HOUSE", "MANSION", "LAB")
     if any(w in name for w in interior_words):
         if city:
             return f"PAL_{city}"

@@ -8,7 +8,7 @@ $spritePal  = Join-Path $root "sprite_palettes.json"
 
 New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 
-Get-ChildItem -Path $mapsDir -Recurse -Filter *.blk | ForEach-Object {
+Get-ChildItem -Path $mapsDir -Filter *.blk | ForEach-Object {
     $dest = Join-Path $outDir ($_.BaseName + ".png")
 
     & python ".\export_map_png_no_rgbds.py" `
@@ -30,10 +30,10 @@ Get-ChildItem -Path $mapsDir -Recurse -Filter *.blk | ForEach-Object {
 }
 
 
-# python ".\export_map_png_no_rgbds_5.py" `
+# python ".\export_map_png_no_rgbds.py" `
 #     --pokered $root `
-#     --blk D:\Work\pokered\maps\SafariZoneWest.blk `
-#     --out D:\Work\pokered\out\sgb\SafariZoneWest.png `
+#     --blk D:\Work\pokered\maps\UndergroundPathNorthSouth.blk `
+#     --out D:\Work\pokered\out\sgb\UndergroundPathNorthSouth.png `
 #     --use-sgb `
 #     --overlay-npcs --npc-mode sprites `
 #     --npc-sprite-map $spriteJson `

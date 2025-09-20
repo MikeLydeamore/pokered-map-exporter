@@ -59,5 +59,6 @@
   "SPRITE_BRUNO": "gfx/sprites/bruno.png",
   "SPRITE_LORELEI": "gfx/sprites/lorelei.png",
   "SPRITE_SEEL": "gfx/sprites/seel.png",
-  "SPRITE_POKE_BALL": "gfx/sprites/poke_ball.png"
+  "SPRITE_POKE_BALL": "gfx/sprites/poke_ball.png",
+  "SPRITE_BOULDER": "gfx/sprites/boulder.png"
 }
