@@ -93,6 +93,9 @@ SSAnne2F.png
 SSAnne3F.png
 SSAnneB1F.png
 SSAnneBow.png
+ssanne1f_combined.png
+ssanneb1f_combined.png
+ssanne2f_combined.png
 SSAnneCaptainsRoom.png
 SSAnneKitchen.png
 UndergroundPathWestEast.png

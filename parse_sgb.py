@@ -106,6 +106,8 @@ def infer_palette_name_for_map(map_const: str) -> str:
             return f"PAL_{city}"
         if name == "WARDENS_HOUSE":
             return "PAL_FUCHSIA"
+        if name == "GAME_CORNER":
+            return "PAL_CELADON"
         # If no city in the name, many interiors still “feel” ROUTE-ish on SGB
         return "PAL_ROUTE"
 
