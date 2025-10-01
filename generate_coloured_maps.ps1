@@ -1,6 +1,6 @@
 $root       = "D:\Work\pokered"
 $mapsDir    = Join-Path $root "maps"
-$outDir     = Join-Path $root "out\maps_with_npcs"
+$outDir     = Join-Path $root "out\maps_with_npcs\grayscale"
 
 $palJson    = Join-Path $root "gbc_palettes.json"
 $spriteJson = Join-Path $root "npc_sprites.json"
@@ -15,7 +15,6 @@ Get-ChildItem -Path $mapsDir -Filter *.blk | ForEach-Object {
     --pokered $root `
     --blk $_.FullName `
     --out $dest.ToLower() `
-    --use-sgb `
     --overlay-npcs --npc-mode sprites `
     --npc-sprite-map $spriteJson `
     --sprite-palette-map $spritePal `

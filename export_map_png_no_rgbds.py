@@ -523,7 +523,7 @@ def main() -> None:
         if pal_hex:
             pal_rgb = [hex_to_rgb(h) for h in pal_hex]
 
-    print("Map", map_const, "palette", pal_hex)
+    #print("Map", map_const, "palette", pal_hex)
     if pal_rgb:
         img = recolor_background_rgba(img, pal_rgb)
 
@@ -577,8 +577,10 @@ def main() -> None:
                         if pal_override:
                             spr = recolor_sprite_rgba(spr, pal_rgb, keep_white=True, flip_sprite=True)
 
-                        
-                        pal_rgb = [hex_to_rgb(h) for h in pal_hex]
+                        if args.use_sgb:
+                            pal_rgb = [hex_to_rgb(h) for h in pal_hex]
+                        else:
+                            pal_rgb = [(255,255,255), (170,170,170), (85,85,85), (0,0,0)]
                         spr = recolor_sprite_rgba(spr, pal_rgb, keep_white=True, flip_sprite=True)
 
                         if ev["facing"] == "RIGHT":
