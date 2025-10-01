@@ -138,7 +138,7 @@ def build_map_to_palette(root: Path, pal_file: Path, overrides_json: Path | None
     consts = root / "constants" / "map_constants.asm"
     if consts.exists():
         txt = consts.read_text(encoding="utf-8", errors="ignore")
-        for m in re.finditer(r"^\s*map_const\s+([A-Z0-9_]+)\s*,", txt, re.M | re.I):
+        for m in re.finditer(r"^\s*mapconst\s+([A-Z0-9_]+)\s*,", txt, re.M | re.I):
             maps_list.append(m.group(1))
 
     # If that fails, we can still fill on-demand later; but try to prefill:

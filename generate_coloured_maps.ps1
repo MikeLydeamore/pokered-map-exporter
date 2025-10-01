@@ -1,6 +1,6 @@
 $root       = "D:\Work\pokered"
 $mapsDir    = Join-Path $root "maps"
-$outDir     = Join-Path $root "out\maps_with_npcs\grayscale"
+$outDir     = Join-Path $root "out\maps_with_npcs"
 
 $palJson    = Join-Path $root "gbc_palettes.json"
 $spriteJson = Join-Path $root "npc_sprites.json"
@@ -15,6 +15,7 @@ Get-ChildItem -Path $mapsDir -Filter *.blk | ForEach-Object {
     --pokered $root `
     --blk $_.FullName `
     --out $dest.ToLower() `
+    --use-sgb `
     --overlay-npcs --npc-mode sprites `
     --npc-sprite-map $spriteJson `
     --sprite-palette-map $spritePal `
@@ -31,8 +32,8 @@ Get-ChildItem -Path $mapsDir -Filter *.blk | ForEach-Object {
 
 # python ".\export_map_png_no_rgbds.py" `
 #     --pokered $root `
-#     --blk D:\Work\pokered\maps\UndergroundPathNorthSouth.blk `
-#     --out D:\Work\pokered\out\sgb\UndergroundPathNorthSouth.png `
+#     --blk D:\Work\pokered\maps\CeladonGym.blk `
+#     --out D:\Work\pokered\out\sgb\CeladonGym.png `
 #     --use-sgb `
 #     --overlay-npcs --npc-mode sprites `
 #     --npc-sprite-map $spriteJson `

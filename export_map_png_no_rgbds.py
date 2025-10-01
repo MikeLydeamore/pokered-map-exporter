@@ -169,7 +169,7 @@ def recolor_sprite_rgba(
 
 
 HEADER_RE = re.compile(r"map_header\s+\w+\s*,\s*(\w+)\s*,\s*(\w+)\s*,", re.I)
-PAT_MAP_CONST = re.compile(r"^\s*map_const\s+{name}\s*,\s*(\d+)\s*,\s*(\d+)\b", re.I | re.M)
+PAT_MAP_CONST = re.compile(r"^\s*mapconst\s+{name}\s*,\s*(\d+)\s*,\s*(\d+)\b", re.I | re.M)
 PAT_EQU_WH = re.compile(r"DEF\s+{name}_WIDTH\s+EQU\s+(\d+).*?DEF\s+{name}_HEIGHT\s+EQU\s+(\d+)", re.I | re.S)
 PAT_EQU_HW = re.compile(r"DEF\s+{name}_HEIGHT\s+EQU\s+(\d+).*?DEF\s+{name}_WIDTH\s+EQU\s+(\d+)", re.I | re.S)
 
@@ -469,7 +469,7 @@ def main() -> None:
             die("--size must look like 10x9")
         w_blocks, h_blocks = int(m.group(1)), int(m.group(2))
     else:
-        w_blocks, h_blocks = parse_map_dimensions(root, map_const)
+        h_blocks, w_blocks = parse_map_dimensions(root, map_const)
 
     tileset_png = root / "gfx" / "tilesets" / f"{tileset_lower}.png"
     bst = root / "gfx" / "blocksets" / f"{tileset_lower}.bst"

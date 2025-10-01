@@ -60,5 +60,7 @@
   "SPRITE_LORELEI": "gfx/sprites/lorelei.png",
   "SPRITE_SEEL": "gfx/sprites/seel.png",
   "SPRITE_POKE_BALL": "gfx/sprites/poke_ball.png",
-  "SPRITE_BOULDER": "gfx/sprites/boulder.png"
+  "SPRITE_BOULDER": "gfx/sprites/boulder.png",
+  "SPRITE_ERIKA": "gfx/sprites/erika.png",
+  "SPRITE_SILPH_WORKER": "gfx/sprites/silph_worker.png"
 }
